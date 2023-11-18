@@ -26,7 +26,7 @@ const App = () => {
           <Route path="/home-caregiver" element={<HomeCaregiver />} />
           <Route path="/dashboard" element={<DashboardAdmin />} />
           <Route path="/update-recipient/:userId" element={<UpdateRecipient />} />
-          <Route path="/update-caregiver/:userId" elementasdd={<UpdateCaregiver />} />
+          <Route path="/update-caregiver/:userId" element={<UpdateCaregiver />} />
         </Routes>
       </div>
     </Router>
