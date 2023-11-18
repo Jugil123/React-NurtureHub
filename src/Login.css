@@ -1,0 +1,87 @@
+.login-child,
+.login-item {
+  border: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 334px;
+  left: 568px;
+  border-radius: 11px;
+  width: 303px;
+  height: 39px;
+}
+.login-item {
+  top: 390px;
+}
+.password,
+.username {
+  position: absolute;
+  top: 345px;
+  left: 582px;
+}
+.password {
+  top: 400px;
+  left: 584px;
+}
+.dont-have-an,
+.log-in,
+.register {
+  position: absolute;
+  top: 262px;
+  left: 668px;
+  font-size: 32px;
+  color: #000;
+}
+.dont-have-an,
+.register {
+  top: 501px;
+  left: 580px;
+  font-size: 18px;
+}
+.register {
+  text-decoration: none;
+  left: 785px;
+  font-weight: 700;
+  color: red;
+  cursor: pointer;
+}
+.button {
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: "Maven Pro";
+  color: #fff;
+  text-align: left;
+}
+.button-wrapper {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  background-color: #c3604d;
+  position: absolute;
+  top: 446px;
+  left: 568px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 314px;
+  height: 39px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.login {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  /* */
+  /* left: 40px; */
+  height: 1024px;
+  height: 720px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.36);
+  font-family: Inter;
+}

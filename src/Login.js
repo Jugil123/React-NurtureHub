@@ -1,7 +1,8 @@
-// Import the necessary dependencies
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+
+import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -44,24 +45,33 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Render error message if present */}
+    <div  style={{ textAlign: 'center', margin: '20px' }} className="login">
       <form onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Login</button>
-        <nav>
-          <Link to="/user-type">Register Here</Link>
-        </nav>
+      <input
+        style={{paddingLeft: "7px"}}
+        className="login-child"
+        value={username}
+        placeholder=" Username"
+        type="text"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+      style={{paddingLeft: "7px"}}
+        className="login-item"
+        value={password}
+        placeholder=" Password"
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <div className="username"></div>
+      <div className="password"></div>
+      <div className="log-in">Log in</div>
+      {error && <p className="log-in" style={{  marginTop: '40px', marginLeft: '-23px', color: 'red', fontSize: '22px'}}>{error}</p>} {/* Render error message if present */}
+      <div style={{left: "600px"}} className="dont-have-an">Not yet registered?</div>
+      <Link style={{left: "745px"}} className="register" to="/user-type">Register Here</Link>
+      <button className="button-wrapper" id="Login" type="submit">
+        <div className="button">Log in</div>
+      </button>
       </form>
     </div>
   );
