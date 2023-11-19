@@ -1,0 +1,82 @@
+.are-you-caregiver {
+    position: absolute;
+    top: 360px;
+    left: 419px;
+    font-size: 40px;
+    font-family: var(--font-inter);
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    width: 601px;
+    height: 78px;
+  }
+  .vector-icon {
+    position: absolute;
+    height: 5.27%;
+    width: 3.19%;
+    top: 8.11%;
+    right: 90.76%;
+    bottom: 86.62%;
+    left: 6.04%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    cursor: pointer;
+  }
+  .button {
+    position: relative;
+    font-size: var(--font-size-11xl);
+    letter-spacing: 0.1em;
+    font-weight: 900;
+    font-family: var(--font-maven-pro);
+    color: var(--color-white);
+    text-align: left;
+  }
+  .button-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--br-mid);
+    background-color: var(--color-indianred);
+    width: 212px;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-3xs);
+    box-sizing: border-box;
+  }
+  .button-container,
+  .usertype-inner {
+    position: absolute;
+    top: 465px;
+    left: 495px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 212px;
+    height: 75px;
+    cursor: pointer;
+  }
+  .button-container {
+    border: 0;
+    padding: var(--padding-3xs);
+    background-color: var(--color-indianred);
+    left: 739px;
+    border-radius: var(--br-mid);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .usertype {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: var(--color-white);
+    position: relative;
+    width: 100%;
+    height: 1024px;
+    overflow: hidden;
+  }
+  
