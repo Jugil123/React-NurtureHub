@@ -11,7 +11,7 @@ const UserType = () => {
   }, []);
 
   return (
-    <button className="usertype">
+    <div className="usertype">
       <div className="are-you-caregiver">Are you Caregiver or Recipient?</div>
       <img
         className="vector-icon"
@@ -19,15 +19,15 @@ const UserType = () => {
         src="/vector.svg"
         onClick={onVectorClick}
       />
-      <div className="usertype-inner" onClick={onGroupContainerClick}>
-        <div className="button-wrapper">
+      <div className="button-container" onClick={onGroupContainerClick}>
+        <button className="button-container">
           <div className="button">Caregiver</div>
-        </div>
+        </button>
       </div>
       <button className="button-container">
         <div className="button">Recipient</div>
       </button>
-    </button>
+    </div>
   );
 };
 
