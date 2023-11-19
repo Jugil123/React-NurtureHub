@@ -31,7 +31,7 @@ const UserType = () => {
     </div>
     <div className="button-container" onClick={onGroupContainerClick}></div>
       <button className="button-container">
-      <Link to="/register-caregiver">
+      <Link to="/register-recipient">
         <div className="button">Recipient</div>
         </Link>
       </button>

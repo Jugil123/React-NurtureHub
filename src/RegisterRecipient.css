@@ -1,0 +1,157 @@
+.registerrecipient-child,
+.registerrecipient-item {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 158px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.registerrecipient-item {
+  top: 252px;
+}
+.lasname {
+  position: absolute;
+  top: 273px;
+  left: 484px;
+}
+.registerrecipient-inner {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 348px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.birthdate,
+.rectangle-input {
+  position: absolute;
+  top: 369px;
+  left: 484px;
+}
+.rectangle-input {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  top: 442px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.gender {
+  position: absolute;
+  top: 463px;
+  left: 484px;
+}
+.registerrecipient-child1 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 539px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.contact-information {
+  position: absolute;
+  top: 560px;
+  left: 484px;
+}
+.registerrecipient-child2 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 633px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.address {
+  position: absolute;
+  top: 654px;
+  left: 484px;
+}
+.registerrecipient-child3 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 724px;
+  left: 462px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.age,
+.firstname {
+  position: absolute;
+  top: 745px;
+  left: 485px;
+}
+.firstname {
+  top: 179px;
+  left: 492px;
+}
+.register-recipient {
+  position: absolute;
+  top: 71px;
+  left: 548px;
+  font-size: 40px;
+  color: #000;
+}
+.vector-icon {
+  position: absolute;
+  height: 5.27%;
+  width: 3.19%;
+  top: 6.93%;
+  right: 91.67%;
+  bottom: 87.79%;
+  left: 5.14%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+.button {
+  position: relative;
+  font-size: 30px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: var(--font-maven-pro);
+  color: var(--color-white);
+  text-align: left;
+}
+.button-wrapper {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-3xs);
+  background-color: var(--color-indianred);
+  position: absolute;
+  top: 840px;
+  left: 460px;
+  border-radius: var(--br-mid);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 515px;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.registerrecipient {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-9xl);
+  color: var(--color-gray);
+  font-family: var(--font-inter);
+}
