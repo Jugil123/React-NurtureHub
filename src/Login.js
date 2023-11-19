@@ -66,10 +66,10 @@ const Login = () => {
       />
       <div className="username"></div>
       <div className="password"></div>
-      <div className="log-in">Log in</div>
+      <div className="log-in" style={{left: "683px"}}>Log in</div>
       {error && <p className="log-in" style={{  marginTop: '40px', marginLeft: '-23px', color: 'red', fontSize: '22px'}}>{error}</p>} {/* Render error message if present */}
-      <div style={{left: "600px"}} className="dont-have-an">Not yet registered?</div>
-      <Link style={{left: "745px"}} className="register" to="/user-type">Register Here</Link>
+      <div style={{left: "575px"}} className="dont-have-an">Not yet registered?</div>
+      <Link style={{left: "747px"}} className="register" to="/user-type">Register Here</Link>
       <button className="button-wrapper" id="Login" type="submit">
         <div className="button">Log in</div>
       </button>

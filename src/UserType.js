@@ -21,16 +21,15 @@ const UserType = () => {
         src="/vector.svg"
         onClick={onVectorClick}
       />
-      <div className="button-container" onClick={onGroupContainerClick
-}>
-      <button className="button-container">
+      <div className="button-container" onClick={onGroupContainerClick}>
+      <button className="button-container" style={{left: "327px", top: "6px"}}>
       <Link to="/register-caregiver">
         <div className="button">Caregiver</div>
         </Link>
       </button>
     </div>
     <div className="button-container" onClick={onGroupContainerClick}></div>
-      <button className="button-container">
+      <button className="button-container" style={{top: "471px"}}>
       <Link to="/register-recipient">
         <div className="button">Recipient</div>
         </Link>

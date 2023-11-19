@@ -27,14 +27,14 @@
 .register {
   position: absolute;
   top: 262px;
-  left: 668px;
+  left: 745px;
   font-size: 32px;
   color: #000;
 }
 .dont-have-an,
 .register {
-  top: 501px;
-  left: 580px;
+  top: 450px;
+  left: 600px;
   font-size: 18px;
 }
 .register {
