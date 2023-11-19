@@ -50,7 +50,7 @@ const RegisterCaregiver = () => {
       console.error('Registration Failed', error.response.data);
     }
   };
-
+  
   return (
     <div>
       <h2>Register Caregiver</h2>
