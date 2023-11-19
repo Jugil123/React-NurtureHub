@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCallback } from "react";
+import "./UserType.css";
 
 const UserType = () => {
-  const navigate = useNavigate();
-  const [selectedType, setSelectedType] = useState(null);
+  const onVectorClick = useCallback(() => {
+    // Please sync "Login" to the project
+  }, []);
 
-  const handleTypeSelection = (type) => {
-    setSelectedType(type);
-  };
+  const onGroupContainerClick = useCallback(() => {
+    // Please sync "RegisterCaregiver" to the project
+  }, []);
 
   return (
-    <div>
-      <h2>Choose User Type</h2>
-      <button onClick={() => navigate('/register-recipient')}>Recipient</button>
-      <button onClick={() => navigate('/register-caregiver')}>Caregiver</button>
-
-      
-    </div>
+    <button className="usertype">
+      <div className="are-you-caregiver">Are you Caregiver or Recipient?</div>
+      <img
+        className="vector-icon"
+        alt=""
+        src="/vector.svg"
+        onClick={onVectorClick}
+      />
+      <div className="usertype-inner" onClick={onGroupContainerClick}>
+        <div className="button-wrapper">
+          <div className="button">Caregiver</div>
+        </div>
+      </div>
+      <button className="button-container">
+        <div className="button">Recipient</div>
+      </button>
+    </button>
   );
 };
 
