@@ -1,13 +1,16 @@
 import { useCallback } from "react";
 import "./UserType.css";
+import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const UserType = () => {
-  const navigate = useNavigate();
-  const [selectedType, setSelectedType] = useState(null);
+  const onVectorClick = useCallback(() => {
+    // Please sync "Login" to the project
+  }, []);
 
-  const handleTypeSelection = (type) => {
-    setSelectedType(type);
-  };
+  const onGroupContainerClick = useCallback(() => {
+    // Please sync "RegisterCaregiver" to the project
+  }, []);
 
   return (
     <div className="usertype">
@@ -18,14 +21,19 @@ const UserType = () => {
         src="/vector.svg"
         onClick={onVectorClick}
       />
-      <div className="button-container" onClick={onGroupContainerClick}>
+      <div className="button-container" onClick={onGroupContainerClick
+}>
       <button className="button-container">
+      <Link to="/register-caregiver">
         <div className="button">Caregiver</div>
+        </Link>
       </button>
     </div>
     <div className="button-container" onClick={onGroupContainerClick}></div>
       <button className="button-container">
+      <Link to="/register-caregiver">
         <div className="button">Recipient</div>
+        </Link>
       </button>
     </div>
   );
