@@ -20,10 +20,11 @@ const UserType = () => {
         onClick={onVectorClick}
       />
       <div className="button-container" onClick={onGroupContainerClick}>
-        <button className="button-container">
-          <div className="button">Caregiver</div>
-        </button>
-      </div>
+      <button className="button-container">
+        <div className="button">Caregiver</div>
+      </button>
+    </div>
+    <div className="button-container" onClick={onGroupContainerClick}></div>
       <button className="button-container">
         <div className="button">Recipient</div>
       </button>
