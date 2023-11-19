@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useCallback } from "react";
+import styles from "./RegisterCaregiver.module.css";
 
 const RegisterCaregiver = () => {
+<<<<<<< Updated upstream
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
@@ -51,67 +51,42 @@ const RegisterCaregiver = () => {
     }
   };
   
+=======
+  const onVectorClick = useCallback(() => {
+    // Please sync "Desktop - 1" to the project
+  }, []);
+ 
+>>>>>>> Stashed changes
   return (
-    <div>
-      <h2>Register Caregiver</h2>
-      <form onSubmit={handleRegister}>
-        <label>
-          First Name:
-          <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Birth Date:
-          <input type="text" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Gender:
-          <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Contact Info:
-          <input type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Address:
-          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Specializations:
-          <input type="text" value={specializations} onChange={(e) => setSpecializations(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Availability:
-          <input type="text" value={availability} onChange={(e) => setAvailability(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Hourly Rate:
-          <input type="text" value={hourlyRate} onChange={(e) => setHourlyRate(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
+    <div className={styles.registercaregiver}>
+      <input className={styles.registercaregiverChild} type="text" />
+      <input className={styles.registercaregiverItem} type="text" />
+      <div className={styles.firstname}>Firstname</div>
+      <div className={styles.lastname}>Lastname</div>
+      <input className={styles.registercaregiverInner} type="text" />
+      <input className={styles.rectangleInput} type="text" />
+      <div className={styles.birthDate}>Birth Date</div>
+      <div className={styles.gender}>Gender</div>
+      <input className={styles.registercaregiverChild1} type="text" />
+      <input className={styles.registercaregiverChild2} type="text" />
+      <div className={styles.contactInformation}>Contact Information</div>
+      <div className={styles.address}>Address</div>
+      <input className={styles.registercaregiverChild3} type="text" />
+      <input className={styles.registercaregiverChild4} type="text" />
+      <div className={styles.specializations}>Specializations</div>
+      <div className={styles.availability}>Availability</div>
+      <input className={styles.registercaregiverChild5} type="text" />
+      <div className={styles.hourlyRate}>Hourly Rate</div>
+      <h1 className={styles.registerCaregiver}>Register Caregiver</h1>
+      <img
+        className={styles.vectorIcon}
+        alt=""
+        src="/vector.svg"
+        onClick={onVectorClick}
+      />
+      <button className={styles.buttonWrapper}>
+        <div className={styles.button}>Register</div>
+      </button>
     </div>
   );
 };
