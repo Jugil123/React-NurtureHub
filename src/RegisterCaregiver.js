@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import styles from "./RegisterCaregiver.module.css";
+import "./RegisterCaregiver.css";
 
 const RegisterCaregiver = () => {
   const onVectorClick = useCallback(() => {
@@ -7,34 +7,34 @@ const RegisterCaregiver = () => {
   }, []);
 
   return (
-    <div className={styles.registercaregiver}>
-      <input className={styles.registercaregiverChild} type="text" />
-      <input className={styles.registercaregiverItem} type="text" />
-      <div className={styles.firstname}>Firstname</div>
-      <div className={styles.lastname}>Lastname</div>
-      <input className={styles.registercaregiverInner} type="text" />
-      <input className={styles.rectangleInput} type="text" />
-      <div className={styles.birthDate}>Birth Date</div>
-      <div className={styles.gender}>Gender</div>
-      <input className={styles.registercaregiverChild1} type="text" />
-      <input className={styles.registercaregiverChild2} type="text" />
-      <div className={styles.contactInformation}>Contact Information</div>
-      <div className={styles.address}>Address</div>
-      <input className={styles.registercaregiverChild3} type="text" />
-      <input className={styles.registercaregiverChild4} type="text" />
-      <div className={styles.specializations}>Specializations</div>
-      <div className={styles.availability}>Availability</div>
-      <input className={styles.registercaregiverChild5} type="text" />
-      <div className={styles.hourlyRate}>Hourly Rate</div>
-      <h1 className={styles.registerCaregiver}>Register Caregiver</h1>
+    <div className="registercaregiver">
+      <input className="registercaregiver-child" type="text" />
+      <input className="registercaregiver-item" type="text" />
+      <div className="firstname">Firstname</div>
+      <div className="lastname">Lastname</div>
+      <input className="registercaregiver-inner" type="text" />
+      <input className="rectangle-input" type="text" />
+      <div className="birth-date">Birth Date</div>
+      <div className="gender">Gender</div>
+      <input className="registercaregiver-child1" type="text" />
+      <input className="registercaregiver-child2" type="text" />
+      <div className="contact-information">Contact Information</div>
+      <div className="address">Address</div>
+      <input className="registercaregiver-child3" type="text" />
+      <input className="registercaregiver-child4" type="text" />
+      <div className="specializations">Specializations</div>
+      <div className="availability">Availability</div>
+      <input className="registercaregiver-child5" type="text" />
+      <div className="hourly-rate">Hourly Rate</div>
+      <h1 className="register-caregiver">Register Caregiver</h1>
       <img
-        className={styles.vectorIcon}
+        className="vector-icon"
         alt=""
         src="/vector.svg"
         onClick={onVectorClick}
       />
-      <button className={styles.buttonWrapper}>
-        <div className={styles.button}>Register</div>
+      <button className="button-wrapper">
+        <div className="button">Register</div>
       </button>
     </div>
   );

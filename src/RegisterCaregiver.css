@@ -1,5 +1,5 @@
-.desktop3Child,
-.desktop3Item {
+.registercaregiver-child,
+.registercaregiver-item {
   border: 0;
   background-color: var(--color-gainsboro);
   position: absolute;
@@ -9,7 +9,7 @@
   width: 514px;
   height: 75px;
 }
-.desktop3Item {
+.registercaregiver-item {
   top: 179px;
 }
 .firstname,
@@ -21,8 +21,8 @@
 .lastname {
   top: 198px;
 }
-.desktop3Inner,
-.rectangleInput {
+.rectangle-input,
+.registercaregiver-inner {
   border: 0;
   background-color: var(--color-gainsboro);
   position: absolute;
@@ -32,10 +32,10 @@
   width: 514px;
   height: 75px;
 }
-.rectangleInput {
+.rectangle-input {
   top: 363px;
 }
-.birthDate,
+.birth-date,
 .gender {
   position: absolute;
   top: 292px;
@@ -44,8 +44,8 @@
 .gender {
   top: 382px;
 }
-.desktop3Child1,
-.desktop3Child2 {
+.registercaregiver-child1,
+.registercaregiver-child2 {
   border: 0;
   background-color: var(--color-gainsboro);
   position: absolute;
@@ -55,11 +55,11 @@
   width: 514px;
   height: 75px;
 }
-.desktop3Child2 {
+.registercaregiver-child2 {
   top: 548px;
 }
 .address,
-.contactInformation {
+.contact-information {
   position: absolute;
   top: 476px;
   left: 490px;
@@ -67,8 +67,8 @@
 .address {
   top: 566px;
 }
-.desktop3Child3,
-.desktop3Child4 {
+.registercaregiver-child3,
+.registercaregiver-child4 {
   border: 0;
   background-color: var(--color-gainsboro);
   position: absolute;
@@ -78,35 +78,34 @@
   width: 514px;
   height: 75px;
 }
-.desktop3Child4 {
+.registercaregiver-child4 {
   top: 734px;
 }
+.availability,
 .specializations {
   position: absolute;
   top: 663px;
   left: 490px;
 }
-.availability,
-.desktop3Child5 {
-  position: absolute;
+.availability {
   top: 753px;
-  left: 490px;
 }
-.desktop3Child5 {
+.registercaregiver-child5 {
   border: 0;
   background-color: var(--color-gainsboro);
+  position: absolute;
   top: 829px;
   left: 459px;
   border-radius: var(--br-mid);
   width: 514px;
   height: 75px;
 }
-.hourlyRate {
+.hourly-rate {
   position: absolute;
   top: 848px;
   left: 490px;
 }
-.registerCaregiver {
+.register-caregiver {
   margin: 0;
   position: absolute;
   top: 21px;
@@ -116,7 +115,7 @@
   font-family: inherit;
   color: #000;
 }
-.vectorIcon {
+.vector-icon {
   position: absolute;
   height: 5.27%;
   width: 3.19%;
@@ -138,7 +137,7 @@
   color: var(--color-white);
   text-align: left;
 }
-.buttonWrapper {
+.button-wrapper {
   cursor: pointer;
   border: 0;
   padding: var(--padding-3xs);
@@ -156,7 +155,7 @@
   justify-content: center;
   box-sizing: border-box;
 }
-.desktop3 {
+.registercaregiver {
   position: relative;
   background-color: var(--color-white);
   width: 100%;
