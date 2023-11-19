@@ -1,117 +1,41 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useCallback } from "react";
+import "./RegisterCaregiver.css";
 
 const RegisterCaregiver = () => {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [gender, setGender] = useState('');
-  const [contactInfo, setContactInfo] = useState('');
-  const [address, setAddress] = useState('');
-  const [specializations, setSpecializations] = useState('');
-  const [availability, setAvailability] = useState('');
-  const [hourlyRate, setHourlyRate] = useState('');
-  const navigate = useNavigate();
-
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost:8080/caregiver/insertCaregiver', {
-        firstname,
-        lastname,
-        username,
-        password,
-        birth_date: birthDate,
-        gender,
-        contact_information: contactInfo,
-        address,
-        specializations,
-        availability,
-        hourlyRate,
-      });
-
-      const accountResponse = await axios.post('http://localhost:8080/account/insertAccount', {
-        username,
-        password,
-        userType: 2, // Assuming usertype 1 corresponds to recipient
-      });
-
-      // Handle successful registration (e.g., show success message, redirect, etc.)
-      console.log('Registration Successful', response.data);
-      navigate('/home-caregiver');
-      
-    } catch (error) {
-      // Handle registration failure (e.g., show error message)
-      console.error('Registration Failed', error.response.data);
-    }
-  };
+  const onVectorClick = useCallback(() => {
+    // Please sync "Desktop - 1" to the project
+  }, []);
 
   return (
-    <div>
-      <h2>Register Caregiver</h2>
-      <form onSubmit={handleRegister}>
-        <label>
-          First Name:
-          <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Birth Date:
-          <input type="text" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Gender:
-          <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Contact Info:
-          <input type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Address:
-          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Specializations:
-          <input type="text" value={specializations} onChange={(e) => setSpecializations(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Availability:
-          <input type="text" value={availability} onChange={(e) => setAvailability(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Hourly Rate:
-          <input type="text" value={hourlyRate} onChange={(e) => setHourlyRate(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
+    <div className="registercaregiver">
+      <input className="registercaregiver-child" type="text" />
+      <input className="registercaregiver-item" type="text" />
+      <div className="firstname">Firstname</div>
+      <div className="lastname">Lastname</div>
+      <input className="registercaregiver-inner" type="text" />
+      <input className="rectangle-input" type="text" />
+      <div className="birth-date">Birth Date</div>
+      <div className="gender">Gender</div>
+      <input className="registercaregiver-child1" type="text" />
+      <input className="registercaregiver-child2" type="text" />
+      <div className="contact-information">Contact Information</div>
+      <div className="address">Address</div>
+      <input className="registercaregiver-child3" type="text" />
+      <input className="registercaregiver-child4" type="text" />
+      <div className="specializations">Specializations</div>
+      <div className="availability">Availability</div>
+      <input className="registercaregiver-child5" type="text" />
+      <div className="hourly-rate">Hourly Rate</div>
+      <h1 className="register-caregiver">Register Caregiver</h1>
+      <img
+        className="vector-icon"
+        alt=""
+        src="/vector.svg"
+        onClick={onVectorClick}
+      />
+      <button className="button-wrapper">
+        <div className="button">Register</div>
+      </button>
     </div>
   );
 };

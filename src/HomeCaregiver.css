@@ -1,0 +1,254 @@
+.homecaregiver-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f5e2d7;
+    width: 264px;
+    height: 1024px;
+  }
+  .records {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 347px;
+    left: 89px;
+    font-size: var(--font-size-11xl);
+    font-family: var(--font-inter);
+    color: var(--color-black);
+    text-align: left;
+    display: inline-block;
+  }
+  .homecaregiver-inner,
+  .homecaregiver-item {
+    border: 0;
+    background-color: var(--color-peachpuff);
+    position: absolute;
+  }
+  .homecaregiver-item {
+    cursor: pointer;
+    padding: 0;
+    top: 168px;
+    left: 0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 264px;
+    height: 72px;
+  }
+  .homecaregiver-inner {
+    top: 166px;
+    left: 329px;
+    border-radius: 20px;
+    width: 812px;
+    height: 76px;
+  }
+  .vector-icon {
+    position: absolute;
+    height: 3.03%;
+    width: 2.64%;
+    top: 18.65%;
+    right: 72.57%;
+    bottom: 78.32%;
+    left: 24.79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .search-caregiver {
+    position: absolute;
+    top: 186px;
+    left: 417px;
+    color: rgba(0, 0, 0, 0.36);
+  }
+  .rectangle-button {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: var(--color-peachpuff);
+    position: absolute;
+    top: 308px;
+    left: 329px;
+    border-radius: var(--br-sm);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 812px;
+    height: 135px;
+  }
+  .firstname-m-lastname,
+  .image-1-icon {
+    position: absolute;
+    top: 334px;
+    left: 504px;
+  }
+  .image-1-icon {
+    left: 357px;
+    border-radius: var(--br-114xl);
+    width: 107px;
+    height: 84px;
+    object-fit: cover;
+  }
+  .address {
+    position: absolute;
+    top: 370px;
+    left: 504px;
+    color: var(--color-gray-100);
+  }
+  .homecaregiver-child1 {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: var(--color-peachpuff);
+    position: absolute;
+    top: 648px;
+    left: 329px;
+    border-radius: var(--br-sm);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 812px;
+    height: 135px;
+  }
+  .firstname-m-lastname1,
+  .image-3-icon {
+    position: absolute;
+    top: 674px;
+    left: 504px;
+  }
+  .image-3-icon {
+    left: 357px;
+    border-radius: var(--br-114xl);
+    width: 107px;
+    height: 84px;
+    object-fit: cover;
+  }
+  .address1 {
+    position: absolute;
+    top: 710px;
+    left: 504px;
+    color: var(--color-gray-100);
+  }
+  .homecaregiver-child2 {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: var(--color-peachpuff);
+    position: absolute;
+    top: 478px;
+    left: 329px;
+    border-radius: var(--br-sm);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 812px;
+    height: 135px;
+  }
+  .firstname-m-lastname2,
+  .image-2-icon {
+    position: absolute;
+    top: 504px;
+    left: 504px;
+  }
+  .image-2-icon {
+    left: 357px;
+    border-radius: var(--br-114xl);
+    width: 107px;
+    height: 84px;
+    object-fit: cover;
+  }
+  .address2 {
+    position: absolute;
+    top: 540px;
+    left: 504px;
+    color: var(--color-gray-100);
+  }
+  .vector-icon1,
+  .vector-icon2 {
+    position: absolute;
+    height: 3.81%;
+    width: 3.26%;
+    top: 17.87%;
+    right: 94.86%;
+    bottom: 78.32%;
+    left: 1.88%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .vector-icon2 {
+    height: 100%;
+    width: 23.3%;
+    top: 0;
+    right: 76.7%;
+    bottom: 0;
+    left: 0;
+  }
+  .messages {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    left: 62px;
+    font-size: var(--font-size-11xl);
+    font-family: var(--font-inter);
+    color: var(--color-black);
+    text-align: left;
+    display: inline-block;
+  }
+  .vector-parent {
+    position: absolute;
+    height: 4.49%;
+    width: 14.31%;
+    top: 25.39%;
+    right: 83.82%;
+    bottom: 70.12%;
+    left: 1.88%;
+  }
+  .home,
+  .image-13-icon {
+    position: absolute;
+    top: 186px;
+    left: 112px;
+  }
+  .image-13-icon {
+    top: 339px;
+    left: 26px;
+    width: 48px;
+    height: 51.43px;
+    object-fit: cover;
+  }
+  .vector-icon3 {
+    position: absolute;
+    height: 97.5%;
+    width: 26.59%;
+    top: 2.5%;
+    right: 0;
+    bottom: 0;
+    left: 73.41%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .log-out,
+  .vector-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .vector-group {
+    height: 3.91%;
+    width: 12.01%;
+    top: 92.77%;
+    right: 85.14%;
+    bottom: 3.32%;
+    left: 2.85%;
+    cursor: pointer;
+  }
+  .homecaregiver {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-11xl);
+    color: var(--color-black);
+    font-family: var(--font-inter);
+  }
+  

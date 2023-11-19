@@ -1,0 +1,168 @@
+.registercaregiverChild,
+.registercaregiverItem {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 88px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.registercaregiverItem {
+  top: 179px;
+}
+.firstname,
+.lastname {
+  position: absolute;
+  top: 108px;
+  left: 492px;
+}
+.lastname {
+  top: 198px;
+}
+.rectangleInput,
+.registercaregiverInner {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 271px;
+  left: 461px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.rectangleInput {
+  top: 363px;
+}
+.birthDate,
+.gender {
+  position: absolute;
+  top: 292px;
+  left: 492px;
+}
+.gender {
+  top: 382px;
+}
+.registercaregiverChild1,
+.registercaregiverChild2 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 455px;
+  left: 459px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.registercaregiverChild2 {
+  top: 548px;
+}
+.address,
+.contactInformation {
+  position: absolute;
+  top: 476px;
+  left: 490px;
+}
+.address {
+  top: 566px;
+}
+.registercaregiverChild3,
+.registercaregiverChild4 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 642px;
+  left: 459px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.registercaregiverChild4 {
+  top: 734px;
+}
+.availability,
+.specializations {
+  position: absolute;
+  top: 663px;
+  left: 490px;
+}
+.availability {
+  top: 753px;
+}
+.registercaregiverChild5 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 829px;
+  left: 459px;
+  border-radius: var(--br-mid);
+  width: 514px;
+  height: 75px;
+}
+.hourlyRate {
+  position: absolute;
+  top: 848px;
+  left: 490px;
+}
+.registerCaregiver {
+  margin: 0;
+  position: absolute;
+  top: 21px;
+  left: 545px;
+  font-size: 40px;
+  font-weight: 400;
+  font-family: inherit;
+  color: #000;
+}
+.vectorIcon {
+  position: absolute;
+  height: 5.27%;
+  width: 3.19%;
+  top: 8.11%;
+  right: 90.76%;
+  bottom: 86.62%;
+  left: 6.04%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+.button {
+  position: relative;
+  font-size: 30px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: var(--font-maven-pro);
+  color: var(--color-white);
+  text-align: left;
+}
+.buttonWrapper {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-3xs);
+  background-color: var(--color-indianred);
+  position: absolute;
+  top: 930px;
+  left: 459px;
+  border-radius: var(--br-mid);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 514px;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.registercaregiver {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-9xl);
+  color: var(--color-gray);
+  font-family: var(--font-inter);
+}
