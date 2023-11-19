@@ -34,7 +34,7 @@ const RegisterCaregiver = () => {
         availability,
         hourlyRate,
       });
-
+ 
       const accountResponse = await axios.post('http://localhost:8080/account/insertAccount', {
         username,
         password,
