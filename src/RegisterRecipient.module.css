@@ -69,7 +69,9 @@
   position: absolute;
   top: 157px;
   left: calc(50% - 140px);
-  color: #FFF
+  color: #c3604d;
+  font-family: Mukta;
+  font-size: 38px;
 }
 .vectorIcon {
   position: absolute;
