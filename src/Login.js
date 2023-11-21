@@ -64,7 +64,7 @@ const Login = () => {
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button className={styles.buttonWrapper} id="Login" type="submit">
+      <button className={styles.buttonWrapper} id="Login" type="submit" onClick={handleLogin}>
         <div className={styles.button}>Log in</div>
       </button>
       <div className={styles.notYetRegistered}>Not yet Registered?</div>
