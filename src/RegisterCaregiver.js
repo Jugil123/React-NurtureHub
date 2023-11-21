@@ -160,12 +160,14 @@ const RegisterCaregiver = () => {
       <button className={styles.buttonWrapper} type="submit">
         <div className={styles.button}>Register</div>
       </button>
-      <img
-        className={styles.vectorIcon}
-        alt=""
-        src="/vector.svg"
-        onClick={onVectorIconClick}
-      />
+      <Link to="/dashboard" className={styles.vectorIconLink}>
+        <img
+          className={styles.vectorIcon}
+          alt=""
+          src="/vector.svg"
+          onClick={onVectorIconClick}
+        />
+      </Link>
       </form>
     </div>
   );

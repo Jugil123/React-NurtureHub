@@ -89,7 +89,7 @@ const RegisterRecipient = () => {
         className={styles.rectangleInput}
         value={password}
         placeholder=" Password"
-        type="text"
+        type="password"
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
       />
