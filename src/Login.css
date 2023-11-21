@@ -1,10 +1,17 @@
+.log-in {
+  position: absolute;
+  top: 325px;
+  left: calc(50% - 46px);
+  font-size: 32px;
+  font-weight: 600;
+}
 .login-child,
 .login-item {
   border: 0;
   background-color: #d9d9d9;
   position: absolute;
-  top: 334px;
-  left: 568px;
+  top: 393px;
+  left: calc(50% - 152px);
   border-radius: 11px;
   width: 303px;
   height: 39px;
@@ -27,14 +34,14 @@
 .register {
   position: absolute;
   top: 262px;
-  left: 745px;
+  left: 668px;
   font-size: 32px;
   color: #000;
 }
 .dont-have-an,
 .register {
-  top: 450px;
-  left: 600px;
+  top: 501px;
+  left: 580px;
   font-size: 18px;
 }
 .register {
@@ -59,29 +66,64 @@
   padding: 10px;
   background-color: #c3604d;
   position: absolute;
-  top: 446px;
-  left: 568px;
+  top: 505px;
+  left: calc(50% - 152px);
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 314px;
-  height: 39px;
+  width: 303px;
+  height: 42px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
 }
+.not-yet-registered,
+.register-here {
+  position: absolute;
+  top: 564px;
+  left: calc(50% - 147px);
+  color: #000;
+}
+.register-here {
+  text-decoration: none;
+  left: calc(50% + 29px);
+  font-weight: 700;
+  color: red;
+  cursor: pointer;
+}
+.nurturehub {
+  position: absolute;
+  top: 154px;
+  left: calc(50% - 132.5px);
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+.nurturehublogo-4-icon {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 95.5px);
+  width: 192px;
+  height: 160px;
+  object-fit: cover;
+}
+.nurturehub-parent {
+  position: absolute;
+  top: 85px;
+  left: calc(50% - 127px);
+  width: 265px;
+  height: 196px;
+  font-size: 36px;
+  font-family: "Maven Pro";
+}
 .login {
   position: relative;
   background-color: #fff;
   width: 100%;
-  /* */
-  /* left: 40px; */
   height: 1024px;
-  height: 720px;
   overflow: hidden;
   text-align: left;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.36);
+  font-size: 18px;
+  color: #c3604d;
   font-family: Inter;
 }

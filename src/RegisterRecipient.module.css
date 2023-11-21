@@ -1,0 +1,108 @@
+.rectangleInput,
+.registerrecipientChild,
+.registerrecipientInner,
+.registerrecipientItem {
+  border: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 227px;
+  left: calc(50% - 152px);
+  border-radius: 11px;
+  width: 303px;
+  height: 39px;
+}
+.rectangleInput,
+.registerrecipientInner,
+.registerrecipientItem {
+  top: 281px;
+}
+.rectangleInput,
+.registerrecipientInner {
+  top: 335px;
+}
+.rectangleInput {
+  top: 389px;
+}
+.registerrecipientChild1,
+.registerrecipientChild2,
+.registerrecipientChild3,
+.registerrecipientChild4,
+.registerrecipientChild5 {
+  border: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 443px;
+  left: calc(50% - 152px);
+  border-radius: 11px;
+  width: 303px;
+  height: 39px;
+}
+.registerrecipientChild2,
+.registerrecipientChild3,
+.registerrecipientChild4,
+.registerrecipientChild5 {
+  top: 497px;
+}
+.registerrecipientChild3,
+.registerrecipientChild4,
+.registerrecipientChild5 {
+  top: 551px;
+}
+.registerrecipientChild4,
+.registerrecipientChild5 {
+  top: 659px;
+}
+.registerrecipientChild5 {
+  top: 605px;
+}
+.registerRecipient {
+  position: absolute;
+  top: 157px;
+  left: calc(50% - 140px);
+}
+.vectorIcon {
+  position: absolute;
+  top: 71px;
+  left: 74px;
+  width: 26px;
+  height: 34px;
+  cursor: pointer;
+}
+.button {
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: "Maven Pro";
+  color: #fff;
+  text-align: left;
+}
+.buttonWrapper {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  background-color: #c3604d;
+  position: absolute;
+  top: 724px;
+  left: calc(50% - 149px);
+  border-radius: 11px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 303px;
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.registerrecipient {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 32px;
+  color: #000;
+  font-family: Inter;
+}

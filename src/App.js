@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import UserType from './UserType';
+import LandingPage from './LandingPage'
 import Login from './Login';
 import RegisterRecipient from './RegisterRecipient';
 import RegisterCaregiver from './RegisterCaregiver';
@@ -10,7 +11,7 @@ import HomeCaregiver from './HomeCaregiver';
 import DashboardAdmin from './DashboardAdmin';
 import UpdateCaregiver from './UpdateCaregiver';
 import UpdateRecipient from './UpdateRecipient';
-
+import AboutUs from './AboutUs'
 
 
 const App = () => {
@@ -18,7 +19,9 @@ const App = () => {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="/user-type" element={<UserType />} />
           <Route path="/register-recipient" element={<RegisterRecipient />} />
           <Route path="/register-caregiver" element={<RegisterCaregiver />} />
