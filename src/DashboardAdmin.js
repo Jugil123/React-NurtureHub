@@ -56,10 +56,18 @@ const DashboardAdmin = () => {
     }
   };
 
+  const handleRegisterCaregiver = () => {
+    // Use the navigate function to redirect to the desired route
+    navigate('/register-caregiver');
+  };
+
   const renderUserTable = (users, userType) => {
     return (
       <div>
         <h1>Dashboard</h1>
+        <button onClick={handleRegisterCaregiver}>
+          Register Caregiver
+        </button>
         <h2>{`${userType} List`}</h2>
         <table>
           <thead>
