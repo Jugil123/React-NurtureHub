@@ -2,7 +2,7 @@
 .logIn {
   text-decoration: none;
   position: absolute;
-  top: 89px;
+  top: 105px;
   letter-spacing: 0.09em;
   font-weight: 600;
 }
@@ -16,7 +16,7 @@
 }
 .groupChild {
   position: absolute;
-  top: -5px;
+  top: 8px;
   right: 0;
   border-radius: 11px;
   background-color: #c3604d;
@@ -25,7 +25,7 @@
 }
 .register {
   position: absolute;
-  top: 4px;
+  top: 19px;
   right: 14px;
   font-size: 24px;
   letter-spacing: 0.09em;
@@ -178,7 +178,8 @@
   top: 40px;
   left: 151px;
   letter-spacing: 0.2em;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 43px;
 }
 .nurturehublogo2Icon {
   position: absolute;
