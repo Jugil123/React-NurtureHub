@@ -134,12 +134,14 @@ const RegisterRecipient = () => {
         onChange={(e) => setAddress(e.target.value)}
       />
       <div className={styles.registerRecipient}>Register Recipient</div>
+      <Link to="/" className={styles.vectorIconLink}>
       <img
         className={styles.vectorIcon}
         alt=""
         src="/vector.svg"
         onClick={onVectorIconClick}
       />
+      </Link>
       <button className={styles.buttonWrapper}>
         <div className={styles.button}>Register</div>
       </button>
