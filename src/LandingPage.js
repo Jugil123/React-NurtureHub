@@ -8,7 +8,7 @@ const LandinPage = () => {
     <Link  className={styles.aboutUs} to="/about-us">About us</Link>
     <Link  className={styles.logIn} to="/Login">Log in</Link>
       <div className={styles.landinpageInner}>
-        <button className={styles.rectangleParent} onClick={() => navigate('/user-type')}>
+        <button className={styles.rectangleParent} onClick={() => navigate('/register-recipient')}>
           <div className={styles.groupChild} />
           <div className={styles.register}>Register</div>
         </button>
@@ -38,7 +38,7 @@ const LandinPage = () => {
           src="/caregiving2-1@2x.png"
         />
       </div>
-      <button className={styles.rectangleContainer} onClick={() => navigate('/user-type')}>
+      <button className={styles.rectangleContainer} onClick={() => navigate('/register-recipient')}>
         <div className={styles.groupInner} />
         <div className={styles.registerAndBook}>Register and book</div>
       </button>

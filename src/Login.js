@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const onRegisterHereClick = useCallback(() => {
-     navigate('/user-type')
+     navigate('/register-recipient')
   }, []);
 
   const [username, setUsername] = useState('');
@@ -55,7 +55,7 @@ const Login = () => {
         value={username}
         placeholder="Username"
         type="text"
-        defaultValue={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input
         className={styles.loginItem}
@@ -64,14 +64,8 @@ const Login = () => {
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className="username"></div>
-      <div className="password"></div>
-      <div className="log-in">Log in</div>
-      {error && <p className="log-in" style={{  marginTop: '40px', marginLeft: '-23px', color: 'red', fontSize: '22px'}}>{error}</p>} {/* Render error message if present */}
-      <div style={{left: "600px"}} className="dont-have-an">Not yet registered?</div>
-      <Link style={{left: "745px"}} className="register" to="/user-type">Register Here</Link>
-      <button className="button-wrapper" id="Login" type="submit">
-        <div className="button">Log in</div>
+      <button className={styles.buttonWrapper} id="Login" type="submit">
+        <div className={styles.button}>Log in</div>
       </button>
       <div className={styles.notYetRegistered}>Not yet Registered?</div>
       <a className={styles.registerHere} onClick={onRegisterHereClick}>
