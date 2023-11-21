@@ -61,6 +61,7 @@ const RegisterRecipient = () => {
 
   return (
     <div className={styles.registerrecipient}>
+      <div className={styles.standingRectangle}></div>
       <input
         className={styles.registerrecipientChild}
         value={firstname}
