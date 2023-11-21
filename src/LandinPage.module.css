@@ -16,7 +16,7 @@
 }
 .groupChild {
   position: absolute;
-  top: 0;
+  top: -5px;
   right: 0;
   border-radius: 11px;
   background-color: #c3604d;
@@ -142,7 +142,7 @@
 }
 .groupInner {
   position: absolute;
-  top: calc(50% - 23.5px);
+  top: calc(50% - 30px);
   left: calc(50% - 139px);
   border-radius: 11px;
   background-color: #c3604d;

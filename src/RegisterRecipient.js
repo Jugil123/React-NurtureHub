@@ -64,7 +64,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild}
         value={firstname}
-        placeholder="Firstname"
+        placeholder=" Firstname"
         type="text"
         defaultValue={firstname}
         onChange={(e) => setFirstname(e.target.value)}
@@ -72,7 +72,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientItem}
         value={lastname}
-        placeholder="Lastname"
+        placeholder=" Lastname"
         type="text"
         defaultValue={lastname}
         onChange={(e) => setLastname(e.target.value)}
@@ -80,7 +80,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientInner}
         value={username}
-        placeholder="Username"
+        placeholder=" Username"
         type="text"
         defaultValue={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -88,7 +88,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.rectangleInput}
         value={password}
-        placeholder="Password"
+        placeholder=" Password"
         type="text"
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -96,7 +96,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild1}
         value={birthDate}
-        placeholder="Birth Date"
+        placeholder=" Birth Date"
         type="text"
         defaultValue={birthDate}
         onChange={(e) => setBirthDate(e.target.value)}
@@ -104,7 +104,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild2}
         value={gender}
-        placeholder="Gender"
+        placeholder=" Gender"
         type="text"
         defaultValue={gender}
         onChange={(e) => setGender(e.target.value)}
@@ -112,7 +112,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild3}
         value={contactInfo}
-        placeholder="Contact Information"
+        placeholder=" Contact Information"
         type="text"
         defaultValue={contactInfo}
         onChange={(e) => setContactInfo(e.target.value)}
@@ -120,7 +120,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild4}
         value={age}
-        placeholder="Age"
+        placeholder=" Age"
         type="text"
         defaultValue={age}
         onChange={(e) => setAge(e.target.value)}
@@ -128,7 +128,7 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild5}
         value={address}
-        placeholder="Address"
+        placeholder=" Address"
         type="text"
         defaultValue={address}
         onChange={(e) => setAddress(e.target.value)}

@@ -53,14 +53,14 @@ const Login = () => {
       <input
         className={styles.loginChild}
         value={username}
-        placeholder="Username"
+        placeholder=" Username"
         type="text"
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
         className={styles.loginItem}
         value={password}
-        placeholder="Password"
+        placeholder=" Password"
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
