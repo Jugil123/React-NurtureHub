@@ -142,7 +142,7 @@ const RegisterRecipient = () => {
         onClick={onVectorIconClick}
       />
       </Link>
-      <button className={styles.buttonWrapper}>
+      <button className={styles.buttonWrapper} onClick={handleRegister}>
         <div className={styles.button}>Register</div>
       </button>
     </div>
