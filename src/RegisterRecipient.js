@@ -1,9 +1,13 @@
-// Register.js
-import React, { useState } from 'react';
+import { useCallback, useState } from "react";
+import styles from "./RegisterRecipient.module.css";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const RegisterRecipient = () => {
+  const onVectorIconClick = useCallback(() => {
+    // Please sync "UserType" to the project
+  }, []);
+
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
@@ -54,59 +58,93 @@ const Register = () => {
   };
   
 
+
   return (
-    <div>
-      <h2>Register Recipient</h2>
-      <form onSubmit={handleRegister}>
-        <label>
-          First Name:
-          <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Birth Date:
-          <input type="text" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Gender:
-          <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Contact Info:
-          <input type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Address:
-          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Age:
-          <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
+    <div className={styles.registerrecipient}>
+      <input
+        className={styles.registerrecipientChild}
+        value={firstname}
+        placeholder="Firstname"
+        type="text"
+        defaultValue={firstname}
+        onChange={(e) => setFirstname(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientItem}
+        value={lastname}
+        placeholder="Lastname"
+        type="text"
+        defaultValue={lastname}
+        onChange={(e) => setLastname(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientInner}
+        value={username}
+        placeholder="Username"
+        type="text"
+        defaultValue={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        className={styles.rectangleInput}
+        value={password}
+        placeholder="Password"
+        type="text"
+        defaultValue={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientChild1}
+        value={birthDate}
+        placeholder="Birth Date"
+        type="text"
+        defaultValue={birthDate}
+        onChange={(e) => setBirthDate(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientChild2}
+        value={gender}
+        placeholder="Gender"
+        type="text"
+        defaultValue={gender}
+        onChange={(e) => setGender(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientChild3}
+        value={contactInfo}
+        placeholder="Contact Information"
+        type="text"
+        defaultValue={contactInfo}
+        onChange={(e) => setContactInfo(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientChild4}
+        value={age}
+        placeholder="Age"
+        type="text"
+        defaultValue={age}
+        onChange={(e) => setAge(e.target.value)}
+      />
+      <input
+        className={styles.registerrecipientChild5}
+        value={address}
+        placeholder="Address"
+        type="text"
+        defaultValue={address}
+        onChange={(e) => setAddress(e.target.value)}
+      />
+      <div className={styles.registerRecipient}>Register Recipient</div>
+      <img
+        className={styles.vectorIcon}
+        alt=""
+        src="/vector.svg"
+        onClick={onVectorIconClick}
+      />
+      <button className={styles.buttonWrapper}>
+        <div className={styles.button}>Register</div>
+      </button>
     </div>
   );
 };
 
-export default Register;
+export default RegisterRecipient;
