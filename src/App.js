@@ -1,5 +1,6 @@
 // App.js
 import React from 'react';
+import { Helmet,HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import UserType from './UserType';
 import LandingPage from './LandingPage'
@@ -18,6 +19,10 @@ const App = () => {
   return (
     <Router>
       <div>
+        <HelmetProvider>
+          <Helmet>
+            <title>NurtureHub</title>
+          </Helmet>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
@@ -31,6 +36,7 @@ const App = () => {
           <Route path="/update-recipient/:userId" element={<UpdateRecipient />} />
           <Route path="/update-caregiver/:userId" element={<UpdateCaregiver />} />
         </Routes>
+        </HelmetProvider>
       </div>
     </Router>
   );

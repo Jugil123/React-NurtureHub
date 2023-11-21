@@ -24,8 +24,8 @@
   top: 348px;
   left: 461px;
   border-radius: var(--br-mid);
-  width: 514px;
-  height: 75px;
+  width: 303px;
+  height: 39px;
 }
 .birthdate,
 .rectangle-input {
@@ -39,8 +39,8 @@
   top: 442px;
   left: 461px;
   border-radius: var(--br-mid);
-  width: 514px;
-  height: 75px;
+  width: 303px;
+  height: 39px;
 }
 .gender {
   position: absolute;
@@ -54,8 +54,8 @@
   top: 539px;
   left: 461px;
   border-radius: var(--br-mid);
-  width: 514px;
-  height: 75px;
+  width: 303px;
+  height: 39px;
 }
 .contact-information {
   position: absolute;
@@ -69,8 +69,8 @@
   top: 633px;
   left: 461px;
   border-radius: var(--br-mid);
-  width: 514px;
-  height: 75px;
+  width: 303px;
+  height: 39px;
 }
 .address {
   position: absolute;
@@ -84,8 +84,8 @@
   top: 724px;
   left: 462px;
   border-radius: var(--br-mid);
-  width: 514px;
-  height: 75px;
+  width: 303px;
+  height: 39px;
 }
 .age,
 .firstname {
