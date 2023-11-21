@@ -96,8 +96,8 @@ const RegisterRecipient = () => {
       <input
         className={styles.registerrecipientChild1}
         value={birthDate}
-        placeholder=" Birth Date"
-        type="text"
+        placeholder=" BirthDate"
+        type="date"
         defaultValue={birthDate}
         onChange={(e) => setBirthDate(e.target.value)}
       />
@@ -114,6 +114,7 @@ const RegisterRecipient = () => {
         value={contactInfo}
         placeholder=" Contact Information"
         type="text"
+        pattern="^[0-9+\- ]+$"
         defaultValue={contactInfo}
         onChange={(e) => setContactInfo(e.target.value)}
       />
@@ -121,7 +122,7 @@ const RegisterRecipient = () => {
         className={styles.registerrecipientChild4}
         value={age}
         placeholder=" Age"
-        type="text"
+        type="number"
         defaultValue={age}
         onChange={(e) => setAge(e.target.value)}
       />
