@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import { useCallback, useState } from "react";
+import styles from "./Login.module.css";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-import "./Login.css";
-
 const Login = () => {
+  const onRegisterHereClick = useCallback(() => {
+     navigate('/user-type')
+  }, []);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);  // State to manage error message
@@ -18,7 +21,6 @@ const Login = () => {
         username,
         password,
       });
-
 
       // Handle successful login
       console.log(response);
@@ -46,34 +48,37 @@ const Login = () => {
   };
 
   return (
-    <div  style={{ textAlign: 'center', margin: '20px' }} className="login">
-      <form onSubmit={handleLogin}>
+    <div className={styles.login}>
+      <div className={styles.logIn}>Log in</div>
       <input
-        style={{paddingLeft: "7px"}}
-        className="login-child"
+        className={styles.loginChild}
         value={username}
-        placeholder=" Username"
+        placeholder="Username"
         type="text"
-        onChange={(e) => setUsername(e.target.value)}
+        defaultValue={username}
       />
       <input
-      style={{paddingLeft: "7px"}}
-        className="login-item"
+        className={styles.loginItem}
         value={password}
-        placeholder=" Password"
+        placeholder="Password"
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        defaultValue={password}
       />
-      <div className="username"></div>
-      <div className="password"></div>
-      <div className="log-in">Log in</div>
-      {error && <p className="log-in" style={{  marginTop: '40px', marginLeft: '-23px', color: 'red', fontSize: '22px'}}>{error}</p>} {/* Render error message if present */}
-      <div style={{left: "600px"}} className="dont-have-an">Not yet registered?</div>
-      <Link style={{left: "745px"}} className="register" to="/user-type">Register Here</Link>
-      <button className="button-wrapper" id="Login" type="submit">
-        <div className="button">Log in</div>
+      <button className={styles.buttonWrapper} id="Login" type="submit">
+        <div className={styles.button}>Log in</div>
       </button>
-      </form>
+      <div className={styles.notYetRegistered}>Not yet Registered?</div>
+      <a className={styles.registerHere} onClick={onRegisterHereClick}>
+        Register Here
+      </a>
+      <div className={styles.nurturehubParent}>
+        <div className={styles.nurturehub}>NurtureHub</div>
+        <img
+          className={styles.nurturehublogo4Icon}
+          alt=""
+          src="/nurturehublogo-4@2x.png"
+        />
+      </div>
     </div>
   );
 };

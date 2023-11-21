@@ -1,0 +1,133 @@
+.rectangleInput,
+.registercaregiverChild,
+.registercaregiverChild1,
+.registercaregiverInner,
+.registercaregiverItem {
+  border: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 213px;
+  left: calc(50% - 152px);
+  border-radius: 11px;
+  width: 303px;
+  height: 39px;
+}
+.rectangleInput,
+.registercaregiverChild1,
+.registercaregiverInner,
+.registercaregiverItem {
+  top: 414px;
+}
+.rectangleInput,
+.registercaregiverChild1,
+.registercaregiverInner {
+  top: 464px;
+}
+.rectangleInput,
+.registercaregiverChild1 {
+  top: 514px;
+}
+.registercaregiverChild1 {
+  top: 564px;
+}
+.registercaregiverChild2,
+.registercaregiverChild3,
+.registercaregiverChild4,
+.registercaregiverChild5,
+.registercaregiverChild6 {
+  border: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 664px;
+  left: calc(50% - 152px);
+  border-radius: 11px;
+  width: 303px;
+  height: 39px;
+}
+.registercaregiverChild3,
+.registercaregiverChild4,
+.registercaregiverChild5,
+.registercaregiverChild6 {
+  top: 714px;
+}
+.registercaregiverChild4,
+.registercaregiverChild5,
+.registercaregiverChild6 {
+  top: 614px;
+}
+.registercaregiverChild5,
+.registercaregiverChild6 {
+  top: 264px;
+}
+.registercaregiverChild6 {
+  top: 313px;
+}
+.username {
+  position: absolute;
+  top: 323px;
+  left: calc(50% - 140px);
+}
+.registercaregiverChild8 {
+  border: 0;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 363px;
+  left: calc(50% - 152px);
+  border-radius: 11px;
+  width: 303px;
+  height: 39px;
+}
+.registerCaregiver {
+  position: absolute;
+  top: 139px;
+  left: calc(50% - 140px);
+  font-size: 32px;
+  color: #000;
+}
+.button {
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: "Maven Pro";
+  color: #fff;
+  text-align: left;
+}
+.buttonWrapper,
+.vectorIcon {
+  position: absolute;
+  cursor: pointer;
+}
+.buttonWrapper {
+  border: 0;
+  padding: 10px;
+  background-color: #c3604d;
+  top: 775px;
+  left: calc(50% - 152px);
+  border-radius: 11px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 303px;
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.vectorIcon {
+  top: 83px;
+  left: 87px;
+  width: 26px;
+  height: 34px;
+}
+.registercaregiver {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.36);
+  font-family: Inter;
+}

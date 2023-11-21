@@ -1,0 +1,98 @@
+.logIn {
+    position: absolute;
+    top: 325px;
+    left: calc(50% - 46px);
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .loginChild,
+  .loginItem {
+    border: 0;
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 393px;
+    left: calc(50% - 152px);
+    border-radius: 11px;
+    width: 303px;
+    height: 39px;
+  }
+  .loginItem {
+    top: 449px;
+  }
+  .button {
+    position: relative;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    font-weight: 900;
+    font-family: "Maven Pro";
+    color: #fff;
+    text-align: left;
+  }
+  .buttonWrapper {
+    cursor: pointer;
+    border: 0;
+    padding: 10px;
+    background-color: #c3604d;
+    position: absolute;
+    top: 505px;
+    left: calc(50% - 152px);
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 303px;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .notYetRegistered,
+  .registerHere {
+    position: absolute;
+    top: 564px;
+    left: calc(50% - 147px);
+    color: #000;
+  }
+  .registerHere {
+    text-decoration: none;
+    left: calc(50% + 29px);
+    font-weight: 700;
+    color: red;
+    cursor: pointer;
+  }
+  .nurturehub {
+    position: absolute;
+    top: 154px;
+    left: calc(50% - 132.5px);
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+  .nurturehublogo4Icon {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 95.5px);
+    width: 192px;
+    height: 160px;
+    object-fit: cover;
+  }
+  .nurturehubParent {
+    position: absolute;
+    top: 85px;
+    left: calc(50% - 127px);
+    width: 265px;
+    height: 196px;
+    font-size: 36px;
+    font-family: "Maven Pro";
+  }
+  .login {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 18px;
+    color: #c3604d;
+    font-family: Inter;
+  }
+  
