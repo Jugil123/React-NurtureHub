@@ -22,13 +22,12 @@
 }
 .standingRectangle {
   position: absolute;
-  top: 133px;
-  right: 0; 
-  width: 600px;
-  height: 65%;
+  top: 114px;
+  left: calc(50% - 280px);
+  border-radius: 13px;
   background-color: #f5d1b3;
-  border-radius: 5px;
-  transform: translateX(-108%);
+  width: 560px;
+  height: 697px;
 }
 .rectangleInput {
   top: 389px;
