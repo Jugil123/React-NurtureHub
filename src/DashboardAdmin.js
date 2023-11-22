@@ -1,17 +1,42 @@
+import styles from "./DashboardAdmin.module.css";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const DashboardAdmin = () => {
   const [recipients, setRecipients] = useState([]);
   const [caregivers, setCaregivers] = useState([]);
   const [updateData, setUpdateData] = useState(null);
+  const [striped, setStriped] = useState(true);
+  const [initialRender, setInitialRender] = useState(true);
+  const [showCareGiverTable, setShowCareGiverTable] = useState(false);
+  const [showRecipientTable, setShowRecipientTable] = useState(false);
+  const [currentAction, setCurrentAction] = useState(null);
+
+  const handleCaregiverLinkClick = (action) => {
+    setShowCareGiverTable(true);
+    setShowRecipientTable(false);
+    setCurrentAction(action);
+  };
+
+  const handleRecipientLinkClick = (action) => {
+    setShowCareGiverTable(false);
+    setShowRecipientTable(true);
+    setCurrentAction(action);
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchRecipients();
     fetchCaregivers();
   }, []);
+
+
+  const getStripedStyle = (index) => {
+    return index % 2 === 0 ? styles.stripedRow1 : styles.stripedRow2;
+  };
+
 
   const fetchRecipients = async () => {
     try {
@@ -21,13 +46,21 @@ const DashboardAdmin = () => {
       console.error('Error fetching recipients', error);
     }
   };
-
+  
   const fetchCaregivers = async () => {
     try {
       const response = await axios.get('http://localhost:8080/caregiver/getAllCaregivers');
-      setCaregivers(response.data);
+      setCaregivers(response.data); // Assuming the API returns an array of caregivers
     } catch (error) {
-      console.error('Error fetching caregivers', error);
+      console.error('Error fetching caregivers:', error);
+    }
+  };
+
+  const handleRowClick = (userType, userId) => {
+    if (currentAction === 'update') {
+      handleUpdate(userType, userId);
+    } else if (currentAction === 'delete') {
+      handleDelete(userType, userId);
     }
   };
 
@@ -61,51 +94,52 @@ const DashboardAdmin = () => {
     navigate('/register-caregiver');
   };
 
-  const renderUserTable = (users, userType) => {
+
+  const renderCareGiverTable = () => {
+    const rowHeight = 40; // Adjust this value based on your design
+    const tableHeight = caregivers.length * rowHeight;
+
     return (
       <div>
-        <h1>Dashboard</h1>
-        <button onClick={handleRegisterCaregiver}>
-          Register Caregiver
-        </button>
-        <h2>{`${userType} List`}</h2>
-        <table>
-          <thead>
+        
+        {currentAction ? (
+          <div className={styles.caregivers}>
+            {currentAction === 'update'
+              ? 'Choose Caregiver to be Updated'
+              : 'Choose Caregiver to be Deleted'}
+          </div>
+        ) : null}
+        <table className={`${styles.rectangleParent} ${styles.tableContainer}`}  style={{ height: `${tableHeight}px` }}>
+          <thead className={`${styles.tableHeader}`}>
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Username</th>
               <th>Password</th>
               <th>Birth Date</th>
               <th>Gender</th>
+              <th>Contact Info</th>
               <th>Address</th>
-              <th>{userType === 'Recipient' ? 'Contact Info' : 'Contact Information'}</th>
-              <th>{userType === 'Caregiver' ? 'Specializations' : 'Age'}</th>
-              {userType === 'Caregiver' && <th>Hourly Rate</th>}
-              {userType === 'Caregiver' && <th>Availability</th>}
-              <th>Actions</th>
+              <th>Specializations</th>
+              <th>Availability</th>
+              <th>Hourly Rate</th>
             </tr>
           </thead>
+  
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.firstname}</td>
-                <td>{user.lastname}</td>
-                <td>{user.password}</td>
-                <td>{user.birth_date}</td>
-                <td>{user.gender}</td>
-                <td>{user.address}</td>
-                <td>{userType === 'Recipient' ? user.contact_info : user.contact_information}</td>
-                <td>{userType === 'Caregiver' ? user.specializations : user.age || user.hourlyRate}</td>
-                {userType === 'Caregiver' && <td>{user.hourlyRate}</td>}
-                {userType === 'Caregiver' && <td>{user.availability}</td>}
-                <td>
-                  <button onClick={() => handleUpdate(userType, userType === 'Recipient' ? user.recipientId : user.caregiverId)}>
-                    Update
-                  </button>
-                  <button onClick={() => handleDelete(userType, userType === 'Recipient' ? user.recipientId : user.caregiverId)}>
-                    Delete
-                  </button>
-                </td>
+            {caregivers.map((caregiver, index) => (
+              <tr key={caregiver.id} className={`${getStripedStyle(index)} ${styles.clickableRow}`} onClick={() => handleRowClick('Caregiver', caregiver.caregiverId)}>
+                <td>{caregiver.firstname}</td>
+                <td>{caregiver.lastname}</td>
+                <td>{caregiver.username}</td>
+                <td>{caregiver.password}</td>
+                <td>{caregiver.birth_date}</td>
+                <td>{caregiver.gender}</td>
+                <td>{caregiver.contact_information}</td>
+                <td>{caregiver.address}</td>
+                <td>{caregiver.specializations}</td>
+                <td>{caregiver.availability}</td>
+                <td>{caregiver.hourlyRate}</td>
               </tr>
             ))}
           </tbody>
@@ -114,10 +148,119 @@ const DashboardAdmin = () => {
     );
   };
 
+  const renderRecipientTable = () => {
+    const rowHeight = 60; // Adjust this value based on your design
+    const tableHeight = recipients.length * rowHeight;
+
+    return (
+      <div>
+
+      {currentAction ? (
+          <div className={styles.caregivers}>
+            {currentAction === 'update'
+              ? 'Choose Recipient to be Updated'
+              : 'Choose Recipient to be Deleted'}
+          </div>
+        ) : null}
+        <table className={`${styles.rectangleParent} ${styles.tableContainer}`} style={{ height: `${tableHeight}px` }}>
+          <thead className={`${styles.tableHeader}`}>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Birth Date</th>
+              <th>Gender</th>
+              <th>Contact Info</th>
+              <th>Address</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            {recipients.map((recipient, index) => (
+              <tr key={recipient.id} className={`${getStripedStyle(index)} ${styles.clickableRow}`} onClick={() => handleRowClick('Recipient', recipient.recipientId)}>
+                <td>{recipient.firstname}</td>
+                <td>{recipient.lastname}</td>
+                <td>{recipient.username}</td>
+                <td>{recipient.password}</td>
+                <td>{recipient.birth_date}</td>
+                <td>{recipient.gender}</td>
+                <td>{recipient.contact_info}</td>
+                <td>{recipient.address}</td>
+                <td>{recipient.age}</td>
+              
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
+
+
+
+
+
+ 
   return (
-    <div>
-      {renderUserTable(recipients, 'Recipient')}
-      {renderUserTable(caregivers, 'Caregiver')}
+    <div className={styles.dashboardadmin}>
+      <div className={styles.dashboardadminChild} />
+      <div className={styles.dashboardadminItem} />
+      <div className={styles.dashboardadminInner} />
+      <a className={styles.caregiver} onClick={() => handleCaregiverLinkClick(null)}>Caregiver</a>
+      <a className={styles.recipient}  onClick={handleRecipientLinkClick}>Recipient</a>
+      <a className={styles.vectorParent} onClick={() => handleRecipientLinkClick('update')}>
+        <img className={styles.vectorIcon} alt="" src="/vector2.svg" />
+        <div className={styles.update}>Update</div>
+      </a>
+      <Link to="/register-recipient" className={styles.addParent}>
+        <div className={styles.add}>Add</div>
+        <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
+      </Link>
+      <div className={styles.rectangleDiv} />
+      <div className={styles.rectangleParent}>
+        {/* <div className={styles.groupChild} />
+        <div className={styles.groupItem} />
+        <div className={styles.groupInner} />
+        <div className={styles.groupChild1} />
+        <div className={styles.groupChild2} /> */}
+      </div>
+      <a className={styles.vectorGroup} onClick={() => handleCaregiverLinkClick('update')}>
+        <img className={styles.vectorIcon} alt="" src="/vector2.svg" />
+        <div className={styles.update1}>Update</div>
+      </a>
+      <Link to="/register-caregiver" className={styles.addGroup}>
+        <div className={styles.add}>Add</div>
+        <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
+      </Link>
+      <a className={styles.vectorContainer} onClick={() => handleRecipientLinkClick('delete')}>
+        <img className={styles.vectorIcon4} alt="" src="/vector3.svg" />
+        <div className={styles.update}>Delete</div>
+      </a>
+      <a className={styles.groupA} onClick={() => handleCaregiverLinkClick('delete')}>
+        <img className={styles.vectorIcon4} alt="" src="/vector3.svg" />
+        <div className={styles.update1}>Delete</div>
+      </a>
+      <div className={styles.dashboard}>Dashboard</div>
+      <div className={styles.nurturehub}>NurtureHub</div>
+      <img
+        className={styles.nurturehublogo2Icon}
+        alt=""
+        src="/nurturehublogo-2@2x.png"
+      />
+      <div className={styles.nurturehub1}>NurtureHub</div>
+      <div className={styles.welcomeAdmin}>{`Welcome, Admin  `}</div>
+      <button className={styles.buttonWrapper}>
+        <div className={styles.button}>Log Out</div>
+      </button>
+      
+     
+      {showCareGiverTable && renderCareGiverTable()}
+      {showRecipientTable && renderRecipientTable()}
+
+     
     </div>
   );
 };

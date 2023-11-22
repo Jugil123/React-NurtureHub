@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from "react";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import styles from "./UpdateRecipient.module.css";
 
 const UpdateRecipient = () => {
   const navigate = useNavigate();
@@ -16,6 +16,9 @@ const UpdateRecipient = () => {
     address: '',
     age: 0,
   });
+  const onVectorIconClick = useCallback(() => {
+    // Please sync "Desktop - 12" to the project
+  }, []);
 
   useEffect(() => {
     const fetchRecipientDetails = async () => {
@@ -65,74 +68,75 @@ const UpdateRecipient = () => {
     }
   };
   
+
   return (
-    <div>
-      {/* Display input fields with current recipient details */}
-      <label>
-        First Name:
-        <input
-          type="text"
-          value={recipient.firstname}
-          onChange={(e) => setRecipient({ ...recipient, firstname: e.target.value })}
-        />
-      </label>
-      <label>
-        Last Name:
-        <input
-          type="text"
-          value={recipient.lastname}
-          onChange={(e) => setRecipient({ ...recipient, lastname: e.target.value })}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={recipient.password}
-          onChange={(e) => setRecipient({ ...recipient, password: e.target.value })}
-        />
-      </label>
-      <label>
-        Birth Date:
-        <input
-          type="text"
-          value={recipient.birth_date}
-          onChange={(e) => setRecipient({ ...recipient, birth_date: e.target.value })}
-        />
-      </label>
-      <label>
-        Gender:
-        <input
-          type="text"
-          value={recipient.gender}
-          onChange={(e) => setRecipient({ ...recipient, gender: e.target.value })}
-        />
-      </label>
-      <label>
-        Contact Info:
-        <input
-          type="text"
-          value={recipient.contact_info}
-          onChange={(e) => setRecipient({ ...recipient, contact_info: e.target.value })}
-        />
-      </label>
-      <label>
-        Address:
-        <input
-          type="text"
-          value={recipient.address}
-          onChange={(e) => setRecipient({ ...recipient, address: e.target.value })}
-        />
-      </label>
-      <label>
-        Age:
-        <input
-          type="number"
-          value={recipient.age}
-          onChange={(e) => setRecipient({ ...recipient, age: e.target.value })}
-        />
-      </label>
-      <button onClick={handleUpdate}>Update Recipient</button>
+    <div className={styles.updaterecipient}>
+      <div className={styles.updateRecipient}>Update Recipient</div>
+      <input
+        className={styles.updaterecipientChild}
+        value={recipient.firstname}
+        placeholder="Firstname"
+        type="text"
+        onChange={(e) => setRecipient({ ...recipient, firstname: e.target.value })}
+      />
+      <input
+        className={styles.updaterecipientItem}
+        value={recipient.birth_date}
+        placeholder="Birth Date"
+        type="text"
+        onChange={(e) => setRecipient({ ...recipient, birth_date: e.target.value })}
+      />
+      <input
+        className={styles.updaterecipientInner}
+        value={recipient.gender}
+        placeholder="Gender"
+        type="text"
+        onChange={(e) => setRecipient({ ...recipient, gender: e.target.value })}
+      />
+      <input
+        className={styles.rectangleInput}
+        value={recipient.contact_info}
+        placeholder="Contact Information"
+        type="text"
+        onChange={(e) => setRecipient({ ...recipient, contact_info: e.target.value })}
+      />
+      <input
+        className={styles.updaterecipientChild1}
+        value={recipient.address}
+        placeholder="Address"
+        type="text"
+        onChange={(e) => setRecipient({ ...recipient, address: e.target.value })}
+      />
+      <input
+        className={styles.updaterecipientChild2}
+        value={recipient.age}
+        placeholder="Age"
+        type="number"
+        onChange={(e) => setRecipient({ ...recipient, age: e.target.value })}
+      />
+      <input
+        className={styles.updaterecipientChild3}
+        value={recipient.lastname}
+        placeholder="Lastname"
+        type="text"
+        onChange={(e) => setRecipient({ ...recipient, lastname: e.target.value })}
+      />
+      <input
+        className={styles.updaterecipientChild4}
+        value={recipient.password}
+        placeholder="Password"
+        type="password"
+        onChange={(e) => setRecipient({ ...recipient, password: e.target.value })}
+      />
+      <img
+        className={styles.vectorIcon}
+        alt=""
+        src="/vector.svg"
+        onClick={onVectorIconClick}
+      />
+      <button className={styles.buttonWrapper} onClick={handleUpdate}>
+        <div className={styles.button}>Update</div>
+      </button>
     </div>
   );
 };

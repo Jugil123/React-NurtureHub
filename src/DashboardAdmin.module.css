@@ -1,0 +1,307 @@
+.tableHeader {
+  background-color: #c3604d; /* Add your preferred color for the table header background */
+  color:  #edccb9; /* Add your preferred color for the table header text */
+  font-size: 16px;
+  padding: 20px;
+  
+ 
+}
+
+.stripedRow1 {
+  background-color: rgba(237, 204, 185, 0.79); /* Add your preferred color for the striped rows */
+}
+
+.stripedRow2 {
+  background-color: #edccb9; /* Add your preferred color for the striped rows */
+}
+
+.tableContainer {
+  border-collapse: collapse;
+}
+
+
+.row {
+  transition: background-color 0.3s;
+}
+
+.row:hover {
+  background-color: #e0e0e0; /* Change this color to your desired background color */
+}
+
+
+
+.dashboardadminChild {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #f1d7c8;
+  height: 93px;
+}
+.dashboardadminInner,
+.dashboardadminItem {
+  position: absolute;
+  width: calc(100% - 527px);
+  right: 263px;
+  left: 264px;
+  height: 54px;
+}
+.dashboardadminItem {
+  top: 209px;
+  background-color: rgba(237, 204, 185, 0.79);
+}
+.dashboardadminInner {
+  top: 263px;
+  background-color: #edccb9;
+}
+.caregiver,
+.recipient {
+  text-decoration: none;
+  position: absolute;
+  top: 225px;
+  left: 296px;
+  font-size: 20px;
+  font-weight: 700;
+  color: inherit;
+  cursor: pointer;
+}
+.recipient {
+  top: 278px;
+}
+.vectorIcon {
+  position: absolute;
+  top: 0;
+  right: 72px;
+  width: 35px;
+  height: 25px;
+  
+}
+.update {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  font-weight: 600;
+}
+.vectorParent {
+  text-decoration: none;
+  position: absolute;
+  top: 275px;
+  right: 502px;
+  width: 107px;
+  height: 26px;
+  color: inherit;
+}
+.add {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  font-weight: 600;
+}
+.addParent,
+.vectorIcon1 {
+  position: absolute;
+  top: 0;
+  right: 44px;
+  width: 35px;
+  height: 25px;
+}
+.addParent {
+  text-decoration: none;
+  top: 275px;
+  right: 707px;
+  width: 79px;
+  color: inherit;
+}
+.rectangleDiv {
+  position: absolute;
+  width: calc(100% - 527px);
+  top: 149px;
+  right: 263px;
+  left: 264px;
+  background-color: #c3604d;
+  height: 60px;
+}
+.groupChild {
+  position: absolute;
+  width: 100%;
+  top: 39px;
+  right: 0;
+  left: 0;
+  background-color: rgba(237, 204, 185, 0.7);
+  height: 39px;
+}
+.groupItem {
+  top: 78px;
+  background-color: #edccb9;
+}
+.groupChild1,
+.groupChild2,
+.groupInner,
+.groupItem {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  left: 0;
+  height: 39px;
+}
+.groupInner {
+  top: 117px;
+  background-color: rgba(237, 204, 185, 0.7);
+}
+.groupChild1,
+.groupChild2 {
+  top: 156px;
+  background-color: #edccb9;
+}
+.groupChild2 {
+  top: 0;
+  background-color: #c3604d;
+}
+.rectangleParent {
+  position: absolute;
+  width: calc(100% - 527px);
+  top: 441px;
+  right: 263px;
+  left: 264px;
+  height: 195px;
+}
+.update1 {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  font-weight: 600;
+}
+.vectorGroup {
+  text-decoration: none;
+  position: absolute;
+  top: 224px;
+  right: 502px;
+  width: 107px;
+  height: 27px;
+  color: inherit;
+  cursor: pointer;
+  
+}
+.addGroup,
+.vectorIcon4 {
+  position: absolute;
+  height: 25px;
+}
+.addGroup {
+  text-decoration: none;
+  top: 224px;
+  right: 707px;
+  width: 79px;
+  color: inherit;
+}
+.vectorIcon4 {
+  top: 0;
+  right: 65px;
+  width: 35px;
+}
+.groupA,
+.vectorContainer {
+  text-decoration: none;
+  position: absolute;
+  top: 275px;
+  right: 332px;
+  width: 100px;
+  height: 26px;
+  color: inherit;
+  cursor: pointer;
+}
+.groupA {
+  top: 224px;
+  height: 27px;
+}
+.dashboard,
+.nurturehub {
+  position: absolute;
+  top: 32px;
+  font-size: 24px;
+  color: #c3604d;
+}
+.dashboard {
+  left: calc(50% - 63px);
+  font-weight: 500;
+}
+.nurturehub {
+  left: 132px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-family: "Maven Pro";
+}
+.nurturehublogo2Icon {
+  position: absolute;
+  top: 7px;
+  left: 47px;
+  width: 85px;
+  height: 77px;
+  object-fit: cover;
+}
+.nurturehub1 {
+  position: absolute;
+  top: 165px;
+  left: calc(50% - 88px);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-family: "Maven Pro";
+  color: #edccb9;
+}
+.welcomeAdmin {
+  position: absolute;
+  top: 33px;
+  right: 209px;
+  font-size: 20px;
+  color: #c3604d;
+}
+.button {
+  position: relative;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 900;
+  font-family: "Maven Pro";
+  color: #fff;
+  text-align: left;
+}
+.buttonWrapper {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  background-color: #c3604d;
+  position: absolute;
+  top: 28px;
+  right: 72px;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 111px;
+  height: 34px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.caregivers {
+  position: absolute;
+  top: 400px;
+  left: calc(50% - 82px);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-family: "Maven Pro";
+  color: #c3604d;
+}
+.dashboardadmin {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 18px;
+  color: #36575c;
+  font-family: Inter;
+}

@@ -1,0 +1,106 @@
+.updateRecipient {
+    position: absolute;
+    top: 139px;
+    left: calc(50% - 131px);
+  }
+  .updaterecipientChild,
+  .updaterecipientItem {
+    border: 0;
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 208px;
+    left: calc(50% - 152px);
+    border-radius: 11px;
+    width: 303px;
+    height: 39px;
+  }
+  .updaterecipientItem {
+    top: 359px;
+  }
+  .rectangleInput,
+  .updaterecipientChild1,
+  .updaterecipientChild2,
+  .updaterecipientChild3,
+  .updaterecipientChild4,
+  .updaterecipientInner {
+    border: 0;
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 409px;
+    left: calc(50% - 152px);
+    border-radius: 11px;
+    width: 303px;
+    height: 39px;
+  }
+  .rectangleInput,
+  .updaterecipientChild1,
+  .updaterecipientChild2,
+  .updaterecipientChild3,
+  .updaterecipientChild4 {
+    top: 459px;
+  }
+  .updaterecipientChild1,
+  .updaterecipientChild2,
+  .updaterecipientChild3,
+  .updaterecipientChild4 {
+    top: 509px;
+  }
+  .updaterecipientChild2,
+  .updaterecipientChild3,
+  .updaterecipientChild4 {
+    top: 559px;
+  }
+  .updaterecipientChild3,
+  .updaterecipientChild4 {
+    top: 259px;
+  }
+  .updaterecipientChild4 {
+    top: 309px;
+  }
+  .vectorIcon {
+    position: absolute;
+    top: 84px;
+    left: 87px;
+    width: 16px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .button {
+    position: relative;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    font-weight: 900;
+    font-family: "Maven Pro";
+    color: #fff;
+    text-align: left;
+  }
+  .buttonWrapper {
+    cursor: pointer;
+    border: 0;
+    padding: 10px;
+    background-color: #c3604d;
+    position: absolute;
+    top: 614px;
+    left: calc(50% - 152px);
+    border-radius: 11px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 303px;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .updaterecipient {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 32px;
+    color: #000;
+    font-family: Inter;
+  }
+  
