@@ -125,3 +125,11 @@
   font-size: 0.8em; /* Smaller font size for error message */
 }
 
+.errorText {
+  color: black;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+

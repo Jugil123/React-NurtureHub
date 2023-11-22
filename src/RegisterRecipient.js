@@ -120,10 +120,12 @@ const RegisterRecipient = () => {
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {/* Display password validation message */}
-      {password && !is_valid_password(password) && (
-        <p>Password must be at least 8 characters with both lowercase and uppercase letters.</p>
-      )}
+      <div className={styles.errorText}>
+        {password && !is_valid_password(password) && (
+          <p>Password must be at least 8 characters with both lowercase and uppercase letters.</p>
+        )}
+      </div>
+
       {/* Other input fields... */}
       <input
         className={styles.registerrecipientChild1}
