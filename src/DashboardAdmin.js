@@ -108,7 +108,7 @@ const DashboardAdmin = () => {
               ? 'Choose Caregiver to be Updated'
               : 'Choose Caregiver to be Deleted'}
           </div>
-        ) : null}
+        ) : (<div className={styles.caregivers}>Caregivers</div>)}
         <table className={`${styles.rectangleParent} ${styles.tableContainer}`}  style={{ height: `${tableHeight}px` }}>
           <thead className={`${styles.tableHeader}`}>
             <tr>
@@ -128,7 +128,7 @@ const DashboardAdmin = () => {
   
           <tbody>
             {caregivers.map((caregiver, index) => (
-              <tr key={caregiver.id} className={`${getStripedStyle(index)} ${styles.clickableRow}`} onClick={() => handleRowClick('Caregiver', caregiver.caregiverId)}>
+              <tr key={caregiver.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Caregiver', caregiver.caregiverId)}>
                 <td>{caregiver.firstname}</td>
                 <td>{caregiver.lastname}</td>
                 <td>{caregiver.username}</td>
@@ -161,7 +161,7 @@ const DashboardAdmin = () => {
               ? 'Choose Recipient to be Updated'
               : 'Choose Recipient to be Deleted'}
           </div>
-        ) : null}
+        ) : (<div className={styles.caregivers}>Recipients</div>)}
         <table className={`${styles.rectangleParent} ${styles.tableContainer}`} style={{ height: `${tableHeight}px` }}>
           <thead className={`${styles.tableHeader}`}>
             <tr>
@@ -179,7 +179,7 @@ const DashboardAdmin = () => {
   
           <tbody>
             {recipients.map((recipient, index) => (
-              <tr key={recipient.id} className={`${getStripedStyle(index)} ${styles.clickableRow}`} onClick={() => handleRowClick('Recipient', recipient.recipientId)}>
+              <tr key={recipient.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Recipient', recipient.recipientId)}>
                 <td>{recipient.firstname}</td>
                 <td>{recipient.lastname}</td>
                 <td>{recipient.username}</td>
@@ -189,7 +189,6 @@ const DashboardAdmin = () => {
                 <td>{recipient.contact_info}</td>
                 <td>{recipient.address}</td>
                 <td>{recipient.age}</td>
-              
               </tr>
             ))}
           </tbody>
@@ -210,7 +209,7 @@ const DashboardAdmin = () => {
       <div className={styles.dashboardadminItem} />
       <div className={styles.dashboardadminInner} />
       <a className={styles.caregiver} onClick={() => handleCaregiverLinkClick(null)}>Caregiver</a>
-      <a className={styles.recipient}  onClick={handleRecipientLinkClick}>Recipient</a>
+      <a className={styles.recipient} onClick={() => handleRecipientLinkClick(null)}>Recipient</a>
       <a className={styles.vectorParent} onClick={() => handleRecipientLinkClick('update')}>
         <img className={styles.vectorIcon} alt="" src="/vector2.svg" />
         <div className={styles.update}>Update</div>

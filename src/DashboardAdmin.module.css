@@ -25,7 +25,9 @@
 }
 
 .row:hover {
-  background-color: #e0e0e0; /* Change this color to your desired background color */
+  background-color: #c3604d;
+  color: #edccb9; /* Change this color to your desired background color */
+  cursor: pointer;
 }
 
 
