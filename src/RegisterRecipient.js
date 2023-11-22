@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import styles from "./RegisterRecipient.module.css";
+import React, { useState, useCallback } from 'react';
+import styles from './RegisterRecipient.module.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -19,9 +19,35 @@ const RegisterRecipient = () => {
   const [age, setAge] = useState('');
   const navigate = useNavigate();
 
+  // Password validation function
+  function is_valid_password(password) {
+    if (password.length < 8) {
+      return false;
+    }
+
+    let hasLowercase = false;
+    let hasUppercase = false;
+
+    for (let char of password) {
+      if (char >= 'a' && char <= 'z') {
+        hasLowercase = true;
+      } else if (char >= 'A' && char <= 'Z') {
+        hasUppercase = true;
+      }
+    }
+
+    return hasLowercase && hasUppercase;
+  }
+
   const handleRegister = async (e) => {
     e.preventDefault();
-  
+
+    // Validate the password
+    if (!is_valid_password(password)) {
+      alert('Password must be at least 8 characters with both lowercase and uppercase letters.');
+      return;
+    }
+
     try {
       // Step 1: Register the recipient
       const recipientResponse = await axios.post('http://localhost:8080/recipient/insertRecipient', {
@@ -35,17 +61,17 @@ const RegisterRecipient = () => {
         address,
         age,
       });
-  
+
       // Assuming the recipient registration returns the recipient's ID
       const recipientId = recipientResponse.data.id;
-  
+
       // Step 2: Create an account for the recipient
       const accountResponse = await axios.post('http://localhost:8080/account/insertAccount', {
         username,
         password,
         userType: 1, // Assuming usertype 1 corresponds to recipient
       });
-  
+
       // Handle successful registration and account creation
       console.log('Registration and Account Creation Successful');
       console.log('Recipient ID:', recipientId);
@@ -94,6 +120,11 @@ const RegisterRecipient = () => {
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      {/* Display password validation message */}
+      {password && !is_valid_password(password) && (
+        <p>Password must be at least 8 characters with both lowercase and uppercase letters.</p>
+      )}
+      {/* Other input fields... */}
       <input
         className={styles.registerrecipientChild1}
         value={birthDate}
@@ -102,6 +133,7 @@ const RegisterRecipient = () => {
         defaultValue={birthDate}
         onChange={(e) => setBirthDate(e.target.value)}
       />
+            
       <input
         className={styles.registerrecipientChild2}
         value={gender}

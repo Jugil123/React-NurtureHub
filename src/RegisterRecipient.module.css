@@ -119,3 +119,9 @@
   color: #000;
   font-family: Inter;
 }
+.passwordValidationMessage {
+  color: red; /* Error message color */
+  margin-top: 0.5em; /* Spacing between the input and the message */
+  font-size: 0.8em; /* Smaller font size for error message */
+}
+
