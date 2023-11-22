@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import "./HomeCaregiver.css";
+
 
 const HomeCaregiver = () => {
   const onRecordsClick = useCallback(() => {
