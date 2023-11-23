@@ -38,6 +38,13 @@ const UpdateCaregiver = () => {
   }, [userId]);
 
   const handleUpdate = async () => {
+
+    const userConfirmed = window.confirm("Are you sure you want to update this caregiver?");
+    if (!userConfirmed) {
+      // If the user cancels the update, do nothing
+      return;
+    }
+    
     try {
       if (
         caregiver.firstname &&
