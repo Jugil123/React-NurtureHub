@@ -34,6 +34,13 @@ const UpdateRecipient = () => {
   }, [userId]);
 
   const handleUpdate = async () => {
+
+    const userConfirmed = window.confirm("Are you sure you want to update this recipient?");
+    if (!userConfirmed) {
+      // If the user cancels the update, do nothing
+      return;
+    }
+    
     try {
       if (
         recipient.firstname &&

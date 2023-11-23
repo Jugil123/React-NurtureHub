@@ -38,6 +38,13 @@ const UpdateCaregiver = () => {
   }, [userId]);
 
   const handleUpdate = async () => {
+
+    const userConfirmed = window.confirm("Are you sure you want to update this caregiver?");
+    if (!userConfirmed) {
+      // If the user cancels the update, do nothing
+      return;
+    }
+    
     try {
       if (
         caregiver.firstname &&
@@ -72,6 +79,7 @@ const UpdateCaregiver = () => {
 
   return (
     <div className={styles.updatecaregiver}>
+       <form onSubmit={handleUpdate}>
       <input
         className={styles.updatecaregiverChild}
         value={caregiver.firstname}
@@ -152,9 +160,10 @@ const UpdateCaregiver = () => {
         onClick={onVectorIconClick}
       />
       </Link>
-      <div className={styles.buttonWrapper}>
-        <div className={styles.button} onClick={handleUpdate}>Update</div>
-      </div>
+      <button className={styles.buttonWrapper} type="submit">
+        <div className={styles.button}>Update</div>
+      </button>
+      </form>
     </div>
   );
 };
