@@ -64,6 +64,7 @@
 }
 
 .messages {
+  display:flex;
   top: 5px;
   left: 62px;
   font-size: 30px;
