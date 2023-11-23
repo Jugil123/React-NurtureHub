@@ -1,88 +1,76 @@
-import { useCallback } from "react";
-import styles from "./HomeRecipient.module.css";
-import { Link, } from 'react-router-dom';
+// HomeRecipient.js
+import React, { useState } from 'react';
+import styles from './HomeRecipient.module.css';
 
-const HomeRecipient = () => {
-  const onRectangleButtonClick = useCallback(() => {
-    // Please sync "Desktop - 5" to the project
-  }, []);
+const Home = () => {
+  const [searchResults, setSearchResults] = useState([]);
 
-  const onRectangleButton1Click = useCallback(() => {
-    // Please sync "Desktop - 5" to the project
-  }, []);
+  const handleSearch = () => {
+    const users = [
+      { id: 1, firstName: 'Andrei Vincent', lastName: 'Salinas', address: 'Cebu City', profilePicture: '/andrei.png' },
+      { id: 2, firstName: 'Britt', lastName: 'Cañeda', address: 'Cebu City', profilePicture: '/britt.png' },
+      { id: 3, firstName: 'Jugil', lastName: 'Cabuenas', address: 'Cebu City', profilePicture: '/jugil.png' },
+    ];
 
-  const onRectangleButton2Click = useCallback(() => {
-    // Please sync "Desktop - 5" to the project
-  }, []);
-
-  const onMessagesClick = useCallback(() => {
-    // Please sync "Desktop - 6" to the project
-  }, []);
-
-  const onRecordsClick = useCallback(() => {
-    // Please sync "Desktop - 10" to the project
-  }, []);
-
-  const onGroupButton3Click = useCallback(() => {
-    // Please sync "Login" to the project
-  }, []);
+    setSearchResults(users);
+  };
 
   return (
-    <div className={styles.homerecipient}>
-      <div className={styles.homerecipientChild} />
-      <input
-        className={styles.homerecipientItem}
-        placeholder="Search Caregiver"
-        type="text"
-      />
-      
-      <button
-        className={styles.homerecipientInner}
-        onClick={onRectangleButtonClick}
-      />
-      <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
-      <img className={styles.image1Icon} alt="" src="/andrei.png" />
-      <div className={styles.address}>Address</div>
-      <button
-        className={styles.rectangleButton}
-        onClick={onRectangleButton1Click}
-      />
-      <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
-      <img className={styles.image3Icon} alt="" src="/britt.png" />
-      <div className={styles.address1}>Address</div>
-      <button
-        className={styles.homerecipientChild1}
-        onClick={onRectangleButton2Click}
-      />
-      <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
-      <img className={styles.image2Icon} alt="" src="/juspher.png" />
-      <div className={styles.address2}>Address</div>
-      <button className={styles.vectorParent}>
-        <img className={styles.messageIcon1} alt="" src="/message.png" />
-        
-        <button className={styles.messages} onClick={onMessagesClick}>
-          Messages
-        </button>
-      </button>
-      <button className={styles.rectangleParent}>
-        <button className={styles.groupChild} />
-        <img className={styles.vectorIcon2} alt="" src="/25694.png" />
-        <div className={styles.home}>Home</div>
-      </button>
-      <button className={styles.recordsParent}>
-        <button className={styles.records} onClick={onRecordsClick}>
-          Records
-        </button>
-        <img className={styles.image13Icon} alt="" src="/download.png" />
-      </button>
-      <Link to="/" className={styles.vectorIconLink}>
-      <button className={styles.vectorGroup} onClick={onGroupButton3Click}>  
-        <div className={styles.logOut}>Log Out</div>
-      </button>
-      </Link>
+    <div className={styles.homeContainer}>
+      <div className={styles.navColumn}>
+        <div className={styles.logoContainer}>
+          <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
+        </div>
+        <div className={styles.userProfileContainer}>
+          <img src="/juspher.png" alt="Profile" className={styles.userProfilePicture} />
+          <div>
+            <p className={styles.userProfileInfo}>Juspher Pateña</p>
+          </div>
+        </div>
+        <div>
+          <ul className={styles.navLinksContainer}>
+            <li>
+              <a href="/" className={`${styles.navLink} ${styles.activeNavLink}`}>
+                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+              </a>
+            </li>
+            <li>
+              <a href="/messages" className={styles.navLink}>
+                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+              </a>
+            </li>
+            <li>
+              <a href="/records" className={styles.navLink}>
+                <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
+              </a>
+            </li>
+            <li>
+              <a href="/login" className={styles.navLink}>
+                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className={styles.contentColumn}>
+        <div className={styles.searchBarContainer}>
+          <input type="text" placeholder="Search users..." className={styles.searchInput} />
+          <button className={styles.searchButton} onClick={handleSearch}>
+            <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
+          </button>
+        </div>
+        {searchResults.map((user) => (
+          <div key={user.id} className={styles.userProfileContainer}>
+            <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+            <div>
+              <p className={styles.userProfileInfo}>{`${user.firstName} ${user.lastName}`}</p>
+              <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-    
   );
 };
 
-export default HomeRecipient;
+export default Home;
