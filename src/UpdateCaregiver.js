@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from "./UpdateCaregiver.module.css";
+import { Link } from 'react-router-dom';
 
 const UpdateCaregiver = () => {
   const onVectorIconClick = useCallback(() => {
@@ -143,12 +144,14 @@ const UpdateCaregiver = () => {
         onChange={(e) => setCaregiver({ ...caregiver, password: e.target.value })}
       />
       <div className={styles.updateCaregiver}>Update Caregiver</div>
+      <Link to="/dashboard" className={styles.vectorIconLink}>
       <img
         className={styles.vectorIcon}
         alt=""
         src="/vector.svg"
         onClick={onVectorIconClick}
       />
+      </Link>
       <div className={styles.buttonWrapper}>
         <div className={styles.button} onClick={handleUpdate}>Update</div>
       </div>

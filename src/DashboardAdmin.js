@@ -251,10 +251,11 @@ const DashboardAdmin = () => {
       />
       <div className={styles.nurturehub1}>NurtureHub</div>
       <div className={styles.welcomeAdmin}>{`Welcome, Admin  `}</div>
+      <Link to="/" className={styles.vectorIconLink}>
       <button className={styles.buttonWrapper}>
         <div className={styles.button}>Log Out</div>
       </button>
-      
+      </Link>
      
       {showCareGiverTable && renderCareGiverTable()}
       {showRecipientTable && renderRecipientTable()}
