@@ -22,12 +22,14 @@ const HomeCaregiver = () => {
       <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
       <img className={styles.image1Icon} alt="" src="/andrei.png" />
       <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+      <Link to="/message-caregiver" className={styles.vectorIconLink}>
       <button className={styles.vectorParent}>
         <img className={styles.vectorIcon1} alt="" src="/message.png" />
         <div className={styles.messages} onClick={onMessagesTextClick}>
           Messages
         </div>
       </button>
+      </Link>
       <button className={styles.rectangleParent}>
         <div className={styles.groupChild} />
         <img className={styles.vectorIcon2} alt="" src="/25694.png" />
