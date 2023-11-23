@@ -76,7 +76,7 @@ const RegisterCaregiver = () => {
 
       // Handle successful registration (e.g., show success message, redirect, etc.)
       console.log('Registration Successful', response.data);
-      navigate('/home-caregiver');
+      navigate('/dashboard');
       
     } catch (error) {
       // Handle registration failure (e.g., show error message)
