@@ -21,9 +21,37 @@ const RegisterCaregiver = () => {
   const [hourlyRate, setHourlyRate] = useState('');
   const navigate = useNavigate();
 
+  function is_valid_password(password) {
+    if (password.length < 8) {
+      return false;
+    }
+  
+    let hasLowercase = false;
+    let hasUppercase = false;
+    let hasSpecialChar = false;
+  
+    for (let char of password) {
+      if (char >= 'a' && char <= 'z') {
+        hasLowercase = true;
+      } else if (char >= 'A' && char <= 'Z') {
+        hasUppercase = true;
+      } else if ("!@#$%^&*()_-+=<>?/".includes(char)) {
+        hasSpecialChar = true;
+      }
+    }
+  
+    return hasLowercase && hasUppercase && hasSpecialChar;
+  }
+  
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (!is_valid_password(password)) {
+      alert('Password must be at least 8 characters with both lowercase and uppercase letters.');
+      return;
+    }
 
     try {
       const response = await axios.post('http://localhost:8080/caregiver/insertCaregiver', {
@@ -159,6 +187,13 @@ const RegisterCaregiver = () => {
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+
+<div className={styles.errorText}>
+        {password && !is_valid_password(password) && (
+          <p>Password must be at least 8 characters with both lowercase and uppercase letters.</p>
+        )}
+      </div>
+
       <div className={styles.registerCaregiver}>Register Caregiver</div>
       <button className={styles.buttonWrapper} type="submit">
         <div className={styles.button}>Register</div>
