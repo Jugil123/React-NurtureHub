@@ -251,4 +251,9 @@
     color: var(--color-black);
     font-family: var(--font-inter);
   }
+  body {
+    margin: 0;
+    line-height: normal;
+  }
+  
   
