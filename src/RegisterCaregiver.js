@@ -12,6 +12,7 @@ const RegisterCaregiver = () => {
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
   const [birthDate, setBirthDate] = useState('');
   const [gender, setGender] = useState('');
   const [contactInfo, setContactInfo] = useState('');
