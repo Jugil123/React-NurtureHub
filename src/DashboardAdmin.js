@@ -89,19 +89,24 @@ const DashboardAdmin = () => {
   };
 
   const handleDelete = async (userType, userId, username) => {
-    try {
-      const response = await axios.delete(`http://localhost:8080/${userType.toLowerCase()}/delete${userType}/${userId}`);
-      console.log(response.data); // Log the server response
-      // Refresh the user list after deletion
-      if (userType === 'Recipient') {
-        fetchRecipients();
-      } else if (userType === 'Caregiver') {
-        fetchCaregivers();
 
-        await handleDeleteAccount(username);
+    const userConfirmed = window.confirm(`Are you sure you want to delete the account with username: ${username}?`);
+
+    if(userConfirmed){
+      try {
+        const response = await axios.delete(`http://localhost:8080/${userType.toLowerCase()}/delete${userType}/${userId}`);
+        console.log(response.data); // Log the server response
+        // Refresh the user list after deletion
+        if (userType === 'Recipient') {
+          fetchRecipients();
+        } else if (userType === 'Caregiver') {
+          fetchCaregivers();
+
+          await handleDeleteAccount(username);
+        }
+      } catch (error) {
+        console.error(`Error deleting ${userType}`, error);
       }
-    } catch (error) {
-      console.error(`Error deleting ${userType}`, error);
     }
   };
 
