@@ -5,6 +5,15 @@
     font-size: 32px;
     font-weight: 600;
   }
+  
+.errorMessage{
+  position: absolute;
+  top: 345px;
+  left: calc(50% - 140px);
+  font-size: 32px;
+  font-weight: 600;
+}
+
   .loginChild,
   .loginItem {
     border: 0;

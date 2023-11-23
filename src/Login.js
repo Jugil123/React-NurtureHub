@@ -36,13 +36,13 @@ const Login = () => {
       } else if (userType === 3) {
         navigate('/dashboard');
       } else if (userType === 0) {
-        setError('Invalid Credentials');
+        setError('Incorrect Username or Password');
       }
 
     } catch (error) {
       // Handle login failure
       console.error('Login Failed', error.response.data);
-      setError('Invalid Credentials');  // Set the error message
+      setError('Incorrect Username or Password');  // Set the error message
       console.log("Error: ", error); // Log the error
     }
   };
@@ -50,6 +50,7 @@ const Login = () => {
   return (
     <div className={styles.login}>
       <div className={styles.logIn}>Log in</div>
+      {error && <p  className={styles.errorMessage} style={{  color: 'red', fontSize: '20px'}}>{error}</p>} {/* Render error message if present */}
       <input
         className={styles.loginChild}
         value={username}
