@@ -79,6 +79,7 @@ const UpdateCaregiver = () => {
 
   return (
     <div className={styles.updatecaregiver}>
+       <form onSubmit={handleUpdate}>
       <input
         className={styles.updatecaregiverChild}
         value={caregiver.firstname}
@@ -159,9 +160,10 @@ const UpdateCaregiver = () => {
         onClick={onVectorIconClick}
       />
       </Link>
-      <div className={styles.buttonWrapper}>
-        <div className={styles.button} onClick={handleUpdate}>Update</div>
-      </div>
+      <button className={styles.buttonWrapper} type="submit">
+        <div className={styles.button}>Update</div>
+      </button>
+      </form>
     </div>
   );
 };
