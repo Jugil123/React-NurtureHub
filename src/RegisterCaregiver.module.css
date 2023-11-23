@@ -115,10 +115,12 @@
   box-sizing: border-box;
 }
 .vectorIcon {
-  top: 83px;
-  left: 87px;
+  position: absolute;
+  top: 71px;
+  left: 74px;
   width: 26px;
-  height: 34px;
+  height: 130px;
+  cursor: pointer;
 }
 .registercaregiver {
   position: relative;
@@ -139,4 +141,34 @@
   color: #ff0000; /* Change the color as needed */
   font-size: 0.75em; /* Adjust the font size as needed */
   text-align: center;
+}
+
+.nurturehub {
+  left: 132px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-family: "Maven Pro";
+}
+.nurturehublogo2Icon {
+  position: absolute;
+  top: 7px;
+  left: 47px;
+  width: 85px;
+  height: 77px;
+  object-fit: cover;
+}
+.nurturehub {
+  position: absolute;
+  top: 32px;
+  font-size: 24px;
+  color: #c3604d;
+}
+.headerChild {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #f1d7c8;
+  height: 93px;
 }

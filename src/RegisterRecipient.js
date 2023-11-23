@@ -91,6 +91,13 @@ const RegisterRecipient = () => {
 
   return (
     <div className={styles.registerrecipient}>
+    <div className={styles.headerChild} />
+    <div className={styles.nurturehub}>NurtureHub</div>
+    <img
+      className={styles.nurturehublogo2Icon}
+      alt=""
+      src="/nurturehublogo-2@2x.png"
+    />
       <div className={styles.standingRectangle}></div>
       <input
         className={styles.registerrecipientChild}

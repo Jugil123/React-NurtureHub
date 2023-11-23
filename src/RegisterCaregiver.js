@@ -88,6 +88,13 @@ const RegisterCaregiver = () => {
 
   return (
     <div className={styles.registercaregiver}>
+    <div className={styles.headerChild} />
+    <div className={styles.nurturehub}>NurtureHub</div>
+    <img
+      className={styles.nurturehublogo2Icon}
+      alt=""
+      src="/nurturehublogo-2@2x.png"
+    />
        <form onSubmit={handleRegister}>
       <input
         className={styles.registercaregiverChild}
