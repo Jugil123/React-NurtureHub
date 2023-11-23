@@ -101,7 +101,11 @@
 }
 
 .searchButton {
+<<<<<<< Updated upstream
   background-color: #F5E2D7;
+=======
+  background-color: #007bff;
+>>>>>>> Stashed changes
   color: #fff;
   border: none;
   padding: 10px;
