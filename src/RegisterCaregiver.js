@@ -190,7 +190,7 @@ const RegisterCaregiver = () => {
 
 <div className={styles.errorText}>
         {password && !is_valid_password(password) && (
-          <p>Password must be at least 8 characters with both lowercase and uppercase letters.</p>
+          <p>Password must be at least 8 characters with both lowercase and uppercase letters and special characters.</p>
         )}
       </div>
 
