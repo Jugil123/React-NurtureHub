@@ -12,7 +12,7 @@ import HomeCaregiver from './HomeCaregiver';
 import DashboardAdmin from './DashboardAdmin';
 import UpdateCaregiver from './UpdateCaregiver';
 import UpdateRecipient from './UpdateRecipient';
-import AboutUs from './AboutUs'
+import AboutUs from './About'
 import ContactUs from './ContactUs'
 
 

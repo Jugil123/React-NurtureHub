@@ -1,0 +1,206 @@
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 567px;
+}
+.groupInner,
+.groupItem {
+  position: absolute;
+  top: 80px;
+  left: 516px;
+  border-radius: var(--br-sm);
+  width: 874px;
+  height: 416px;
+}
+.groupInner {
+  top: 119px;
+  left: 550px;
+  width: 806px;
+  height: 338px;
+}
+.mottoWhenYour,
+.nameIsaiahJohn {
+  position: absolute;
+  top: 225px;
+  left: 582px;
+  display: inline-block;
+  width: 442px;
+  height: 34px;
+  font-size: 30px;
+  font-family: Mukta;
+}
+.mottoWhenYour {
+  top: 268px;
+  width: 533px;
+  height: 138px;
+}
+.founder {
+  font-size: var(--font-size-11xl);
+}
+.coFounder {
+  position: absolute;
+  top: 140px;
+  left: 582px;
+  display: inline-block;
+  width: 418px;
+  height: 76px;
+  font-size: 50px;
+  font-family: "Maven Pro";
+}
+.isaiah1Icon {
+  position: absolute;
+  top: 79px;
+  left: 36px;
+  width: 426px;
+  height: 408px;
+  object-fit: cover;
+}
+.britt1Icon,
+.vectorParent {
+  position: absolute;
+  top: 3315px;
+  left: 0;
+  width: 1440px;
+  height: 567px;
+}
+.britt1Icon {
+  top: 80px;
+  left: 36px;
+  width: 426px;
+  height: 408px;
+  object-fit: cover;
+}
+.vectorGroup {
+  top: 2637px;
+}
+.rectangleDiv,
+.rectangleGroup,
+.rectangleParent,
+.vectorGroup {
+  position: absolute;
+  left: 0;
+  width: 1440px;
+  height: 567px;
+}
+.rectangleDiv {
+  top: 0;
+  background-color: var(--color-mistyrose);
+}
+.rectangleGroup,
+.rectangleParent {
+  top: 1959px;
+}
+.rectangleGroup {
+  top: 1281px;
+}
+.groupChild10,
+.groupChild9 {
+  position: absolute;
+  top: 72px;
+  left: 516px;
+  border-radius: var(--br-sm);
+  width: 874px;
+  height: 416px;
+}
+.groupChild10 {
+  top: 111px;
+  left: 550px;
+  width: 806px;
+  height: 338px;
+}
+.founder4,
+.mottoEncourageYourself,
+.nameAndreiVincent {
+  position: absolute;
+  top: 213px;
+  left: 582px;
+  display: inline-block;
+  width: 442px;
+  height: 34px;
+  font-size: 30px;
+  font-family: Mukta;
+}
+.founder4,
+.mottoEncourageYourself {
+  top: 256px;
+  width: 533px;
+  height: 138px;
+}
+.founder4 {
+  top: 128px;
+  left: 579px;
+  width: 168px;
+  height: 76px;
+  font-size: 50px;
+  font-family: "Maven Pro";
+}
+.andrei1Icon {
+  position: absolute;
+  top: 72px;
+  left: 36px;
+  width: 426px;
+  height: 408px;
+  object-fit: cover;
+}
+.rectangleContainer {
+  position: absolute;
+  top: 603px;
+  left: 0;
+  width: 1440px;
+  height: 567px;
+}
+.nurturehublogo42x1Icon {
+  position: absolute;
+  top: 0;
+  left: 445px;
+  width: 434px;
+  height: 297px;
+  object-fit: cover;
+}
+.nurturehub {
+  position: absolute;
+  top: 291px;
+  left: 242px;
+  font-size: 100px;
+  letter-spacing: 0.1em;
+  font-weight: 900;
+}
+.vectorIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 51px;
+  height: 65px;
+  cursor: pointer;
+}
+.aboutUs {
+  position: absolute;
+  top: 389px;
+  left: 158px;
+  font-size: 120px;
+  letter-spacing: 0.4em;
+  font-weight: 900;
+  color: #cb7918;
+}
+.nurturehublogo42x1Parent {
+  position: absolute;
+  top: 55px;
+  left: 58px;
+  width: 1166px;
+  height: 539px;
+  font-size: var(--font-size-45xl);
+  color: #c3604d;
+  font-family: var(--font-maven-pro);
+}
+.aboutus {
+  background-color: #fff;
+  width: 1440px;
+  height: 3998px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-11xl);
+  color: var(--color-black);
+  font-family: var(--font-inria-serif);
+}
