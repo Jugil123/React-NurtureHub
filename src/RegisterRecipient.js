@@ -12,6 +12,7 @@ const RegisterRecipient = () => {
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordErrors, setPasswordErrors] = useState([]);
   const [birthDate, setBirthDate] = useState('');
   const [gender, setGender] = useState('');
   const [contactInfo, setContactInfo] = useState('');
@@ -19,37 +20,59 @@ const RegisterRecipient = () => {
   const [age, setAge] = useState('');
   const navigate = useNavigate();
 
-  // Password validation function
-  function is_valid_password(password) {
+  const checkPasswordRequirements = () => {
+    let errors = [];
+
     if (password.length < 8) {
-      return false;
+      errors.push('Password should be at least 8 characters');
     }
-  
-    let hasLowercase = false;
-    let hasUppercase = false;
-    let hasSpecialChar = false;
-  
-    for (let char of password) {
-      if (char >= 'a' && char <= 'z') {
-        hasLowercase = true;
-      } else if (char >= 'A' && char <= 'Z') {
-        hasUppercase = true;
-      } else if ("!@#$%^&*()_-+=<>?/".includes(char)) {
-        hasSpecialChar = true;
-      }
+    if (!/\d/.test(password)) {
+      errors.push('Password should contain at least one number');
     }
-  
-    return hasLowercase && hasUppercase && hasSpecialChar;
+    if (!/[a-z]/.test(password)) {
+      errors.push('Password should contain at least one lowercase letter');
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.push('Password should contain at least one uppercase letter');
+    }
+    if (!/[^a-zA-Z\d\s:]/.test(password)) {
+      errors.push('Password should contain at least one special character');
+    }
+
+    setPasswordErrors(errors);
+    return errors.length === 0;
   }
+
+  // // Password validation function
+  // function is_valid_password(password) {
+  //   if (password.length < 8) {
+  //     return false;
+  //   }
+  
+  //   let hasLowercase = false;
+  //   let hasUppercase = false;
+  //   let hasSpecialChar = false;
+  
+  //   for (let char of password) {
+  //     if (char >= 'a' && char <= 'z') {
+  //       hasLowercase = true;
+  //     } else if (char >= 'A' && char <= 'Z') {
+  //       hasUppercase = true;
+  //     } else if ("!@#$%^&*()_-+=<>?/".includes(char)) {
+  //       hasSpecialChar = true;
+  //     }
+  //   }
+  
+  //   return hasLowercase && hasUppercase && hasSpecialChar;
+  // }
   
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     // Validate the password
-    if (!is_valid_password(password)) {
-      alert('Password must be at least 8 characters with both lowercase and uppercase letters.');
-      return;
+    if (!checkPasswordRequirements()) {
+      return; // Stop the registration process if password validation fails
     }
 
     try {
@@ -121,14 +144,14 @@ const RegisterRecipient = () => {
         value={password}
         placeholder=" Password"
         type="password"
-        defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
+        onBlur={checkPasswordRequirements}
       />
-      <div className={styles.errorText}>
-        {password && !is_valid_password(password) && (
-          <p>Password must be at least 8 characters with both lowercase and uppercase letters and special characters.</p>
-        )}
-      </div>
+      {passwordErrors.map((error, index) => (
+        <div key={index} className={styles.errorText}>
+          {error}
+        </div>
+      ))}
 
       {/* Other input fields... */}
       <input

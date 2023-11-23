@@ -131,3 +131,12 @@
   color: rgba(0, 0, 0, 0.36);
   font-family: Inter;
 }
+.errorText {
+  position: absolute;
+  top: 463px; /* Adjust this value so it appears right below the password input */
+  left: calc(50% - 152px);
+  width: 303px;
+  color: #ff0000; /* Change the color as needed */
+  font-size: 0.75em; /* Adjust the font size as needed */
+  text-align: center;
+}
