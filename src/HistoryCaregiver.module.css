@@ -1,0 +1,273 @@
+.serviceHistory {
+    position: absolute;
+    top: 142px;
+    left: 402px;
+  }
+  .historycaregiverChild {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f9e1d7;
+    width: 264px;
+    height: 1024px;
+  }
+  .vectorIcon {
+    position: absolute;
+    height: 100%;
+    width: 23.3%;
+    top: 0;
+    right: 76.7%;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .messages {
+    position: absolute;
+    top: 5px;
+    left: 62px;
+    font-size: 30px;
+    font-family: Inter;
+    color: #000;
+    text-align: left;
+  }
+  .vectorParent {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    height: 4.49%;
+    width: 14.31%;
+    top: 25.39%;
+    right: 83.82%;
+    bottom: 70.12%;
+    left: 1.88%;
+  }
+  .vectorIcon1 {
+    position: absolute;
+    height: 100%;
+    width: 27.81%;
+    top: 0;
+    right: 72.19%;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .home {
+    position: absolute;
+    top: 3px;
+    left: 85px;
+    font-size: 30px;
+    font-family: Inter;
+    color: #000;
+    text-align: left;
+    cursor: pointer;
+  }
+  .historycaregiverItem,
+  .vectorGroup {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    position: absolute;
+  }
+  .vectorGroup {
+    background-color: transparent;
+    height: 3.81%;
+    width: 11.74%;
+    top: 17.87%;
+    right: 86.39%;
+    bottom: 78.32%;
+    left: 1.88%;
+  }
+  .historycaregiverItem {
+    background-color: #edccb9;
+    top: 260px;
+    left: 373px;
+    border-radius: 14px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 812px;
+    height: 142px;
+  }
+  .firstnameMLastname,
+  .image1Icon {
+    position: absolute;
+    top: 286px;
+    left: 548px;
+  }
+  .image1Icon {
+    left: 401px;
+    border-radius: 133px;
+    width: 107px;
+    height: 84px;
+    object-fit: cover;
+  }
+  .address {
+    position: absolute;
+    top: 322px;
+    left: 548px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .historycaregiverInner {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: #edccb9;
+    position: absolute;
+    top: 618px;
+    left: 373px;
+    border-radius: 14px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 812px;
+    height: 135px;
+  }
+  .firstnameMLastname1,
+  .image3Icon {
+    position: absolute;
+    top: 644px;
+    left: 548px;
+  }
+  .image3Icon {
+    left: 401px;
+    border-radius: 133px;
+    width: 107px;
+    height: 84px;
+    object-fit: cover;
+  }
+  .address1 {
+    position: absolute;
+    top: 680px;
+    left: 548px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .rectangleButton {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: #edccb9;
+    position: absolute;
+    top: 448px;
+    left: 373px;
+    border-radius: 14px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 812px;
+    height: 135px;
+  }
+  .firstnameMLastname2,
+  .image2Icon {
+    position: absolute;
+    top: 474px;
+    left: 548px;
+  }
+  .image2Icon {
+    left: 401px;
+    border-radius: 133px;
+    width: 107px;
+    height: 84px;
+    object-fit: cover;
+  }
+  .address2 {
+    position: absolute;
+    top: 510px;
+    left: 548px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .vectorIcon2 {
+    position: absolute;
+    height: 97.5%;
+    width: 26.59%;
+    top: 2.5%;
+    right: 0;
+    bottom: 0;
+    left: 73.41%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .logOut {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    font-family: Inter;
+    color: #000;
+    text-align: left;
+  }
+  .groupButton,
+  .vectorContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  .groupButton {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    height: 3.91%;
+    width: 12.01%;
+    top: 92.77%;
+    right: 85.14%;
+    bottom: 3.32%;
+    left: 2.85%;
+  }
+  .groupChild {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #edccb9;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 264px;
+    height: 72px;
+  }
+  .vectorIcon3 {
+    position: absolute;
+    height: 63.89%;
+    width: 18.18%;
+    top: 18.06%;
+    right: 72.73%;
+    bottom: 18.06%;
+    left: 9.09%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .history {
+    position: absolute;
+    top: 18px;
+    left: 90px;
+    font-size: 30px;
+    font-family: Inter;
+    color: #000;
+    text-align: left;
+  }
+  .rectangleParent {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 315px;
+    left: 0;
+    width: 264px;
+    height: 72px;
+  }
+  .historycaregiver {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 30px;
+    color: #000;
+    font-family: Inter;
+  }
+  

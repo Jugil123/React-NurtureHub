@@ -15,6 +15,7 @@ import UpdateRecipient from './UpdateRecipient';
 import AboutUs from './AboutUs'
 import ContactUs from './ContactUs'
 import MessageCaregiver from './MessageCaregiver';
+import HistoryCaregiver from './HistoryCaregiver';
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/update-recipient/:userId" element={<UpdateRecipient />} />
           <Route path="/update-caregiver/:userId" element={<UpdateCaregiver />} />
           <Route path="/message-caregiver" element={<MessageCaregiver />} />
+          <Route path="/history-caregiver" element={<HistoryCaregiver />} />
         </Routes>
         </HelmetProvider>
       </div>

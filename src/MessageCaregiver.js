@@ -63,10 +63,12 @@ const MessageCaregiver = () => {
         <div className={styles.logOut}>Log Out</div>
       </button>
       </Link>
+      <Link to="/history-caregiver" className={styles.vectorIconLink}>
       <button className={styles.vectorContainer} onClick={onGroupButton3Click}>
         <img className={styles.vectorIcon4} alt="" src="/download.png" />
         <div className={styles.history}>History</div>
       </button>
+      </Link>
     </div>
   );
 };

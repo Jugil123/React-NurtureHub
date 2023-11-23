@@ -40,12 +40,14 @@ const HomeCaregiver = () => {
         <div className={styles.logOut}>Log Out</div>
       </button>
       </Link>
+      <Link to="/history-caregiver" className={styles.vectorIconLink}>
       <button className={styles.vectorContainer}>
         <img className={styles.vectorIcon4} alt="" src="/download.png" />
         <div className={styles.history} onClick={onHistoryTextClick}>
           History
         </div>
       </button>
+      </Link>
       <div className={styles.bookingRequests}>Booking Requests</div>
       <div className={styles.homecaregiverInner} />
       <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
