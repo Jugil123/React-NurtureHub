@@ -1,76 +1,83 @@
 import { useCallback } from "react";
-
+import styles from "./HomeCaregiver.module.css";
+import { Link, } from 'react-router-dom';
 
 const HomeCaregiver = () => {
-  const onRecordsClick = useCallback(() => {
-    // Please sync "Desktop - 10" to the project
+  const onMessagesTextClick = useCallback(() => {
+    // Please sync "Messages" to the project
   }, []);
 
-  const onRectangleButton1Click = useCallback(() => {
-    // Please sync "Desktop - 5" to the project
-  }, []);
-
-  const onRectangleButton2Click = useCallback(() => {
-    // Please sync "Desktop - 5" to the project
-  }, []);
-
-  const onRectangleButton3Click = useCallback(() => {
-    // Please sync "Desktop - 5" to the project
-  }, []);
-
-  const onMessagesClick = useCallback(() => {
-    // Please sync "Desktop - 6" to the project
-  }, []);
-
-  const onGroupContainer1Click = useCallback(() => {
+  const onGroupButton2Click = useCallback(() => {
     // Please sync "Login" to the project
   }, []);
 
+  const onHistoryTextClick = useCallback(() => {
+    // Please sync "Desktop - 11" to the project
+  }, []);
+
   return (
-    <div className="homecaregiver">
-      <div className="homecaregiver-child" />
-      <button className="records" onClick={onRecordsClick}>
-        Records
-      </button>
-      <button className="homecaregiver-item" />
-      <input
-        className="homecaregiver-inner"
-        placeholder="Search Caregiver"
-        type="text"
-      />
-      <img className="vector-icon" alt="" src="/vector.svg" />
-      <div className="search-caregiver">Search Caregiver</div>
-      <button className="rectangle-button" onClick={onRectangleButton1Click} />
-      <div className="firstname-m-lastname">Firstname M. Lastname</div>
-      <img className="image-1-icon" alt="" src="/image-1@2x.png" />
-      <div className="address">Address</div>
-      <button
-        className="homecaregiver-child1"
-        onClick={onRectangleButton2Click}
-      />
-      <div className="firstname-m-lastname1">Firstname M. Lastname</div>
-      <img className="image-3-icon" alt="" src="/image-3@2x.png" />
-      <div className="address1">Address</div>
-      <button
-        className="homecaregiver-child2"
-        onClick={onRectangleButton3Click}
-      />
-      <div className="firstname-m-lastname2">Firstname M. Lastname</div>
-      <img className="image-2-icon" alt="" src="/image-2@2x.png" />
-      <div className="address2">Address</div>
-      <img className="vector-icon1" alt="" src="/vector1.svg" />
-      <div className="vector-parent">
-        <img className="vector-icon2" alt="" src="/vector2.svg" />
-        <button className="messages" onClick={onMessagesClick}>
+    <div className={styles.homecaregiver}>
+      <div className={styles.homecaregiverChild} />
+      <div className={styles.homecaregiverItem} />
+      <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
+      <img className={styles.image1Icon} alt="" src="/andrei.png" />
+      <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+      <button className={styles.vectorParent}>
+        <img className={styles.vectorIcon1} alt="" src="/message.png" />
+        <div className={styles.messages} onClick={onMessagesTextClick}>
           Messages
-        </button>
-      </div>
-      <div className="home">Home</div>
-      <img className="image-13-icon" alt="" src="/image-13@2x.png" />
-      <div className="vector-group" onClick={onGroupContainer1Click}>
-        <img className="vector-icon3" alt="" src="/vector3.svg" />
-        <div className="log-out">Log Out</div>
-      </div>
+        </div>
+      </button>
+      <button className={styles.rectangleParent}>
+        <div className={styles.groupChild} />
+        <img className={styles.vectorIcon2} alt="" src="/25694.png" />
+        <div className={styles.home}>Home</div>
+      </button>
+      <Link to="/" className={styles.vectorIconLink}>
+      <button className={styles.vectorGroup} onClick={onGroupButton2Click}>
+        <div className={styles.logOut}>Log Out</div>
+      </button>
+      </Link>
+      <button className={styles.vectorContainer}>
+        <img className={styles.vectorIcon4} alt="" src="/download.png" />
+        <div className={styles.history} onClick={onHistoryTextClick}>
+          History
+        </div>
+      </button>
+      <div className={styles.bookingRequests}>Booking Requests</div>
+      <div className={styles.homecaregiverInner} />
+      <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
+      <img className={styles.image15Icon} alt="" src="/britt.png" />
+      <div className={styles.rectangleDiv} />
+      <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
+      <img className={styles.image14Icon} alt="" src="/juspher.png" />
+      <button className={styles.buttonWrapper}>
+        <div className={styles.button}>Accept</div>
+      </button>
+      <button className={styles.buttonContainer}>
+        <div className={styles.button}>Accept</div>
+      </button>
+      <button className={styles.buttonFrame}>
+        <div className={styles.button}>Accept</div>
+      </button>
+      <button className={styles.frameButton}>
+        <div className={styles.button}>Decline</div>
+      </button>
+      <button className={styles.buttonWrapper1}>
+        <div className={styles.button}>Decline</div>
+      </button>
+      <button className={styles.buttonWrapper2}>
+        <div className={styles.button}>Decline</div>
+      </button>
+      <button className={styles.buttonWrapper3}>
+        <div className={styles.button}>View Details</div>
+      </button>
+      <button className={styles.buttonWrapper4}>
+        <div className={styles.button}>View Details</div>
+      </button>
+      <button className={styles.buttonWrapper5}>
+        <div className={styles.button}>View Details</div>
+      </button>
     </div>
   );
 };
