@@ -56,11 +56,11 @@ const DashboardAdmin = () => {
     }
   };
 
-  const handleRowClick = (userType, userId) => {
+  const handleRowClick = (userType, userId, username) => {
     if (currentAction === 'update') {
       handleUpdate(userType, userId);
     } else if (currentAction === 'delete') {
-      handleDelete(userType, userId);
+      handleDelete(userType, userId, username);
     }
   };
 
@@ -74,7 +74,21 @@ const DashboardAdmin = () => {
     }
   };
 
-  const handleDelete = async (userType, userId) => {
+  const handleDeleteAccount = async (username) => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/account/deleteAccount/${username}`);
+      console.log(response.data); // Log the server response
+
+      // You might want to refresh the user list or perform other actions after deletion
+      // For example, you can fetch the updated list of recipients or caregivers
+      fetchRecipients();
+      fetchCaregivers();
+    } catch (error) {
+      console.error('Error deleting account:', error);
+    }
+  };
+
+  const handleDelete = async (userType, userId, username) => {
     try {
       const response = await axios.delete(`http://localhost:8080/${userType.toLowerCase()}/delete${userType}/${userId}`);
       console.log(response.data); // Log the server response
@@ -83,6 +97,8 @@ const DashboardAdmin = () => {
         fetchRecipients();
       } else if (userType === 'Caregiver') {
         fetchCaregivers();
+
+        await handleDeleteAccount(username);
       }
     } catch (error) {
       console.error(`Error deleting ${userType}`, error);
@@ -128,7 +144,7 @@ const DashboardAdmin = () => {
   
           <tbody>
             {caregivers.map((caregiver, index) => (
-              <tr key={caregiver.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Caregiver', caregiver.caregiverId)}>
+              <tr key={caregiver.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Caregiver', caregiver.caregiverId, caregiver.username)}>
                 <td>{caregiver.firstname}</td>
                 <td>{caregiver.lastname}</td>
                 <td>{caregiver.username}</td>
@@ -179,7 +195,7 @@ const DashboardAdmin = () => {
   
           <tbody>
             {recipients.map((recipient, index) => (
-              <tr key={recipient.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Recipient', recipient.recipientId)}>
+              <tr key={recipient.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Recipient', recipient.recipientId, recipient.username)}>
                 <td>{recipient.firstname}</td>
                 <td>{recipient.lastname}</td>
                 <td>{recipient.username}</td>

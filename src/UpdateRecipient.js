@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import styles from "./UpdateRecipient.module.css";
 
 const UpdateRecipient = () => {
@@ -128,12 +128,14 @@ const UpdateRecipient = () => {
         type="password"
         onChange={(e) => setRecipient({ ...recipient, password: e.target.value })}
       />
+      <Link to="/dashboard" className={styles.vectorIconLink}>
       <img
         className={styles.vectorIcon}
         alt=""
         src="/vector.svg"
         onClick={onVectorIconClick}
       />
+      </Link>
       <button className={styles.buttonWrapper} onClick={handleUpdate}>
         <div className={styles.button}>Update</div>
       </button>
