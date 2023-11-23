@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import styles from "./HomeRecipient.module.css";
+import { Link, } from 'react-router-dom';
 
 const HomeRecipient = () => {
   const onRectangleButtonClick = useCallback(() => {
@@ -40,44 +41,47 @@ const HomeRecipient = () => {
         onClick={onRectangleButtonClick}
       />
       <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
-      <img className={styles.image1Icon} alt="" src="/image-1@2x.png" />
+      <img className={styles.image1Icon} alt="" src="/andrei.png" />
       <div className={styles.address}>Address</div>
       <button
         className={styles.rectangleButton}
         onClick={onRectangleButton1Click}
       />
       <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
-      <img className={styles.image3Icon} alt="" src="/image-3@2x.png" />
+      <img className={styles.image3Icon} alt="" src="/britt.png" />
       <div className={styles.address1}>Address</div>
       <button
         className={styles.homerecipientChild1}
         onClick={onRectangleButton2Click}
       />
       <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
-      <img className={styles.image2Icon} alt="" src="/image-2@2x.png" />
+      <img className={styles.image2Icon} alt="" src="/juspher.png" />
       <div className={styles.address2}>Address</div>
       <button className={styles.vectorParent}>
-        <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
+        <img className={styles.messageIcon1} alt="" src="/message.png" />
+        
         <button className={styles.messages} onClick={onMessagesClick}>
           Messages
         </button>
       </button>
       <button className={styles.rectangleParent}>
         <button className={styles.groupChild} />
-        <img className={styles.vectorIcon2} alt="" src="/vector2.svg" />
+        <img className={styles.vectorIcon2} alt="" src="/25694.png" />
         <div className={styles.home}>Home</div>
       </button>
       <button className={styles.recordsParent}>
         <button className={styles.records} onClick={onRecordsClick}>
           Records
         </button>
-        <img className={styles.image13Icon} alt="" src="/image-13@2x.png" />
+        <img className={styles.image13Icon} alt="" src="/download.png" />
       </button>
-      <button className={styles.vectorGroup} onClick={onGroupButton3Click}>
-        <img className={styles.vectorIcon3} alt="" src="/vector3.svg" />
+      <Link to="/" className={styles.vectorIconLink}>
+      <button className={styles.vectorGroup} onClick={onGroupButton3Click}>  
         <div className={styles.logOut}>Log Out</div>
       </button>
+      </Link>
     </div>
+    
   );
 };
 
