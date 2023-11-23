@@ -106,6 +106,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+.buttonWrapper:hover {
+  background-color: #ff4d29;
 }
 .registerrecipient {
   position: relative;
