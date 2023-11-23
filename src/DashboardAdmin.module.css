@@ -93,6 +93,7 @@
   width: 107px;
   height: 26px;
   color: inherit;
+  cursor: pointer;
 }
 .add {
   position: absolute;
