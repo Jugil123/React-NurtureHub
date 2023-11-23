@@ -43,29 +43,6 @@ const RegisterRecipient = () => {
     return errors.length === 0;
   }
 
-  // // Password validation function
-  // function is_valid_password(password) {
-  //   if (password.length < 8) {
-  //     return false;
-  //   }
-  
-  //   let hasLowercase = false;
-  //   let hasUppercase = false;
-  //   let hasSpecialChar = false;
-  
-  //   for (let char of password) {
-  //     if (char >= 'a' && char <= 'z') {
-  //       hasLowercase = true;
-  //     } else if (char >= 'A' && char <= 'Z') {
-  //       hasUppercase = true;
-  //     } else if ("!@#$%^&*()_-+=<>?/".includes(char)) {
-  //       hasSpecialChar = true;
-  //     }
-  //   }
-  
-  //   return hasLowercase && hasUppercase && hasSpecialChar;
-  // }
-  
 
   const handleRegister = async (e) => {
     e.preventDefault();
