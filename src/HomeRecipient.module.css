@@ -1,279 +1,119 @@
-.homerecipientChild {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #f5e2d7;
-    width: 264px;
-    height: 1024px;
-  }
-  .homerecipientItem {
-    border: 0;
-    background-color: #edccb9;
-    position: absolute;
-    top: 166px;
-    left: 320px;
-    border-radius: 20px;
-    width: 812px;
-    height: 76px;
-  }
-  .vectorIcon {
-    position: absolute;
-    height: 3.03%;
-    width: 2.64%;
-    top: 18.65%;
-    right: 72.57%;
-    bottom: 78.32%;
-    left: 24.79%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .homerecipientInner {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: #edccb9;
-    position: absolute;
-    top: 308px;
-    left: 329px;
-    border-radius: 14px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 812px;
-    height: 135px;
-  }
-  .firstnameMLastname,
-  .image1Icon {
-    position: absolute;
-    top: 334px;
-    left: 504px;
-  }
-  .image1Icon {
-    left: 357px;
-    border-radius: 133px;
-    width: 107px;
-    height: 84px;
-    object-fit: cover;
-  }
-  .address {
-    position: absolute;
-    top: 370px;
-    left: 504px;
-    color: rgba(0, 0, 0, 0.7);
-  }
-  .rectangleButton {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: #edccb9;
-    position: absolute;
-    top: 648px;
-    left: 329px;
-    border-radius: 14px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 812px;
-    height: 135px;
-  }
-  .firstnameMLastname1,
-  .image3Icon {
-    position: absolute;
-    top: 674px;
-    left: 504px;
-  }
-  .image3Icon {
-    left: 357px;
-    border-radius: 133px;
-    width: 107px;
-    height: 84px;
-    object-fit: cover;
-  }
-  .address1 {
-    position: absolute;
-    top: 710px;
-    left: 504px;
-    color: rgba(0, 0, 0, 0.7);
-  }
-  .homerecipientChild1 {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: #edccb9;
-    position: absolute;
-    top: 478px;
-    left: 329px;
-    border-radius: 14px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 812px;
-    height: 135px;
-  }
-  .firstnameMLastname2,
-  .image2Icon {
-    position: absolute;
-    top: 504px;
-    left: 504px;
-  }
-  .image2Icon {
-    left: 357px;
-    border-radius: 133px;
-    width: 107px;
-    height: 84px;
-    object-fit: cover;
-  }
-  .address2 {
-    position: absolute;
-    top: 540px;
-    left: 504px;
-    color: rgba(0, 0, 0, 0.7);
-  }
-  .messageIcon1 {
-    position: absolute;
-    height: 51.43px;
-    top: 0;
-    left: 0;
-    width: 45px;
-    object-fit: cover;
-  }
-  .messages {
-    background-color: transparent;
-    top: 5px;
-    left: 62px;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-    display: inline-block;
-  }
-  .groupChild,
-  .messages,
-  .vectorParent {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    position: absolute;
-  }
-  .vectorParent {
-    background-color: transparent;
-    height: 4.49%;
-    width: 14.31%;
-    top: 25.39%;
-    right: 83.82%;
-    bottom: 70.12%;
-    left: 1.88%;
-  }
-  .groupChild {
-    background-color: #edccb9;
-    top: 0;
-    left: 0;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 264px;
-    height: 72px;
-  }
-  .vectorIcon2 {
-    position: absolute;
-    height: 54.17%;
-    width: 17.8%;
-    top: 20.83%;
-    right: 71.97%;
-    bottom: 25%;
-    left: 10.23%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .home {
-    position: absolute;
-    top: 18px;
-    left: 112px;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-  }
-  .records,
-  .rectangleParent {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    position: absolute;
-  }
-  .rectangleParent {
-    top: 168px;
-    left: 0;
-    width: 264px;
-    height: 72px;
-  }
-  .records {
-    top: 8px;
-    left: 63px;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-    display: inline-block;
-  }
-  .image13Icon,
-  .recordsParent {
-    position: absolute;
-    height: 51.43px;
-  }
-  .image13Icon {
-    top: 0;
-    left: 0;
-    width: 48px;
-    object-fit: cover;
-  }
-  .recordsParent {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    top: 339px;
-    left: 26px;
-    width: 180px;
-  }
-  .vectorIcon3 {
-    position: absolute;
-    height: 97.5%;
-    width: 26.59%;
-    top: 2.5%;
-    right: 0;
-    bottom: 0;
-    left: 73.41%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .logOut {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-  } 
-  .vectorGroup {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    position: absolute;
-    height: 3.91%;
-    width: 12.01%;
-    top: 92.77%;
-    right: 85.14%;
-    bottom: 3.32%;
-    left: 2.85%;
-  }
-  .homerecipient {
-    position: absolute;
-    background-color: #fff;
-    width: 100%;
-    height: 1024px;
-    overflow: hidden;
-    text-align: left;
-    font-size: 30px;
-    color: #000;
-    font-family: Inter;
-  }
+/* HomeRecipient.module.css */
+
+.homeContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.navColumn {
+  width: 15%;
+  background-color: white;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  height: 100%;
+}
+
+.logoContainer {
+  margin-bottom: 20px;
+}
+
+.appLogo {
+  max-width: 30%;
+}
+
+.userProfileContainer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.navIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+
+.userProfilePicture {
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userProfileInfo {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navLinksContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+ 
+  border-radius: 5px;
+  text-decoration: none;
+  color: grey;
+
+}
+
+.navLink:hover,
+.navLink:active {
+  background-color: #f0f0f0;
+}
+
+.activeNavLink {
+  background-color: #F5E2D7; /* Add a background color to indicate the active state */
+  color: #C3604D;
+  font-weight: bold;
+
+}
+
+.contentColumn {
+  flex: 1;
+  padding: 20px;
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.searchButton {
+<<<<<<< Updated upstream
+  background-color: #F5E2D7;
+=======
+  background-color: #007bff;
+>>>>>>> Stashed changes
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.searchIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+}
