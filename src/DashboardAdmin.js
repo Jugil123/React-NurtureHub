@@ -117,7 +117,7 @@ const DashboardAdmin = () => {
 
 
   const renderCareGiverTable = () => {
-    const rowHeight = 40; // Adjust this value based on your design
+    const rowHeight = 60; // Adjust this value based on your design
     const tableHeight = caregivers.length * rowHeight;
 
     return (
