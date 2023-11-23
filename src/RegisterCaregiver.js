@@ -72,18 +72,21 @@ const RegisterCaregiver = () => {
         className={styles.registercaregiverItem}
         value={birthDate}
         placeholder="Birth Date"
-        type="text"
+        type="date"
         defaultValue={birthDate}
         onChange={(e) => setBirthDate(e.target.value)}
       />
-      <input
+      <select
         className={styles.registercaregiverInner}
         value={gender}
-        placeholder="Gender"
-        type="text"
-        defaultValue={gender}
         onChange={(e) => setGender(e.target.value)}
-      />
+      >
+        <option value="" disabled selected>
+          Select Gender
+        </option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
       <input
         className={styles.rectangleInput}
         value={contactInfo}
@@ -112,7 +115,7 @@ const RegisterCaregiver = () => {
         className={styles.registercaregiverChild3}
         value={hourlyRate}
         placeholder="Hourly Rate"
-        type="text"
+        type="number"
         defaultValue={hourlyRate}
         onChange={(e) => setHourlyRate(e.target.value)}
       />

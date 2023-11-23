@@ -136,14 +136,17 @@ const RegisterRecipient = () => {
         onChange={(e) => setBirthDate(e.target.value)}
       />
             
-      <input
+      <select
         className={styles.registerrecipientChild2}
         value={gender}
-        placeholder=" Gender"
-        type="text"
-        defaultValue={gender}
         onChange={(e) => setGender(e.target.value)}
-      />
+      >
+        <option value="" disabled selected>
+          Select Gender
+        </option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
       <input
         className={styles.registerrecipientChild3}
         value={contactInfo}
