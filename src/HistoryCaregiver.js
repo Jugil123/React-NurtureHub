@@ -41,12 +41,14 @@ const HistoryCaregiver = () => {
       <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
       <img className={styles.image2Icon} alt="" src="/errol.jpg" />
       <div className={styles.address2}>Address</div>
+      <Link to="/" className={styles.vectorIconLink}>
       <button className={styles.groupButton}>
         <div className={styles.vectorContainer} onClick={onGroupContainerClick}>
           
           <div className={styles.logOut}>Log Out</div>
         </div>
       </button>
+      </Link>
       <button className={styles.rectangleParent}>
         <div className={styles.groupChild} />
         <img className={styles.vectorIcon3} alt="" src="/download.png" />
