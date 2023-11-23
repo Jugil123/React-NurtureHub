@@ -13,6 +13,7 @@ import DashboardAdmin from './DashboardAdmin';
 import UpdateCaregiver from './UpdateCaregiver';
 import UpdateRecipient from './UpdateRecipient';
 import AboutUs from './AboutUs'
+import ContactUs from './ContactUs'
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/user-type" element={<UserType />} />
           <Route path="/register-recipient" element={<RegisterRecipient />} />
           <Route path="/register-caregiver" element={<RegisterCaregiver />} />

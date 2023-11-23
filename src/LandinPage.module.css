@@ -1,4 +1,5 @@
 .aboutUs,
+.contactUs,
 .logIn {
   text-decoration: none;
   position: absolute;
@@ -10,6 +11,11 @@
   right: 442px;
   color: rgba(0, 0, 0, 0.84);
 }
+.contactUs{
+  right: 600px;
+  color: rgba(0, 0, 0, 0.84);
+}
+
 .logIn {
   right: 335px;
   color: inherit;
