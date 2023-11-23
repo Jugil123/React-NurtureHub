@@ -20,7 +20,7 @@
   left: 712px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
-  width: 728px;
+  width: 100%;
   height: 125px;
 }
 .groupChild,
@@ -34,7 +34,7 @@
   top: 930px;
   left: 712px;
   box-sizing: border-box;
-  width: 728px;
+  width: 100%;
   height: 94px;
 }
 .groupChild {
@@ -289,7 +289,7 @@
   font-size: 28px;
   color: rgba(0, 0, 0, 0.7);
 }
-.messagecaregiverChild4 {
+/* .messagecaregiverChild4 {
   position: absolute;
   top: 298px;
   left: 1191px;
@@ -297,7 +297,7 @@
   background-color: #d9d9d9;
   width: 90px;
   height: 62px;
-}
+} */
 .hello5 {
   position: absolute;
   top: 313px;
