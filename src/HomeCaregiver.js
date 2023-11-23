@@ -22,12 +22,14 @@ const HomeCaregiver = () => {
       <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
       <img className={styles.image1Icon} alt="" src="/andrei.png" />
       <img className={styles.vectorIcon} alt="" src="/vector.svg" />
+      <Link to="/message-caregiver" className={styles.vectorIconLink}>
       <button className={styles.vectorParent}>
         <img className={styles.vectorIcon1} alt="" src="/message.png" />
         <div className={styles.messages} onClick={onMessagesTextClick}>
           Messages
         </div>
       </button>
+      </Link>
       <button className={styles.rectangleParent}>
         <div className={styles.groupChild} />
         <img className={styles.vectorIcon2} alt="" src="/25694.png" />
@@ -38,12 +40,14 @@ const HomeCaregiver = () => {
         <div className={styles.logOut}>Log Out</div>
       </button>
       </Link>
+      <Link to="/history-caregiver" className={styles.vectorIconLink}>
       <button className={styles.vectorContainer}>
         <img className={styles.vectorIcon4} alt="" src="/download.png" />
         <div className={styles.history} onClick={onHistoryTextClick}>
           History
         </div>
       </button>
+      </Link>
       <div className={styles.bookingRequests}>Booking Requests</div>
       <div className={styles.homecaregiverInner} />
       <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
