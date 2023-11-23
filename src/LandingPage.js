@@ -5,7 +5,8 @@ const LandinPage = () => {
     const navigate = useNavigate();
   return (
     <div className={styles.landinpage}>
-    <Link  className={styles.aboutUs} to="/about-us">About us</Link>
+      <Link  className={styles.aboutUs} to="/contact-us">Contact us</Link>
+    <Link  className={styles.contactUs} to="/about-us">About us</Link>
     <Link  className={styles.logIn} to="/Login">Log in</Link>
       <div className={styles.landinpageInner}>
         <button className={styles.rectangleParent} onClick={() => navigate('/register-recipient')}>
