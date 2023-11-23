@@ -25,13 +25,12 @@
   top: 8px;
   right: 0;
   border-radius: 11px;
-  background-color: #c3604d;
   width: 132px;
   height: 47px;
 }
 .register {
   position: absolute;
-  top: 19px;
+  top: 10px;
   right: 14px;
   font-size: 24px;
   letter-spacing: 0.09em;
@@ -50,9 +49,14 @@
   cursor: pointer;
   border: 0;
   padding: 0;
-  background-color: transparent;
-  top: 0;
+  background-color: #c3604d;
+  border-radius: 11px;
+  top: 9px;
   right: 0;
+  transition: background-color 0.3s ease;
+}
+.rectangleParent:hover{
+  background-color: #ff4d29;
 }
 .landinpageInner {
   top: 85px;
@@ -151,13 +155,12 @@
   top: calc(50% - 30px);
   left: calc(50% - 139px);
   border-radius: 11px;
-  background-color: #c3604d;
   width: 278px;
   height: 47px;
 }
 .registerAndBook {
   position: absolute;
-  top: calc(50% - 19.5px);
+  top: calc(50% - 15px);
   left: calc(50% - 112px);
   font-size: 24px;
   letter-spacing: 0.09em;
@@ -172,12 +175,17 @@
   cursor: pointer;
   border: 0;
   padding: 0;
-  background-color: transparent;
+  border-radius: 11px;
   position: absolute;
   top: calc(50% + 134px);
   left: calc(50% - 559px);
   width: 278px;
   height: 47px;
+  background-color: #c3604d;
+  transition: background-color 0.3s ease;
+}
+.rectangleContainer:hover {
+  background-color: #ff4d29;
 }
 .nurturehub {
   position: absolute;
