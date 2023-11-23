@@ -37,7 +37,7 @@ const MessageCaregiver = () => {
       <img className={styles.image1Icon} alt="" src="/jugil.png" />
       
       <img className={styles.image8Icon} alt="" src="/isaiah.png" />
-      <img className={styles.image9Icon} alt="" src="/jugil.png" />
+      {/* <img className={styles.image9Icon} alt="" src="/jugil.png" /> */}
       <img className={styles.image7Icon} alt="" src="/isaiah.png" />
       <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
       <div className={styles.hello}>Hello</div>
@@ -57,7 +57,7 @@ const MessageCaregiver = () => {
       <div className={styles.rectangleDiv} />
       <div className={styles.hello4}>Hello</div>
       <div className={styles.messagecaregiverChild4} />
-      <div className={styles.hello5}>Hello!</div>
+      {/* <div className={styles.hello5}>Hello!</div> */}
       <Link to="/" className={styles.vectorIconLink}>
       <button className={styles.vectorGroup} onClick={onGroupButton2Click}>
         <div className={styles.logOut}>Log Out</div>
