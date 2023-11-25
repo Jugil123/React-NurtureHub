@@ -1,18 +1,26 @@
 // HomeRecipient.js
 import React, { useState } from 'react';
 import styles from './HomeRecipient.module.css';
+import axios from 'axios';
 
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = () => {
-    const users = [
-      { id: 1, firstName: 'Andrei Vincent', lastName: 'Salinas', address: 'Cebu City', profilePicture: '/andrei.png' },
-      { id: 2, firstName: 'Britt', lastName: 'Cañeda', address: 'Cebu City', profilePicture: '/britt.png' },
-      { id: 3, firstName: 'Jugil', lastName: 'Cabuenas', address: 'Cebu City', profilePicture: '/jugil.png' },
-    ];
+  const handleSearch = async () => {
+    setSearchResults([]);
+    console.log('Search Term:', searchTerm);
+    try {
+      // Make an HTTP GET request to the backend API with the search term
+      const response = await axios.get(`http://localhost:8080/caregiver/searchCaregiver?searchString=${searchTerm}`);
+      setSearchResults(response.data); // Update search results with the data from the backend
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
 
-    setSearchResults(users);
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -54,7 +62,7 @@ const Home = () => {
       </div>
       <div className={styles.contentColumn}>
         <div className={styles.searchBarContainer}>
-          <input type="text" placeholder="Search users..." className={styles.searchInput} />
+          <input type="text" placeholder="Search users..." className={styles.searchInput} value={searchTerm} onChange={handleSearchInputChange}/>
           <button className={styles.searchButton} onClick={handleSearch}>
             <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
           </button>
@@ -63,11 +71,11 @@ const Home = () => {
           <div key={user.id} className={styles.userProfileContainer}>
             <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
             <div>
-              <p className={styles.userProfileInfo}>{`${user.firstName} ${user.lastName}`}</p>
+              <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
               <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
             </div>
           </div>
-        ))}
+          ))}
       </div>
     </div>
   );
