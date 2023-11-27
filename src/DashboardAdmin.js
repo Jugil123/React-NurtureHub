@@ -61,6 +61,7 @@ const DashboardAdmin = () => {
       handleUpdate(userType, userId);
     } else if (currentAction === 'delete') {
       handleDelete(userType, userId, username);
+      handleDeleteAccount(username);
     }
   };
 
@@ -102,7 +103,6 @@ const DashboardAdmin = () => {
         } else if (userType === 'Caregiver') {
           fetchCaregivers();
 
-          await handleDeleteAccount(username);
         }
       } catch (error) {
         console.error(`Error deleting ${userType}`, error);
