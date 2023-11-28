@@ -1,11 +1,22 @@
 // HomeRecipient.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './HomeRecipient.module.css';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+
+  // Extract userObject from location state
+  const userObject = location.state ? location.state.userObject : null;
+
+  useEffect(() => {
+    // Perform any initial setup using userObject if needed
+    console.log('userObject:', userObject);
+  }, [userObject]);
+
 
   const handleSearch = async () => {
     setSearchResults([]);
@@ -30,9 +41,9 @@ const Home = () => {
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div className={styles.userProfileContainer}>
-          <img src="/juspher.png" alt="Profile" className={styles.userProfilePicture} />
+          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
           <div>
-            <p className={styles.userProfileInfo}>Juspher Pateña</p>
+            <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
           </div>
         </div>
         <div>

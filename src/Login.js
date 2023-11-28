@@ -1,56 +1,65 @@
-import { useCallback, useState } from "react";
+// Import the necessary dependencies
+import { useCallback, useState, } from "react";
 import styles from "./Login.module.css";
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const onRegisterHereClick = useCallback(() => {
-     navigate('/register-recipient')
-  }, []);
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);  // State to manage error message
+  // Initialize the navigate hook
   const navigate = useNavigate();
 
+  // Callback function to navigate to registration page
+  const onRegisterHereClick = useCallback(() => {
+    navigate('/register-recipient');
+  }, [navigate]);
+
+  // State variables for username, password, and error message
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
+  // Function to handle login
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
+      // Make a POST request to the login endpoint
       const response = await axios.post('http://localhost:8080/account/login', {
         username,
         password,
       });
 
       // Handle successful login
-      console.log(response);
       console.log(response.data);
 
       // Check the user type and navigate accordingly
-      const userType = response.data;
+      const userType = response.data.userType;
+      const userObject = response.data.userObject;
+
 
       if (userType === 1) {
-        navigate('/home-recipient');
+        navigate('/home-recipient', { state: { userObject } });
       } else if (userType === 2) {
         navigate('/home-caregiver');
       } else if (userType === 3) {
         navigate('/dashboard');
-      } else if (userType === 0) {
+      } else {
         setError('Incorrect Username or Password');
       }
 
     } catch (error) {
       // Handle login failure
       console.error('Login Failed', error.response.data);
-      setError('Incorrect Username or Password');  // Set the error message
-      console.log("Error: ", error); // Log the error
+      setError('Incorrect Username or Password');
+      console.log("Error: ", error);
     }
   };
 
+  // JSX for the login form
   return (
     <div className={styles.login}>
       <div className={styles.logIn}>Log in</div>
-      {error && <p  className={styles.errorMessage} style={{  color: 'red', fontSize: '20px'}}>{error}</p>} {/* Render error message if present */}
+      {error && <p className={styles.errorMessage} style={{ color: 'red', fontSize: '20px' }}>{error}</p>}
       <input
         className={styles.loginChild}
         value={username}

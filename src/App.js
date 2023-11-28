@@ -20,9 +20,9 @@ import HistoryCaregiver from './HistoryCaregiver';
 
 const App = () => {
   return (
+    <HelmetProvider>
     <Router>
       <div>
-        <HelmetProvider>
           <Helmet>
             <title>NurtureHub</title>
           </Helmet>
@@ -34,7 +34,7 @@ const App = () => {
           <Route path="/user-type" element={<UserType />} />
           <Route path="/register-recipient" element={<RegisterRecipient />} />
           <Route path="/register-caregiver" element={<RegisterCaregiver />} />
-          <Route path="/home-recipient" element={<HomeRecipient />} />
+          <Route path="/home-recipient" element={<HomeRecipient  />} />
           <Route path="/home-caregiver" element={<HomeCaregiver />} />
           <Route path="/dashboard" element={<DashboardAdmin />} />
           <Route path="/update-recipient/:userId" element={<UpdateRecipient />} />
@@ -42,9 +42,9 @@ const App = () => {
           <Route path="/message-caregiver" element={<MessageCaregiver />} />
           <Route path="/history-caregiver" element={<HistoryCaregiver />} />
         </Routes>
-        </HelmetProvider>
       </div>
     </Router>
+    </HelmetProvider>
   );
 };
 
