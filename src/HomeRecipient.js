@@ -38,7 +38,7 @@ const Home = () => {
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`);
+    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
   };
 
   return (
