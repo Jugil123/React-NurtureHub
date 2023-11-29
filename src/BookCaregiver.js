@@ -76,6 +76,18 @@ const BookCaregiver  = () => {
     console.log('Booking the caregiver');
   };
 
+  const navigateToMessageRecipient = () => {
+    navigate('/message-recipient', { state: { userObject } });
+  };
+
+  const navigateToRecordsRecipient = () => {
+    navigate('/records-recipient', { state: { userObject } });
+  };
+
+  const navigateToHomeRecipient = () => {
+    navigate('/home-recipient', { state: { userObject } });
+  };
+
   const handleBookingInputChange = (event) => {
     const { name, value } = event.target;
     setBookingData((prevData) => ({
@@ -101,21 +113,24 @@ const BookCaregiver  = () => {
           </div>
         </div>
         <div>
-          <ul className={styles.navLinksContainer}>
+        <ul className={styles.navLinksContainer}>
             <li>
-              <a href="/" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
                 <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
-              </a>
+              </div>
             </li>
             <li>
-              <a href="/message-recipient" className={styles.navLink}>
+              <div
+                className={styles.navLink}
+                onClick={navigateToMessageRecipient}
+              >
                 <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
-              </a>
+              </div>
             </li>
             <li>
-              <a href="/records" className={styles.navLink}>
+              <div className={styles.navLink}  onClick={navigateToRecordsRecipient}>
                 <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
-              </a>
+              </div>
             </li>
             <li>
               <a href="/login" className={styles.navLink}>

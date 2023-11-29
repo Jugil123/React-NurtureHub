@@ -53,7 +53,6 @@ const Home = () => {
     navigate('/home-recipient', { state: { userObject } });
   };
 
-
   return (
     <div className={styles.homeContainer}>
       <div className={styles.navColumn}>
@@ -71,9 +70,9 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <ul className={styles.navLinksContainer}>
+        <ul className={styles.navLinksContainer}>
             <li>
-              <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
+              <div className={styles.navLink} onClick={navigateToHomeRecipient}>
                 <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
               </div>
             </li>
@@ -86,7 +85,7 @@ const Home = () => {
               </div>
             </li>
             <li>
-              <div className={styles.navLink}  onClick={navigateToRecordsRecipient}>
+              <div className={`${styles.navLink} ${styles.activeNavLink}`}  onClick={navigateToRecordsRecipient}>
                 <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
               </div>
             </li>
@@ -99,25 +98,7 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.contentColumn}>
-        <div className={styles.searchBarContainer}>
-          <input type="text" placeholder="Search users..." className={styles.searchInput} value={searchTerm} onChange={handleSearchInputChange}/>
-          <button className={styles.searchButton} onClick={handleSearch}>
-            <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
-          </button>
-        </div>
-        {searchResults.map((user) => (
-          <div
-            key={user.id}
-            className={styles.userProfileContainer}
-            onClick={() => navigateToViewCaregiver(user.caregiverId)}
-          >
-            <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
-            <div>
-              <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
-              <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
-            </div>
-          </div>
-        ))}
+        <h2>Medical Records</h2>
       </div>
     </div>
   );

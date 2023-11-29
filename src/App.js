@@ -20,6 +20,7 @@ import MyProfile from './MyProfile';
 import ViewCaregiver from './ViewCaregiver';
 import BookCaregiver from './BookCaregiver'
 import MessageRecipient from './MessageRecipient';
+import RecordsRecipient from './RecordsRecipient';
 
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/view-caregiver/:userId" element={<ViewCaregiver /> } />
           <Route path="/book-caregiver/:userId" element={<BookCaregiver /> } />
           <Route path="/message-recipient" element={<MessageRecipient /> } />
+          <Route path="/records-recipient" element={<RecordsRecipient /> } />
         </Routes>
       </div>
     </Router>
