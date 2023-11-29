@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styles from './HomeRecipient.module.css';
+import styles from './MessageRecipient.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const MessageRecipient  = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
@@ -41,6 +41,86 @@ const Home = () => {
     navigate(`/view-caregiver/${userId}`, { state: { userObject } });
   };
 
+
+  const Messages = () => {
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [messageInput, setMessageInput] = useState('');
+    const [conversations, setConversations] = useState({
+      Admin: [
+        { sender: 'Admin', text: 'Hi, how can I assist you?' },
+        { sender: 'John Doe', text: 'Hello! I have a question.' },
+        { sender: 'Admin', text: 'Sure, go ahead.' },
+      ],
+      'Caregiver 1': [
+        { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
+      ],
+      'Caregiver 2': [
+        { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
+      ],
+    });
+  
+    const users = [
+      { id: 1, name: 'Admin', messages: [] },
+      { id: 2, name: 'Caregiver 1', messages: [] },
+      { id: 3, name: 'Caregiver 2', messages: [] },
+    ];
+  
+    const handleUserClick = (user) => {
+      setSelectedUser(user);
+    };
+  
+    const handleSendMessage = () => {
+      if (selectedUser && messageInput.trim() !== '') {
+        const newMessage = { sender: 'John Doe', text: messageInput };
+        setConversations((prevConversations) => ({
+          ...prevConversations,
+          [selectedUser.name]: [...(prevConversations[selectedUser.name] || []), newMessage],
+        }));
+        setMessageInput('');
+      }
+    };
+  
+    return (
+      <div className={styles.messageContainer}>
+        <div className={styles.userList}>
+          <h2>Conversations</h2>
+          <ul>
+            {users.map((user) => (
+              <li key={user.id} onClick={() => handleUserClick(user)} className={selectedUser === user ? styles.selectedUser : ''}>
+                {user.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.messageArea}>
+          <h2>{selectedUser ? `Chat with ${selectedUser.name}` : 'Select a user to start chatting'}</h2>
+          <div className={styles.messages}>
+            {selectedUser &&
+              (conversations[selectedUser.name] || []).map((message, index) => (
+                <div key={index} className={styles.message}>
+                  <strong>{message.sender}:</strong> {message.text}
+                </div>
+              ))}
+          </div>
+          {selectedUser && (
+            <div className={styles.inputArea}>
+              <input
+                type="text"
+                placeholder="Type your message..."
+                value={messageInput}
+                onChange={(e) => setMessageInput(e.target.value)}
+              />
+              <button onClick={handleSendMessage}>Send</button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+  
+
+
+
   return (
     <div className={styles.homeContainer}>
       <div className={styles.navColumn}>
@@ -60,12 +140,12 @@ const Home = () => {
         <div>
           <ul className={styles.navLinksContainer}>
             <li>
-              <a href="/" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <a href="/" className={styles.navLink}>
                 <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
               </a>
             </li>
             <li>
-              <a href="/messages" className={styles.navLink}>
+              <a href="/messages" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
               </a>
             </li>
@@ -102,9 +182,10 @@ const Home = () => {
             </div>
           </div>
         ))}
+        <Messages />
       </div>
     </div>
   );
 };
 
-export default Home;
+export default MessageRecipient ;

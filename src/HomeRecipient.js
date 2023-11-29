@@ -38,7 +38,7 @@ const Home = () => {
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`);
+    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
   };
 
   const navigateToMessageRecipient = () => {
@@ -69,12 +69,12 @@ const Home = () => {
               </a>
             </li>
             <li>
-              <button
-                className={`${styles.navLink} ${styles.customButton}`}
+              <div
+                className={styles.navLink}
                 onClick={navigateToMessageRecipient}
               >
                 <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
-              </button>
+              </div>
             </li>
             <li>
               <a href="/records" className={styles.navLink}>

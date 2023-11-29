@@ -170,3 +170,24 @@
   width: 20px; /* Adjust the width as needed */
   height: 20px; /* Adjust the height as needed */
 }
+
+
+.inputArea {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.inputArea input {
+  flex: 1;
+  padding: 8px;
+}
+
+.inputArea button {
+  padding: 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
