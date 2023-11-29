@@ -11,7 +11,18 @@ import HomeCaregiver from './HomeCaregiver';
 import DashboardAdmin from './DashboardAdmin';
 import UpdateCaregiver from './UpdateCaregiver';
 import UpdateRecipient from './UpdateRecipient';
+<<<<<<< Updated upstream
 import AboutUs from './AboutUs'
+=======
+import AboutUs from './About'
+import ContactUs from './ContactUs'
+import MessageCaregiver from './MessageCaregiver';
+import HistoryCaregiver from './HistoryCaregiver';
+import MyProfile from './MyProfile';
+import ViewCaregiver from './ViewCaregiver';
+import BookCaregiver from './BookCaregiver'
+import MessageRecipient from './MessageRecipient';
+>>>>>>> Stashed changes
 
 
 const App = () => {
@@ -30,6 +41,16 @@ const App = () => {
           <Route path="/dashboard" element={<DashboardAdmin />} />
           <Route path="/update-recipient/:userId" element={<UpdateRecipient />} />
           <Route path="/update-caregiver/:userId" element={<UpdateCaregiver />} />
+<<<<<<< Updated upstream
+=======
+          <Route path="/message-caregiver" element={<MessageCaregiver />} />
+          <Route path="/history-caregiver" element={<HistoryCaregiver />} />
+          <Route path="/my-profile" element={<MyProfile /> } />
+          <Route path="/view-caregiver/:userId" element={<ViewCaregiver /> } />
+          <Route path="/book-caregiver/:userId" element={<BookCaregiver /> } />
+          <Route path="/message-recipient" element={<MessageRecipient /> } />
+          
+>>>>>>> Stashed changes
         </Routes>
       </div>
     </Router>

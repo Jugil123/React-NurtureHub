@@ -1,13 +1,47 @@
-// Home.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import styles from './HomeRecipient.module.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Extract userObject from location state
+  const userObject = location.state ? location.state.userObject : null;
+
+  useEffect(() => {
+    // Perform any initial setup using userObject if needed
+    console.log('userObject:', userObject);
+  }, [userObject]);
+
+  const handleSearch = async () => {
+    setSearchResults([]);
+    console.log('Search Term:', searchTerm);
+    try {
+      // Make an HTTP GET request to the backend API with the search term
+      const response = await axios.get(`http://localhost:8080/caregiver/searchCaregiver?searchString=${searchTerm}`);
+      setSearchResults(response.data); // Update search results with the data from the backend
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const navigateToMyProfile = () => {
+    navigate('/my-profile', { state: { userObject } });
+  };
+
+  const navigateToViewCaregiver = (userId) => {
+    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+  };
+
   return (
-<<<<<<< Updated upstream
-    <div>
-      <h1>Recipient HomePage</h1>
-      {/* Add content for the Home page */}
-=======
     <div className={styles.homeContainer}>
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
@@ -31,12 +65,9 @@ const Home = () => {
               </a>
             </li>
             <li>
-            <button
-               className={`${styles.navLink} ${styles.customButton}`}
-              onClick={() => navigate('/message-recipient', { state: { userObject } })}
-            >
-              <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
-            </button>
+              <a href="/messages" className={styles.navLink}>
+                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+              </a>
             </li>
             <li>
               <a href="/records" className={styles.navLink}>
@@ -72,9 +103,8 @@ const Home = () => {
           </div>
         ))}
       </div>
->>>>>>> Stashed changes
     </div>
   );
 };
 
-export default Home
+export default Home;

@@ -1,0 +1,145 @@
+/* HomeRecipient.module.css */
+
+.homeContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.navColumn {
+  width: 15%;
+  background-color: white;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  height: 100%;
+}
+
+.logoContainer {
+  margin-bottom: 20px;
+}
+
+.appLogo {
+  max-width: 30%;
+}
+
+.userProfileContainer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+}
+
+.userProfileContainer:hover {
+  background-color: #F5E2D7;
+  cursor: pointer;
+}
+
+
+.navIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+
+.userProfilePicture {
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userProfileInfo {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navLinksContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+ 
+  border-radius: 5px;
+  text-decoration: none;
+  color: grey;
+
+}
+
+
+.navLink:hover,
+.navLink:active {
+  background-color: #f0f0f0;
+}
+
+.activeNavLink {
+  background-color: #F5E2D7; /* Add a background color to indicate the active state */
+  color: #C3604D;
+  font-weight: bold;
+
+}
+
+.contentColumn {
+  flex: 1;
+  padding: 20px;
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.searchButton {
+  background-color: #F5E2D7;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.searchIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+}
+
+.customButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: grey; 
+}
+
+
+.customButton:hover{
+  background-color: #f0f0f0;
+}
