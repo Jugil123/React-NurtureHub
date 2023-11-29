@@ -67,7 +67,7 @@ const RegisterRecipient = () => {
       });
 
       // Assuming the recipient registration returns the recipient's ID
-      const recipientId = recipientResponse.data.id;
+      const recipientData = recipientResponse.data;
 
       // Step 2: Create an account for the recipient
       const accountResponse = await axios.post('http://localhost:8080/account/insertAccount', {
@@ -78,9 +78,9 @@ const RegisterRecipient = () => {
 
       // Handle successful registration and account creation
       console.log('Registration and Account Creation Successful');
-      console.log('Recipient ID:', recipientId);
+      console.log('Recipient Data:', recipientData);
       console.log('Account ID:', accountResponse.data.id);
-      navigate('/home-recipient');
+      navigate('/home-recipient', { state: { userObject: recipientData } });
     } catch (error) {
       // Handle registration or account creation failure
       console.error('Registration or Account Creation Failed', error.response.data);

@@ -17,7 +17,6 @@ const Home = () => {
     console.log('userObject:', userObject);
   }, [userObject]);
 
-
   const handleSearch = async () => {
     setSearchResults([]);
     console.log('Search Term:', searchTerm);
@@ -43,7 +42,11 @@ const Home = () => {
         <div className={styles.userProfileContainer}>
           <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
           <div>
-            <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+            {userObject ? (
+              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+            ) : (
+              <p className={styles.userProfileInfo}>Loading...</p>
+            )}
           </div>
         </div>
         <div>
@@ -86,7 +89,7 @@ const Home = () => {
               <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
             </div>
           </div>
-          ))}
+        ))}
       </div>
     </div>
   );
