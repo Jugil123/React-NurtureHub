@@ -3,17 +3,23 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const LandinPage = () => {
     const navigate = useNavigate();
+
+    const onRegisterClick = () => {
+      document.title = "NurtureHub";
+      navigate('/register-recipient');
+  };
+
   return (
     <div className={styles.landinpage}>
-      <Link  className={styles.aboutUs} to="/contact-us">Contact us</Link>
-    <Link  className={styles.contactUs} to="/about-us">About us</Link>
-    <Link  className={styles.logIn} to="/Login">Log in</Link>
-      <div className={styles.landinpageInner}>
-        <button className={styles.rectangleParent} onClick={() => navigate('/register-recipient')}>
-          <div className={styles.groupChild} />
-          <div className={styles.register}>Register</div>
-        </button>
-      </div>
+            <Link className={styles.aboutUs} to="/contact-us">Contact us</Link>
+            <Link className={styles.contactUs} to="/about-us">About us</Link>
+            <Link className={styles.logIn} to="/Login">Log in</Link>
+            <div className={styles.landinpageInner}>
+                <button className={styles.rectangleParent} onClick={onRegisterClick}>
+                    <div className={styles.groupChild} />
+                    <div className={styles.register}>Register</div>
+                </button>
+            </div>
       <div className={styles.button}>
         <div className={styles.activeParent}>
           <div className={styles.active}>

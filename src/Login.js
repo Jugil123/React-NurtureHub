@@ -1,5 +1,5 @@
 // Import the necessary dependencies
-import { useCallback, useState, } from "react";
+import { useCallback, useState, useEffect } from "react";
 import styles from "./Login.module.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   // Initialize the navigate hook
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Login";
+  }, []); 
 
   // Callback function to navigate to registration page
   const onRegisterHereClick = useCallback(() => {

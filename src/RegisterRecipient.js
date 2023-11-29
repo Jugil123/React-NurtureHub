@@ -1,12 +1,18 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styles from './RegisterRecipient.module.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 const RegisterRecipient = () => {
+  const navigate = useNavigate();
+
   const onVectorIconClick = useCallback(() => {
-    // Please sync "UserType" to the project
-  }, []);
+    navigate(-1);
+  }, [navigate]);
+
+  useEffect(() => {
+    document.title = "NurtureHub | Register-recipient";
+  }, []); 
 
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -18,7 +24,6 @@ const RegisterRecipient = () => {
   const [contactInfo, setContactInfo] = useState('');
   const [address, setAddress] = useState('');
   const [age, setAge] = useState('');
-  const navigate = useNavigate();
 
   const checkPasswordRequirements = () => {
     let errors = [];

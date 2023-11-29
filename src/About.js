@@ -1,11 +1,17 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import styles from "./Aboutus.module.css";
-import { Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Aboutus = () => {
+  const navigate = useNavigate();
+
   const onVectorClick = useCallback(() => {
-    // Please sync "Login" to the project
-  }, []);
+    navigate(-1);
+  }, [navigate]);
+
+  useEffect(() => {
+    document.title = "NurtureHub | About Us";
+  }, []); 
 
   return (
     <div className={styles.aboutus}>
