@@ -28,7 +28,15 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
+  text-decoration: none;
+  color: black;
 }
+
+.userProfileContainer:hover {
+  background-color: #F5E2D7;
+  cursor: pointer;
+}
+
 
 .navIcon {
   width: 20px; /* Adjust the width as needed */

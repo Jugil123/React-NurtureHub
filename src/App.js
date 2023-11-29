@@ -16,6 +16,8 @@ import AboutUs from './About'
 import ContactUs from './ContactUs'
 import MessageCaregiver from './MessageCaregiver';
 import HistoryCaregiver from './HistoryCaregiver';
+import MyProfile from './MyProfile';
+import ViewCaregiver from './ViewCaregiver';
 
 
 const App = () => {
@@ -41,6 +43,9 @@ const App = () => {
           <Route path="/update-caregiver/:userId" element={<UpdateCaregiver />} />
           <Route path="/message-caregiver" element={<MessageCaregiver />} />
           <Route path="/history-caregiver" element={<HistoryCaregiver />} />
+          <Route path="/my-profile" element={<MyProfile /> } />
+          <Route path="/view-caregiver/:userId" element={<ViewCaregiver /> } />
+          
         </Routes>
       </div>
     </Router>
