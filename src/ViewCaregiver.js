@@ -67,7 +67,7 @@ const ViewCaregiver = () => {
   };
 
   const handleBookCaregiver = () => {
-    console.log('Booking the caregiver');
+    navigate(`/book-caregiver/${userId}`, { state: { userObject, caregiver } });
   };
 
   return (
