@@ -38,7 +38,11 @@ const Home = () => {
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+    navigate(`/view-caregiver/${userId}`);
+  };
+
+  const navigateToMessageRecipient = () => {
+    navigate('/message-recipient', { state: { userObject } });
   };
 
   return (
@@ -65,9 +69,12 @@ const Home = () => {
               </a>
             </li>
             <li>
-              <a href="/messages" className={styles.navLink}>
+              <button
+                className={`${styles.navLink} ${styles.customButton}`}
+                onClick={navigateToMessageRecipient}
+              >
                 <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
-              </a>
+              </button>
             </li>
             <li>
               <a href="/records" className={styles.navLink}>
