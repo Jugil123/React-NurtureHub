@@ -55,7 +55,7 @@ const Login = () => {
         value={username}
         placeholder="Username"
         type="text"
-        defaultValue={username}
+        defaultValue={username} 
       />
       <input
         className={styles.loginItem}
