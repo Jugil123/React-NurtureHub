@@ -7,6 +7,8 @@
  
 }
 
+
+
 .stripedRow1 {
   background-color: rgba(237, 204, 185, 0.79); /* Add your preferred color for the striped rows */
 }
@@ -297,6 +299,12 @@
   font-family: "Maven Pro";
   color: #c3604d;
 }
+
+.tableResponsive{
+  position: absolute;
+  left: calc(23% - 82px);
+}
+
 .dashboardadmin {
   position: relative;
   background-color: #fff;
@@ -307,4 +315,18 @@
   font-size: 18px;
   color: #36575c;
   font-family: Inter;
+}
+
+.exportButton{
+  position: absolute;
+  top: 390px;
+  left: calc(23% - 82px);
+  color: #fff;
+  background-color: #c3604d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }

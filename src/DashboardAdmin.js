@@ -1,7 +1,8 @@
 import styles from "./DashboardAdmin.module.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
 
 const DashboardAdmin = () => {
   const [recipients, setRecipients] = useState([]);
@@ -12,6 +13,40 @@ const DashboardAdmin = () => {
   const [showCareGiverTable, setShowCareGiverTable] = useState(false);
   const [showRecipientTable, setShowRecipientTable] = useState(false);
   const [currentAction, setCurrentAction] = useState(null);
+  const caregiverRef = useRef();
+  const recipientRef = useRef();
+
+  const PrintableCareGiverTable = React.forwardRef((props, ref) => (
+    <div ref={ref}>
+      <CareGiverTable {...props} />
+    </div>
+  ));
+  
+  const PrintableRecipientTable = React.forwardRef((props, ref) => (
+    <div ref={ref}>
+      <RecipientTable {...props} />
+    </div>
+  ));
+
+  const exportCaregiverToPdf = useReactToPrint({
+    content: () => caregiverRef.current,
+    pageStyle: `
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+    `,
+  });
+
+  const exportRecipientToPdf = useReactToPrint({
+    content: () => recipientRef.current,
+    pageStyle: `
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+    `,
+  });
 
   const handleCaregiverLinkClick = (action) => {
     setShowCareGiverTable(true);
@@ -32,11 +67,9 @@ const DashboardAdmin = () => {
     fetchCaregivers();
   }, []);
 
-
   const getStripedStyle = (index) => {
     return index % 2 === 0 ? styles.stripedRow1 : styles.stripedRow2;
   };
-
 
   const fetchRecipients = async () => {
     try {
@@ -46,11 +79,11 @@ const DashboardAdmin = () => {
       console.error('Error fetching recipients', error);
     }
   };
-  
+
   const fetchCaregivers = async () => {
     try {
       const response = await axios.get('http://localhost:8080/caregiver/getAllCaregivers');
-      setCaregivers(response.data); // Assuming the API returns an array of caregivers
+      setCaregivers(response.data);
     } catch (error) {
       console.error('Error fetching caregivers:', error);
     }
@@ -78,10 +111,7 @@ const DashboardAdmin = () => {
   const handleDeleteAccount = async (username) => {
     try {
       const response = await axios.delete(`http://localhost:8080/account/deleteAccount/${username}`);
-      console.log(response.data); // Log the server response
-
-      // You might want to refresh the user list or perform other actions after deletion
-      // For example, you can fetch the updated list of recipients or caregivers
+      console.log(response.data);
       fetchRecipients();
       fetchCaregivers();
     } catch (error) {
@@ -90,19 +120,16 @@ const DashboardAdmin = () => {
   };
 
   const handleDelete = async (userType, userId, username) => {
-
     const userConfirmed = window.confirm(`Are you sure you want to delete the account with username: ${username}?`);
 
-    if(userConfirmed){
+    if (userConfirmed) {
       try {
         const response = await axios.delete(`http://localhost:8080/${userType.toLowerCase()}/delete${userType}/${userId}`);
-        console.log(response.data); // Log the server response
-        // Refresh the user list after deletion
+        console.log(response.data);
         if (userType === 'Recipient') {
           fetchRecipients();
         } else if (userType === 'Caregiver') {
           fetchCaregivers();
-
         }
       } catch (error) {
         console.error(`Error deleting ${userType}`, error);
@@ -111,26 +138,27 @@ const DashboardAdmin = () => {
   };
 
   const handleRegisterCaregiver = () => {
-    // Use the navigate function to redirect to the desired route
     navigate('/register-caregiver');
   };
 
-
   const renderCareGiverTable = () => {
-    const rowHeight = 60; // Adjust this value based on your design
-    const tableHeight = caregivers.length * rowHeight;
+    return <PrintableCareGiverTable ref={caregiverRef} caregivers={caregivers} getStripedStyle={getStripedStyle} handleRowClick={handleRowClick} />;
+  };
+
+  const CareGiverTable = (props) => {
+    const rowHeight = 60;
+    const tableHeight = props.caregivers.length * rowHeight;
 
     return (
       <div>
-        
         {currentAction ? (
-          <div className={styles.caregivers}>
+          <div className={styles.caregivers} ref={props.caregiverRef}>
             {currentAction === 'update'
               ? 'Choose Caregiver to be Updated'
               : 'Choose Caregiver to be Deleted'}
           </div>
         ) : (<div className={styles.caregivers}>Caregivers</div>)}
-        <table className={`${styles.rectangleParent} ${styles.tableContainer}`}  style={{ height: `${tableHeight}px` }}>
+        <table className={`${styles.rectangleParent} ${styles.tableContainer} ${styles.tableResponsive}`} style={{ height: `${tableHeight}px` }}>
           <thead className={`${styles.tableHeader}`}>
             <tr>
               <th>First Name</th>
@@ -146,9 +174,8 @@ const DashboardAdmin = () => {
               <th>Hourly Rate</th>
             </tr>
           </thead>
-  
           <tbody>
-            {caregivers.map((caregiver, index) => (
+            {props.caregivers.map((caregiver, index) => (
               <tr key={caregiver.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Caregiver', caregiver.caregiverId, caregiver.username)}>
                 <td>{caregiver.firstname}</td>
                 <td>{caregiver.lastname}</td>
@@ -165,25 +192,31 @@ const DashboardAdmin = () => {
             ))}
           </tbody>
         </table>
+        <button className={`${styles.exportButton}`} onClick={exportCaregiverToPdf}>
+          Export Caregiver Table to PDF
+        </button>
       </div>
     );
   };
 
   const renderRecipientTable = () => {
-    const rowHeight = 60; // Adjust this value based on your design
-    const tableHeight = recipients.length * rowHeight;
+    return <PrintableRecipientTable ref={recipientRef} recipients={recipients} getStripedStyle={getStripedStyle} handleRowClick={handleRowClick} />;
+  };
+
+  const RecipientTable = (props) => {
+    const rowHeight = 60;
+    const tableHeight = props.recipients.length * rowHeight;
 
     return (
       <div>
-
-      {currentAction ? (
-          <div className={styles.caregivers}>
+        {currentAction ? (
+          <div className={styles.caregivers} ref={props.recipientRef}>
             {currentAction === 'update'
               ? 'Choose Recipient to be Updated'
               : 'Choose Recipient to be Deleted'}
           </div>
         ) : (<div className={styles.caregivers}>Recipients</div>)}
-        <table className={`${styles.rectangleParent} ${styles.tableContainer}`} style={{ height: `${tableHeight}px` }}>
+        <table className={`${styles.rectangleParent} ${styles.tableContainer} ${styles.tableResponsive}`} style={{ height: `${tableHeight}px` }}>
           <thead className={`${styles.tableHeader}`}>
             <tr>
               <th>First Name</th>
@@ -197,9 +230,8 @@ const DashboardAdmin = () => {
               <th>Age</th>
             </tr>
           </thead>
-  
           <tbody>
-            {recipients.map((recipient, index) => (
+            {props.recipients.map((recipient, index) => (
               <tr key={recipient.id} className={`${getStripedStyle(index)} ${styles.clickableRow} ${styles.row}`} onClick={() => handleRowClick('Recipient', recipient.recipientId, recipient.username)}>
                 <td>{recipient.firstname}</td>
                 <td>{recipient.lastname}</td>
@@ -214,16 +246,13 @@ const DashboardAdmin = () => {
             ))}
           </tbody>
         </table>
+        <button className={`${styles.exportButton} `} onClick={exportRecipientToPdf}>
+          Export Recipient Table to PDF
+        </button>
       </div>
     );
   };
 
-
-
-
-
-
- 
   return (
     <div className={styles.dashboardadmin}>
       <div className={styles.dashboardadminChild} />
@@ -273,15 +302,13 @@ const DashboardAdmin = () => {
       <div className={styles.nurturehub1}>NurtureHub</div>
       <div className={styles.welcomeAdmin}>{`Welcome, Admin  `}</div>
       <Link to="/" className={styles.vectorIconLink}>
-      <button className={styles.buttonWrapper}>
-        <div className={styles.button}>Log Out</div>
-      </button>
+        <button className={styles.buttonWrapper}>
+          <div className={styles.button}>Log Out</div>
+        </button>
       </Link>
-     
+   
       {showCareGiverTable && renderCareGiverTable()}
       {showRecipientTable && renderRecipientTable()}
-
-     
     </div>
   );
 };
