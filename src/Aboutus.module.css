@@ -1,206 +1,205 @@
-.groupChild {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1440px;
-  height: 567px;
-}
-.groupInner,
-.groupItem {
-  position: absolute;
-  top: 80px;
-  left: 516px;
-  border-radius: var(--br-sm);
-  width: 874px;
-  height: 416px;
-}
-.groupInner {
-  top: 119px;
-  left: 550px;
-  width: 806px;
-  height: 338px;
-}
-.mottoWhenYour,
-.nameIsaiahJohn {
-  position: absolute;
-  top: 225px;
-  left: 582px;
-  display: inline-block;
-  width: 442px;
-  height: 34px;
-  font-size: 30px;
-  font-family: Mukta;
-}
-.mottoWhenYour {
-  top: 268px;
-  width: 533px;
-  height: 138px;
-}
-.founder {
-  font-size: var(--font-size-11xl);
-}
-.coFounder {
-  position: absolute;
-  top: 140px;
-  left: 582px;
-  display: inline-block;
-  width: 418px;
-  height: 76px;
-  font-size: 50px;
-  font-family: "Maven Pro";
-}
-.isaiah1Icon {
-  position: absolute;
-  top: 79px;
-  left: 36px;
-  width: 426px;
-  height: 408px;
-  object-fit: cover;
-}
-.britt1Icon,
-.vectorParent {
-  position: absolute;
-  top: 3315px;
-  left: 0;
-  width: 1440px;
-  height: 567px;
-}
-.britt1Icon {
-  top: 80px;
-  left: 36px;
-  width: 426px;
-  height: 408px;
-  object-fit: cover;
-}
-.vectorGroup {
-  top: 2637px;
-}
-.rectangleDiv,
-.rectangleGroup,
-.rectangleParent,
-.vectorGroup {
-  position: absolute;
-  left: 0;
-  width: 1440px;
-  height: 567px;
-}
-.rectangleDiv {
-  top: 0;
-  background-color: var(--color-mistyrose);
-}
-.rectangleGroup,
-.rectangleParent {
-  top: 1959px;
-}
-.rectangleGroup {
-  top: 1281px;
-}
-.groupChild10,
-.groupChild9 {
-  position: absolute;
-  top: 72px;
-  left: 516px;
-  border-radius: var(--br-sm);
-  width: 874px;
-  height: 416px;
-}
-.groupChild10 {
-  top: 111px;
-  left: 550px;
-  width: 806px;
-  height: 338px;
-}
-.founder4,
-.mottoEncourageYourself,
-.nameAndreiVincent {
-  position: absolute;
-  top: 213px;
-  left: 582px;
-  display: inline-block;
-  width: 442px;
-  height: 34px;
-  font-size: 30px;
-  font-family: Mukta;
-}
-.founder4,
-.mottoEncourageYourself {
-  top: 256px;
-  width: 533px;
-  height: 138px;
-}
-.founder4 {
-  top: 128px;
-  left: 579px;
-  width: 168px;
-  height: 76px;
-  font-size: 50px;
-  font-family: "Maven Pro";
-}
-.andrei1Icon {
-  position: absolute;
-  top: 72px;
-  left: 36px;
-  width: 426px;
-  height: 408px;
-  object-fit: cover;
-}
-.rectangleContainer {
-  position: absolute;
-  top: 603px;
-  left: 0;
-  width: 1440px;
-  height: 567px;
-}
 .nurturehublogo42x1Icon {
   position: absolute;
   top: 0;
-  left: 445px;
-  width: 434px;
-  height: 297px;
+  left: 84px;
+  width: 307px;
+  height: 270px;
   object-fit: cover;
 }
 .nurturehub {
   position: absolute;
-  top: 291px;
-  left: 242px;
-  font-size: 100px;
+  top: 270px;
+  left: 0;
   letter-spacing: 0.1em;
   font-weight: 900;
-}
-.vectorIcon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 51px;
-  height: 65px;
-  cursor: pointer;
-}
-.aboutUs {
-  position: absolute;
-  top: 389px;
-  left: 158px;
-  font-size: 120px;
-  letter-spacing: 0.4em;
-  font-weight: 900;
-  color: #cb7918;
+  display: inline-block;
+  width: 527px;
+  height: 68px;
 }
 .nurturehublogo42x1Parent {
   position: absolute;
-  top: 55px;
-  left: 58px;
-  width: 1166px;
-  height: 539px;
-  font-size: var(--font-size-45xl);
-  color: #c3604d;
-  font-family: var(--font-maven-pro);
+  top: 646px;
+  left: 228px;
+  width: 527px;
+  height: 338px;
+  font-size: 64px;
+}
+.groupChild {
+  position: absolute;
+  top: calc(50% - 223px);
+  left: calc(50% - 388.5px);
+  border-radius: var(--br-10xl);
+  width: 777px;
+  height: 446px;
+}
+.welcomeToNurture {
+  position: absolute;
+  top: 81px;
+  left: 65px;
+  font-weight: 900;
+  display: inline-block;
+  width: 648px;
+  height: 305px;
+}
+.vectorParent {
+  position: absolute;
+  top: calc(50% - 473px);
+  left: calc(50% - 57px);
+  width: 777px;
+  height: 446px;
+  text-align: justify;
+  color: #cb7918;
+}
+.aboutusChild {
+  position: absolute;
+  top: 1127px;
+  left: calc(50% - 721px);
+  background-color: #edccb9;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 1441px;
+  height: 344px;
+}
+.britt1Icon,
+.isaiah1Icon {
+  position: absolute;
+  height: 156px;
+}
+.isaiah1Icon {
+  top: 0;
+  left: 956px;
+  border-radius: var(--br-xl);
+  width: 163px;
+  object-fit: cover;
+}
+.britt1Icon {
+  left: 717px;
+}
+.britt1Icon,
+.jugil1Icon,
+.juspher1Icon {
+  top: 0;
+  border-radius: var(--br-xl);
+  width: 163px;
+  object-fit: cover;
+}
+.juspher1Icon {
+  position: absolute;
+  left: 239px;
+  height: 156px;
+}
+.jugil1Icon {
+  left: 478px;
+}
+.andrei1Icon,
+.isaiah1Parent,
+.jugil1Icon {
+  position: absolute;
+  height: 156px;
+}
+.andrei1Icon {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  width: 163px;
+  object-fit: cover;
+}
+.isaiah1Parent {
+  top: 1199px;
+  left: 390px;
+  width: 1119px;
+}
+.coFounder,
+.coFounder1,
+.coFounder2,
+.coFounder3,
+.founder {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 538px);
+  letter-spacing: 0.09em;
+  display: inline-block;
+  width: 102px;
+  height: 27px;
+}
+.coFounder,
+.coFounder1,
+.coFounder2,
+.coFounder3 {
+  top: calc(50% - 11px);
+  left: calc(50% - 318px);
+  width: 139px;
+  height: 26px;
+}
+.coFounder1,
+.coFounder2,
+.coFounder3 {
+  top: calc(50% - 12px);
+  left: calc(50% + 160px);
+}
+.coFounder2,
+.coFounder3 {
+  top: calc(50% - 15px);
+  left: calc(50% + 399px);
+}
+.coFounder3 {
+  left: calc(50% - 80px);
+}
+.founderParent {
+  position: absolute;
+  top: calc(50% + 304px);
+  left: calc(50% - 528px);
+  width: 1076px;
+  height: 30px;
+  color: var(--color-black);
+  font-family: var(--font-mukta);
+}
+.nurturehub1 {
+  position: absolute;
+  top: 40px;
+  left: 151px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+.nurturehublogo2Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 155px;
+  height: 128px;
+  object-fit: cover;
+}
+.nurturehubParent {
+  position: absolute;
+  top: 42px;
+  left: 754px;
+  width: 416px;
+  height: 128px;
+  font-size: var(--font-size-17xl);
+}
+.image16Icon {
+  position: absolute;
+  top: 197px;
+  left: calc(50% - 714px);
+  width: 1429px;
+  height: 280px;
+  object-fit: cover;
+}
+.vectorIcon {
+  position: absolute;
+  top: 24px;
+  left: 23px;
+  width: 43px;
+  height: 40px;
+  cursor: pointer;
 }
 .aboutus {
-  background-color: #fff;
-  width: 1440px;
-  height: 3998px;
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 2130px;
   overflow: hidden;
   text-align: left;
-  font-size: var(--font-size-11xl);
-  color: var(--color-black);
-  font-family: var(--font-inria-serif);
+  font-size: var(--font-size-xl);
+  color: var(--color-indianred);
+  font-family: var(--font-maven-pro);
 }
