@@ -57,6 +57,13 @@ const RegisterRecipient = () => {
       return; // Stop the registration process if password validation fails
     }
 
+    const isConfirmed = window.confirm('Are you sure you want to register as Recipient?');
+
+    if (!isConfirmed) {
+      return; // Registration canceled by the user
+    }
+  
+
     try {
       // Step 1: Register the recipient
       const recipientResponse = await axios.post('http://localhost:8080/recipient/insertRecipient', {

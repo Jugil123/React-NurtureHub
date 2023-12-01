@@ -54,6 +54,14 @@ const RegisterCaregiver = () => {
       return;
     }
 
+    // Show confirmation dialog
+  const isConfirmed = window.confirm('Are you sure you want to register as Caregiver?');
+
+  if (!isConfirmed) {
+    // User canceled registration
+    return;
+  }
+
     try {
       const response = await axios.post('http://localhost:8080/caregiver/insertCaregiver', {
         firstname,
