@@ -1,0 +1,94 @@
+.nurturehub {
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+  .empathyUnleashedCare {
+    position: absolute;
+    top: 42px;
+    left: 3px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.02em;
+    font-weight: 300;
+    font-family: var(--font-open-sans-condensed);
+    color: var(--color-black);
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    width: 316px;
+    mix-blend-mode: normal;
+  }
+  .groupChild {
+    position: absolute;
+    top: 109px;
+    left: 75px;
+    width: 44px;
+    height: 45px;
+  }
+  .nurturehubParent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 319px;
+    height: 154px;
+  }
+  .aboutUs,
+  .contactUs,
+  .faq {
+    position: absolute;
+    top: 0;
+    left: 9px;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+  }
+  .contactUs,
+  .faq {
+    top: 98px;
+    left: 32px;
+  }
+  .contactUs {
+    top: 47px;
+    left: 0;
+  }
+  .aboutUsParent {
+    position: absolute;
+    top: 0;
+    left: 431px;
+    width: 114px;
+    height: 147px;
+    text-align: justify;
+    color: var(--color-black);
+    font-family: var(--font-open-sans-condensed);
+  }
+  .groupContainer {
+    position: absolute;
+    top: 0;
+    left: 130px;
+    width: 545px;
+    height: 154px;
+  }
+  .copyright2023 {
+    position: absolute;
+    top: 239px;
+    left: 239px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.02em;
+    font-weight: 300;
+    font-family: var(--font-open-sans-condensed);
+    color: var(--color-black);
+    text-align: justify;
+  }
+  .groupParent {
+    position: absolute;
+    top: 1842px;
+    left: 448px;
+    width: 545px;
+    height: 266px;
+    text-align: left;
+    font-size: var(--font-size-17xl);
+    color: var(--color-indianred);
+    font-family: var(--font-maven-pro);
+  }
+  

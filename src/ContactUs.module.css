@@ -1,0 +1,84 @@
+.nurturehub {
+    position: absolute;
+    top: 40px;
+    left: 151px;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+  .nurturehublogo2Icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 155px;
+    height: 128px;
+    object-fit: cover;
+  }
+  .nurturehubParent,
+  .vectorIcon {
+    position: absolute;
+    top: 40px;
+    left: 635px;
+    width: 416px;
+    height: 128px;
+  }
+  .vectorIcon {
+    top: 20px;
+    left: 20px;
+    width: 43px;
+    height: 40px;
+    cursor: pointer;
+  }
+  .image17Icon {
+    position: absolute;
+    top: 188px;
+    left: calc(50% - 720px);
+    width: 1442px;
+    height: 490px;
+    object-fit: cover;
+  }
+  .contactUs1 {
+    position: absolute;
+    top: 799px;
+    left: calc(50% - 141px);
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+  .contactUsChild,
+  .contactUsItem {
+    position: absolute;
+    top: 752px;
+    left: calc(50% - 720px);
+    background-color: var(--color-orange);
+    width: 1441px;
+    height: 27px;
+  }
+  .contactUsItem {
+    top: 977px;
+  }
+  .emailAddressNurturehubgmai {
+    margin: 0;
+  }
+  .phoneNumber1234567890Container {
+    position: absolute;
+    top: 869px;
+    left: calc(50% - 193px);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-black);
+    text-align: center;
+    display: inline-block;
+    width: 386px;
+    height: 80px;
+  }
+  .contactUs {
+    position: relative;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 1426px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-17xl);
+    color: var(--color-indianred);
+    font-family: var(--font-maven-pro);
+  }
+  
