@@ -105,6 +105,7 @@ const UpdateRecipient = () => {
         value={recipient.contact_info}
         placeholder="Contact Information"
         type="text"
+        pattern="^[0-9+\- ]+$"
         onChange={(e) => setRecipient({ ...recipient, contact_info: e.target.value })}
       />
       <input

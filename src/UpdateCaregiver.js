@@ -92,7 +92,7 @@ const UpdateCaregiver = () => {
         className={styles.updatecaregiverItem}
         value={caregiver.birth_date}
         placeholder="Birth Date"
-        type="text"
+        type="date"
         onChange={(e) => setCaregiver({ ...caregiver, birth_date: e.target.value })}
       />
       <input
@@ -107,6 +107,7 @@ const UpdateCaregiver = () => {
         value={caregiver.contact_information}
         placeholder="Contact Information"
         type="text"
+        pattern="^[0-9+\- ]+$"
         onChange={(e) => setCaregiver({ ...caregiver, contact_information: e.target.value })}
       />
       <input
