@@ -1,5 +1,12 @@
 /* ViewCaregiver.module.css */
 
+.messageContainer{
+  grid-column: 3 / span 5;
+  padding: 20px;
+  border: 1px solid #ccc;
+  height: 100%; 
+}
+
 .viewCaregiverContainer {
   display: flex;
   justify-content: space-between;
@@ -50,12 +57,13 @@
 /* HomeRecipient.module.css */
 
 .homeContainer {
-  display: flex;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: 18% 25%  auto; 
+  height: 100vh;/* Updated this line */
 }
 
 .navColumn {
-  width: 15%;
+ 
   background-color: white;
   border-right: 1px solid #ccc;
   padding: 20px;
@@ -139,8 +147,10 @@
 }
 
 .contentColumn {
-  flex: 1;
+  grid-column: 2 / span 1;
   padding: 20px;
+  border: 1px solid #ccc;
+  height: 100%; 
 }
 
 .searchBarContainer {

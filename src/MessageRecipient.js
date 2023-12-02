@@ -8,6 +8,42 @@ const MessageRecipient  = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [messageInput, setMessageInput] = useState('');
+  const [conversations, setConversations] = useState({
+    Admin: [
+      { sender: 'Admin', text: 'Hi, how can I assist you?' },
+      { sender: 'John Doe', text: 'Hello! I have a question.' },
+      { sender: 'Admin', text: 'Sure, go ahead.' },
+    ],
+    'Caregiver 1': [
+      { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
+    ],
+    'Caregiver 2': [
+      { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
+    ],
+  });
+
+  const users = [
+    { id: 1, name: 'Admin', messages: [] },
+    { id: 2, name: 'Caregiver 1', messages: [] },
+    { id: 3, name: 'Caregiver 2', messages: [] },
+  ];
+
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
+  };
+
+  const handleSendMessage = () => {
+    if (selectedUser && messageInput.trim() !== '') {
+      const newMessage = { sender: 'John Doe', text: messageInput };
+      setConversations((prevConversations) => ({
+        ...prevConversations,
+        [selectedUser.name]: [...(prevConversations[selectedUser.name] || []), newMessage],
+      }));
+      setMessageInput('');
+    }
+  };
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
@@ -56,55 +92,11 @@ const MessageRecipient  = () => {
 
 
   const Messages = () => {
-    const [selectedUser, setSelectedUser] = useState(null);
-    const [messageInput, setMessageInput] = useState('');
-    const [conversations, setConversations] = useState({
-      Admin: [
-        { sender: 'Admin', text: 'Hi, how can I assist you?' },
-        { sender: 'John Doe', text: 'Hello! I have a question.' },
-        { sender: 'Admin', text: 'Sure, go ahead.' },
-      ],
-      'Caregiver 1': [
-        { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
-      ],
-      'Caregiver 2': [
-        { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
-      ],
-    });
-  
-    const users = [
-      { id: 1, name: 'Admin', messages: [] },
-      { id: 2, name: 'Caregiver 1', messages: [] },
-      { id: 3, name: 'Caregiver 2', messages: [] },
-    ];
-  
-    const handleUserClick = (user) => {
-      setSelectedUser(user);
-    };
-  
-    const handleSendMessage = () => {
-      if (selectedUser && messageInput.trim() !== '') {
-        const newMessage = { sender: 'John Doe', text: messageInput };
-        setConversations((prevConversations) => ({
-          ...prevConversations,
-          [selectedUser.name]: [...(prevConversations[selectedUser.name] || []), newMessage],
-        }));
-        setMessageInput('');
-      }
-    };
+   
   
     return (
       <div className={styles.messageContainer}>
-        <div className={styles.userList}>
-          <h2>Conversations</h2>
-          <ul>
-            {users.map((user) => (
-              <li key={user.id} onClick={() => handleUserClick(user)} className={selectedUser === user ? styles.selectedUser : ''}>
-                {user.name}
-              </li>
-            ))}
-          </ul>
-        </div>
+        
         <div className={styles.messageArea}>
           <h2>{selectedUser ? `Chat with ${selectedUser.name}` : 'Select a user to start chatting'}</h2>
           <div className={styles.messages}>
@@ -185,6 +177,7 @@ const MessageRecipient  = () => {
             <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
           </button>
         </div>
+
         {searchResults.map((user) => (
           <div
             key={user.id}
@@ -198,8 +191,17 @@ const MessageRecipient  = () => {
             </div>
           </div>
         ))}
+
+          <h2>Conversations</h2>
+          <ul>
+            {users.map((user) => (
+              <li key={user.id} onClick={() => handleUserClick(user)} className={selectedUser === user ? styles.selectedUser : ''}>
+                {user.name}
+              </li>
+            ))}
+          </ul>
+          </div>
         <Messages />
-      </div>
     </div>
   );
 };
