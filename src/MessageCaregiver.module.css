@@ -1,386 +1,203 @@
-.messagecaregiverChild,
-.messagecaregiverItem {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(239, 163, 131, 0.32);
-  border: 1px solid #000;
-  box-sizing: border-box;
-  width: 263px;
-  height: 1024px;
+/* ViewCaregiver.module.css */
+
+.messageContainer{
+  grid-column: 3 / span 5;
+  padding: 20px;
+  border: 1px solid #ccc;
+  height: 100%; 
 }
-.messagecaregiverItem {
-  left: 263px;
-  background-color: rgba(239, 163, 131, 0.33);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 448px;
+
+.viewCaregiverContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
-.messagecaregiverInner {
-  top: 0;
-  left: 712px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-  width: 100%;
-  height: 125px;
+
+.caregiverDetailsColumn {
+  flex: 1;
 }
-.groupChild,
-.messagecaregiverInner,
-.rectangleInput {
-  position: absolute;
-  background-color: #edccb9;
+
+.caregiverDetails {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
 }
-.rectangleInput {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  top: 930px;
-  left: 712px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 94px;
-}
-.groupChild {
-  top: 0;
-  left: 0;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 260px;
-  height: 72px;
-}
-.vectorIcon {
-  position: absolute;
-  height: 63.89%;
-  width: 18.46%;
-  top: 16.67%;
-  right: 68.85%;
-  bottom: 19.44%;
-  left: 12.69%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.messages {
-  position: absolute;
-  top: 17px;
-  left: 93px;
-  font-size: 30px;
-  font-family: Inter;
-  color: #000;
-  text-align: left;
-}
-.rectangleParent {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  position: absolute;
-  top: 213px;
-  left: 0;
-  width: 260px;
-  height: 72px;
-}
-.vectorIcon1 {
-  position: absolute;
-  height: 95.12%;
-  width: 29.94%;
-  top: 4.88%;
-  right: 70.06%;
-  bottom: 0;
-  left: 0;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.home,
-.vectorParent {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  position: absolute;
-}
-.home {
-  top: 0;
-  left: 73px;
-  font-size: 30px;
-  font-family: Inter;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-}
-.vectorParent {
-  height: 4%;
-  width: 10.9%;
-  top: 14.16%;
-  right: 86.81%;
-  bottom: 81.84%;
-  left: 2.29%;
-}
-.groupInput,
-.rectangleA {
-  position: absolute;
-  left: 264px;
-}
-.groupInput {
-  border: 0;
-  background-color: transparent;
-  top: 38px;
-  width: 447px;
-  height: 69px;
-}
-.rectangleA {
-  text-decoration: none;
-  top: 209px;
-  background-color: #edccb9;
-  width: 448px;
-  height: 107px;
-}
-.image1Icon {
-  position: absolute;
-  top: 229px;
-  left: 276px;
-  border-radius: 133px;
-  width: 85px;
-  height: 70px;
-  object-fit: cover;
-}
-.vectorIcon2 {
-  position: absolute;
-  height: 3.1%;
-  width: 2.83%;
-  top: 94.06%;
-  right: 2.81%;
-  bottom: 2.84%;
-  left: 94.35%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.image7Icon,
-.image8Icon,
-.image9Icon {
-  position: absolute;
-  top: 219px;
-  left: 762px;
-  border-radius: 133px;
-  width: 85px;
-  height: 70px;
-  object-fit: cover;
-}
-.image7Icon,
-.image9Icon {
-  top: 289px;
-  left: 1296px;
-}
-.image7Icon {
-  top: 34px;
-  left: 751px;
-}
-.firstnameMLastname,
-.hello {
-  position: absolute;
-  top: 237px;
-  left: 378px;
-}
-.hello {
-  top: 268px;
-  color: rgba(49, 35, 35, 0.68);
-}
-.messagecaregiverChild1 {
-  text-decoration: none;
-  position: absolute;
-  top: 513px;
-  left: 264px;
-  background-color: #edccb9;
-  width: 448px;
-  height: 107px;
-}
-.image12Icon {
-  position: absolute;
-  top: 533px;
-  left: 276px;
-  border-radius: 133px;
-  width: 85px;
-  height: 70px;
-  object-fit: cover;
-}
-.firstnameMLastname1,
-.hello1 {
-  position: absolute;
-  top: 541px;
-  left: 378px;
-}
-.hello1 {
-  top: 572px;
-  color: rgba(49, 35, 35, 0.68);
-}
-.messagecaregiverChild2 {
-  text-decoration: none;
-  position: absolute;
-  top: 406px;
-  left: 264px;
-  background-color: #edccb9;
-  width: 448px;
-  height: 107px;
-}
-.image11Icon {
-  position: absolute;
-  top: 426px;
-  left: 276px;
-  border-radius: 133px;
-  width: 85px;
-  height: 70px;
-  object-fit: cover;
-}
-.firstnameMLastname2,
-.hello2 {
-  position: absolute;
-  top: 434px;
-  left: 378px;
-}
-.hello2 {
-  top: 465px;
-  color: rgba(49, 35, 35, 0.68);
-}
-.messagecaregiverChild3 {
-  text-decoration: none;
-  position: absolute;
-  top: 316px;
-  left: 264px;
-  background-color: #edccb9;
-  width: 448px;
-  height: 107px;
-}
-.image10Icon {
-  position: absolute;
-  top: 336px;
-  left: 276px;
-  border-radius: 133px;
-  width: 85px;
-  height: 70px;
-  object-fit: cover;
-}
-.firstnameMLastname3,
-.hello3 {
-  position: absolute;
-  top: 344px;
-  left: 378px;
-}
-.hello3 {
-  top: 375px;
-  color: rgba(49, 35, 35, 0.68);
-}
-.firstnameMLastname4 {
-  position: absolute;
-  top: 49px;
-  left: 861px;
-  font-size: 30px;
-}
-.rectangleDiv {
-  position: absolute;
-  top: 222px;
-  left: 861px;
-  border-radius: 15px;
-  background-color: #d9d9d9;
-  width: 87px;
-  height: 62px;
-}
-.hello4 {
-  position: absolute;
-  top: 238px;
-  left: 872px;
-  font-size: 28px;
-  color: rgba(0, 0, 0, 0.7);
-}
-/* .messagecaregiverChild4 {
-  position: absolute;
-  top: 298px;
-  left: 1191px;
-  border-radius: 15px;
-  background-color: #d9d9d9;
-  width: 90px;
-  height: 62px;
-} */
-.hello5 {
-  position: absolute;
-  top: 313px;
-  left: 1200px;
-  font-size: 28px;
-  color: rgba(0, 0, 0, 0.7);
-}
-.vectorIcon3 {
-  position: absolute;
-  height: 97.5%;
-  width: 26.59%;
-  top: 2.5%;
-  right: 0;
-  bottom: 0;
-  left: 73.41%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.logOut {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 30px;
-  font-family: Inter;
-  color: #000;
-  text-align: left;
-}
-.vectorGroup {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  position: absolute;
-  height: 3.91%;
-  width: 12.01%;
-  top: 92.77%;
-  right: 85.14%;
-  bottom: 3.32%;
-  left: 2.85%;
-}
-.vectorIcon4 {
-  position: absolute;
-  height: 100%;
-  width: 28.57%;
-  top: 0;
-  right: 71.43%;
-  bottom: 0;
-  left: 0;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.history {
-  position: absolute;
-  top: 5px;
-  left: 66px;
-  font-size: 30px;
-  font-family: Inter;
-  color: #000;
-  text-align: left;
-}
-.vectorContainer {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  position: absolute;
-  height: 4.49%;
-  width: 11.67%;
-  top: 30.86%;
-  right: 86.04%;
-  bottom: 64.65%;
-  left: 2.29%;
-}
-.messagecaregiver {
-  position: relative;
-  background-color: #fff;
-  width: 100%;
-  height: 1024px;
-  overflow: hidden;
-  text-align: left;
+
+.caregiverName {
   font-size: 24px;
-  color: #000;
-  font-family: Inter;
+  font-weight: bold;
+}
+
+.caregiverAddress,
+.caregiverInfo {
+  margin: 10px 0;
+}
+
+.userProfileContainerButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.userProfileContainerButtons button {
+  padding: 10px;
+  background-color: #F5E2D7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.userProfileContainerButtons button:hover {
+  background-color: #C3604D;
+}
+
+
+
+
+/* HomeRecipient.module.css */
+
+.homeContainer {
+  display: grid;
+  grid-template-columns: 18% 25%  auto; 
+  height: 100vh;/* Updated this line */
+}
+
+.navColumn {
+ 
+  background-color: white;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  height: 100%;
+}
+
+.logoContainer {
+  margin-bottom: 20px;
+}
+
+.appLogo {
+  max-width: 30%;
+}
+
+.userProfileContainer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+}
+
+.userProfileContainer:hover {
+  background-color: #F5E2D7;
+  cursor: pointer;
+}
+
+
+.navIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+
+.userProfilePicture {
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userProfileInfo {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navLinksContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: grey;
+  cursor: pointer;
+
+}
+
+.navLink:hover,
+.navLink:active {
+  background-color: #f0f0f0;
+}
+
+.activeNavLink {
+  background-color: #F5E2D7; /* Add a background color to indicate the active state */
+  color: #C3604D;
+  font-weight: bold;
+
+}
+
+.contentColumn {
+  grid-column: 2 / span 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  height: 100%; 
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.searchButton {
+  background-color: #F5E2D7;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.searchIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+}
+
+
+.inputArea {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.inputArea input {
+  flex: 1;
+  padding: 8px;
+}
+
+.inputArea button {
+  padding: 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

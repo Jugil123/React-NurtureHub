@@ -1,76 +1,206 @@
-import { useCallback } from "react";
-import styles from "./MessageCaregiver.module.css";
-import { Link, } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import styles from './MessageCaregiver.module.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const MessageCaregiver = () => {
-  const onGroupButton2Click = useCallback(() => {
-    // Please sync "Login" to the project
-  }, []);
+const MessageRecipient  = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [messageInput, setMessageInput] = useState('');
+  const [conversations, setConversations] = useState({
+    Admin: [
+      { sender: 'Admin', text: 'Hi, how can I assist you?' },
+      { sender: 'John Doe', text: 'Hello! I have a question.' },
+      { sender: 'Admin', text: 'Sure, go ahead.' },
+    ],
+    'Caregiver 1': [
+      { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
+    ],
+    'Caregiver 2': [
+      { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
+    ],
+  });
 
-  const onGroupButton3Click = useCallback(() => {
-    // Please sync "HistoryCaregiver" to the project
-  }, []);
+  const users = [
+    { id: 1, name: 'Admin', messages: [] },
+    { id: 2, name: 'Caregiver 1', messages: [] },
+    { id: 3, name: 'Caregiver 2', messages: [] },
+  ];
+
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
+  };
+
+  const handleSendMessage = () => {
+    if (selectedUser && messageInput.trim() !== '') {
+      const newMessage = { sender: 'John Doe', text: messageInput };
+      setConversations((prevConversations) => ({
+        ...prevConversations,
+        [selectedUser.name]: [...(prevConversations[selectedUser.name] || []), newMessage],
+      }));
+      setMessageInput('');
+    }
+  };
+
+  // Extract userObject from location state
+  const userObject = location.state ? location.state.userObject : null;
+
+  useEffect(() => {
+    // Perform any initial setup using userObject if needed
+    console.log('userObject:', userObject);
+  }, [userObject]);
+
+  const handleSearch = async () => {
+    setSearchResults([]);
+    console.log('Search Term:', searchTerm);
+    try {
+      // Make an HTTP GET request to the backend API with the search term
+      const response = await axios.get(`http://localhost:8080/caregiver/searchCaregiver?searchString=${searchTerm}`);
+      setSearchResults(response.data); // Update search results with the data from the backend
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const navigateToMyProfile = () => {
+    navigate('/my-profile', { state: { userObject } });
+  };
+
+  const navigateToViewCaregiver = (userId) => {
+    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+  };
+
+  const navigateToMessageCaregiver = () => {
+    navigate('/message-caregiver', { state: { userObject } });
+  };
+
+  const navigateToHistoryCaregiver= () => {
+    navigate('/history-caregiver', { state: { userObject } });
+  };
+
+  const navigateToHomeCaregiver = () => {
+    navigate('/home-caregiver', { state: { userObject } });
+  };
+  const Messages = () => {
+   
+  
+    return (
+      <div className={styles.messageContainer}>
+        
+        <div className={styles.messageArea}>
+          <h2>{selectedUser ? `Chat with ${selectedUser.name}` : 'Select a user to start chatting'}</h2>
+          <div className={styles.messages}>
+            {selectedUser &&
+              (conversations[selectedUser.name] || []).map((message, index) => (
+                <div key={index} className={styles.message}>
+                  <strong>{message.sender}:</strong> {message.text}
+                </div>
+              ))}
+          </div>
+          {selectedUser && (
+            <div className={styles.inputArea}>
+              <input
+                type="text"
+                placeholder="Type your message..."
+                value={messageInput}
+                onChange={(e) => setMessageInput(e.target.value)}
+              />
+              <button onClick={handleSendMessage}>Send</button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+  
+
+
 
   return (
-    <div className={styles.messagecaregiver}>
-      <div className={styles.messagecaregiverChild} />
-      <div className={styles.messagecaregiverItem} />
-      <div className={styles.messagecaregiverInner} />
-      <input
-        className={styles.rectangleInput}
-        placeholder="Type a message"
-        type="text"
-      />
-      <button className={styles.rectangleParent}>
-        <div className={styles.groupChild} />
-        <img className={styles.vectorIcon} alt="" src="/message.png" />
-        <div className={styles.messages}>Messages</div>
-      </button>
-      <Link to="/home-caregiver" className={styles.vectorIconLink}>
-      <button className={styles.vectorParent}>
-        <img className={styles.vectorIcon1} alt="" src="/25694.png" />
-        <button className={styles.home}>Home</button>
-      </button>
-      </Link>
-      <input className={styles.groupInput} placeholder="Search" type="text" />
-      <a className={styles.rectangleA} />
-      <img className={styles.image1Icon} alt="" src="/jugil.png" />
-      
-      <img className={styles.image8Icon} alt="" src="/isaiah.png" />
-      {/* <img className={styles.image9Icon} alt="" src="/jugil.png" /> */}
-      <img className={styles.image7Icon} alt="" src="/isaiah.png" />
-      <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
-      <div className={styles.hello}>Hello</div>
-      <a className={styles.messagecaregiverChild1} />
-      <img className={styles.image12Icon} alt="" src="/juspher.png" />
-      <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
-      <div className={styles.hello1}>Hello</div>
-      <a className={styles.messagecaregiverChild2} />
-      <img className={styles.image11Icon} alt="" src="/britt.png" />
-      <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
-      <div className={styles.hello2}>Hello</div>
-      <a className={styles.messagecaregiverChild3} />
-      <img className={styles.image10Icon} alt="" src="/andrei.png" />
-      <div className={styles.firstnameMLastname3}>Firstname M. Lastname</div>
-      <div className={styles.hello3}>Hello</div>
-      <div className={styles.firstnameMLastname4}>Firstname M. Lastname</div>
-      <div className={styles.rectangleDiv} />
-      <div className={styles.hello4}>Hello</div>
-      <div className={styles.messagecaregiverChild4} />
-      {/* <div className={styles.hello5}>Hello!</div> */}
-      <Link to="/" className={styles.vectorIconLink}>
-      <button className={styles.vectorGroup} onClick={onGroupButton2Click}>
-        <div className={styles.logOut}>Log Out</div>
-      </button>
-      </Link>
-      <Link to="/history-caregiver" className={styles.vectorIconLink}>
-      <button className={styles.vectorContainer} onClick={onGroupButton3Click}>
-        <img className={styles.vectorIcon4} alt="" src="/download.png" />
-        <div className={styles.history}>History</div>
-      </button>
-      </Link>
+    <div className={styles.homeContainer}>
+      <div className={styles.navColumn}>
+        <div className={styles.logoContainer}>
+          <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
+        </div>
+        <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
+          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+          <div>
+            {userObject ? (
+              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+            ) : (
+              <p className={styles.userProfileInfo}>Firstname Lastname</p>
+            )}
+          </div>
+        </div>
+        <div>
+        <ul className={styles.navLinksContainer}>
+            <li>
+              <div className={styles.navLink} onClick={navigateToHomeCaregiver}>
+                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+              </div>
+            </li>
+            <li>
+              <div
+                className={`${styles.navLink} ${styles.activeNavLink}`}
+                onClick={navigateToMessageCaregiver}
+              >
+                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+              </div>
+            </li>
+            <li>
+              <div className={styles.navLink}  onClick={navigateToHistoryCaregiver}>
+                <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
+              </div>
+            </li>
+            <li>
+              <a href="/login" className={styles.navLink}>
+                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className={styles.contentColumn}>
+        <div className={styles.searchBarContainer}>
+          <input type="text" placeholder="Search users..." className={styles.searchInput} value={searchTerm} onChange={handleSearchInputChange}/>
+          <button className={styles.searchButton} onClick={handleSearch}>
+            <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
+          </button>
+        </div>
+
+        {searchResults.map((user) => (
+          <div
+            key={user.id}
+            className={styles.userProfileContainer}
+            onClick={() => navigateToViewCaregiver(user.caregiverId)}
+          >
+            <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+            <div>
+              <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
+              <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
+            </div>
+          </div>
+        ))}
+
+          <h2>Conversations</h2>
+          <ul>
+            {users.map((user) => (
+              <li key={user.id} onClick={() => handleUserClick(user)} className={selectedUser === user ? styles.selectedUser : ''}>
+                {user.name}
+              </li>
+            ))}
+          </ul>
+          </div>
+        <Messages />
     </div>
   );
 };
 
-export default MessageCaregiver;
+export default MessageRecipient ;

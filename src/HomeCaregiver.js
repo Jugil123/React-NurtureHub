@@ -1,89 +1,92 @@
-import { useCallback } from "react";
-import styles from "./HomeCaregiver.module.css";
-import { Link, } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import styles from './HomeCaregiver.module.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const HomeCaregiver = () => {
-  const onMessagesTextClick = useCallback(() => {
-    // Please sync "Messages" to the project
-  }, []);
+const Home = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const onGroupButton2Click = useCallback(() => {
-    // Please sync "Login" to the project
-  }, []);
+  // Extract userObject from location state
+  const userObject = location.state ? location.state.userObject : null;
 
-  const onHistoryTextClick = useCallback(() => {
-    // Please sync "Desktop - 11" to the project
-  }, []);
+  useEffect(() => {
+    // Perform any initial setup using userObject if needed
+    console.log('userObject:', userObject);
+  }, [userObject]);
+
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const navigateToMyProfile = () => {
+    navigate('/my-profile', { state: { userObject } });
+  };
+
+  const navigateToMessageCaregiver = () => {
+    navigate('/message-caregiver', { state: { userObject } });
+  };
+
+  const navigateToHistoryCaregiver= () => {
+    navigate('/history-caregiver', { state: { userObject } });
+  };
+
+  const navigateToHomeCaregiver = () => {
+    navigate('/home-caregiver', { state: { userObject } });
+  };
+
 
   return (
-    <div className={styles.homecaregiver}>
-      <div className={styles.homecaregiverChild} />
-      <div className={styles.homecaregiverItem} />
-      <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
-      <img className={styles.image1Icon} alt="" src="/andrei.png" />
-      <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-      <Link to="/message-caregiver" className={styles.vectorIconLink}>
-      <button className={styles.vectorParent}>
-        <img className={styles.vectorIcon1} alt="" src="/message.png" />
-        <div className={styles.messages} onClick={onMessagesTextClick}>
-          Messages
+    <div className={styles.homeContainer}>
+      <div className={styles.navColumn}>
+        <div className={styles.logoContainer}>
+          <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
-      </button>
-      </Link>
-      <button className={styles.rectangleParent}>
-        <div className={styles.groupChild} />
-        <img className={styles.vectorIcon2} alt="" src="/25694.png" />
-        <div className={styles.home}>Home</div>
-      </button>
-      <Link to="/" className={styles.vectorIconLink}>
-      <button className={styles.vectorGroup} onClick={onGroupButton2Click}>
-        <div className={styles.logOut}>Log Out</div>
-      </button>
-      </Link>
-      <Link to="/history-caregiver" className={styles.vectorIconLink}>
-      <button className={styles.vectorContainer}>
-        <img className={styles.vectorIcon4} alt="" src="/download.png" />
-        <div className={styles.history} onClick={onHistoryTextClick}>
-          History
+        <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
+          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+          <div>
+            {userObject ? (
+              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+            ) : (
+              <p className={styles.userProfileInfo}>Firstname Lastname</p>
+            )}
+          </div>
         </div>
-      </button>
-      </Link>
-      <div className={styles.bookingRequests}>Booking Requests</div>
-      <div className={styles.homecaregiverInner} />
-      <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
-      <img className={styles.image15Icon} alt="" src="/britt.png" />
-      <div className={styles.rectangleDiv} />
-      <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
-      <img className={styles.image14Icon} alt="" src="/juspher.png" />
-      <button className={styles.buttonWrapper}>
-        <div className={styles.button}>Accept</div>
-      </button>
-      <button className={styles.buttonContainer}>
-        <div className={styles.button}>Accept</div>
-      </button>
-      <button className={styles.buttonFrame}>
-        <div className={styles.button}>Accept</div>
-      </button>
-      <button className={styles.frameButton}>
-        <div className={styles.button}>Decline</div>
-      </button>
-      <button className={styles.buttonWrapper1}>
-        <div className={styles.button}>Decline</div>
-      </button>
-      <button className={styles.buttonWrapper2}>
-        <div className={styles.button}>Decline</div>
-      </button>
-      <button className={styles.buttonWrapper3}>
-        <div className={styles.button}>View Details</div>
-      </button>
-      <button className={styles.buttonWrapper4}>
-        <div className={styles.button}>View Details</div>
-      </button>
-      <button className={styles.buttonWrapper5}>
-        <div className={styles.button}>View Details</div>
-      </button>
+        <div>
+          <ul className={styles.navLinksContainer}>
+            <li>
+              <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeCaregiver}>
+                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+              </div>
+            </li>
+            <li>
+              <div
+                className={styles.navLink}
+                onClick={navigateToMessageCaregiver}
+              >
+                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+              </div>
+            </li>
+            <li>
+              <div className={styles.navLink}  onClick={navigateToHistoryCaregiver}>
+                <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
+              </div>
+            </li>
+            <li>
+              <a href="/login" className={styles.navLink}>
+                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className={styles.contentColumn}>
+        <p>Booking Requests</p>
+      </div>
     </div>
   );
 };
 
-export default HomeCaregiver;
+export default Home;

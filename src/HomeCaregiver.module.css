@@ -1,354 +1,97 @@
-.homecaregiverChild {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #f5e2d7;
-  width: 264px;
-  height: 1024px;
+/* HomeRecipient.module.css */
+
+.homeContainer {
+  display: flex;
+  height: 100vh;
 }
 
-.homecaregiverItem {
-  position: absolute;
-  top: 308px;
-  left: 362px;
-  border-radius: 14px;
-  background-color: #edccb9;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 917px;
-  height: 163px;
-}
-
-.firstnameMLastname,
-.image1Icon {
-  position: absolute;
-  top: 330px;
-  left: 537px;
-}
-
-.image1Icon {
-  top: 334px;
-  left: 390px;
-  border-radius: 133px;
-  width: 107px;
-  height: 84px;
-  object-fit: cover;
-}
-
-.vectorIcon,
-.vectorIcon1 {
-  position: absolute;
-  height: 3.81%;
-  width: 3.26%;
-  top: 17.87%;
-  right: 94.86%;
-  bottom: 78.32%;
-  left: 1.88%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-
-.vectorIcon1 {
+.navColumn {
+  width: 15%;
+  background-color: white;
+  border-right: 1px solid #ccc;
+  padding: 20px;
   height: 100%;
-  width: 23.3%;
-  top: 0;
-  right: 76.7%;
-  bottom: 0;
-  left: 0;
 }
 
-.messages,
-.vectorParent {
+.logoContainer {
+  margin-bottom: 20px;
+}
+
+.appLogo {
+  max-width: 30%;
+}
+
+.userProfileContainer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+}
+
+.userProfileContainer:hover {
+  background-color: #F5E2D7;
   cursor: pointer;
-  position: absolute;
 }
 
-.messages {
-  display:flex;
-  top: 5px;
-  left: 62px;
-  font-size: 30px;
-  font-family: Inter;
-  color: #000;
-  text-align: left;
+
+.navIcon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
 }
 
-.vectorParent {
-  border: 0;
+
+.userProfilePicture {
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userProfileInfo {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navLinksContainer {
+  list-style: none;
   padding: 0;
-  background-color: transparent;
-  height: 4.49%;
-  width: 14.31%;
-  top: 25.39%;
-  right: 83.82%;
-  bottom: 70.12%;
-  left: 1.88%;
+  margin: 0;
+  
 }
 
-.groupChild {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #edccb9;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 264px;
-  height: 72px;
+.navLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: grey;
+  cursor: pointer;
+
 }
-  .vectorIcon2 {
-    position: absolute;
-    height: 54.17%;
-    width: 17.8%;
-    top: 20.83%;
-    right: 71.97%;
-    bottom: 25%;
-    left: 10.23%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .home {
-    position: absolute;
-    top: 18px;
-    left: 112px;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-  }
-  .rectangleParent {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    position: absolute;
-    top: 168px;
-    left: 0;
-    width: 264px;
-    height: 72px;
-  }
-  .vectorIcon3 {
-    position: absolute;
-    height: 97.5%;
-    width: 26.59%;
-    top: 2.5%;
-    right: 0;
-    bottom: 0;
-    left: 73.41%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .logOut {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-  }
-  .vectorGroup {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    position: absolute;
-    height: 3.91%;
-    width: 12.01%;
-    top: 92.77%;
-    right: 85.14%;
-    bottom: 3.32%;
-    left: 2.85%;
-  }
-  .vectorIcon4 {
-    position: absolute;
-    height: 100%;
-    width: 28.57%;
-    top: 0;
-    right: 71.43%;
-    bottom: 0;
-    left: 0;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .history,
-  .vectorContainer {
-    cursor: pointer;
-    position: absolute;
-  }
-  .history {
-    top: 5px;
-    left: 66px;
-    font-size: 30px;
-    font-family: Inter;
-    color: #000;
-    text-align: left;
-  }
-  .vectorContainer {
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    height: 4.49%;
-    width: 11.67%;
-    top: 33.4%;
-    right: 86.46%;
-    bottom: 62.11%;
-    left: 1.88%;
-  }
-  .bookingRequests {
-    position: absolute;
-    top: 132px;
-    left: 367px;
-    font-size: 36px;
-  }
-  .homecaregiverInner {
-    position: absolute;
-    top: 716px;
-    left: 362px;
-    border-radius: 14px;
-    background-color: #edccb9;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 917px;
-    height: 163px;
-  }
-  .firstnameMLastname1,
-  .image15Icon {
-    position: absolute;
-    top: 738px;
-    left: 537px;
-  }
-  .image15Icon {
-    top: 742px;
-    left: 390px;
-    border-radius: 133px;
-    width: 107px;
-    height: 84px;
-    object-fit: cover;
-  }
-  .rectangleDiv {
-    position: absolute;
-    top: 512px;
-    left: 362px;
-    border-radius: 14px;
-    background-color: #edccb9;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 917px;
-    height: 163px;
-  }
-  .firstnameMLastname2,
-  .image14Icon {
-    position: absolute;
-    top: 534px;
-    left: 537px;
-  }
-  .image14Icon {
-    top: 538px;
-    left: 390px;
-    border-radius: 133px;
-    width: 107px;
-    height: 84px;
-    object-fit: cover;
-  }
-  .button {
-    position: relative;
-    font-size: 30px;
-    letter-spacing: 0.1em;
-    font-weight: 900;
-    font-family: "Maven Pro";
-    color: #fff;
-    text-align: left;
-  }
-  .buttonContainer,
-  .buttonFrame,
-  .buttonWrapper,
-  .buttonWrapper1,
-  .buttonWrapper2,
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5,
-  .frameButton {
-    cursor: pointer;
-    border: 0;
-    padding: 10px;
-    background-color: #c3604d;
-    position: absolute;
-    top: 376px;
-    left: 537px;
-    border-radius: 17px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 212px;
-    height: 75px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  .buttonContainer,
-  .buttonFrame,
-  .buttonWrapper1,
-  .buttonWrapper2,
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5,
-  .frameButton {
-    top: 584px;
-  }
-  .buttonFrame,
-  .buttonWrapper1,
-  .buttonWrapper2,
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5,
-  .frameButton {
-    top: 788px;
-  }
-  .buttonWrapper1,
-  .buttonWrapper2,
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5,
-  .frameButton {
-    top: 376px;
-    left: 770px;
-  }
-  .buttonWrapper1,
-  .buttonWrapper2,
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5 {
-    top: 584px;
-  }
-  .buttonWrapper2,
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5 {
-    top: 788px;
-  }
-  .buttonWrapper3,
-  .buttonWrapper4,
-  .buttonWrapper5 {
-    top: 376px;
-    left: 1003px;
-    width: 242px;
-  }
-  .buttonWrapper4,
-  .buttonWrapper5 {
-    top: 584px;
-  }
-  .buttonWrapper5 {
-    top: 788px;
-  }
-  .homecaregiver {
-    position: relative;
-    background-color: #fff;
-    width: 100%;
-    height: 1024px;
-    overflow: hidden;
-    text-align: left;
-    font-size: 30px;
-    color: #000;
-    font-family: Inter;
-  }
-  
+
+
+.navLink:hover,
+.navLink:active {
+  background-color: #f0f0f0;
+}
+
+.activeNavLink {
+  background-color: #F5E2D7; /* Add a background color to indicate the active state */
+  color: #C3604D;
+  font-weight: bold;
+
+}
+
+.contentColumn {
+  flex: 1;
+  padding: 20px;
+}
+

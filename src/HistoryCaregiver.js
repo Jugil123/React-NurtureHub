@@ -1,61 +1,92 @@
-import { useCallback } from "react";
-import styles from "./HistoryCaregiver.module.css";
-import { Link, } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import styles from './HomeCaregiver.module.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const HistoryCaregiver = () => {
-  const onHomeTextClick = useCallback(() => {
-    // Please sync "HomeCaregiver" to the project
-  }, []);
+const Home = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const onGroupContainerClick = useCallback(() => {
-    // Please sync "Login" to the project
-  }, []);
+  // Extract userObject from location state
+  const userObject = location.state ? location.state.userObject : null;
+
+  useEffect(() => {
+    // Perform any initial setup using userObject if needed
+    console.log('userObject:', userObject);
+  }, [userObject]);
+
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const navigateToMyProfile = () => {
+    navigate('/my-profile', { state: { userObject } });
+  };
+
+  const navigateToMessageCaregiver = () => {
+    navigate('/message-caregiver', { state: { userObject } });
+  };
+
+  const navigateToHistoryCaregiver= () => {
+    navigate('/history-caregiver', { state: { userObject } });
+  };
+
+  const navigateToHomeCaregiver = () => {
+    navigate('/home-caregiver', { state: { userObject } });
+  };
+
 
   return (
-    <div className={styles.historycaregiver}>
-      <div className={styles.serviceHistory}>Service History</div>
-      <div className={styles.historycaregiverChild} />
-      <Link to="/message-caregiver" className={styles.vectorIconLink}>
-      <button className={styles.vectorParent}>
-        <img className={styles.vectorIcon} alt="" src="/message.png" />
-        <div className={styles.messages}>Messages</div>
-      </button>
-      </Link>
-      <Link to="/message-caregiver" className={styles.vectorIconLink}>
-      <button className={styles.vectorGroup}>
-        <img className={styles.vectorIcon1} alt="" src="/25694.png" />
-        <div className={styles.home} onClick={onHomeTextClick}>
-          Home
+    <div className={styles.homeContainer}>
+      <div className={styles.navColumn}>
+        <div className={styles.logoContainer}>
+          <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
-      </button>
-      </Link>
-      <button className={styles.historycaregiverItem} />
-      <div className={styles.firstnameMLastname}>Firstname M. Lastname</div>
-      <img className={styles.image1Icon} alt="" src="/ambos.png" />
-      <div className={styles.address}>Address</div>
-      <button className={styles.historycaregiverInner} />
-      <div className={styles.firstnameMLastname1}>Firstname M. Lastname</div>
-      <img className={styles.image3Icon} alt="" src="/xevery.jpg" />
-      <div className={styles.address1}>Address</div>
-      <button className={styles.rectangleButton} />
-      <div className={styles.firstnameMLastname2}>Firstname M. Lastname</div>
-      <img className={styles.image2Icon} alt="" src="/errol.jpg" />
-      <div className={styles.address2}>Address</div>
-      <Link to="/" className={styles.vectorIconLink}>
-      <button className={styles.groupButton}>
-        <div className={styles.vectorContainer} onClick={onGroupContainerClick}>
-          
-          <div className={styles.logOut}>Log Out</div>
+        <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
+          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+          <div>
+            {userObject ? (
+              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+            ) : (
+              <p className={styles.userProfileInfo}>Firstname Lastname</p>
+            )}
+          </div>
         </div>
-      </button>
-      </Link>
-      <button className={styles.rectangleParent}>
-        <div className={styles.groupChild} />
-        <img className={styles.vectorIcon3} alt="" src="/download.png" />
-        <div className={styles.history}>History</div>
-      </button>
+        <div>
+          <ul className={styles.navLinksContainer}>
+            <li>
+              <div className={styles.navLink} onClick={navigateToHomeCaregiver}>
+                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+              </div>
+            </li>
+            <li>
+              <div
+                className={styles.navLink}
+                onClick={navigateToMessageCaregiver}
+              >
+                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+              </div>
+            </li>
+            <li>
+              <div className={`${styles.navLink} ${styles.activeNavLink}`}  onClick={navigateToHistoryCaregiver}>
+                <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
+              </div>
+            </li>
+            <li>
+              <a href="/login" className={styles.navLink}>
+                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className={styles.contentColumn}>
+        <p>History</p>
+      </div>
     </div>
   );
 };
 
-export default HistoryCaregiver;
+export default Home;
