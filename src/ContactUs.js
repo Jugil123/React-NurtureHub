@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import Footer from "./Footer";
 import styles from "./ContactUs.module.css";
 import { Link } from 'react-router-dom';
 
 const ContactUs = () => {
-  
+
+  useEffect(() => {
+    document.title = "NurtureHub | Contact Us";
+  }, []); 
+
+
   return (
     <div className={styles.contactUs}>
       <div className={styles.nurturehubParent}>

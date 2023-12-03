@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import Footer from "./Footer";
 import styles from "./FAQ.module.css";
 import { Link } from 'react-router-dom';
 
 const FAQ = () => {
+
+    useEffect(() => {
+        document.title = "NurtureHub | FAQ";
+      }, []); 
+    
   return (
     <div className={styles.faq}>
       <Footer

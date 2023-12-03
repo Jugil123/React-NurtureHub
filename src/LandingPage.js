@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import Footer from "./Footer";
 import styles from "./LandinPage.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 
 const LandinPage = () => {
+
+  useEffect(() => {
+    document.title = "NurtureHub | Landing Page";
+  }, []); 
+
     const navigate = useNavigate();
 
     const onRegisterClick = () => {
