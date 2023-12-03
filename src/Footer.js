@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import Property1Default3 from "./Property1Default3";
 import Property1Default1 from "./Property1Default1";
 import Property1Default from "./Property1Default";
@@ -65,9 +66,13 @@ const Footer = ({ propTop }) => {
           />
         </div>
         <div className={styles.aboutUsParent}>
-          <div className={styles.aboutUs}>About us</div>
+        <Link to="/about-us" className={styles.aboutUs}>
+            About us
+          </Link>
           <div className={styles.faq}> FAQ</div>
-          <div className={styles.contactUs}>Contact us</div>
+          <Link to="/contact-us" className={styles.contactUs}>
+            Contact us
+          </Link>
         </div>
       </div>
       <div className={styles.copyright2023}>
