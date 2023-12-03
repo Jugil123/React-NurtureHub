@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styles from './HomeCaregiver.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import BookingDetails from './BookingDetails';
+
 
 const Home = () => {
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [bookingRequests, setBookingRequests] = useState({ bookings: [] });
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -13,13 +14,37 @@ const Home = () => {
   const userObject = location.state ? location.state.userObject : null;
 
   useEffect(() => {
-    // Perform any initial setup using userObject if needed
-    console.log('userObject:', userObject);
+    // Fetch booking requests when the component mounts
+    if (userObject) {
+      fetchBookingRequests(userObject.username);
+    }
   }, [userObject]);
 
-  const handleSearchInputChange = (event) => {
-    setSearchTerm(event.target.value);
+  const fetchBookingRequests = async (username) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/booking/getAllBookingRequest/${username}`);
+      console.log('Full API Response:', response.data);
+
+      const { bookings } = response.data;
+      console.log('Bookings:', bookings);
+
+      setBookingRequests({ bookings });
+    } catch (error) {
+      console.error('Error fetching booking requests:', error);
+    }
   };
+
+  const handleAccept = (bookingId) => {
+    // Implement logic to accept the booking
+    console.log(`Accepting booking with ID ${bookingId}`);
+  };
+
+  const handleDecline = (bookingId) => {
+    // Implement logic to decline the booking
+    console.log(`Declining booking with ID ${bookingId}`);
+  };
+
+  
 
   const navigateToMyProfile = () => {
     navigate('/my-profile', { state: { userObject } });
@@ -36,6 +61,23 @@ const Home = () => {
   const navigateToHomeCaregiver = () => {
     navigate('/home-caregiver', { state: { userObject } });
   };
+
+
+  const handleView = (bookingId) => {
+    const selected = bookingRequests.bookings.find((booking) => booking.booking.bookingId === bookingId);
+    console.log('Selected Booking:', selected);
+  
+    if (selected) {
+      console.log('SL', { booking: selected });
+      navigate('/booking-details', { state: { booking: selected } });
+    } else {
+      console.error('Selected booking is undefined.');
+    }
+  };
+  
+  
+  
+
 
 
   return (
@@ -84,7 +126,19 @@ const Home = () => {
       </div>
       <div className={styles.contentColumn}>
         <p>Booking Requests</p>
+        {bookingRequests.bookings.map((booking) => (
+          <div key={booking.booking.bookingId} className={styles.bookingRequest}>
+            <p>{`${booking.recipient.firstname} ${booking.recipient.lastname}`}</p>
+            <button onClick={() => handleAccept(booking.bookingId)}>Accept</button>
+            <button onClick={() => handleDecline(booking.bookingId)}>Decline</button>
+            <button onClick={() => handleView(booking.booking.bookingId)}>View</button>
+           
+          </div>
+        ))}
+         {selected && <BookingDetails booking={selected} />}
       </div>
+
+    
     </div>
   );
 };

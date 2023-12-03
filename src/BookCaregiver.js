@@ -6,20 +6,76 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './BookCaregiver.module.css'; // Import styles for ViewCaregiver
 
-const BookCaregiver  = () => {
+const ConfirmationModal = ({ onClose, caregiver, bookingData, userObject }) => {
+  const navigate = useNavigate();
+  // Format date and time
+  const formattedStartDate = new Date(bookingData.start_date).toLocaleDateString();
+  const formattedEndDate = new Date(bookingData.end_date).toLocaleDateString();
+  const formattedStartTime = bookingData.start_time;
+  const formattedEndTime = bookingData.end_time;
+
+  const handleConfirm = () => {
+    // Perform any additional actions if needed
+    // Close the modal
+    onClose();
+
+    // Navigate to home-recipient
+    navigate('/home-recipient', { state: { userObject } });
+  };
+
+  return (
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
+        <p>
+          Thank you for booking a caregiver!
+          <br />
+          We're delighted that you've taken this step to ensure the well-being of your loved one. Your booking is confirmed, and we've taken note of your preferences.
+          <br />
+          <br />
+          <strong>Booking Details:</strong>
+          <br />
+          Caregiver: {`${caregiver.firstname} ${caregiver.lastname}`}
+          <br />
+          Date: {`${formattedStartDate} - ${formattedEndDate}`}
+          <br />
+          Time: {`${formattedStartTime} - ${formattedEndTime}`}
+          <br />
+          Hourly Rate: {caregiver.hourlyRate}
+          <br />
+          Contact Information: 12345678910 {/* Replace with actual contact information */}
+          <br />
+          Your Address: {userObject.address}
+          <br />
+          <br />
+          Please wait for the Caregiver's response. Thank you.
+          <br />
+          <br />
+          We hope your loved one receives excellent care, and we're here to make sure the experience is seamless for you. Feel free to contact us if you need any further assistance.
+          <br />
+          <br />
+          Thank you for choosing our app to find the right caregiver. Your peace of mind is our priority!
+        </p>
+        <button onClick={handleConfirm}>Close</button>
+      </div>
+    </div>
+  );
+};
+
+const BookCaregiver = () => {
   const location = useLocation();
   const { userId } = useParams();
   const [caregiver, setCaregiver] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearchResults, setShowSearchResults] = useState(false); // New state variable
+  const [showSearchResults, setShowSearchResults] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const [bookingData, setBookingData] = useState({
-    date: '',
-    time: '',
-    address: '',
-    hours: '',
+    start_date: '',
+    end_date: '',
+    start_time: '',
+    end_time: '',
   });
+  const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
 
   const userObject = location.state ? location.state.userObject : null;
 
@@ -29,7 +85,7 @@ const BookCaregiver  = () => {
     try {
       const response = await axios.get(`http://localhost:8080/caregiver/searchCaregiver?searchString=${searchTerm}`);
       setSearchResults(response.data);
-      setShowSearchResults(true); // Set showSearchResults to true after fetching search results
+      setShowSearchResults(true);
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
@@ -72,9 +128,38 @@ const BookCaregiver  = () => {
     console.log('Showing feedbacks for the caregiver');
   };
 
-  const handleBookCaregiver = () => {
-    console.log('Booking the caregiver');
+  const handleBookCaregiver = async () => {
+    const userConfirmed = window.confirm("Are you sure you want to book this caregiver?");
+    if (!userConfirmed) {
+      return;
+    }
+    try {
+      const bookingDataToSend = {
+        recipient: userObject.username,
+        caregiver: caregiver.username,
+        start_date: bookingData.start_date,
+        end_date: bookingData.end_date,
+        start_time: bookingData.start_time,
+        end_time: bookingData.end_time,
+      };
+
+      const response = await axios.post('http://localhost:8080/booking/insertBooking', bookingDataToSend);
+
+      if (response.status === 200) {
+        setConfirmationModalVisible(true);
+      } else {
+        console.error('Booking failed:', response.data);
+      }
+    } catch (error) {
+      console.error('Error booking caregiver:', error);
+    }
   };
+
+  const handleCloseModal = () => {
+    setConfirmationModalVisible(false);
+  };
+
+  
 
   const navigateToMessageRecipient = () => {
     navigate('/message-recipient', { state: { userObject } });
@@ -113,7 +198,7 @@ const BookCaregiver  = () => {
           </div>
         </div>
         <div>
-        <ul className={styles.navLinksContainer}>
+          <ul className={styles.navLinksContainer}>
             <li>
               <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
                 <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
@@ -128,7 +213,7 @@ const BookCaregiver  = () => {
               </div>
             </li>
             <li>
-              <div className={styles.navLink}  onClick={navigateToRecordsRecipient}>
+              <div className={styles.navLink} onClick={navigateToRecordsRecipient}>
                 <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
               </div>
             </li>
@@ -160,7 +245,7 @@ const BookCaregiver  = () => {
               className={styles.userProfileContainer}
               onClick={() => setShowSearchResults((prev) => {
                 navigateToViewCaregiver(user.caregiverId);
-                return false; // Set showSearchResults to false when clicking on a search result
+                return false;
               })}
             >
               <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
@@ -171,26 +256,24 @@ const BookCaregiver  = () => {
             </div>
           ))
         ) : (
-            <div>
-      <h1>Book Caregiver</h1>
-      <div className={styles.caregiverInfo}>
-      <img src={caregiver.profilePicture} alt="Profile" className={styles.userProfilePicture} />
-                  <p>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
-                </div>
-      {/* <p>{`Status: ${caregiver.availability}`}</p> */}
-      <label>Start Date:</label>
-      <input type="date" name="date" value={bookingData.date} onChange={handleBookingInputChange} />
-      <label>End Date:</label>
-      <input type="date" name="date" value={bookingData.date} onChange={handleBookingInputChange} />
-      <label>Start Time:</label>
-      <input type="time" name="time" value={bookingData.time} onChange={handleBookingInputChange} />
-      <label>End Time:</label>
-      <input type="time" name="time" value={bookingData.time} onChange={handleBookingInputChange} />
-      {/* <label>Address:</label>
-      <input type="text" name="address" value={bookingData.address} onChange={handleBookingInputChange} /> */}
-      <button onClick={handleBookCaregiver}>Book</button>
-    </div>
+          <div>
+            <h1>Book Caregiver</h1>
+            <div className={styles.caregiverInfo}>
+              <img src={caregiver.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+              <p>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
+            </div>
+            <label>Start Date:</label>
+            <input type="date" name="start_date" value={bookingData.start_date} onChange={handleBookingInputChange} />
+            <label>End Date:</label>
+            <input type="date" name="end_date" value={bookingData.end_date} onChange={handleBookingInputChange} />
+            <label>Start Time:</label>
+            <input type="time" name="start_time" value={bookingData.start_time} onChange={handleBookingInputChange} />
+            <label>End Time:</label>
+            <input type="time" name="end_time" value={bookingData.end_time} onChange={handleBookingInputChange} />
+            <button onClick={handleBookCaregiver}>Book</button>
+          </div>
         )}
+        {confirmationModalVisible && <ConfirmationModal onClose={handleCloseModal} caregiver={caregiver} bookingData={bookingData} userObject={userObject} />}
       </div>
     </div>
   );

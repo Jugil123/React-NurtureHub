@@ -43,7 +43,7 @@ const Login = () => {
       if (userType === 1) {
         navigate('/home-recipient', { state: { userObject } });
       } else if (userType === 2) {
-        navigate('/home-caregiver');
+        navigate('/home-caregiver', { state: { userObject } });
       } else if (userType === 3) {
         navigate('/dashboard');
       } else {
