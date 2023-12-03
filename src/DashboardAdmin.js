@@ -1,8 +1,11 @@
+// DashboardAdmin.js
+
 import styles from "./DashboardAdmin.module.css";
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
+import printableTableStyles from "./PrintableTable.module.css"; // Import the printable table styles
 
 const DashboardAdmin = () => {
   const [recipients, setRecipients] = useState([]);
@@ -16,36 +19,49 @@ const DashboardAdmin = () => {
   const caregiverRef = useRef();
   const recipientRef = useRef();
 
-  const PrintableCareGiverTable = React.forwardRef((props, ref) => (
-    <div ref={ref}>
-      <CareGiverTable {...props} />
-    </div>
-  ));
+  class PrintableCareGiverTable extends React.Component {
+    render() {
+      return (
+        <div ref={this.props.ref}>
+          <CareGiverTable {...this.props} />
+        </div>
+      );
+    }
+  }
   
-  const PrintableRecipientTable = React.forwardRef((props, ref) => (
-    <div ref={ref}>
-      <RecipientTable {...props} />
-    </div>
-  ));
-
+  class PrintableRecipientTable extends React.Component {
+    render() {
+      return (
+        <div ref={this.props.ref}>
+          <RecipientTable {...this.props} />
+        </div>
+      );
+    }
+  }
+  
   const exportCaregiverToPdf = useReactToPrint({
     content: () => caregiverRef.current,
     pageStyle: `
       @page {
-        size: A4;
-        margin: 1cm;
+        margin: 1cm 1cm 1cm 1cm; /* top right bottom left */
       }
     `,
+    onError: (error) => {
+      console.error('Error exporting caregiver to PDF:', error);
+    },
   });
-
+  
+  
   const exportRecipientToPdf = useReactToPrint({
     content: () => recipientRef.current,
     pageStyle: `
       @page {
-        size: A4;
-        margin: 1cm;
+        margin: 1cm 1cm 1cm 1cm; /* top right bottom left */
       }
     `,
+    onError: (error) => {
+      console.error('Error exporting recipient to PDF:', error);
+    },
   });
 
   const handleCaregiverLinkClick = (action) => {
@@ -142,7 +158,15 @@ const DashboardAdmin = () => {
   };
 
   const renderCareGiverTable = () => {
-    return <PrintableCareGiverTable ref={caregiverRef} caregivers={caregivers} getStripedStyle={getStripedStyle} handleRowClick={handleRowClick} />;
+    return (
+      <PrintableCareGiverTable
+        ref={caregiverRef}
+        caregivers={caregivers}
+        getStripedStyle={getStripedStyle}
+        handleRowClick={handleRowClick}
+        printableTableStyles={printableTableStyles}
+      />
+    );
   };
 
   const CareGiverTable = (props) => {
@@ -158,7 +182,7 @@ const DashboardAdmin = () => {
               : 'Choose Caregiver to be Deleted'}
           </div>
         ) : (<div className={styles.caregivers}>Caregivers</div>)}
-        <table className={`${styles.rectangleParent} ${styles.tableContainer} ${styles.tableResponsive}`} style={{ height: `${tableHeight}px` }}>
+        <table className={`${printableTableStyles.pdfTable} ${styles.rectangleParent2} ${styles.tableContainer}`} style={{ height: `${tableHeight}px` }}>
           <thead className={`${styles.tableHeader}`}>
             <tr>
               <th>First Name</th>
@@ -190,15 +214,20 @@ const DashboardAdmin = () => {
             ))}
           </tbody>
         </table>
-        <button className={`${styles.exportButton}`} onClick={exportCaregiverToPdf}>
-          Export Caregiver Table to PDF
-        </button>
       </div>
     );
   };
 
   const renderRecipientTable = () => {
-    return <PrintableRecipientTable ref={recipientRef} recipients={recipients} getStripedStyle={getStripedStyle} handleRowClick={handleRowClick} />;
+    return (
+      <PrintableRecipientTable
+        ref={recipientRef}
+        recipients={recipients}
+        getStripedStyle={getStripedStyle}
+        handleRowClick={handleRowClick}
+        printableTableStyles={printableTableStyles}
+      />
+    );
   };
 
   const RecipientTable = (props) => {
@@ -214,7 +243,7 @@ const DashboardAdmin = () => {
               : 'Choose Recipient to be Deleted'}
           </div>
         ) : (<div className={styles.caregivers}>Recipients</div>)}
-        <table className={`${styles.rectangleParent} ${styles.tableContainer} ${styles.tableResponsive}`} style={{ height: `${tableHeight}px` }}>
+        <table className={`${printableTableStyles.pdfTable} ${styles.rectangleParent2} ${styles.tableContainer} ${styles.tableResponsive}`} style={{ height: `${tableHeight}px` }}>
           <thead className={`${styles.tableHeader}`}>
             <tr>
               <th>First Name</th>
@@ -244,14 +273,12 @@ const DashboardAdmin = () => {
             ))}
           </tbody>
         </table>
-        <button className={`${styles.exportButton} `} onClick={exportRecipientToPdf}>
-          Export Recipient Table to PDF
-        </button>
       </div>
     );
   };
 
   return (
+    <div>
     <div className={styles.dashboardadmin}>
       <div className={styles.dashboardadminChild} />
       <div className={styles.dashboardadminItem} />
@@ -308,6 +335,17 @@ const DashboardAdmin = () => {
       {showCareGiverTable && renderCareGiverTable()}
       {showRecipientTable && renderRecipientTable()}
     </div>
+        <button className={styles.exportButton} onClick={exportCaregiverToPdf}>
+          Export
+        </button>
+        <button className={styles.exportButton2} onClick={exportRecipientToPdf}>
+          Export
+        </button>
+        
+    </div>
+
+    
+    
   );
 };
 

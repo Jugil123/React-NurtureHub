@@ -171,6 +171,15 @@
   left: 264px;
   height: 195px;
 }
+
+.rectangleParent2 {
+  position: absolute;
+  width: calc(100% - 527px);
+  top: 441px;
+  /* right: 263px; */
+  left: 264px;
+  height: 195px;
+}
 .update1 {
   position: absolute;
   top: 5px;
@@ -319,14 +328,77 @@
 
 .exportButton{
   position: absolute;
-  top: 390px;
-  left: calc(23% - 82px);
-  color: #fff;
+  left: calc(39% - 82px);
+  color: yellow;
   background-color: #c3604d;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  padding: 10px 20px;
-  font-size: 16px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 8px 19px;
+  font-size: 14px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  top: 220px;
+  /* right: 55%; */
+  width: 79px;
+  color: inherit;
 }
+
+
+.exportButton2{
+  position: absolute;
+  left: calc(39% - 82px);
+  color: yellow;
+  background-color: #c3604d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px 19px;
+  font-size: 14px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  top: 272px;
+  /* right: 55%; */
+  width: 79px;
+  color: inherit;
+}
+
+@media print { 
+  .caregivers {
+    position: static;
+    top: 400px;
+    margin-top: 10%;
+    left: calc(50% - 82px);
+    font-size: 24px;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    font-family: "Maven Pro";
+    color: #c3604d;
+  }
+  .rectangleParent2 {
+    position: static;
+    width: calc(100% - 527px);
+    top: 441px;
+    margin-top: 15px;
+    right: 263px;
+    left: 2px;
+    height: 195px;
+  }
+
+  .tableHeader {
+    background-color: white; /* Add your preferred color for the table header background */
+    color:  #c3604d; /* Add your preferred color for the table header text */
+    font-size: 16px;
+    padding: 20px;
+    
+   
+  }
+}
+
+
+
+
+
+
+
+
+
+
