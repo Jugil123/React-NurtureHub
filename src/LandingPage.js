@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import styles from "./LandinPage.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,28 +9,15 @@ const LandinPage = () => {
       document.title = "NurtureHub";
       navigate('/register-recipient');
   };
-
   return (
     <div className={styles.landinpage}>
-            <Link className={styles.aboutUs} to="/contact-us">Contact us</Link>
-            <Link className={styles.contactUs} to="/about-us">About us</Link>
-            <Link className={styles.logIn} to="/Login">Log in</Link>
-            <div className={styles.landinpageInner}>
+      <Link className={styles.logIn} to="/Login">Log in</Link>
+      <div className={styles.landinpageInner}>
                 <button className={styles.rectangleParent} onClick={onRegisterClick}>
                     <div className={styles.groupChild} />
                     <div className={styles.register}>Register</div>
                 </button>
             </div>
-      <div className={styles.button}>
-        <div className={styles.activeParent}>
-          <div className={styles.active}>
-            <div className={styles.button1}>BUTTON</div>
-          </div>
-          <div className={styles.property1inactive}>
-            <div className={styles.button1}>BUTTON</div>
-          </div>
-        </div>
-      </div>
       <div className={styles.rectangleGroup}>
         <div className={styles.groupItem} />
         <b className={styles.theEasiestWay}>
@@ -57,6 +45,9 @@ const LandinPage = () => {
           src="/nurturehublogo-2@2x.png"
         />
       </div>
+      <Footer
+        propTop="1074px"
+      />
     </div>
   );
 };

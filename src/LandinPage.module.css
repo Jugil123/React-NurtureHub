@@ -1,42 +1,29 @@
-.aboutUs,
-.contactUs,
 .logIn {
   text-decoration: none;
   position: absolute;
-  top: 105px;
+  top: 84px;
+  right: 242px;
   letter-spacing: 0.09em;
   font-weight: 600;
-}
-.aboutUs {
-  right: 442px;
-  color: rgba(0, 0, 0, 0.84);
-}
-.contactUs{
-  right: 600px;
-  color: #c3604d;
-}
-
-.logIn {
-  right: 335px;
   color: inherit;
 }
 .groupChild {
   position: absolute;
-  top: 8px;
+  top: 0;
   right: 0;
-  border-radius: 11px;
+  border-radius: var(--br-2xs);
   width: 132px;
   height: 47px;
 }
 .register {
   position: absolute;
-  top: 10px;
+  top: 4px;
   right: 14px;
-  font-size: 24px;
+  font-size: var(--font-size-5xl);
   letter-spacing: 0.09em;
   font-weight: 600;
-  font-family: Mukta;
-  color: #fff;
+  font-family: var(--font-mukta);
+  color: var(--color-white);
   text-align: left;
 }
 .landinpageInner,
@@ -49,71 +36,25 @@
   cursor: pointer;
   border: 0;
   padding: 0;
-  background-color: #c3604d;
-  border-radius: 11px;
-  top: 9px;
-  right: 0;
+  border-radius: var(--br-2xs);
+  background-color: var(--color-indianred);
   transition: background-color 0.3s ease;
+  top: 0;
+  right: 0;
 }
 .rectangleParent:hover{
   background-color: #ff4d29;
 }
 .landinpageInner {
-  top: 85px;
-  right: 170px;
-}
-.button1 {
-  position: relative;
-  letter-spacing: 0.2em;
-  font-weight: 900;
-}
-.active,
-.property1inactive {
-  position: absolute;
-  top: 116px;
-  left: 20px;
-  border-radius: 17px;
-  background-color: #ff3030;
-  width: 228px;
-  height: 61px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  box-sizing: border-box;
-}
-.property1inactive {
-  top: 20px;
-  background-color: #c3604d;
-}
-.activeParent,
-.button {
-  position: absolute;
-  width: 259px;
-  height: 227px;
-}
-.activeParent {
-  top: 0;
-  left: 0;
-  border-radius: 5px;
-  border: 1px dashed #9747ff;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-.button {
-  top: 212px;
-  left: -2134px;
-  font-size: 12px;
-  color: #fff;
-  font-family: "Maven Pro";
+  top: 80px;
+  right: 77px;
 }
 .groupItem {
   position: absolute;
   top: calc(50% - 243.5px);
   left: calc(50% - 606px);
-  border-radius: 29px;
-  background-color: #f5d1b3;
+  border-radius: var(--br-10xl);
+  background-color: var(--color-peachpuff-100);
   width: 1212px;
   height: 488px;
 }
@@ -129,7 +70,7 @@
 .withJustA {
   top: calc(50% - 12.5px);
   left: calc(50% - 559px);
-  font-size: 24px;
+  font-size: var(--font-size-5xl);
   font-weight: 600;
   width: 609px;
 }
@@ -143,45 +84,44 @@
 }
 .rectangleGroup {
   position: absolute;
-  top: calc(50% - 245px);
+  top: calc(50% - 422px);
   left: calc(50% - 606px);
   width: 1212px;
   height: 489px;
   font-size: 48px;
-  color: #000;
+  color: var(--color-black);
 }
 .groupInner {
   position: absolute;
-  top: calc(50% - 30px);
+  top: calc(50% - 23.5px);
   left: calc(50% - 139px);
-  border-radius: 11px;
+  border-radius: var(--br-2xs);
   width: 278px;
   height: 47px;
 }
 .registerAndBook {
   position: absolute;
-  top: calc(50% - 15px);
+  top: calc(50% - 19.5px);
   left: calc(50% - 112px);
-  font-size: 24px;
+  font-size: var(--font-size-5xl);
   letter-spacing: 0.09em;
   font-weight: 600;
-  font-family: Mukta;
-  color: #fff;
+  font-family: var(--font-mukta);
+  color: var(--color-white);
   text-align: left;
   display: inline-block;
   width: 238px;
 }
 .rectangleContainer {
-  cursor: pointer;
   border: 0;
   padding: 0;
-  border-radius: 11px;
   position: absolute;
-  top: calc(50% + 134px);
+  top: calc(50% - 43px);
   left: calc(50% - 559px);
   width: 278px;
   height: 47px;
-  background-color: #c3604d;
+  border-radius: var(--br-2xs);
+  background-color: var(--color-indianred);
   transition: background-color 0.3s ease;
 }
 .rectangleContainer:hover {
@@ -192,8 +132,7 @@
   top: 40px;
   left: 151px;
   letter-spacing: 0.2em;
-  font-weight: 800;
-  font-size: 43px;
+  font-weight: 600;
 }
 .nurturehublogo2Icon {
   position: absolute;
@@ -205,21 +144,21 @@
 }
 .nurturehubParent {
   position: absolute;
-  top: 48px;
-  left: 133px;
+  top: 52px;
+  left: 49px;
   width: 416px;
   height: 128px;
-  font-size: 36px;
-  font-family: "Maven Pro";
+  font-size: var(--font-size-17xl);
+  font-family: var(--font-maven-pro);
 }
 .landinpage {
   position: relative;
-  background-color: #fff;
+  background-color: var(--color-white);
   width: 100%;
-  height: 1024px;
+  height: 1358px;
   overflow: hidden;
   text-align: left;
-  font-size: 24px;
-  color: #c3604d;
-  font-family: Mukta;
+  font-size: var(--font-size-5xl);
+  color: var(--color-indianred);
+  font-family: var(--font-mukta);
 }
