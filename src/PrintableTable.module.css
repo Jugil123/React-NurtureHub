@@ -1,0 +1,31 @@
+/* PrintableTable.module.css */
+
+.pdfTable {
+    
+  }
+  
+  .pdfTable th, .pdfTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .pdfTable th {
+    background-color: #c3604d;
+  }
+  
+  /* Define other styles as needed for your printable tables */
+  .tableContainer {
+    /* Your existing styles for the table container */
+  }
+  
+  
+  .tableResponsive {
+    position: absolute;
+  
+  }
+  
+  /* Add more styles as needed */
+  @media print {
+   
+  }
