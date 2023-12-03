@@ -177,15 +177,17 @@ const BookCaregiver  = () => {
       <img src={caregiver.profilePicture} alt="Profile" className={styles.userProfilePicture} />
                   <p>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
                 </div>
-      <p>{`Status: ${caregiver.availability}`}</p>
-      <label>Date:</label>
+      {/* <p>{`Status: ${caregiver.availability}`}</p> */}
+      <label>Start Date:</label>
       <input type="date" name="date" value={bookingData.date} onChange={handleBookingInputChange} />
-      <label>Time:</label>
+      <label>End Date:</label>
+      <input type="date" name="date" value={bookingData.date} onChange={handleBookingInputChange} />
+      <label>Start Time:</label>
       <input type="time" name="time" value={bookingData.time} onChange={handleBookingInputChange} />
-      <label>Address:</label>
-      <input type="text" name="address" value={bookingData.address} onChange={handleBookingInputChange} />
-      <label>Hours:</label>
-      <input type="text" name="hours" value={bookingData.hours} onChange={handleBookingInputChange} />
+      <label>End Time:</label>
+      <input type="time" name="time" value={bookingData.time} onChange={handleBookingInputChange} />
+      {/* <label>Address:</label>
+      <input type="text" name="address" value={bookingData.address} onChange={handleBookingInputChange} /> */}
       <button onClick={handleBookCaregiver}>Book</button>
     </div>
         )}
