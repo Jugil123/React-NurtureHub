@@ -1,5 +1,6 @@
 import Footer from "./Footer";
 import styles from "./FAQ.module.css";
+import { Link } from 'react-router-dom';
 
 const FAQ = () => {
   return (
@@ -12,7 +13,9 @@ const FAQ = () => {
         groupDivLeft="448px"
       />
       <div className={styles.faqChild} />
+      <Link to="/">
       <img className={styles.x1Icon} alt="" src="/x-1@2x.png" />
+      </Link>
       <div className={styles.nurturehubParent}>
         <div className={styles.nurturehub}>NurtureHub</div>
         <img

@@ -1,14 +1,9 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import Footer from "./Footer";
 import styles from "./Aboutus.module.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Aboutus = () => {
-  const navigate = useNavigate();
-
-  const onVectorClick = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
 
   useEffect(() => {
     document.title = "NurtureHub | About Us";
@@ -70,7 +65,6 @@ const Aboutus = () => {
           className={styles.vectorIcon}
           alt=""
           src="/vector.svg"
-          onClick={onVectorClick}
         />
         </Link>
     </div>

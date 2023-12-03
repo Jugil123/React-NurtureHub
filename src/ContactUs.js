@@ -1,15 +1,9 @@
-import { useCallback } from "react";
 import Footer from "./Footer";
 import styles from "./ContactUs.module.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ContactUs = () => {
-  const navigate = useNavigate();
-
-  const onVectorIconClick = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
-
+  
   return (
     <div className={styles.contactUs}>
       <div className={styles.nurturehubParent}>
@@ -25,7 +19,6 @@ const ContactUs = () => {
         className={styles.vectorIcon}
         alt=""
         src="/vector.svg"
-        onClick={onVectorIconClick}
       />
       </Link>
       <img className={styles.image17Icon} alt="" src="/image-17@2x.png" />
