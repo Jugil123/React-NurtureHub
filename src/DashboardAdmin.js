@@ -170,7 +170,6 @@ const DashboardAdmin = () => {
               <th>Contact Info</th>
               <th>Address</th>
               <th>Specializations</th>
-              <th>Availability</th>
               <th>Hourly Rate</th>
             </tr>
           </thead>
@@ -186,7 +185,6 @@ const DashboardAdmin = () => {
                 <td>{caregiver.contact_information}</td>
                 <td>{caregiver.address}</td>
                 <td>{caregiver.specializations}</td>
-                <td>{caregiver.availability}</td>
                 <td>{caregiver.hourlyRate}</td>
               </tr>
             ))}
