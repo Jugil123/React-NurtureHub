@@ -21,6 +21,7 @@ import ViewCaregiver from './ViewCaregiver';
 import BookCaregiver from './BookCaregiver'
 import MessageRecipient from './MessageRecipient';
 import RecordsRecipient from './RecordsRecipient';
+import FAQ from './FAQ';
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/user-type" element={<UserType />} />

@@ -66,10 +66,12 @@ const Footer = ({ propTop }) => {
           />
         </div>
         <div className={styles.aboutUsParent}>
-        <Link to="/about-us" className={styles.aboutUs}>
+          <Link to="/about-us" className={styles.aboutUs}>
             About us
           </Link>
-          <div className={styles.faq}> FAQ</div>
+          <Link to="/FAQ" className={styles.faq}>
+            FAQ
+          </Link>
           <Link to="/contact-us" className={styles.contactUs}>
             Contact us
           </Link>

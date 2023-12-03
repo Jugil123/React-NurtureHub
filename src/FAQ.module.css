@@ -1,0 +1,88 @@
+.faqChild {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 720px);
+  background-color: var(--color-peachpuff-200);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 1441px;
+  height: 142px;
+}
+.x1Icon {
+  position: absolute;
+  top: 47px;
+  right: 21px;
+  width: 55px;
+  height: 48px;
+  object-fit: cover;
+}
+.nurturehub {
+  position: absolute;
+  top: 40px;
+  left: 151px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+.nurturehublogo2Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 155px;
+  height: 128px;
+  object-fit: cover;
+}
+.nurturehubParent {
+  position: absolute;
+  top: 7px;
+  left: 220px;
+  width: 416px;
+  height: 128px;
+}
+.frequentlyAskedQuestions {
+  position: absolute;
+  top: 252px;
+  left: calc(50% - 387px);
+  font-size: 40px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+}
+.faqInner,
+.faqItem {
+  position: absolute;
+  top: 191px;
+  left: calc(50% - 720px);
+  background-color: var(--color-orange);
+  width: 1441px;
+  height: 27px;
+}
+.faqInner {
+  top: 1683px;
+}
+.qIsNurturehubUserFriendly {
+  margin: 0;
+}
+.qIsNurturehubContainer,
+.qWhatTypes {
+  font-family: var(--font-mukta);
+}
+.qIsNurturehubContainer {
+  position: absolute;
+  top: 319px;
+  left: calc(50% - 672px);
+  font-size: var(--font-size-13xl);
+  color: var(--color-black);
+  text-align: justify;
+  display: inline-block;
+  width: 1344px;
+  height: 1364px;
+}
+.faq {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 2061px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-17xl);
+  color: var(--color-indianred);
+  font-family: var(--font-maven-pro);
+}
