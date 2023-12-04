@@ -4,31 +4,40 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BookingDetails from './BookingDetails';
 
-
+//
 const Home = () => {
   const [bookingRequests, setBookingRequests] = useState({ bookings: [] });
+  const [userObject, setUserObject] = useState(null); // Added state for userObject
   const location = useLocation();
   const navigate = useNavigate();
 
   // Extract userObject from location state
-  const userObject = location.state ? location.state.userObject : null;
 
   useEffect(() => {
-    // Fetch booking requests when the component mounts
-    if (userObject) {
-      fetchBookingRequests(userObject.username);
+    // Update userObject when the location state changes
+    if (location.state && location.state.userObject) {
+      const updatedUserObject = location.state.userObject;
+      console.log('Updated userObject:', updatedUserObject);
+
+      // Perform any additional logic or updates with the updatedUserObject
+
+      // Update the userObject state
+      setUserObject(updatedUserObject);
+
+      // Fetch booking requests when the component mounts or userObject changes
+      fetchBookingRequests(updatedUserObject.username);
     }
-  }, [userObject]);
+  }, [location.state]);
 
   const fetchBookingRequests = async (username) => {
     try {
       const response = await axios.get(`http://localhost:8080/booking/getAllBookingRequest/${username}`);
       console.log('Full API Response:', response.data);
-
+  
       const { bookings } = response.data;
       console.log('Bookings:', bookings);
-
-      setBookingRequests({ bookings });
+  
+      setBookingRequests({ bookings: bookings || [] }); // Ensure bookings is defined or set it to an empty array
     } catch (error) {
       console.error('Error fetching booking requests:', error);
     }
@@ -66,17 +75,45 @@ const Home = () => {
   const handleView = (bookingId) => {
     const selected = bookingRequests.bookings.find((booking) => booking.booking.bookingId === bookingId);
     console.log('Selected Booking:', selected);
+
+     // Navigate to BookingDetails and pass the selected booking as state
+     navigate('/booking-details', { state: { userObject, selectedBooking: selected } });
   
-    if (selected) {
-      console.log('SL', { booking: selected });
-      navigate('/booking-details', { state: { booking: selected } });
-    } else {
-      console.error('Selected booking is undefined.');
-    }
   };
   
   
-  
+  const handleEndService = async (bookingId) => {
+    try {
+      // Find the selected booking
+      const selected = bookingRequests.bookings.find(
+        (booking) => booking.booking.bookingId === bookingId
+      );
+
+      // Implement logic to end the service
+      console.log(`Ending service for booking with ID ${bookingId}`);
+
+      // Make API call to delete the booking
+      await axios.delete(`http://localhost:8080/booking/deleteBooking/${bookingId}`);
+
+      // Make API calls to update isBooked status for both recipient and caregiver
+      await axios.put(`http://localhost:8080/recipient/updateRecipientBooked/?rid=${selected.recipient.recipientId}`, {
+        isBooked: 0,
+      });
+
+      await axios.put(`http://localhost:8080/caregiver/updateCaregiverBooked/?cid=${userObject.caregiverId}`, {
+        isBooked: 0,
+      });
+
+      // You can add your logic here to handle the end of service
+      // For example, update the UI or perform additional actions
+
+      // After handling the end of service, you can navigate back to the previous page or any other page
+      navigate(-1); // Go back to the previous page
+    } catch (error) {
+      console.error('Error ending service:', error);
+      // Handle the error as needed
+    }
+  };
 
 
 
@@ -129,13 +166,19 @@ const Home = () => {
         {bookingRequests.bookings.map((booking) => (
           <div key={booking.booking.bookingId} className={styles.bookingRequest}>
             <p>{`${booking.recipient.firstname} ${booking.recipient.lastname}`}</p>
-            <button onClick={() => handleAccept(booking.bookingId)}>Accept</button>
-            <button onClick={() => handleDecline(booking.bookingId)}>Decline</button>
+            {/* Check conditions for rendering buttons */}
+            {userObject.isBooked === 1 && booking.recipient.isBooked === 1 ? (
+              <button onClick={() => handleEndService(booking.booking.bookingId)}>
+                End Service
+              </button>
+            ) : (
+              null
+            )}
             <button onClick={() => handleView(booking.booking.bookingId)}>View</button>
            
           </div>
         ))}
-         {selected && <BookingDetails booking={selected} />}
+        
       </div>
 
     
