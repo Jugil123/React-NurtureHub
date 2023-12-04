@@ -7,27 +7,21 @@ import BookingDetails from './BookingDetails';
 //
 const Home = () => {
   const [bookingRequests, setBookingRequests] = useState({ bookings: [] });
-  const [userObject, setUserObject] = useState(null); // Added state for userObject
+  const [caregiver, setCaregiver] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
   // Extract userObject from location state
+  const userObject = location.state ? location.state.userObject : null;
+  console.log('userObject:', userObject);
 
   useEffect(() => {
-    // Update userObject when the location state changes
-    if (location.state && location.state.userObject) {
-      const updatedUserObject = location.state.userObject;
-      console.log('Updated userObject:', updatedUserObject);
-
-      // Perform any additional logic or updates with the updatedUserObject
-
-      // Update the userObject state
-      setUserObject(updatedUserObject);
-
-      // Fetch booking requests when the component mounts or userObject changes
-      fetchBookingRequests(updatedUserObject.username);
+    // Fetch booking requests when the component mounts
+    if (userObject) {
+      fetchBookingRequests(userObject.username);
+      fetchCaregiverDetails(userObject.caregiverId);
     }
-  }, [location.state]);
+  }, [userObject]);
 
   const fetchBookingRequests = async (username) => {
     try {
@@ -40,6 +34,17 @@ const Home = () => {
       setBookingRequests({ bookings: bookings || [] }); // Ensure bookings is defined or set it to an empty array
     } catch (error) {
       console.error('Error fetching booking requests:', error);
+    }
+  };
+
+  const fetchCaregiverDetails = async (caregiverId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/caregiver/getCaregiverById/${caregiverId}`);
+      console.log('Caregiver Details:', response.data);
+
+      setCaregiver(response.data);
+    } catch (error) {
+      console.error('Error fetching caregiver details:', error);
     }
   };
 
@@ -77,12 +82,15 @@ const Home = () => {
     console.log('Selected Booking:', selected);
 
      // Navigate to BookingDetails and pass the selected booking as state
-     navigate('/booking-details', { state: { userObject, selectedBooking: selected } });
+     navigate('/booking-details', { state: { caregiver, selectedBooking: selected } });
   
   };
   
   
-  const handleEndService = async (bookingId) => {
+  const handleEndService = async (bookingId, firstname) => {
+    const userConfirmed = window.confirm(`Are you sure you want to end service with ${firstname}?`);
+
+    if (userConfirmed){
     try {
       // Find the selected booking
       const selected = bookingRequests.bookings.find(
@@ -107,12 +115,12 @@ const Home = () => {
       // You can add your logic here to handle the end of service
       // For example, update the UI or perform additional actions
 
-      // After handling the end of service, you can navigate back to the previous page or any other page
-      navigate(-1); // Go back to the previous page
+      window.location.reload();
     } catch (error) {
       console.error('Error ending service:', error);
       // Handle the error as needed
     }
+   }
   };
 
 
@@ -167,8 +175,8 @@ const Home = () => {
           <div key={booking.booking.bookingId} className={styles.bookingRequest}>
             <p>{`${booking.recipient.firstname} ${booking.recipient.lastname}`}</p>
             {/* Check conditions for rendering buttons */}
-            {userObject.isBooked === 1 && booking.recipient.isBooked === 1 ? (
-              <button onClick={() => handleEndService(booking.booking.bookingId)}>
+            {booking.recipient.isBooked === 1 ? (
+              <button onClick={() => handleEndService(booking.booking.bookingId, booking.recipient.firstname )}>
                 End Service
               </button>
             ) : (

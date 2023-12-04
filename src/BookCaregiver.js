@@ -42,7 +42,7 @@ const ConfirmationModal = ({ onClose, caregiver, bookingData, userObject }) => {
           <br />
           Hourly Rate: {caregiver.hourlyRate}
           <br />
-          Contact Information: 12345678910 {/* Replace with actual contact information */}
+          Contact Information: {caregiver.contact_information} {/* Replace with actual contact information */}
           <br />
           Your Address: {userObject.address}
           <br />
