@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from "./UpdateCaregiver.module.css";
@@ -95,13 +95,17 @@ const UpdateCaregiver = () => {
         type="date"
         onChange={(e) => setCaregiver({ ...caregiver, birth_date: e.target.value })}
       />
-      <input
-        className={styles.updatecaregiverInner}
-        value={caregiver.gender}
-        placeholder="Gender"
-        type="text"
-        onChange={(e) => setCaregiver({ ...caregiver, gender: e.target.value })}
-      />
+      <select
+  className={styles.updatecaregiverInner}
+  value={caregiver.gender}
+  onChange={(e) => setCaregiver({ ...caregiver, gender: e.target.value })}
+>
+  <option value="" disabled selected>
+    Select Gender
+  </option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
       <input
         className={styles.rectangleInput}
         value={caregiver.contact_information}

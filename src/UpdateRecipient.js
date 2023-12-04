@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import styles from "./UpdateRecipient.module.css";
@@ -93,13 +93,18 @@ const UpdateRecipient = () => {
         type="text"
         onChange={(e) => setRecipient({ ...recipient, birth_date: e.target.value })}
       />
-      <input
-        className={styles.updaterecipientInner}
-        value={recipient.gender}
-        placeholder="Gender"
-        type="text"
-        onChange={(e) => setRecipient({ ...recipient, gender: e.target.value })}
-      />
+<select
+  className={styles.updaterecipientInner}
+  value={recipient.gender}
+  onChange={(e) => setRecipient({ ...recipient, gender: e.target.value })}
+>
+  <option value="" disabled selected>
+    Select Gender
+  </option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+
       <input
         className={styles.rectangleInput}
         value={recipient.contact_info}
