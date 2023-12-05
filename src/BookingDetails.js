@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './HomeCaregiver.module.css';
 import axios from 'axios';
@@ -8,6 +8,24 @@ const BookingDetails = () => {
   const navigate = useNavigate();
   const userObject = location.state ? location.state.caregiver : null;
   const selectedBooking = location.state ? location.state.selectedBooking : null;
+  const [recipientRecords, setRecipientRecords] = useState(null);
+  const [showRecords, setShowRecords] = useState(false); 
+
+  useEffect(() => {
+    const fetchRecipientRecords = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/record/getRecordByRecipient/${selectedBooking.recipient.username}`);
+        setRecipientRecords(response.data);
+      } catch (error) {
+        console.error('Error fetching recipient records:', error);
+        // Handle the error as needed
+      }
+    };
+
+    if (selectedBooking.recipient.username && showRecords) {
+      fetchRecipientRecords();
+    }
+  }, [selectedBooking.recipient.username, showRecords]);
 
   if (!selectedBooking) {
     // Handle the case when there is no selected booking
@@ -110,6 +128,19 @@ const BookingDetails = () => {
    }
   };
 
+
+  const handleRecords = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/record/getRecordByRecipient/${selectedBooking.recipient.username}`);
+      setRecipientRecords(response.data);
+      setShowRecords(true);
+    } catch (error) {
+      console.error('Error fetching or displaying recipient records:', error);
+      // Handle the error as needed
+      setShowRecords(false);
+    }
+  };
+
   const navigateToMyProfile = () => {
     navigate('/my-profile', { state: { userObject } });
   };
@@ -130,7 +161,7 @@ const BookingDetails = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.navColumn}>
-        <div className={styles.logoContainer}>
+      <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
@@ -179,14 +210,34 @@ const BookingDetails = () => {
         <p>{`Contact Info: ${selectedBooking.recipient.contact_info}`}</p>
         <p>{`Address: ${selectedBooking.recipient.address}`}</p>
 
-        {/* Confirmation message and buttons */}
-        {userObject.isBooked === 1 && selectedBooking.recipient.isBooked === 1? (
-          <button onClick={handleEndService}>End Service</button>
+        {showRecords ? (
+          <div>
+            <h3>Recipient's Medical Records</h3>
+            {recipientRecords ? (
+              <>
+                <p>{`Allergies: ${recipientRecords.allergies}`}</p>
+                <p>{`Medical Conditions: ${recipientRecords.medical_conditions}`}</p>
+                <p>{`Medications: ${recipientRecords.medications}`}</p>
+                <p>{`Past Surgeries: ${recipientRecords.past_surgeries}`}</p>
+                <p>{`Family History: ${recipientRecords.family_history}`}</p>
+              </>
+            ) : (
+              <p style={{ color: 'red' }}>{`Recipient ${selectedBooking.recipient.username} has not yet added his/her medical records.`}</p>
+            )}
+          </div>
+        ) : null}
+
+        {userObject.isBooked === 1 && selectedBooking.recipient.isBooked === 1 ? (
+          <div>
+            <button onClick={handleEndService}>End Service</button>
+            <button onClick={handleRecords}>Records</button>
+          </div>
         ) : (
           <div>
             <p>Are you sure you want to accept this booking request?</p>
             <button onClick={handleAccept}>Accept</button>
             <button onClick={handleDecline}>Decline</button>
+            <button onClick={handleRecords}>Records</button>
           </div>
         )}
       </div>
