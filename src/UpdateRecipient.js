@@ -90,7 +90,7 @@ const UpdateRecipient = () => {
         className={styles.updaterecipientItem}
         value={recipient.birth_date}
         placeholder="Birth Date"
-        type="text"
+        type="date"
         onChange={(e) => setRecipient({ ...recipient, birth_date: e.target.value })}
       />
 <select
