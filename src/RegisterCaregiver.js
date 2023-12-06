@@ -18,7 +18,6 @@ const RegisterCaregiver = () => {
   const [contactInfo, setContactInfo] = useState('');
   const [address, setAddress] = useState('');
   const [specializations, setSpecializations] = useState('');
-  const [availability, setAvailability] = useState('');
   const [hourlyRate, setHourlyRate] = useState('');
   const navigate = useNavigate();
 
@@ -73,7 +72,6 @@ const RegisterCaregiver = () => {
         contact_information: contactInfo,
         address,
         specializations,
-        availability,
         hourlyRate,
       });
 
@@ -149,14 +147,6 @@ const RegisterCaregiver = () => {
       />
       <input
         className={styles.registercaregiverChild2}
-        value={availability}
-        placeholder="Availability"
-        type="text"
-        defaultValue={availability}
-        onChange={(e) => setAvailability(e.target.value)}
-      />
-      <input
-        className={styles.registercaregiverChild3}
         value={hourlyRate}
         placeholder="Hourly Rate"
         type="number"
