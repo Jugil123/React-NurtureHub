@@ -61,19 +61,19 @@ const Home = () => {
   
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject } });
+    navigate('/my-profile', { state: { userObject, userType: 'caregiver' } });
   };
 
   const navigateToMessageCaregiver = () => {
-    navigate('/message-caregiver', { state: { userObject } });
+    navigate('/message-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
   const navigateToHistoryCaregiver= () => {
-    navigate('/history-caregiver', { state: { userObject } });
+    navigate('/history-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
   const navigateToHomeCaregiver = () => {
-    navigate('/home-caregiver', { state: { userObject } });
+    navigate('/home-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
 
@@ -82,7 +82,7 @@ const Home = () => {
     console.log('Selected Booking:', selected);
 
      // Navigate to BookingDetails and pass the selected booking as state
-     navigate('/booking-details', { state: { caregiver, selectedBooking: selected } });
+     navigate('/booking-details', { state: { caregiver, selectedBooking: selected, userType: 'caregiver' } });
   
   };
   
@@ -132,10 +132,23 @@ const Home = () => {
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+          {/* Conditional rendering for profile picture */}
+          {caregiver?.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${caregiver?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
           <div>
             {userObject ? (
-              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+             <p className={styles.userProfileInfo}>{`${caregiver?.firstname} ${caregiver?.lastname}`}</p>
             ) : (
               <p className={styles.userProfileInfo}>Firstname Lastname</p>
             )}

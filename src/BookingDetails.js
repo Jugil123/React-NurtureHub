@@ -10,6 +10,25 @@ const BookingDetails = () => {
   const selectedBooking = location.state ? location.state.selectedBooking : null;
   const [recipientRecords, setRecipientRecords] = useState(null);
   const [showRecords, setShowRecords] = useState(false); 
+  const [caregiver, setCaregiver] = useState(null);
+  const userType = location.state ? location.state.userType : null;
+
+  useEffect(() => {
+    // Fetch caregiver details only if userType is 'caregiver'
+    if (userType === 'caregiver' && userObject) {
+      fetchCaregiverDetails(userObject.caregiverId);
+    }
+  }, [userType, userObject]);
+
+  const fetchCaregiverDetails = async (caregiverId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/caregiver/getCaregiverById/${caregiverId}`);
+      console.log('Caregiver Details123:', response.data);
+      setCaregiver(response.data);
+    } catch (error) {
+      console.error('Error fetching caregiver details:', error);
+    }
+  };
 
   useEffect(() => {
     const fetchRecipientRecords = async () => {
@@ -142,30 +161,44 @@ const BookingDetails = () => {
   };
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject } });
+    navigate('/my-profile', { state: { userObject, userType: 'caregiver' } });
   };
 
   const navigateToMessageCaregiver = () => {
-    navigate('/message-caregiver', { state: { userObject } });
+    navigate('/message-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
-  const navigateToHistoryCaregiver = () => {
-    navigate('/history-caregiver', { state: { userObject } });
+  const navigateToHistoryCaregiver= () => {
+    navigate('/history-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
   const navigateToHomeCaregiver = () => {
-    navigate('/home-caregiver', { state: { userObject } });
+    navigate('/home-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
+
 
   // Render the details of the selected booking
   return (
     <div className={styles.homeContainer}>
+       {userType === 'caregiver' && caregiver && (
       <div className={styles.navColumn}>
       <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+          {caregiver.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${caregiver?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
           <div>
             {userObject ? (
               <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
@@ -202,6 +235,7 @@ const BookingDetails = () => {
           </ul>
         </div>
       </div>
+       )}
       <div className={styles.contentColumn}>
         <h2>Booking Details</h2>
         <p>{`Recipient: ${selectedBooking.recipient.firstname} ${selectedBooking.recipient.lastname}`}</p>
