@@ -20,7 +20,6 @@ const UpdateCaregiver = () => {
     contact_information: '',
     address: '',
     specializations: '',
-    availability: '',
     hourlyRate: 0,
   });
 
@@ -55,7 +54,6 @@ const UpdateCaregiver = () => {
         caregiver.contact_information &&
         caregiver.address &&
         caregiver.specializations &&
-        caregiver.availability &&
         caregiver.hourlyRate
       ) {
         await axios.put(`http://localhost:8080/caregiver/updateCaregiver/?cid=${userId}`, caregiver);
@@ -123,24 +121,21 @@ const UpdateCaregiver = () => {
       />
       <input
         className={styles.updatecaregiverChild2}
-        value={caregiver.hourlyRate}
-        placeholder="Hourly Rate"
-        type="number"
-        onChange={(e) => setCaregiver({ ...caregiver, hourlyRate: e.target.value })}
-      />
-      <input
-        className={styles.updatecaregiverChild3}
         value={caregiver.address}
         placeholder="Address"
         type="text"
         onChange={(e) => setCaregiver({ ...caregiver, address: e.target.value })}
       />
+      {/* <input
+        className={styles.updatecaregiverChild3}
+       
+      /> */}
       <input
         className={styles.updatecaregiverChild4}
-        value={caregiver.availability}
-        placeholder="Availability"
-        type="text"
-        onChange={(e) => setCaregiver({ ...caregiver, availability: e.target.value })}
+        value={caregiver.hourlyRate}
+        placeholder="Hourly Rate"
+        type="number"
+        onChange={(e) => setCaregiver({ ...caregiver, hourlyRate: e.target.value })}
       />
       <input
         className={styles.updatecaregiverChild5}
