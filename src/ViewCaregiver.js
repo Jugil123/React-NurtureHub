@@ -88,7 +88,7 @@ const ViewCaregiver = () => {
   };
 
   const handleBookCaregiver = () => {
-    navigate(`/book-caregiver/${userId}`, { state: { userObject} });
+    navigate(`/book-caregiver/${userId}`, { state: { userObject, caregiver} });
   };
 
   const navigateToMessageRecipient = () => {
