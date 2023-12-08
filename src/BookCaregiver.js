@@ -78,6 +78,7 @@ const BookCaregiver = () => {
   const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
 
   const userObject = location.state ? location.state.userObject : null;
+  const recipient = location.state ? location.state.recipient : null;
 
   const handleSearch = async () => {
     setSearchResults([]);
@@ -113,11 +114,11 @@ const BookCaregiver = () => {
   }
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject } });
+    navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+    navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'recipient' } });
   };
 
   const handleSendMessage = () => {
@@ -162,16 +163,17 @@ const BookCaregiver = () => {
   
 
   const navigateToMessageRecipient = () => {
-    navigate('/message-recipient', { state: { userObject } });
+    navigate('/message-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToRecordsRecipient = () => {
-    navigate('/records-recipient', { state: { userObject } });
+    navigate('/records-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToHomeRecipient = () => {
-    navigate('/home-recipient', { state: { userObject } });
+    navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
+
 
   const handleBookingInputChange = (event) => {
     const { name, value } = event.target;
@@ -183,15 +185,28 @@ const BookCaregiver = () => {
 
   return (
     <div className={styles.homeContainer}>
+      {recipient && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+        {recipient.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${recipient?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
           <div>
             {userObject ? (
-              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+              <p className={styles.userProfileInfo}>{`${recipient.firstname} ${recipient.lastname}`}</p>
             ) : (
               <p className={styles.userProfileInfo}>Loading...</p>
             )}
@@ -225,6 +240,7 @@ const BookCaregiver = () => {
           </ul>
         </div>
       </div>
+      )}
       <div className={styles.contentColumn}>
         <div className={styles.searchBarContainer}>
           <input
@@ -248,7 +264,19 @@ const BookCaregiver = () => {
                 return false;
               })}
             >
-              <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+              {user.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${user?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
               <div>
                 <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
                 <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
@@ -259,7 +287,19 @@ const BookCaregiver = () => {
           <div>
             <h1>Book Caregiver</h1>
             <div className={styles.caregiverInfo}>
-              <img src={caregiver.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+            {caregiver.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${caregiver?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
               <p>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
             </div>
             <label>Start Date:</label>

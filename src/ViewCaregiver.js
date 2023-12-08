@@ -88,7 +88,7 @@ const ViewCaregiver = () => {
   };
 
   const handleBookCaregiver = () => {
-    navigate(`/book-caregiver/${userId}`, { state: { userObject, caregiver} });
+    navigate(`/book-caregiver/${userId}`, { state: { userObject, caregiver, recipient} });
   };
 
   const navigateToMessageRecipient = () => {
@@ -184,7 +184,19 @@ const ViewCaregiver = () => {
                 return false; // Set showSearchResults to false when clicking on a search result
               })}
             >
-              <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+              {user.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${user?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
               <div>
                 <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
                 <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
