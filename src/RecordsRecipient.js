@@ -6,8 +6,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
   const [medicalRecords, setMedicalRecords] = useState(null);
   const [addingRecord, setAddingRecord] = useState(false);
+  const [recipient, setRecipient] = useState(null);
+  const userType = location.state ? location.state.userType : null;
   const [newRecord, setNewRecord] = useState({
     allergies: '',
     medical_conditions: '',
@@ -15,8 +19,7 @@ const Home = () => {
     past_surgeries: '',
     family_history: '',
   });
-  const location = useLocation();
-  const navigate = useNavigate();
+ 
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
@@ -25,10 +28,22 @@ const Home = () => {
     // Perform any initial setup using userObject if needed
     console.log('userObject:', userObject);
     // Fetch medical records when the component mounts
-    if (userObject) {
+    if (userType === 'recipient' && userObject) {
+      fetchRecipientDetails(userObject.recipientId);
       fetchMedicalRecords(userObject.username);
+      
     }
-  }, [userObject]);
+  }, [userType, userObject]);
+
+  const fetchRecipientDetails = async (recipientId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/recipient/getRecipientById/${recipientId}`);
+      console.log('Recipient Details123:', response.data);
+      setRecipient(response.data);
+    } catch (error) {
+      console.error('Error fetching caregiver details:', error);
+    }
+  };
 
   const fetchMedicalRecords = async (username) => {
     try {
@@ -77,36 +92,49 @@ const Home = () => {
   };
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject } });
+    navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+    navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToMessageRecipient = () => {
-    navigate('/message-recipient', { state: { userObject } });
+    navigate('/message-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToRecordsRecipient = () => {
-    navigate('/records-recipient', { state: { userObject } });
+    navigate('/records-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToHomeRecipient = () => {
-    navigate('/home-recipient', { state: { userObject } });
+    navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   return (
     <div className={styles.homeContainer}>
+      {userType === 'recipient' && recipient && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+        {recipient.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${recipient?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
           <div>
             {userObject ? (
-              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+              <p className={styles.userProfileInfo}>{`${recipient.firstname} ${recipient.lastname}`}</p>
             ) : (
               <p className={styles.userProfileInfo}>Loading...</p>
             )}
@@ -140,6 +168,7 @@ const Home = () => {
           </ul>
         </div>
       </div>
+      )}
       <div className={styles.contentColumn}>
         <h2>Medical Records</h2>
 

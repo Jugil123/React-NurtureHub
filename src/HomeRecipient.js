@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [recipient, setRecipient] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,8 +15,21 @@ const Home = () => {
 
   useEffect(() => {
     // Perform any initial setup using userObject if needed
-    console.log('userObject:', userObject);
+    if (userObject) {
+      fetchRecipientDetails(userObject.recipientId);
+    }
   }, [userObject]);
+
+  const fetchRecipientDetails = async (recipientId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/recipient/getRecipientById/${recipientId}`);
+      console.log('Recipient Details:', response.data);
+
+      setRecipient(response.data);
+    } catch (error) {
+      console.error('Error fetching Recipient details:', error);
+    }
+  };
 
   const handleSearch = async () => {
     setSearchResults([]);
@@ -34,23 +48,23 @@ const Home = () => {
   };
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject } });
+    navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+    navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToMessageRecipient = () => {
-    navigate('/message-recipient', { state: { userObject } });
+    navigate('/message-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToRecordsRecipient = () => {
-    navigate('/records-recipient', { state: { userObject } });
+    navigate('/records-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToHomeRecipient = () => {
-    navigate('/home-recipient', { state: { userObject } });
+    navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
 
@@ -61,10 +75,22 @@ const Home = () => {
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+        {recipient?.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${recipient?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
           <div>
             {userObject ? (
-              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+              <p className={styles.userProfileInfo}>{`${recipient?.firstname} ${recipient?.lastname}`}</p>
             ) : (
               <p className={styles.userProfileInfo}>Loading...</p>
             )}
@@ -111,7 +137,19 @@ const Home = () => {
             className={styles.userProfileContainer}
             onClick={() => navigateToViewCaregiver(user.caregiverId)}
           >
-            <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+           {user.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${user?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
             <div>
               <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
               <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>

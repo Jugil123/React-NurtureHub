@@ -10,6 +10,8 @@ const MessageRecipient  = () => {
   const navigate = useNavigate();
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageInput, setMessageInput] = useState('');
+  const [recipient, setRecipient] = useState(null);
+  const userType = location.state ? location.state.userType : null;
   const [conversations, setConversations] = useState({
     Admin: [
       { sender: 'Admin', text: 'Hi, how can I assist you?' },
@@ -49,9 +51,23 @@ const MessageRecipient  = () => {
   const userObject = location.state ? location.state.userObject : null;
 
   useEffect(() => {
-    // Perform any initial setup using userObject if needed
-    console.log('userObject:', userObject);
-  }, [userObject]);
+    // Fetch recipient details only if userType is 'caregiver'
+    if (userType === 'recipient' && userObject) {
+      fetchRecipientDetails(userObject.recipientId);
+    }
+  }, [userType, userObject]);
+
+  const fetchRecipientDetails = async (recipientId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/recipient/getRecipientById/${recipientId}`);
+      console.log('Recipient Details123:', response.data);
+      setRecipient(response.data);
+    } catch (error) {
+      console.error('Error fetching caregiver details:', error);
+    }
+  };
+
+
 
   const handleSearch = async () => {
     setSearchResults([]);
@@ -70,24 +86,23 @@ const MessageRecipient  = () => {
   };
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject } });
+    navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`, { state: { userObject } });
+    navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToMessageRecipient = () => {
-    navigate('/message-recipient', { state: { userObject } });
+    navigate('/message-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
-
   const navigateToRecordsRecipient = () => {
-    navigate('/records-recipient', { state: { userObject } });
+    navigate('/records-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToHomeRecipient = () => {
-    navigate('/home-recipient', { state: { userObject } });
+    navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
 
@@ -128,15 +143,28 @@ const MessageRecipient  = () => {
 
   return (
     <div className={styles.homeContainer}>
+      {userType === 'recipient' && recipient && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-          <img src="/sample.png" alt="Profile" className={styles.userProfilePicture} />
+        {recipient.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${recipient?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
           <div>
             {userObject ? (
-              <p className={styles.userProfileInfo}>{`${userObject.firstname} ${userObject.lastname}`}</p>
+              <p className={styles.userProfileInfo}>{`${recipient.firstname} ${recipient.lastname}`}</p>
             ) : (
               <p className={styles.userProfileInfo}>Loading...</p>
             )}
@@ -170,6 +198,7 @@ const MessageRecipient  = () => {
           </ul>
         </div>
       </div>
+      )}
       <div className={styles.contentColumn}>
         <div className={styles.searchBarContainer}>
           <input type="text" placeholder="Search users..." className={styles.searchInput} value={searchTerm} onChange={handleSearchInputChange}/>
