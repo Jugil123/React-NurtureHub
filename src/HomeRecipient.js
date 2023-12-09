@@ -100,7 +100,7 @@ const Home = () => {
           <ul className={styles.navLinksContainer}>
             <li>
               <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
-                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+                <img src="/home-icon2.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
               </div>
             </li>
             <li>

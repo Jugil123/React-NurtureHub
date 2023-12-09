@@ -98,7 +98,7 @@ const Home = () => {
             </li>
             <li>
               <div className={`${styles.navLink} ${styles.activeNavLink}`}  onClick={navigateToHistoryCaregiver}>
-                <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
+                <img src="/history-icon2.svg" alt="Records" className={styles.navIcon} /> History
               </div>
             </li>
             <li>

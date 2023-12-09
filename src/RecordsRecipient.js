@@ -157,7 +157,7 @@ const Home = () => {
             </li>
             <li>
               <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToRecordsRecipient}>
-                <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
+                <img src="/records-icon2.svg" alt="Records" className={styles.navIcon} /> Records
               </div>
             </li>
             <li>

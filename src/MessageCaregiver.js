@@ -182,7 +182,7 @@ const MessageRecipient  = () => {
                 className={`${styles.navLink} ${styles.activeNavLink}`}
                 onClick={navigateToMessageCaregiver}
               >
-                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+                <img src="/message-icon2.svg" alt="Messages" className={styles.navIcon} /> Messages
               </div>
             </li>
             <li>
