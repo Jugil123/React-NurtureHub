@@ -3,6 +3,9 @@ import styles from './HomeCaregiver.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BookingDetails from './BookingDetails';
+import { useTheme } from './ThemeContext'; // Make sure to import useTheme from the correct location
+
+
 
 //
 const Home = () => {
@@ -10,6 +13,7 @@ const Home = () => {
   const [caregiver, setCaregiver] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
@@ -126,7 +130,7 @@ const Home = () => {
 
 
   return (
-    <div className={styles.homeContainer}>
+    <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
@@ -183,6 +187,9 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.contentColumn}>
+      <button onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
         <p>Booking Requests</p>
         {bookingRequests.bookings.map((booking) => (
           <div key={booking.booking.bookingId} className={styles.bookingRequest}>
