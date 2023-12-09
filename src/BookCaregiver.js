@@ -130,6 +130,18 @@ const BookCaregiver = () => {
   };
 
   const handleBookCaregiver = async () => {
+    
+    if(userObject.isBooked === 1){
+      window.alert('You have already booked a caregiver!')
+      return;
+    }
+
+    if(caregiver.isBooked === 1){
+      window.alert('This caregiver is already booked!');
+      return;
+    }
+
+
     const userConfirmed = window.confirm("Are you sure you want to book this caregiver?");
     if (!userConfirmed) {
       return;
