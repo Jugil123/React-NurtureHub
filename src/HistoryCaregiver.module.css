@@ -1,4 +1,3 @@
-/* HomeRecipient.module.css */
 
 .homeContainer {
   display: flex;
@@ -94,4 +93,48 @@
   flex: 1;
   padding: 20px;
 }
+.dark {
+  background-color: #121212; /* Dark background for the main container */
+  color: #ffffff; /* Light text color for readability */
+}
+
+.dark .navColumn {
+  background-color: #1e1e1e; /* Dark background for the navigation column */
+  border-right: 1px solid #333; /* Darker border color */
+}
+
+.dark .userProfileContainer {
+  background-color: #2a2a2a; /* Dark background for user profile container */
+  color: #ffffff; /* Light text color */
+}
+
+.dark .userProfileContainer:hover {
+  background-color: #333333; /* Darker background for hover state */
+}
+
+.dark .navLinksContainer {
+  /* If you have specific styles for the container in dark mode, add them here */
+}
+
+.dark .navLink {
+  background-color: transparent; /* Assuming you want transparent background for links */
+  color: #dddddd; /* Lighter text color for the links */
+}
+
+.dark .navLink:hover,
+.dark .navLink:active {
+  background-color: #2a2a2a; /* Dark background for hover and active state */
+  color: #ffffff; /* Light text color for hover and active state */
+}
+
+.dark .activeNavLink {
+  background-color: #333333; /* Dark background for active nav link */
+  color: #C3604D; /* Adjust if you want a different color in dark mode */
+}
+
+.dark .contentColumn {
+  /* If you have specific styles for the content column in dark mode, add them here */
+}
+
+/* Add any additional dark mode styles as needed for other elements */
 

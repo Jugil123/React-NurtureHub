@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styles from './HomeCaregiver.module.css';
+import styles from './HistoryCaregiver.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTheme } from './ThemeContext'; // Make sure to import useTheme from the correct location
 
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -10,6 +11,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [caregiver, setCaregiver] = useState(null);
   const userType = location.state ? location.state.userType : null;
+  const { theme, toggleTheme } = useTheme();
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
@@ -53,7 +55,7 @@ const Home = () => {
 
 
   return (
-    <div className={styles.homeContainer}>
+    <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
       {userType === 'caregiver' && caregiver && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
