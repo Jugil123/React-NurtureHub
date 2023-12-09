@@ -101,7 +101,7 @@ const Home = () => {
       console.log(`Ending service for booking with ID ${bookingId}`);
 
       // Make API call to delete the booking
-      await axios.delete(`http://localhost:8080/booking/deleteBooking/${bookingId}`);
+      await axios.delete(`http://localhost:8080/booking/terminateBooking/${bookingId}`);
 
       // Make API calls to update isBooked status for both recipient and caregiver
       await axios.put(`http://localhost:8080/recipient/updateRecipientBooked/?rid=${selected.recipient.recipientId}`, {
