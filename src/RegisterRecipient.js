@@ -143,11 +143,13 @@ const RegisterRecipient = () => {
         onChange={(e) => setPassword(e.target.value)}
         onBlur={checkPasswordRequirements}
       />
+      <div className={styles.errorText2}>
       {passwordErrors.map((error, index) => (
         <div key={index} className={styles.errorText}>
           {error}
         </div>
       ))}
+      </div>
 
       {/* Other input fields... */}
       <input

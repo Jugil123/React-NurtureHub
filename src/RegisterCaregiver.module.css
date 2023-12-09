@@ -134,13 +134,25 @@
   font-family: Inter;
 }
 .errorText {
-  position: absolute;
-  top: 463px; /* Adjust this value so it appears right below the password input */
-  left: calc(50% - 152px);
-  width: 303px;
-  color: #ff0000; /* Change the color as needed */
-  font-size: 0.75em; /* Adjust the font size as needed */
-  text-align: center;
+  color: black;
+  font-size: 14px;
+  margin-top: 5px;
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding-left: 10px;
+  padding-right: 2px;
+}
+
+.errorText2 {
+ border-radius: 5px;
+ margin-left: 62%;
+ margin-right: 12%;
+ margin-top: 24%;
+ background-color: #c3604d;
+ position: relative;
+  z-index: 1;
+
 }
 
 .nurturehub {
