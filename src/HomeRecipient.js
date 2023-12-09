@@ -8,7 +8,17 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [recipient, setRecipient] = useState(null);
   const location = useLocation();
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const navigate = useNavigate();
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
@@ -46,6 +56,11 @@ const Home = () => {
   const handleSearchInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  const handleLogout = () => {
+    // Implement logout functionality, e.g., clear tokens
+    // Then navigate to the login page
+    navigate('/login');
+  };
 
   const navigateToMyProfile = () => {
     navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
@@ -69,25 +84,25 @@ const Home = () => {
 
 
   return (
-    <div className={styles.homeContainer}>
+    <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-        {recipient?.profilePicture ? (
-              <img
-                src={`data:image/png;base64,${recipient?.profilePicture}`}
-                alt="Profile"
-                className={styles.userProfilePicture}
-              />
-            ) : (
-              <img
-                src="/DefaultProfilePicture.webp"
-                alt="Profile"
-                className={styles.userProfilePicture}
-              />
-            )}
+          {recipient?.profilePicture ? (
+            <img
+              src={`data:image/png;base64,${recipient?.profilePicture}`}
+              alt="Profile"
+              className={styles.userProfilePicture}
+            />
+          ) : (
+            <img
+              src="/DefaultProfilePicture.webp"
+              alt="Profile"
+              className={styles.userProfilePicture}
+            />
+          )}
           <div>
             {userObject ? (
               <p className={styles.userProfileInfo}>{`${recipient?.firstname} ${recipient?.lastname}`}</p>
@@ -96,37 +111,43 @@ const Home = () => {
             )}
           </div>
         </div>
-        <div>
-          <ul className={styles.navLinksContainer}>
-            <li>
-              <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
-                <img src="/home-icon2.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
-              </div>
-            </li>
-            <li>
-              <div
-                className={styles.navLink}
-                onClick={navigateToMessageRecipient}
-              >
-                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
-              </div>
-            </li>
-            <li>
-              <div className={styles.navLink}  onClick={navigateToRecordsRecipient}>
-                <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
-              </div>
-            </li>
-            <li>
-              <a href="/login" className={styles.navLink}>
-                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul className={styles.navLinksContainer}>
+          <li>
+            <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
+              <img src="/home-icon2.svg" alt="Home" className={styles.navIcon} /> Home
+            </div>
+          </li>
+          <li>
+            <div className={styles.navLink} onClick={navigateToMessageRecipient}>
+              <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+            </div>
+          </li>
+          <li>
+            <div className={styles.navLink} onClick={navigateToRecordsRecipient}>
+              <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
+            </div>
+          </li>
+          <li>
+            {/* Using a button for logout to handle the logic within React */}
+            <button onClick={handleLogout} className={styles.navLink}>
+              <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+            </button>
+          </li>
+        </ul>
       </div>
       <div className={styles.contentColumn}>
+        {/* Theme toggle button */}
+        <button onClick={toggleTheme} className={styles.themeToggleButton}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
         <div className={styles.searchBarContainer}>
-          <input type="text" placeholder="Search users..." className={styles.searchInput} value={searchTerm} onChange={handleSearchInputChange}/>
+          <input
+            type="text"
+            placeholder="Search users..."
+            className={styles.searchInput}
+            value={searchTerm}
+            onChange={handleSearchInputChange}
+          />
           <button className={styles.searchButton} onClick={handleSearch}>
             <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
           </button>
@@ -137,7 +158,7 @@ const Home = () => {
             className={styles.userProfileContainer}
             onClick={() => navigateToViewCaregiver(user.caregiverId)}
           >
-           {user.profilePicture ? (
+            {user.profilePicture ? (
               <img
                 src={`data:image/png;base64,${user?.profilePicture}`}
                 alt="Profile"
@@ -159,6 +180,7 @@ const Home = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Home;

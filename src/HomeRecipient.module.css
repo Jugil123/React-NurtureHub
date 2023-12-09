@@ -143,3 +143,59 @@
 .customButton:hover{
   background-color: #f0f0f0;
 }
+.dark {
+  background-color: #121212; /* Dark background for the container */
+  color: #ffffff; /* Light text color for the container */
+}
+
+.dark .navColumn {
+  background-color: #1e1e1e; /* Dark background for the nav column */
+  border-right: 1px solid #333; /* Darker border color */
+}
+
+.dark .userProfileContainer,
+.dark .navLink,
+.dark .customButton {
+  background-color: #2a2a2a; /* Dark background for elements */
+  color: #ffffff; /* Light text color for elements */
+}
+
+.dark .userProfileContainer:hover,
+.dark .navLink:hover,
+.dark .customButton:hover {
+  background-color: #333333; /* Darker background for hover state */
+}
+
+.dark .activeNavLink {
+  background-color: #3a3a3a; /* Dark background for active nav link */
+  color: #C3604D; /* Keeping your color, but ensure it's visible on dark bg */
+}
+
+.dark .searchInput {
+  background-color: #2a2a2a; /* Dark background for search input */
+  color: #ffffff; /* Light text color for search input */
+  border: 1px solid #333; /* Darker border color */
+}
+
+.dark .searchButton {
+  background-color: #C3604D; /* Button color for dark mode */
+  color: #ffffff; /* Text color for the button in dark mode */
+}
+
+/* Style for the theme toggle button */
+.themeToggleButton {
+  background-color: #F5E2D7; /* Button color for light mode */
+  color: #ffffff; /* Text color for the button in light mode */
+  border: none;
+  padding: 10px 20px; /* Adjust padding to your preference */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 1rem; /* Adjust font size to your preference */
+  margin-bottom: 20px; /* Space from the bottom element */
+}
+
+/* You can define the toggle button's dark mode style if needed */
+.dark .themeToggleButton {
+  background-color: #333; /* Darker background for the button */
+  color: #ffffff; /* Light text color for the button in dark mode */
+}
