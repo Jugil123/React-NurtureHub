@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HomeRecipient.module.css';
+import { useTheme } from './ThemeContext'; // Adjust the import path as necessary
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -8,17 +9,17 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [recipient, setRecipient] = useState(null);
   const location = useLocation();
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const { theme, toggleTheme } = useTheme(); // Using useTheme hook
   const navigate = useNavigate();
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+  // const toggleTheme = () => {
+  //   const newTheme = theme === 'light' ? 'dark' : 'light';
+  //   setTheme(newTheme);
+  //   localStorage.setItem('theme', newTheme);
+  // };
+  // useEffect(() => {
+  //   document.body.className = theme;
+  // }, [theme]);
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;

@@ -12,6 +12,7 @@ const MessageRecipient  = () => {
   const [messageInput, setMessageInput] = useState('');
   const [recipient, setRecipient] = useState(null);
   const userType = location.state ? location.state.userType : null;
+  const theme = location.state ? location.state.theme : 'light';
   const [conversations, setConversations] = useState({
     Admin: [
       { sender: 'Admin', text: 'Hi, how can I assist you?' },
@@ -142,7 +143,7 @@ const MessageRecipient  = () => {
 
 
   return (
-    <div className={styles.homeContainer}>
+    <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
       {userType === 'recipient' && recipient && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
