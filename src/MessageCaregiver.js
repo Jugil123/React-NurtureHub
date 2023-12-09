@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './MessageCaregiver.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTheme } from './ThemeContext'; // Make sure to import useTheme from the correct location
 
 const MessageRecipient  = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -12,6 +13,7 @@ const MessageRecipient  = () => {
   const [messageInput, setMessageInput] = useState('');
   const [caregiver, setCaregiver] = useState(null);
   const userType = location.state ? location.state.userType : null;
+  const { theme, toggleTheme } = useTheme();
   const [conversations, setConversations] = useState({
     Admin: [
       { sender: 'Admin', text: 'Hi, how can I assist you?' },
@@ -142,7 +144,7 @@ const MessageRecipient  = () => {
 
 
   return (
-    <div className={styles.homeContainer}>
+    <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
        {userType === 'caregiver' && caregiver && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
