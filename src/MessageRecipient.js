@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './MessageRecipient.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTheme } from './ThemeContext'; // Adjust the import path as necessary
 
 const MessageRecipient  = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -12,7 +13,7 @@ const MessageRecipient  = () => {
   const [messageInput, setMessageInput] = useState('');
   const [recipient, setRecipient] = useState(null);
   const userType = location.state ? location.state.userType : null;
-  const theme = location.state ? location.state.theme : 'light';
+  const { theme } = useTheme();
   const [conversations, setConversations] = useState({
     Admin: [
       { sender: 'Admin', text: 'Hi, how can I assist you?' },
