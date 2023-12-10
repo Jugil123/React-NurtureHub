@@ -71,6 +71,21 @@ const BookingDetails = () => {
         isBooked: 1,
       });
 
+      const bookingData = await axios.get(`http://localhost:8080/booking/getAllBookingRequest/${userObject.username}`);
+
+      const bookings = bookingData.data.bookings;
+
+      for (const bookingMap of bookings) {
+        const booking = bookingMap.booking;
+        const recipient = bookingMap.recipient;
+      
+        if (recipient.username !== selectedBooking.recipient.username) {
+          const response = await axios.delete(`http://localhost:8080/booking/deleteBooking/${booking.bookingId}`);
+          console.log('Deleting...');
+          console.log(response.data);
+        }
+      }
+
       // You can add your logic here to handle the acceptance
       // For example, make an API call to update the booking status
       // ...
@@ -92,7 +107,7 @@ const BookingDetails = () => {
       console.log(`Declining booking with ID ${selectedBooking.booking.bookingId}`);
 
       // Make API call to delete the booking
-      await axios.delete(`http://localhost:8080/booking/deleteBooking/${selectedBooking.booking.bookingId}`);
+      await axios.delete(`http://localhost:8080/booking/terminateBooking/${selectedBooking.booking.bookingId}`);
 
       // Make API calls to update isBooked status for both recipient and caregiver
       await axios.put(`http://localhost:8080/recipient/updateRecipientBooked/?rid=${selectedBooking.recipient.recipientId}`, {
