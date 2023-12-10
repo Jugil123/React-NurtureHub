@@ -116,6 +116,17 @@ const Home = () => {
         isBooked: 0,
       });
 
+      const serviceHistoryData = {
+        recipient: selected.recipient.username,
+        caregiver: userObject.username,
+        start_date: selected.booking.start_date,
+        end_date: selected.booking.end_date,
+        start_time: selected.booking.start_time,
+        end_time: selected.booking.end_time
+      }
+
+      await axios.post('http://localhost:8080/serviceHistory/insertServiceHistory', serviceHistoryData);      
+
       // You can add your logic here to handle the end of service
       // For example, update the UI or perform additional actions
 

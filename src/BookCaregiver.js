@@ -131,7 +131,7 @@ const BookCaregiver = () => {
 
   const handleBookCaregiver = async () => {
     const dataToSend = {params: {caregiver: caregiver.username, recipient: userObject.username}}
-    const bookingData = await axios.get('http://localhost:8080/booking/getAllBookingsByUsername', dataToSend);
+    const bookingInfo = await axios.get('http://localhost:8080/booking/getAllBookingsByUsername', dataToSend);
     
     if(userObject.isBooked === 1){
       window.alert('You have already booked a caregiver!');
@@ -143,7 +143,7 @@ const BookCaregiver = () => {
       return;
     }
 
-    if(bookingData.data.length !== 0){
+    if(bookingInfo.data.length !== 0){
       window.alert('Request already sent!');
       return;
     }

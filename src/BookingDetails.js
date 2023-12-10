@@ -81,8 +81,6 @@ const BookingDetails = () => {
       
         if (recipient.username !== selectedBooking.recipient.username) {
           const response = await axios.delete(`http://localhost:8080/booking/deleteBooking/${booking.bookingId}`);
-          console.log('Deleting...');
-          console.log(response.data);
         }
       }
 
