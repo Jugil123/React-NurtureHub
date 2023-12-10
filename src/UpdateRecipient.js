@@ -6,6 +6,7 @@ import styles from "./UpdateRecipient.module.css";
 const UpdateRecipient = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
+  const [passwordErrors, setPasswordErrors] = useState([]);
   const [recipient, setRecipient] = useState({
     firstname: '',
     lastname: '',
@@ -33,7 +34,34 @@ const UpdateRecipient = () => {
     fetchRecipientDetails();
   }, [userId]);
 
+  const checkPasswordRequirements = () => {
+    let errors = [];
+
+    if (recipient.password.length < 8) {
+      errors.push('Password should be at least 8 characters');
+    }
+    if (!/\d/.test(recipient.password)) {
+      errors.push('Password should contain at least one number');
+    }
+    if (!/[a-z]/.test(recipient.password)) {
+      errors.push('Password should contain at least one lowercase letter');
+    }
+    if (!/[A-Z]/.test(recipient.password)) {
+      errors.push('Password should contain at least one uppercase letter');
+    }
+    if (!/[^a-zA-Z\d\s:]/.test(recipient.password)) {
+      errors.push('Password should contain at least one special character');
+    }
+
+    setPasswordErrors(errors);
+    return errors.length === 0;
+  }
+
   const handleUpdate = async () => {
+
+    if (!checkPasswordRequirements()) {
+      return; // Stop the registration process if password validation fails
+    }
 
     const userConfirmed = window.confirm("Are you sure you want to update this recipient?");
     if (!userConfirmed) {
@@ -140,7 +168,16 @@ const UpdateRecipient = () => {
         placeholder="Password"
         type="password"
         onChange={(e) => setRecipient({ ...recipient, password: e.target.value })}
+        onBlur={checkPasswordRequirements}
       />
+
+      <div className={styles.errorText2}>
+      {passwordErrors.map((error, index) => (
+        <div key={index} className={styles.errorText}>
+          {error}
+        </div>
+      ))}
+      </div>
       <Link to="/dashboard" className={styles.vectorIconLink}>
       <img
         className={styles.vectorIcon}

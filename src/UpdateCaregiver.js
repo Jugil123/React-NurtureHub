@@ -11,6 +11,7 @@ const UpdateCaregiver = () => {
  
   const navigate = useNavigate();
   const { userId } = useParams();
+  const [passwordErrors, setPasswordErrors] = useState([]);
   const [caregiver, setCaregiver] = useState({
     firstname: '',
     lastname: '',
@@ -36,7 +37,34 @@ const UpdateCaregiver = () => {
     fetchCaregiverDetails();
   }, [userId]);
 
+  const checkPasswordRequirements = () => {
+    let errors = [];
+
+    if (caregiver.password.length < 8) {
+      errors.push('Password should be at least 8 characters');
+    }
+    if (!/\d/.test(caregiver.password)) {
+      errors.push('Password should contain at least one number');
+    }
+    if (!/[a-z]/.test(caregiver.password)) {
+      errors.push('Password should contain at least one lowercase letter');
+    }
+    if (!/[A-Z]/.test(caregiver.password)) {
+      errors.push('Password should contain at least one uppercase letter');
+    }
+    if (!/[^a-zA-Z\d\s:]/.test(caregiver.password)) {
+      errors.push('Password should contain at least one special character');
+    }
+
+    setPasswordErrors(errors);
+    return errors.length === 0;
+  }
+
   const handleUpdate = async () => {
+
+    if (!checkPasswordRequirements()) {
+      return; // Stop the registration process if password validation fails
+    }
 
     const userConfirmed = window.confirm("Are you sure you want to update this caregiver?");
     if (!userConfirmed) {
@@ -77,7 +105,6 @@ const UpdateCaregiver = () => {
 
   return (
     <div className={styles.updatecaregiver}>
-       <form onSubmit={handleUpdate}>
       <input
         className={styles.updatecaregiverChild}
         value={caregiver.firstname}
@@ -150,7 +177,17 @@ const UpdateCaregiver = () => {
         placeholder="Password"
         type="password"
         onChange={(e) => setCaregiver({ ...caregiver, password: e.target.value })}
+        onBlur={checkPasswordRequirements}
       />
+
+     <div className={styles.errorText2}>
+      {passwordErrors.map((error, index) => (
+        <div key={index} className={styles.errorText}>
+          {error}
+        </div>
+      ))}
+      </div>
+
       <div className={styles.updateCaregiver}>Update Caregiver</div>
       <Link to="/dashboard" className={styles.vectorIconLink}>
       <img
@@ -160,10 +197,9 @@ const UpdateCaregiver = () => {
         onClick={onVectorIconClick}
       />
       </Link>
-      <button className={styles.buttonWrapper} type="submit">
+      <button className={styles.buttonWrapper} onClick={handleUpdate}>
         <div className={styles.button}>Update</div>
       </button>
-      </form>
     </div>
   );
 };
