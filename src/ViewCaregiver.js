@@ -165,7 +165,7 @@ const ViewCaregiver = () => {
         <div className={styles.searchBarContainer}>
           <input
             type="text"
-            placeholder="Search users..."
+            placeholder="Search caregiver"
             className={styles.searchInput}
             value={searchTerm}
             onChange={handleSearchInputChange}
@@ -205,25 +205,41 @@ const ViewCaregiver = () => {
           ))
         ) : (
           <div className={styles.viewCaregiverContainer}>
-            <div className={styles.caregiverDetailsColumn}>
-              <div className={styles.caregiverDetails}>
-                <h2 className={styles.caregiverName}>{`${caregiver.firstname} ${caregiver.lastname}`}</h2>
-                <p className={styles.caregiverAddress}>{`Address: ${caregiver.address}`}</p>
-                <div className={styles.caregiverInfo}>
-                  <p>{`Contact Information: ${caregiver.contact_information}`}</p>
-                  <p>{`Birthdate: ${caregiver.birth_date}`}</p>
-                  <p>{`Specializations: ${caregiver.specializations}`}</p>
-                  <p>{`Available: ${caregiver.availability}`}</p>
-                  <p>{`Hourly Rate: ${caregiver.hourlyRate}`}</p>
-                </div>
-                <div className={styles.userProfileContainerButtons}>
-                  <button onClick={handleSendMessage}>Message</button>
-                  <button onClick={handleShowFeedbacks}>Show Feedbacks</button>
-                  <button onClick={handleBookCaregiver}>Book</button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div className={styles.caregiverDetailsColumn}>
+    <div className={styles.caregiverDetails}>
+      <div className={styles.leftColumn}>
+        {caregiver.profilePicture ? (
+          <img
+            src={`data:image/png;base64,${caregiver?.profilePicture}`}
+            alt="Profile"
+            className={styles.userProfilePicture2}
+          />
+        ) : (
+          <img
+            src="/DefaultProfilePicture.webp"
+            alt="Profile"
+            className={styles.userProfilePicture2}
+          />
+        )}
+        <h2 className={styles.caregiverName}>{`${caregiver.firstname} ${caregiver.lastname}`}</h2>
+      </div>
+      <div className={styles.rightColumn}>
+        <p className={styles.caregiverAddress}>{`Address: ${caregiver.address}`}</p>
+        <div className={styles.caregiverInfo}>
+          <p>{`Contact Information: ${caregiver.contact_information}`}</p>
+          <p>{`Birthdate: ${caregiver.birth_date}`}</p>
+          <p>{`Specializations: ${caregiver.specializations}`}</p>
+          <p>{`Hourly Rate: ${caregiver.hourlyRate}`}</p>
+        </div>
+        <div className={styles.userProfileContainerButtons}>
+          <button onClick={handleSendMessage}>Message</button>
+          <button onClick={handleShowFeedbacks}>Show Feedbacks</button>
+          <button onClick={handleBookCaregiver}>Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         )}
       </div>
     </div>

@@ -54,8 +54,8 @@
 
 .userProfileInfo {
   margin: 0;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .navLinksContainer {
@@ -185,7 +185,7 @@
 /* Style for the theme toggle button */
 .themeToggleButton {
   background-color: #F5E2D7; /* Button color for light mode */
-  color: #ffffff; /* Text color for the button in light mode */
+  color: #C3604D; /* Text color for the button in light mode */
   border: none;
   padding: 10px 20px; /* Adjust padding to your preference */
   border-radius: 5px; /* Rounded corners */

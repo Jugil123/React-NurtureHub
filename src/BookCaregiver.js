@@ -205,8 +205,8 @@ const BookCaregiver = () => {
   return (
     <div className={styles.homeContainer}>
       {recipient && (
-      <div className={styles.navColumn}>
-        <div className={styles.logoContainer}>
+        <div className={styles.navColumn}>
+          <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
@@ -232,7 +232,7 @@ const BookCaregiver = () => {
           </div>
         </div>
         <div>
-          <ul className={styles.navLinksContainer}>
+        <ul className={styles.navLinksContainer}>
             <li>
               <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
                 <img src="/home-icon2.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
@@ -247,7 +247,7 @@ const BookCaregiver = () => {
               </div>
             </li>
             <li>
-              <div className={styles.navLink} onClick={navigateToRecordsRecipient}>
+              <div className={styles.navLink}  onClick={navigateToRecordsRecipient}>
                 <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
               </div>
             </li>
@@ -258,13 +258,13 @@ const BookCaregiver = () => {
             </li>
           </ul>
         </div>
-      </div>
+        </div>
       )}
       <div className={styles.contentColumn}>
-        <div className={styles.searchBarContainer}>
+      <div className={styles.searchBarContainer}>
           <input
             type="text"
-            placeholder="Search users..."
+            placeholder="Search caregiver"
             className={styles.searchInput}
             value={searchTerm}
             onChange={handleSearchInputChange}
@@ -280,7 +280,7 @@ const BookCaregiver = () => {
               className={styles.userProfileContainer}
               onClick={() => setShowSearchResults((prev) => {
                 navigateToViewCaregiver(user.caregiverId);
-                return false;
+                return false; // Set showSearchResults to false when clicking on a search result
               })}
             >
               {user.profilePicture ? (
@@ -303,36 +303,52 @@ const BookCaregiver = () => {
             </div>
           ))
         ) : (
-          <div>
+        <div className={styles.bookingContainer}>
+                  <div className={styles.bookingForm}>
             <h1>Book Caregiver</h1>
-            <div className={styles.caregiverInfo}>
+            <div className={styles.formField}>
+              <label>Start Date:</label>
+              <input className={styles.inputfield} type="date" name="start_date" value={bookingData.start_date} onChange={handleBookingInputChange} />
+            </div>
+            <div className={styles.formField}>
+              <label>End Date:</label>
+              <input className={styles.inputfield} type="date" name="end_date" value={bookingData.end_date} onChange={handleBookingInputChange} />
+            </div>
+            <div className={styles.formField}>
+              <label>Start Time:</label>
+              <input className={styles.inputfield} type="time" name="start_time" value={bookingData.start_time} onChange={handleBookingInputChange} />
+            </div>
+            <div className={styles.formField}>
+              <label>End Time:</label>
+              <input className={styles.inputfield} type="time" name="end_time" value={bookingData.end_time} onChange={handleBookingInputChange} />
+            </div>
+            <div className={styles.formField}>
+              <button className={styles.bookButton} onClick={handleBookCaregiver}>Book</button>
+            </div>
+          </div>
+          
+          <div className={styles.caregiverProfile}>
             {caregiver.profilePicture ? (
               <img
                 src={`data:image/png;base64,${caregiver?.profilePicture}`}
                 alt="Profile"
-                className={styles.userProfilePicture}
+                className={styles.userProfilePicture2}
               />
             ) : (
               <img
                 src="/DefaultProfilePicture.webp"
                 alt="Profile"
-                className={styles.userProfilePicture}
+                className={styles.userProfilePicture2}
               />
             )}
-              <p>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
-            </div>
-            <label>Start Date:</label>
-            <input type="date" name="start_date" value={bookingData.start_date} onChange={handleBookingInputChange} />
-            <label>End Date:</label>
-            <input type="date" name="end_date" value={bookingData.end_date} onChange={handleBookingInputChange} />
-            <label>Start Time:</label>
-            <input type="time" name="start_time" value={bookingData.start_time} onChange={handleBookingInputChange} />
-            <label>End Time:</label>
-            <input type="time" name="end_time" value={bookingData.end_time} onChange={handleBookingInputChange} />
-            <button onClick={handleBookCaregiver}>Book</button>
+            <p>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
+         
           </div>
+          
+        </div>
         )}
         {confirmationModalVisible && <ConfirmationModal onClose={handleCloseModal} caregiver={caregiver} bookingData={bookingData} userObject={userObject} />}
+      
       </div>
     </div>
   );

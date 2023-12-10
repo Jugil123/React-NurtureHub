@@ -93,9 +93,20 @@
   margin-right: 10px; /* Adjust the margin as needed */
 }
 
+.formField {
+  margin-bottom: 20px; /* Adjust the margin as needed to add space between form fields */
+}
+
 
 .userProfilePicture {
   width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userProfilePicture2 {
+  width: 250px;
   height: 100%;
   border-radius: 50%;
   margin-right: 10px;
@@ -197,3 +208,58 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+.bookingContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px
+}
+
+.bookingForm {
+  flex: 1;
+  margin-left: 5%;
+}
+
+.caregiverProfile {
+  margin-right: 30%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+  border-radius: 50%;
+  margin-top: 70px;
+}
+
+
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.inputfield {
+  width: 100%;
+  max-width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.bookButton {
+  background-color: #c3604d;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  max-width: 75%;
+}
+

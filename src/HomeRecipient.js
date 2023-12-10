@@ -130,9 +130,9 @@ const Home = () => {
           </li>
           <li>
             {/* Using a button for logout to handle the logic within React */}
-            <button onClick={handleLogout} className={styles.navLink}>
+            <div onClick={handleLogout} className={styles.navLink}>
               <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-            </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -144,7 +144,7 @@ const Home = () => {
         <div className={styles.searchBarContainer}>
           <input
             type="text"
-            placeholder="Search users..."
+            placeholder="Search caregiver"
             className={styles.searchInput}
             value={searchTerm}
             onChange={handleSearchInputChange}
