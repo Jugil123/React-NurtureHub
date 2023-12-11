@@ -8,7 +8,6 @@ const MessageRecipient  = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
-  const navigate = useNavigate();
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageInput, setMessageInput] = useState('');
   const [caregiver, setCaregiver] = useState(null);
@@ -48,6 +47,10 @@ const MessageRecipient  = () => {
       setMessageInput('');
     }
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Messages-caregiver";
+  },[]);
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
