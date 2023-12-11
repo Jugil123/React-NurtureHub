@@ -181,15 +181,31 @@ const Home = () => {
           {medicalRecords ? (
             // Display medical records if available
             <div key={medicalRecords.recordId} className={styles.medicalRecord}>
-              <h3 className={styles.recordTitle}>Your Medical Record</h3>
-              <ul className={styles.recordList}>
-                <li><strong>Allergies:</strong> {medicalRecords.allergies}</li>
-                <li><strong>Medical Conditions:</strong> {medicalRecords.medical_conditions}</li>
-                <li><strong>Medications:</strong> {medicalRecords.medications}</li>
-                <li><strong>Past Surgeries:</strong> {medicalRecords.past_surgeries}</li>
-                <li><strong>Family History:</strong> {medicalRecords.family_history}</li>
-              </ul>
-            </div>
+            <h3 className={styles.recordTitle}>Your Medical Record</h3>
+            <ul className={styles.recordList}>
+              <li>
+                <strong className={styles.recordLabel}>Allergies:</strong> 
+                <span className={styles.recordInfo}>{medicalRecords.allergies}</span>
+              </li>
+              <li>
+                <strong className={styles.recordLabel}>Medical Conditions:</strong> 
+                <span className={styles.recordInfo}>{medicalRecords.medical_conditions}</span>
+              </li>
+              <li>
+                <strong className={styles.recordLabel}>Medications:</strong> 
+                <span className={styles.recordInfo}>{medicalRecords.medications}</span>
+              </li>
+              <li>
+                <strong className={styles.recordLabel}>Past Surgeries:</strong> 
+                <span className={styles.recordInfo}>{medicalRecords.past_surgeries}</span>
+              </li>
+              <li>
+                <strong className={styles.recordLabel}>Family History:</strong> 
+                <span className={styles.recordInfo}>{medicalRecords.family_history}</span>
+              </li>
+            </ul>
+          </div>
+
           ) : (
             // Display a message if no medical records are available
             <div className={styles.noRecordContainer}>

@@ -155,6 +155,8 @@
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .recordTitle {
@@ -168,12 +170,22 @@
   }
   
   .recordList li {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
   }
   
   .noRecordContainer {
     text-align: center;
     margin-top: 20px;
+  }
+
+  .recordLabel {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .recordInfo {
+    color: #555;
   }
   
   .addButton {

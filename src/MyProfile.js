@@ -80,56 +80,114 @@ const MyProfile = () => {
     }
   };
 
-  return (
-    <div className={styles.myProfileContainer}>
-      {userType === 'caregiver' && caregiver && (
-        <div>
-          {caregiver?.profilePicture ? (
+  const handleUpdateFields = async () => {
+    
+   };
+
+   return (
+    <div className={styles.profileContainer}>
+      <div className={styles.profileSection}>
+        {userType === 'caregiver' && caregiver && (
+          <div className={styles.userProfileSection}>
             <img
-              src={`data:image/png;base64,${caregiver?.profilePicture}`}
+              src={caregiver?.profilePicture ? `data:image/png;base64,${caregiver?.profilePicture}` : '/DefaultProfilePicture.webp'}
               alt="Profile"
               className={styles.userProfilePicture}
             />
-          ) : (
-            <img
-              src="/DefaultProfilePicture.webp"
-              alt="Profile"
-              className={styles.userProfilePicture}
-            />
+            <div className={styles.userName}>
+              <h2>{`${caregiver.firstname} ${caregiver.lastname}`}</h2>
+            </div>
+            <div className={styles.fileInputContainer}>
+              <label className={styles.customFileInputLabel} htmlFor="profilePictureInput">
+                Update Profile Picture
+              </label>
+              <input
+                id="profilePictureInput"
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className={styles.customFileInput}
+              />
+              {selectedFile && <span className={styles.fileName}>{selectedFile.name}</span>}
+            </div>
+            <br />
+            {selectedFile && (
+            <button className={styles.buttonprofile} onClick={handleUpdateProfilePicture}>
+              Update
+            </button>
           )}
-          <p className={styles.profileInfo}>{`Name: ${caregiver.firstname} ${caregiver.lastname}`}</p>
-          <p className={styles.profileInfo}>{`Address: ${caregiver.address}`}</p>
-          <p className={styles.profileInfo}>{`Specialization: ${caregiver.specializations}`}</p>
-          {/* Add other attributes here */}
-        </div>
-      )}
+          </div>
+        )}
   
-      {userType === 'recipient' && recipient && (
-        <div>
-          {recipient?.profilePicture ? (
+        {userType === 'recipient' && recipient && (
+          <div className={styles.userProfileSection}>
             <img
-              src={`data:image/png;base64,${recipient?.profilePicture}`}
+              src={recipient?.profilePicture ? `data:image/png;base64,${recipient?.profilePicture}` : '/DefaultProfilePicture.webp'}
               alt="Profile"
               className={styles.userProfilePicture}
             />
-          ) : (
-            <img
-              src="/DefaultProfilePicture.webp"
-              alt="Profile"
-              className={styles.userProfilePicture}
-            />
+            <div className={styles.userName}>
+              <h2>{`${recipient.firstname} ${recipient.lastname}`}</h2>
+            </div>
+            <div className={styles.fileInputContainer}>
+              <label className={styles.customFileInputLabel} htmlFor="profilePictureInput">
+                Update Profile Picture
+              </label>
+              <input
+                id="profilePictureInput"
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className={styles.customFileInput}
+              />
+              {selectedFile && <span className={styles.fileName}>{selectedFile.name}</span>}
+            </div>
+            <br />
+            {selectedFile && (
+            <button className={styles.buttonprofile} onClick={handleUpdateProfilePicture}>
+              Update
+            </button>
           )}
-          <p className={styles.profileInfo}>{`Name: ${recipient.firstname} ${recipient.lastname}`}</p>
-          <p className={styles.profileInfo}>{`Address: ${recipient.address}`}</p>
-          <p className={styles.profileInfo}>{`Age: ${recipient.age}`}</p>
-          {/* Add other attributes here */}
-        </div>
-      )}
+          </div>
+        )}
   
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={handleUpdateProfilePicture}>Update Profile Picture</button>
+        <div className={styles.profileDetails}>
+          {userType === 'caregiver' && caregiver && (
+            <>
+              <p><strong>Username:</strong> {caregiver.username}</p>
+              <p><strong>Password:</strong> {caregiver.password}</p>
+              <p><strong>Birth Date:</strong> {caregiver.birth_date}</p>
+              <p><strong>Gender:</strong> {caregiver.gender}</p>
+              <p><strong>Contact Information:</strong> {caregiver.contact_information}</p>
+              <p><strong>Address:</strong> {caregiver.address}</p>
+              <p><strong>Specializations:</strong> {caregiver.specializations}</p>
+              <p><strong>Hourly Rate:</strong> {caregiver.hourlyRate}</p>
+            </>
+          )}
+  
+          {userType === 'recipient' && recipient && (
+            <>
+              <p><strong>Username:</strong> {recipient.username}</p>
+              <p><strong>Password:</strong> {recipient.password}</p>
+              <p><strong>Birth Date:</strong> {recipient.birth_date}</p>
+              <p><strong>Gender:</strong> {recipient.gender}</p>
+              <p><strong>Contact Information:</strong> {recipient.contact_info}</p>
+              <p><strong>Address:</strong> {recipient.address}</p>
+              <p><strong>Age:</strong> {recipient.age}</p>
+            </>
+          )}
+  
+          <div className={styles.buttonContainerfields}>
+            <button className={styles.buttonprofile} onClick={handleUpdateFields}>
+              Update Fields
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
+  
+  
 };
 
 export default MyProfile;

@@ -1,13 +1,100 @@
-/* MyProfile.module.css */
-.myProfileContainer {
-    /* Add styling for the profile container */
+.profileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5e2d7;
   }
   
-  .profilePicture {
-    /* Add styling for the profile picture */
+  .profileSection {
+    display: flex;
+    align-items: flex-start;
   }
   
-  .profileInfo {
-    /* Add styling for the profile information */
+  .userProfileSection {
+    flex: 1; /* Take up remaining space */
+    text-align: center;
+    margin-right: 100px; /* Adjust margin for spacing */
+  }
+  .userProfilePicture {
+    border-radius: 50%;
+    width: 250px;
+  height: 100%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 1px solid #c3604d;
+  }
+  
+  .userName {
+    margin-bottom: 15px;
+  }
+  
+  input[type="file"] {
+    display: none; /* Hide the default file input */
+  }
+  
+  .fileInputContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .customFileInput {
+    background-color: #c3604d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .fileName {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  /* Style the file input label */
+  .customFileInputLabel {
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    padding: 10px 20px;
+    background-color: #c3604d;
+    border-radius: 5px;
+  }
+  
+  /* Style the file input when a file is selected */
+  .customFileInputLabel:hover {
+    background-color: #c3604d;
+    color: white;
+  }
+  
+  
+  .buttonprofile {
+    background-color: #c3604d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .profileDetails {
+    flex: 2;
+    margin-top: 10px;
+  }
+  
+  .profileDetails p {
+    margin-bottom: 10px;
+  }
+  
+  .buttonContainerfields {
+    margin-top: 20px;
   }
   
