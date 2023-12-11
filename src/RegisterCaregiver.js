@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from "./RegisterCaregiver.module.css";
@@ -20,6 +20,9 @@ const RegisterCaregiver = () => {
   const [specializations, setSpecializations] = useState('');
   const [hourlyRate, setHourlyRate] = useState('');
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Register-caregiver";
+  },[]);
 
   function is_valid_password(password) {
     if (password.length < 8) {
