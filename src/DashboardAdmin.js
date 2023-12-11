@@ -79,6 +79,7 @@ const DashboardAdmin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "NurtureHub | Admin";
     fetchRecipients();
     fetchCaregivers();
   }, []);

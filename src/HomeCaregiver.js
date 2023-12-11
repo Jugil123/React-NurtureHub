@@ -12,8 +12,11 @@ const Home = () => {
   const [bookingRequests, setBookingRequests] = useState({ bookings: [] });
   const [caregiver, setCaregiver] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Home-caregiver";
+  },[]);
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;

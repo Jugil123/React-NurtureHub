@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './MyProfile.module.css';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const MyProfile = () => {
   const location = useLocation();
@@ -24,6 +24,12 @@ const MyProfile = () => {
       fetchRecipientDetails(userObject.recipientId);
     }
   }, [userType, userObject]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Profile";
+  }, []); 
+
 
   const fetchCaregiverDetails = async (caregiverId) => {
     try {
