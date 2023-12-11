@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const LandinPage = () => {
 
   useEffect(() => {
-    document.title = "NurtureHub | Landing Page";
+    document.title = "NurtureHub";
   }, []); 
 
     const navigate = useNavigate();

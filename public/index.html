@@ -27,6 +27,9 @@
         function isRegisterPage(pathname) {
           return pathname.includes("/register-recipient");
         }
+        function isFAQPage(pathname) {
+          return pathname.includes("/FAQ");
+        }
         document.addEventListener("click", function (event) {
           if (event.target.tagName === "A" && event.target.getAttribute("href")) {
             const href = event.target.getAttribute("href");
@@ -37,6 +40,8 @@
                 setPageTitle("NurtureHub | Contact Us");
               } else if (isLoginPage(href)) {
                 setPageTitle("NurtureHub | Login");
+              } else if (isFAQPage(href)) {
+                setPageTitle("NurtureHub | FAQ");
               } else {
                 setPageTitle("NurtureHub");
               }
@@ -53,6 +58,8 @@
             setPageTitle("Login");
           } else if (isRegisterPage(window.location.pathname)) {
             setPageTitle("Register");
+          } else if (isFAQPage(window.location.pathname)) {
+            setPageTitle("FAQ");
           } else {
             setPageTitle("NurtureHub");
           }
