@@ -105,6 +105,7 @@ const RegisterCaregiver = () => {
       src="/nurturehublogo-2@2x.png"
     />
        <form onSubmit={handleRegister}>
+       <div className={styles.standingRectangle}></div>
       <input
         className={styles.registercaregiverChild}
         value={firstname}
