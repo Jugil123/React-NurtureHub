@@ -6,12 +6,15 @@
   }
   
   .navColumn {
-    width: 15%;
+    flex: 0 0 15%;
     background-color: white;
     border-right: 1px solid #ccc;
     padding: 20px;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide any potential overflow */
   }
+  
   
   .logoContainer {
     margin-bottom: 20px;
@@ -54,8 +57,8 @@
   
   .userProfileInfo {
     margin: 0;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
+  font-weight: 500;
   }
   
   .navLinksContainer {
@@ -94,8 +97,8 @@
   .contentColumn {
     flex: 1;
     padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
   }
-  
   .searchBarContainer {
     display: flex;
     align-items: center;
@@ -140,7 +143,86 @@
     color: grey; 
   }
   
+  /* */
+  .sectionTitle {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
   
+  .medicalRecord {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .recordTitle {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .recordList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .recordList li {
+    margin-bottom: 8px;
+  }
+  
+  .noRecordContainer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .addButton {
+    background-color: #F5E2D7;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .addRecordContainer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .addRecordForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textarea2 {
+    width: 98%;
+    height: 100px; /* Adjust the height as needed */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  .saveButton {
+    background-color: #C3604D;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .saveButton:hover {
+    background-color: #333;
+  }
+  
+  /* */
+
   .customButton:hover{
     background-color: #f0f0f0;
   }

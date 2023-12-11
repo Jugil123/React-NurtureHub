@@ -175,55 +175,88 @@ const Home = () => {
         </div>
       </div>
       )}
-      <div className={styles.contentColumn}>
-        <h2>Medical Records</h2>
+              <div className={styles.contentColumn}>
+          <h2 className={styles.sectionTitle}>Medical Records</h2>
 
-        {medicalRecords ? (
-          // Display medical records if available
-          <div key={medicalRecords.recordId} className={styles.medicalRecord}>
-          <p><strong>Allergies:</strong> {medicalRecords.allergies}</p>
-          <p><strong>Medical Conditions:</strong> {medicalRecords.medical_conditions}</p>
-          <p><strong>Medications:</strong> {medicalRecords.medications}</p>
-          <p><strong>Past Surgeries:</strong> {medicalRecords.past_surgeries}</p>
-          <p><strong>Family History:</strong> {medicalRecords.family_history}</p>
-        </div>
-        ) : (
-          // Display a message if no medical records are available
-          <div>
-            <p>You did not add yet your medical records.</p>
-            <button onClick={handleAddRecord}>Add Now</button>
-          </div>
-        )}
+          {medicalRecords ? (
+            // Display medical records if available
+            <div key={medicalRecords.recordId} className={styles.medicalRecord}>
+              <h3 className={styles.recordTitle}>Your Medical Record</h3>
+              <ul className={styles.recordList}>
+                <li><strong>Allergies:</strong> {medicalRecords.allergies}</li>
+                <li><strong>Medical Conditions:</strong> {medicalRecords.medical_conditions}</li>
+                <li><strong>Medications:</strong> {medicalRecords.medications}</li>
+                <li><strong>Past Surgeries:</strong> {medicalRecords.past_surgeries}</li>
+                <li><strong>Family History:</strong> {medicalRecords.family_history}</li>
+              </ul>
+            </div>
+          ) : (
+            // Display a message if no medical records are available
+            <div className={styles.noRecordContainer}>
+              <p>You haven't added any medical records yet.</p>
+              <button className={styles.addButton} onClick={handleAddRecord}>Add Medical Record</button>
+            </div>
+          )}
 
-        {addingRecord && (
-          <div>
-            <h3>Add Medical Record</h3>
-            <form>
+          {addingRecord && (
+            <div className={styles.addRecordContainer}>
+              <h3 className={styles.recordTitle}>Add Medical Record</h3>
+              <form className={styles.addRecordForm}>
               <label>
                 Allergies:
-                <input type="text" name="allergies" value={newRecord.allergies} onChange={handleInputChange} />
+                <textarea
+                  name="allergies"
+                  value={newRecord.allergies}
+                  onChange={handleInputChange}
+                  className={styles.textarea2}
+                  placeholder='Enter allergies'
+                />
               </label>
               <label>
                 Medical Conditions:
-                <input type="text" name="medical_conditions" value={newRecord.medical_conditions} onChange={handleInputChange} />
+                <textarea
+                  name="medical_conditions"
+                  value={newRecord.medical_conditions}
+                  onChange={handleInputChange}
+                  className={styles.textarea2}
+                  placeholder='Enter Medical Conditions'
+                />
               </label>
               <label>
                 Medications:
-                <input type="text" name="medications" value={newRecord.medications} onChange={handleInputChange} />
+                <textarea
+                  name="medications"
+                  value={newRecord.medications}
+                  onChange={handleInputChange}
+                  className={styles.textarea2}
+                  placeholder='Enter medications'
+                />
               </label>
               <label>
                 Past Surgeries:
-                <input type="text" name="past_surgeries" value={newRecord.past_surgeries} onChange={handleInputChange} />
+                <textarea
+                  name="past_surgeries"
+                  value={newRecord.past_surgeries}
+                  onChange={handleInputChange}
+                  className={styles.textarea2}
+                  placeholder='Enter Past Surgeries'
+                />
               </label>
               <label>
                 Family History:
-                <input type="text" name="family_history" value={newRecord.family_history} onChange={handleInputChange} />
+                <textarea
+                  name="family_history"
+                  value={newRecord.family_history}
+                  onChange={handleInputChange}
+                  className={styles.textarea2}
+                  placeholder='Enter family History'
+                />
               </label>
-              <button type="button" onClick={handleSaveRecord}>Save</button>
-            </form>
-          </div>
-        )}
-      </div>
+                <button type="button" className={styles.saveButton} onClick={handleSaveRecord}>Save</button>
+              </form>
+            </div>
+          )}
+        </div>
     </div>
   );
 };
