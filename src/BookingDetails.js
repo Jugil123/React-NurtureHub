@@ -71,8 +71,8 @@ const BookingDetails = () => {
         isBooked: 1,
       });
 
+      // Code for deleting other booking requests sent by other recipient
       const bookingData = await axios.get(`http://localhost:8080/booking/getAllBookingRequest/${userObject.username}`);
-
       const bookings = bookingData.data.bookings;
 
       for (const bookingMap of bookings) {
@@ -80,7 +80,19 @@ const BookingDetails = () => {
         const recipient = bookingMap.recipient;
       
         if (recipient.username !== selectedBooking.recipient.username) {
-          const response = await axios.delete(`http://localhost:8080/booking/deleteBooking/${booking.bookingId}`);
+          await axios.delete(`http://localhost:8080/booking/deleteBooking/${booking.bookingId}`);
+        }
+      }
+
+      //Code for deleting other booking requests sent by recipient
+      const response = 
+      await axios.get(`http://localhost:8080/booking/getAllBookingsByRecipient?recipient=${selectedBooking.recipient.username}`);
+      const recipientRequests = response.data;
+
+      for(const booking of recipientRequests){
+
+        if(booking.caregiver !== userObject.username){
+          await axios.delete(`http://localhost:8080/booking/deleteBooking/${booking.bookingId}`);
         }
       }
 
