@@ -103,7 +103,7 @@ const RegisterRecipient = () => {
 
   return (
     <div className={styles.registerrecipient}>
-    {/*<div className={styles.headerChild} />*/}
+    <div className={styles.headerChild} />
     <div className={styles.nurturehub}>NurtureHub</div>
     <img
       className={styles.nurturehublogo2Icon}
