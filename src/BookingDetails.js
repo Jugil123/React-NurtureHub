@@ -236,7 +236,7 @@ const BookingDetails = () => {
           <ul className={styles.navLinksContainer}>
             <li>
               <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeCaregiver}>
-                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+                <img src="/home-icon2.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
               </div>
             </li>
             <li>
@@ -261,45 +261,60 @@ const BookingDetails = () => {
         </div>
       </div>
        )}
+      {/* Render the details of the selected booking */}
       <div className={styles.contentColumn}>
-        <h2>Booking Details</h2>
-        <p>{`Recipient: ${selectedBooking.recipient.firstname} ${selectedBooking.recipient.lastname}`}</p>
-        <p>{`Start & End Date: ${selectedBooking.booking.start_date} - ${selectedBooking.booking.end_date}`}</p>
-        <p>{`Time: ${selectedBooking.booking.start_time} - ${selectedBooking.booking.end_time}`}</p>
-        <p>{`Contact Info: ${selectedBooking.recipient.contact_info}`}</p>
-        <p>{`Address: ${selectedBooking.recipient.address}`}</p>
+        <h2 className={styles.bookingDetailsTitle}>Booking Details</h2>
+        {selectedBooking.recipient.profilePicture ? (
+          <img
+            src={`data:image/png;base64,${selectedBooking.recipient?.profilePicture}`}
+            alt="Profile"
+            className={styles.bookingDetailsProfilePicture}
+          />
+        ) : (
+          <img
+            src="/DefaultProfilePicture.webp"
+            alt="Profile"
+            className={styles.bookingDetailsProfilePicture}
+          />
+        )}
+        <p className={styles.bookingDetailsText}>{`Recipient: ${selectedBooking.recipient.firstname} ${selectedBooking.recipient.lastname}`}</p>
+        <p className={styles.bookingDetailsText}>{`Start & End Date: ${selectedBooking.booking.start_date} - ${selectedBooking.booking.end_date}`}</p>
+        <p className={styles.bookingDetailsText}>{`Time: ${selectedBooking.booking.start_time} - ${selectedBooking.booking.end_time}`}</p>
+        <p className={styles.bookingDetailsText}>{`Contact Info: ${selectedBooking.recipient.contact_info}`}</p>
+        <p className={styles.bookingDetailsText}>{`Address: ${selectedBooking.recipient.address}`}</p>
 
         {showRecords ? (
           <div>
-            <h3>Recipient's Medical Records</h3>
+            <h3 className={styles.bookingDetailsRecordsTitle}>Recipient's Medical Records</h3>
             {recipientRecords ? (
               <>
-                <p>{`Allergies: ${recipientRecords.allergies}`}</p>
-                <p>{`Medical Conditions: ${recipientRecords.medical_conditions}`}</p>
-                <p>{`Medications: ${recipientRecords.medications}`}</p>
-                <p>{`Past Surgeries: ${recipientRecords.past_surgeries}`}</p>
-                <p>{`Family History: ${recipientRecords.family_history}`}</p>
+                <p className={styles.bookingDetailsText}>{`Allergies: ${recipientRecords.allergies}`}</p>
+                <p className={styles.bookingDetailsText}>{`Medical Conditions: ${recipientRecords.medical_conditions}`}</p>
+                <p className={styles.bookingDetailsText}>{`Medications: ${recipientRecords.medications}`}</p>
+                <p className={styles.bookingDetailsText}>{`Past Surgeries: ${recipientRecords.past_surgeries}`}</p>
+                <p className={styles.bookingDetailsText}>{`Family History: ${recipientRecords.family_history}`}</p>
               </>
             ) : (
-              <p style={{ color: 'red' }}>{`Recipient ${selectedBooking.recipient.username} has not yet added his/her medical records.`}</p>
+              <p className={styles.bookingDetailsMissingRecords}>{`Recipient ${selectedBooking.recipient.username} has not yet added his/her medical records.`}</p>
             )}
           </div>
         ) : null}
 
         {userObject.isBooked === 1 && selectedBooking.recipient.isBooked === 1 ? (
-          <div>
-            <button onClick={handleEndService}>End Service</button>
-            <button onClick={handleRecords}>Records</button>
+          <div className={styles.bookingDetailsButtons}>
+            <button className={styles.endServiceBtn} onClick={handleEndService}>End Service</button>
+            <button className={styles.viewBtn} onClick={handleRecords}>Records</button>
           </div>
         ) : (
-          <div>
-            <p>Are you sure you want to accept this booking request?</p>
-            <button onClick={handleAccept}>Accept</button>
-            <button onClick={handleDecline}>Decline</button>
-            <button onClick={handleRecords}>Records</button>
+          <div className={styles.bookingDetailsButtons}>
+            {/* <p className={styles.bookingDetailsText}>Are you sure you want to accept this booking request?</p> */}
+            <button className={styles.bookingDetailsButton1} onClick={handleAccept}>Accept</button>
+            <button className={styles.bookingDetailsButton2} onClick={handleDecline}>Decline</button>
+            <button className={styles.bookingDetailsButton3} onClick={handleRecords}>Records</button>
           </div>
         )}
       </div>
+
     </div>
   );
 };

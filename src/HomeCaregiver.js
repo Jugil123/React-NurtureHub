@@ -201,27 +201,47 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.contentColumn}>
-      <button onClick={toggleTheme}>
-          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+  <button onClick={toggleTheme} className={styles.themeSwitchBtn}>
+    Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+  </button>
+
+  <h2 className={styles.sectionTitle}>Booking Requests</h2>
+
+  {bookingRequests.bookings.map((booking) => (
+    <div key={booking.booking.bookingId} className={styles.bookingRequest}>
+      <img
+        src={booking.recipient.profilePicture ?
+          `data:image/png;base64,${booking.recipient.profilePicture}` :
+          '/DefaultProfilePicture.webp'}
+        alt="Profile"
+        className={styles.userProfilePicture}
+      />
+      <div className={styles.bookingDetails}>
+        <p className={styles.recipientName}>
+          {`${booking.recipient.firstname} ${booking.recipient.lastname}`}
+        </p>
+
+        {booking.recipient.isBooked === 1 ? (
+          <button
+            onClick={() => handleEndService(booking.booking.bookingId, booking.recipient.firstname)}
+            className={styles.endServiceBtn}
+          >
+            End Service
+          </button>
+        ) : (
+          null
+        )}
+
+        <button
+          onClick={() => handleView(booking.booking.bookingId)}
+          className={styles.viewBtn}
+        >
+          View
         </button>
-        <p>Booking Requests</p>
-        {bookingRequests.bookings.map((booking) => (
-          <div key={booking.booking.bookingId} className={styles.bookingRequest}>
-            <p>{`${booking.recipient.firstname} ${booking.recipient.lastname}`}</p>
-            {/* Check conditions for rendering buttons */}
-            {booking.recipient.isBooked === 1 ? (
-              <button onClick={() => handleEndService(booking.booking.bookingId, booking.recipient.firstname )}>
-                End Service
-              </button>
-            ) : (
-              null
-            )}
-            <button onClick={() => handleView(booking.booking.bookingId)}>View</button>
-           
-          </div>
-        ))}
-        
       </div>
+    </div>
+  ))}
+</div>
 
     
     </div>

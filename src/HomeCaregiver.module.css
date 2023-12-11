@@ -3,6 +3,149 @@
   height: 100vh;
 }
 
+/*    */
+/* Add these styles at the end of your existing CSS file */
+
+.themeSwitchBtn {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.bookingRequest {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.userProfileDetails {
+  margin-left: 20px;
+}
+
+
+
+.recipientName {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.endServiceBtn,
+.viewBtn {
+  margin-top: 10px;
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.endServiceBtn {
+  background-color: #36575C;
+  margin-right: 7px;
+  color: white;
+}
+
+.viewBtn {
+  background-color: #C3604D; /* SteelBlue */
+  color: white;
+  width: 110px;
+}
+
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.contentColumn {
+  flex: 1;
+  padding: 20px;
+}
+
+.bookingDetailsProfilePicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.bookingDetailsTitle {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.bookingDetailsText {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.bookingDetailsButton1 {
+  padding: 10px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #C3604D;
+  color: white;
+  font-size:medium;
+}
+
+.bookingDetailsButton2 {
+  padding: 10px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #36575C;
+  color: white;
+  font-size:medium;
+}
+
+.bookingDetailsButton3 {
+  padding: 10px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #EFA383;
+  color: black;
+  font-size:medium;
+}
+
+
+
+.bookingDetailsButton:hover {
+  background-color: #f0f0f0;
+}
+
+.bookingDetailsButton:active {
+  transform: translateY(2px);
+}
+
+/* Style for the recipient records section */
+.bookingDetailsRecordsTitle {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+/* Style for the message about missing medical records */
+.bookingDetailsMissingRecords {
+  font-weight: bold;
+  color: #ff0000;
+}
+
+/* Style for the buttons section */
+.bookingDetailsButtons > button {
+  margin-top: 16px;
+}
+
+
+/*  */
+
 .navColumn {
   width: 15%;
   background-color: white;
