@@ -8,63 +8,6 @@
 <meta name="description" content="Web site created using Locofy" />
 <title>NurtureHub</title>
     <script>
-      function setPageTitle(title) {
-        document.title = title;
-        localStorage.setItem('currentPageTitle', title);
-      }
-      document.addEventListener("DOMContentLoaded", function () {
-        var storedPageTitle = localStorage.getItem('currentPageTitle');
-        setPageTitle(storedPageTitle || "NurtureHub");
-        function isAboutUsPage(pathname) {
-          return pathname.includes("/about-us");
-        }
-        function isContactUsPage(pathname) {
-          return pathname.includes("/contact-us");
-        }
-        function isLoginPage(pathname) {
-          return pathname.includes("/Login");
-        }
-        function isRegisterPage(pathname) {
-          return pathname.includes("/register-recipient");
-        }
-        function isFAQPage(pathname) {
-          return pathname.includes("/FAQ");
-        }
-        document.addEventListener("click", function (event) {
-          if (event.target.tagName === "A" && event.target.getAttribute("href")) {
-            const href = event.target.getAttribute("href");
-            if (href.startsWith("/")) {
-              if (isAboutUsPage(href)) {
-                setPageTitle("NurtureHub | About Us");
-              } else if (isContactUsPage(href)){
-                setPageTitle("NurtureHub | Contact Us");
-              } else if (isLoginPage(href)) {
-                setPageTitle("NurtureHub | Login");
-              } else if (isFAQPage(href)) {
-                setPageTitle("NurtureHub | FAQ");
-              } else {
-                setPageTitle("NurtureHub");
-              }
-            }
-          }
-        });
-        window.addEventListener("popstate", function () {
-          
-          if (isAboutUsPage(window.location.pathname)) {
-            setPageTitle("About Us");
-          } else if (isContactUsPage(window.location.pathname)) {
-            setPageTitle("Contact Us");
-          } else if (isLoginPage(window.location.pathname)) {
-            setPageTitle("Login");
-          } else if (isRegisterPage(window.location.pathname)) {
-            setPageTitle("Register");
-          } else if (isFAQPage(window.location.pathname)) {
-            setPageTitle("FAQ");
-          } else {
-            setPageTitle("NurtureHub");
-          }
-        });
-      });
     </script>
   </head>
   <body>

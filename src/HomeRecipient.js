@@ -11,6 +11,10 @@ const Home = () => {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme(); // Using useTheme hook
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Home";
+  }, []); 
+
 
   // const toggleTheme = () => {
   //   const newTheme = theme === 'light' ? 'dark' : 'light';

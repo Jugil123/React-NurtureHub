@@ -8,12 +8,16 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
-  const navigate = useNavigate();
   const [medicalRecords, setMedicalRecords] = useState(null);
   const [addingRecord, setAddingRecord] = useState(false);
   const [recipient, setRecipient] = useState(null);
   const userType = location.state ? location.state.userType : null;
   const { theme } = useTheme(); // Using useTheme hook
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Records";
+  }, []); 
+
   const [newRecord, setNewRecord] = useState({
     allergies: '',
     medical_conditions: '',

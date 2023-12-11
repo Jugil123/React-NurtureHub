@@ -8,7 +8,6 @@ const MessageRecipient  = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
-  const navigate = useNavigate();
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageInput, setMessageInput] = useState('');
   const [recipient, setRecipient] = useState(null);
@@ -27,6 +26,11 @@ const MessageRecipient  = () => {
       { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
     ],
   });
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Messages";
+  }, []); 
 
   const users = [
     { id: 1, name: 'Admin', messages: [] },
