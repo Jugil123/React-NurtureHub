@@ -80,7 +80,11 @@ const MyProfile = () => {
     }
   };
 
-  const handleUpdateFields = async () => {
+  const handleUpdateFields1 = async () => {
+    navigate(`/update-caregiver/${caregiver.caregiverId}`);
+   };
+
+   const handleUpdateFields2 = async () => {
     
    };
 
@@ -162,6 +166,11 @@ const MyProfile = () => {
               <p><strong>Address:</strong> {caregiver.address}</p>
               <p><strong>Specializations:</strong> {caregiver.specializations}</p>
               <p><strong>Hourly Rate:</strong> {caregiver.hourlyRate}</p>
+              <div className={styles.buttonContainerfields}>
+            <button className={styles.buttonprofile} onClick={handleUpdateFields1}>
+              Update Fields
+            </button>
+          </div>
             </>
           )}
   
@@ -174,14 +183,15 @@ const MyProfile = () => {
               <p><strong>Contact Information:</strong> {recipient.contact_info}</p>
               <p><strong>Address:</strong> {recipient.address}</p>
               <p><strong>Age:</strong> {recipient.age}</p>
-            </>
-          )}
-  
-          <div className={styles.buttonContainerfields}>
-            <button className={styles.buttonprofile} onClick={handleUpdateFields}>
+              <div className={styles.buttonContainerfields}>
+            <button className={styles.buttonprofile} onClick={handleUpdateFields2}>
               Update Fields
             </button>
           </div>
+            </>
+          )}
+  
+         
         </div>
       </div>
     </div>

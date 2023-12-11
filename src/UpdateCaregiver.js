@@ -91,7 +91,7 @@ const UpdateCaregiver = () => {
         });
 
         // Handle successful update
-        navigate('/dashboard');
+        navigate(-1);
       } else {
         console.error('Incomplete caregiver data');
         // Handle incomplete data
