@@ -92,7 +92,7 @@ const UpdateRecipient = () => {
         console.log('Account update response:', accountUpdateResponse.data);
   
         // Handle successful update
-        navigate('/dashboard'); 
+        navigate(-1); 
       } else {
         console.error('Incomplete recipient data');
         // Handle incomplete data

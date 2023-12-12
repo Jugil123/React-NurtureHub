@@ -85,7 +85,7 @@ const MyProfile = () => {
    };
 
    const handleUpdateFields2 = async () => {
-    
+    navigate(`/update-recipient/${recipient.recipientId}`);
    };
 
    return (
