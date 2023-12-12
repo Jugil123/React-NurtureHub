@@ -149,7 +149,7 @@ const BookingDetails = () => {
       console.log(`Ending service for booking with ID ${selectedBooking.booking.bookingId}`);
 
       // Make API call to delete the booking
-      await axios.delete(`http://localhost:8080/booking/deleteBooking/${selectedBooking.booking.bookingId}`);
+      await axios.delete(`http://localhost:8080/booking/terminateBooking/${selectedBooking.booking.bookingId}`);
 
       // Make API calls to update isBooked status for both recipient and caregiver
       await axios.put(`http://localhost:8080/recipient/updateRecipientBooked/?rid=${selectedBooking.recipient.recipientId}`, {
@@ -159,6 +159,17 @@ const BookingDetails = () => {
       await axios.put(`http://localhost:8080/caregiver/updateCaregiverBooked/?cid=${userObject.caregiverId}`, {
         isBooked: 0,
       });
+
+      const serviceHistoryData = {
+        recipient: selectedBooking.recipient.username,
+        caregiver: userObject.username,
+        start_date: selectedBooking.booking.start_date,
+        end_date: selectedBooking.booking.end_date,
+        start_time: selectedBooking.booking.start_time,
+        end_time: selectedBooking.booking.end_time
+      }
+
+      await axios.post('http://localhost:8080/serviceHistory/insertServiceHistory', serviceHistoryData);      
 
       // You can add your logic here to handle the end of service
       // For example, update the UI or perform additional actions
