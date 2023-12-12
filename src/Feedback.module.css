@@ -1,0 +1,136 @@
+.feedbackChild,
+.feedbackItem {
+  position: absolute;
+  width: calc(100% + 1px);
+  top: 0;
+  right: -1px;
+  left: 0;
+  background-color: var(--color-peachpuff-200);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 142px;
+}
+.feedbackItem {
+  top: 1565px;
+  right: 0;
+  left: -1px;
+}
+.x1Icon {
+  position: absolute;
+  top: 47px;
+  right: 21px;
+  width: 55px;
+  height: 48px;
+  object-fit: cover;
+}
+.nurturehub {
+  position: absolute;
+  top: 40px;
+  left: 151px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+.nurturehublogo2Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 155px;
+  height: 128px;
+  object-fit: cover;
+}
+.nurturehubParent {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 416px;
+  height: 128px;
+}
+.feedbackInner,
+.rectangleDiv {
+  position: absolute;
+  width: calc(100% + 1px);
+  top: 191px;
+  right: -1px;
+  left: 0;
+  background-color: var(--color-orange);
+  height: 27px;
+}
+.rectangleDiv {
+  top: 1496px;
+}
+.feedbackChild1 {
+  position: absolute;
+  top: 347px;
+  left: calc(50% - 550px);
+  border-radius: 30px;
+  background-color: var(--color-peachpuff-100);
+  width: 1100px;
+  height: 1014px;
+}
+.button {
+  position: relative;
+  font-size: var(--font-size-lg);
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: var(--font-maven-pro);
+  color: var(--color-white);
+  text-align: left;
+}
+.buttonWrapper {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-3xs);
+  background-color: var(--color-indianred);
+  position: absolute;
+  top: 1222px;
+  left: calc(50% - 173px);
+  border-radius: var(--br-2xs);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 346px;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.feedback1 {
+  position: absolute;
+  top: 372px;
+  left: calc(50% - 160px);
+  font-size: var(--font-size-45xl);
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+}
+.rectangleInput {
+  border: 0;
+  position: absolute;
+  top: 794px;
+  left: calc(50% - 416px);
+  border-radius: var(--br-xl);
+  width: 833px;
+  height: 326px;
+}
+.feedback,
+.feedbackChild2,
+.rectangleInput {
+  background-color: var(--color-white);
+}
+.feedbackChild2 {
+  border: 0;
+  position: absolute;
+  top: 561px;
+  left: calc(50% - 416px);
+  border-radius: var(--br-xl);
+  width: 833px;
+  height: 119px;
+}
+.feedback {
+  position: relative;
+  width: 100%;
+  height: 1707px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-17xl);
+  color: var(--color-indianred);
+  font-family: var(--font-maven-pro);
+}

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@600;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
@@ -16,8 +16,9 @@ body {
   /* font sizes */
   --font-size-xl: 20px;
   --font-size-17xl: 36px;
-  --font-size-13xl: 32px;
+  --font-size-45xl: 64px;
   --font-size-5xl: 24px;
+  --font-size-13xl: 32px;
 
   /* Colors */
   --color-white: #fff;
