@@ -117,6 +117,10 @@ const Home = () => {
     navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
+  const handleUpdateRecords = async () => {
+    navigate(`/update-records/${recipient.username}`);
+   };
+
   return (
     <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
       {userType === 'recipient' && recipient && (
@@ -204,6 +208,7 @@ const Home = () => {
                 <span className={styles.recordInfo}>{medicalRecords.family_history}</span>
               </li>
             </ul>
+            <button type="button" className={styles.saveButton} onClick={handleUpdateRecords}>update</button>
           </div>
 
           ) : (

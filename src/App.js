@@ -26,6 +26,7 @@ import MessageRecipient from './MessageRecipient';
 import RecordsRecipient from './RecordsRecipient';
 import FAQ from './FAQ';
 import BookingDetails from './BookingDetails';
+import UpdateRecords from './UpdateRecords'
 
 const App = () => {
   return (
@@ -58,6 +59,7 @@ const App = () => {
               <Route path="/message-recipient" element={<MessageRecipient />} />
               <Route path="/records-recipient" element={<RecordsRecipient />} />
               <Route path="/booking-details" element={<BookingDetails />} />
+              <Route path="/update-records/:recipient" element={<UpdateRecords />} />
             </Routes>
           </div>
         </ThemeProvider>
