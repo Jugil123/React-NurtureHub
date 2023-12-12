@@ -9,6 +9,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
   const [caregiver, setCaregiver] = useState(null);
+  const [serviceHistory, setServiceHistory] = useState([]);
   const userType = location.state ? location.state.userType : null;
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();useEffect(() => {
@@ -18,6 +19,22 @@ const Home = () => {
 
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
+
+  useEffect(() => {
+    if (caregiver) {
+      fetchServiceHistory(caregiver.username);
+    }
+  }, [caregiver]);
+
+  const fetchServiceHistory = async (username) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/serviceHistory/getAllServiceHistory/${username}`);
+      console.log('Service History:', response.data);
+      setServiceHistory(response.data);
+    } catch (error) {
+      console.error('Error fetching service history:', error);
+    }
+  };
 
   useEffect(() => {
     // Fetch caregiver details only if userType is 'caregiver'
@@ -116,7 +133,23 @@ const Home = () => {
       </div>
       )}
       <div className={styles.contentColumn}>
-        <p>History</p>
+      <p>History</p>
+        {serviceHistory.length > 0 ? (
+          <ul>
+            {serviceHistory.map((historyItem) => (
+              <li key={historyItem.id}>
+                {/* Display relevant information from service history */}
+                <p>{`Recipient: ${historyItem.recipient}`}</p>
+                <p>{`Service Date: ${historyItem.start_date} - ${historyItem.end_date}`}</p>
+                <p>{`Service Time: ${historyItem.start_time} - ${historyItem.end_time}`}</p>
+                
+                {/* Add more information as needed */}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No service history available.</p>
+        )}
       </div>
     </div>
   );
