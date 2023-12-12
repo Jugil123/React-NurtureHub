@@ -1,5 +1,6 @@
 import styles from "./Feedback.module.css";
 import { useEffect } from "react";
+import React, { useState } from "react";
 
 const Feedback = () => {
 
@@ -7,6 +8,46 @@ const Feedback = () => {
         document.title = "NurtureHub | Feedback";
       }, []); 
     
+      const [feedbackData, setFeedbackData] = useState({
+        rating: 0,
+        feedback: "",
+      });
+
+      const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFeedbackData({
+          ...feedbackData,
+          [name]: value,
+        });
+      };
+
+      const submitFeedback = async () => {
+        try {
+          const response = await fetch("http://localhost:3000/feedback/insertFeedback", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(feedbackData),
+          });
+    
+          if (response.ok) {
+            console.log("Feedback submitted successfully!");
+            // Optionally reset the form or handle success
+          } else {
+            console.error("Error submitting feedback:", response.statusText);
+            // Handle errors, e.g., display an error message
+          }
+        } catch (error) {
+          console.error("Error submitting feedback:", error.message);
+          // Handle errors, e.g., display an error message
+        }
+      };
+      const handleFeedbackSubmit = (event) => {
+        event.preventDefault();
+        submitFeedback();
+      };
+      
   return (
     <div className={styles.feedback}>
       <div className={styles.feedbackChild} />
@@ -23,12 +64,30 @@ const Feedback = () => {
       <div className={styles.feedbackInner} />
       <div className={styles.rectangleDiv} />
       <div className={styles.feedbackChild1} />
-      <button className={styles.buttonWrapper}>
-        <div className={styles.button}>Submit</div>
-      </button>
       <div className={styles.feedback1}>Feedback</div>
-      <input className={styles.rectangleInput}  placeholder="Feedback:" type="text" />
-      <input className={styles.feedbackChild2}  placeholder="Rating: 1-5" type="number" />
+      <form onSubmit={handleFeedbackSubmit}>
+          <input
+            className={styles.feedbackChild2}
+            type="number"
+            name="rating"
+            placeholder="Enter your Rating: (1-5)"
+            value={feedbackData.rating}
+            onChange={handleChange}
+          />
+        <br />
+        <label>
+          Feedback:
+          <textarea
+            className={styles.rectangleInput}
+            name="feedback"
+            placeholder=" Enter your feedback: "
+            value={feedbackData.feedback}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <button className={styles.buttonWrapper} type="submit">Submit Feedback</button>
+      </form>
     </div>
   );
 };
