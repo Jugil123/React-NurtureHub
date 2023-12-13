@@ -80,7 +80,7 @@ const MessageRecipient  = () => {
     console.log('Search Term:', searchTerm);
     try {
       // Make an HTTP GET request to the backend API with the search term
-      const response = await axios.get(`http://localhost:8080/caregiver/searchCaregiver?searchString=${searchTerm}`);
+      const response = await axios.get(`http://localhost:8080/account/searchAccount?searchString=${searchTerm}`);
       setSearchResults(response.data); // Update search results with the data from the backend
     } catch (error) {
       console.error('Error fetching search results:', error);
@@ -222,7 +222,6 @@ const MessageRecipient  = () => {
             <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
             <div>
               <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
-              <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
             </div>
           </div>
         ))}

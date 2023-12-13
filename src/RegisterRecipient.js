@@ -84,6 +84,8 @@ const RegisterRecipient = () => {
       // Step 2: Create an account for the recipient
       const accountResponse = await axios.post('http://localhost:8080/account/insertAccount', {
         username,
+        firstname,
+        lastname,
         password,
         userType: 1, // Assuming usertype 1 corresponds to recipient
       });

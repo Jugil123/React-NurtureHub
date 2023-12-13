@@ -80,6 +80,8 @@ const RegisterCaregiver = () => {
 
       const accountResponse = await axios.post('http://localhost:8080/account/insertAccount', {
         username,
+        firstname,
+        lastname,
         password,
         userType: 2, // Assuming usertype 1 corresponds to recipient
       });
