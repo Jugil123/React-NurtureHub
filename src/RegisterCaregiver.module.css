@@ -4,7 +4,7 @@
 .registercaregiverInner,
 .registercaregiverItem {
   border: 0;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
   position: absolute;
   top: 213px;
   left: calc(50% - 152px);
@@ -36,7 +36,7 @@
 .registercaregiverChild5,
 .registercaregiverChild6 {
   border: 0;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
   position: absolute;
   top: 664px;
   left: calc(50% - 152px);
@@ -69,7 +69,7 @@
 }
 .registercaregiverChild8 {
   border: 0;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
   position: absolute;
   top: 363px;
   left: calc(50% - 152px);
@@ -79,10 +79,11 @@
 }
 .registerCaregiver {
   position: absolute;
-  top: 139px;
+  top: 157px;
   left: calc(50% - 140px);
-  font-size: 32px;
-  color: #000;
+  color: #c3604d;
+  font-family: Mukta;
+  font-size: 38px;
 }
 .button {
   position: relative;
@@ -99,11 +100,13 @@
   cursor: pointer;
 }
 .buttonWrapper {
+  cursor: pointer;
   border: 0;
   padding: 10px;
   background-color: #c3604d;
-  top: 725px;
-  left: calc(50% - 152px);
+  position: absolute;
+  top: 724px;
+  left: calc(50% - 149px);
   border-radius: 11px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   width: 303px;
@@ -113,7 +116,13 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
+
+.buttonWrapper:hover {
+  background-color: #ff4d29;
+}
+
 .vectorIcon {
   position: absolute;
   top: 71px;
