@@ -14,18 +14,7 @@ const MessageRecipient  = () => {
   const userType = location.state ? location.state.userType : null;
   const { theme, toggleTheme } = useTheme();
   const [conversations, setConversations] = useState([]);
-  //   Admin: [
-  //     { sender: 'Admin', text: 'Hi, how can I assist you?' },
-  //     { sender: 'John Doe', text: 'Hello! I have a question.' },
-  //     { sender: 'Admin', text: 'Sure, go ahead.' },
-  //   ],
-  //   'Caregiver 1': [
-  //     { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
-  //   ],
-  //   'Caregiver 2': [
-  //     { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
-  //   ],
-  // });
+  const userObject = location.state ? location.state.userObject : null;
 
   const users = [
     { id: 1, name: 'Admin', messages: [] },
@@ -35,14 +24,14 @@ const MessageRecipient  = () => {
 
   const handleUserClick = (user) => {
     // Assuming that user.name is the property containing the user's name
-    const userName = user.name || user.firstname || user.lastname;
+    const userName = user.username;
   
     setSelectedUser({
       ...user,
-      name: userName,
+      name: user.firstname,
     });
 
-    const usernames = [userName, userObject.firstname].sort();
+    const usernames = [userName, userObject.username].sort();
     const messageKey = usernames.join('-');
     fetchPreviousMessages(messageKey);
   };
@@ -63,7 +52,7 @@ const MessageRecipient  = () => {
 
   const handleSendMessage = async () => {
     if (selectedUser && messageInput.trim() !== '') {
-      const usernames = [selectedUser.name, userObject.firstname].sort();
+      const usernames = [selectedUser.username, userObject.username].sort();
       const messageKey = usernames.join('-');
 
       const newMessage = {
@@ -98,7 +87,7 @@ const MessageRecipient  = () => {
   },[]);
 
   // Extract userObject from location state
-  const userObject = location.state ? location.state.userObject : null;
+  // const userObject = location.state ? location.state.userObject : null;
 
   
   useEffect(() => {
