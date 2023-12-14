@@ -1,16 +1,27 @@
 import styles from "./Feedback.module.css";
 import { useEffect } from "react";
 import React, { useState } from "react";
+import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Feedback = () => {
+  const location = useLocation();
+  const { userId } = useParams();
+  const userObject = location.state ? location.state.userObject : null;
+  const navigate = useNavigate();
 
     useEffect(() => {
         document.title = "NurtureHub | Feedback";
+        console.log('userObject:', userObject);
       }, []); 
     
       const [feedbackData, setFeedbackData] = useState({
+        caregiverId: userId,
+        recipientId: userObject.recipientId,
         rating: 0,
         feedback: "",
+        firstname: userObject.firstname,
+        lastname: userObject.lastname,
       });
 
       const handleChange = (event) => {
@@ -23,7 +34,7 @@ const Feedback = () => {
 
       const submitFeedback = async () => {
         try {
-          const response = await fetch("http://localhost:3000/feedback/insertFeedback", {
+          const response = await fetch("http://localhost:8080/feedback/insertFeedback", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -34,6 +45,7 @@ const Feedback = () => {
           if (response.ok) {
             console.log("Feedback submitted successfully!");
             // Optionally reset the form or handle success
+            navigate(-1);
           } else {
             console.error("Error submitting feedback:", response.statusText);
             // Handle errors, e.g., display an error message
