@@ -13,19 +13,19 @@ const MessageRecipient  = () => {
   const [caregiver, setCaregiver] = useState(null);
   const userType = location.state ? location.state.userType : null;
   const { theme, toggleTheme } = useTheme();
-  const [conversations, setConversations] = useState({
-    Admin: [
-      { sender: 'Admin', text: 'Hi, how can I assist you?' },
-      { sender: 'John Doe', text: 'Hello! I have a question.' },
-      { sender: 'Admin', text: 'Sure, go ahead.' },
-    ],
-    'Caregiver 1': [
-      { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
-    ],
-    'Caregiver 2': [
-      { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
-    ],
-  });
+  const [conversations, setConversations] = useState([]);
+  //   Admin: [
+  //     { sender: 'Admin', text: 'Hi, how can I assist you?' },
+  //     { sender: 'John Doe', text: 'Hello! I have a question.' },
+  //     { sender: 'Admin', text: 'Sure, go ahead.' },
+  //   ],
+  //   'Caregiver 1': [
+  //     { sender: 'Caregiver 1', text: 'Hi there, How can I help you?' },
+  //   ],
+  //   'Caregiver 2': [
+  //     { sender: 'Caregiver 2', text: 'Greetings! How may I assist you?' },
+  //   ],
+  // });
 
   const users = [
     { id: 1, name: 'Admin', messages: [] },
@@ -34,19 +34,64 @@ const MessageRecipient  = () => {
   ];
 
   const handleUserClick = (user) => {
-    setSelectedUser(user);
+    // Assuming that user.name is the property containing the user's name
+    const userName = user.name || user.firstname || user.lastname;
+  
+    setSelectedUser({
+      ...user,
+      name: userName,
+    });
+
+    const usernames = [userName, userObject.firstname].sort();
+    const messageKey = usernames.join('-');
+    fetchPreviousMessages(messageKey);
   };
 
-  const handleSendMessage = () => {
+  const fetchPreviousMessages = async (messageKey) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/message/getMessage?messageKey=${messageKey}`);
+  
+      const previousMessages = response.data;
+      console.log(previousMessages);
+  
+      // Do something with the previousMessages, like updating the state
+      setConversations(previousMessages);
+    } catch (error) {
+      console.error('Error fetching previous messages:', error);
+    }
+  }
+
+  const handleSendMessage = async () => {
     if (selectedUser && messageInput.trim() !== '') {
-      const newMessage = { sender: 'John Doe', text: messageInput };
+      const usernames = [selectedUser.name, userObject.firstname].sort();
+      const messageKey = usernames.join('-');
+
+      const newMessage = {
+        messageKey: messageKey, 
+        sender: userObject.firstname,
+        receiver: selectedUser.name, 
+        message: messageInput 
+      };
+      
+      try { 
+      const response = await axios.post('http://localhost:8080/message/insertMessage', newMessage);
+      const savedMessage = response.data;
+      console.log(savedMessage);
+
       setConversations((prevConversations) => ({
         ...prevConversations,
-        [selectedUser.name]: [...(prevConversations[selectedUser.name] || []), newMessage],
+        [selectedUser.name]: [...(prevConversations[selectedUser.name] || []), savedMessage],
       }));
       setMessageInput('');
+      handleUserClick(selectedUser);
+
+    }catch (error){
+      console.error('Error sending message:', error);
+    }
+
     }
   };
+
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "NurtureHub | Messages-caregiver";
@@ -116,16 +161,16 @@ const MessageRecipient  = () => {
   
     return (
       <div className={styles.messageContainer}>
-        
         <div className={styles.messageArea}>
           <h2>{selectedUser ? `Chat with ${selectedUser.name}` : 'Select a user to start chatting'}</h2>
           <div className={styles.messages}>
-            {selectedUser &&
-              (conversations[selectedUser.name] || []).map((message, index) => (
+            {selectedUser && Array.isArray(conversations) && 
+              (conversations.map((message, index) => (
                 <div key={index} className={styles.message}>
-                  <strong>{message.sender}:</strong> {message.text}
+                  <strong>{message.sender}:</strong> {message.message}
                 </div>
-              ))}
+              ))
+            )}
           </div>
           {selectedUser && (
             <div className={styles.inputArea}>
@@ -216,12 +261,11 @@ const MessageRecipient  = () => {
           <div
             key={user.id}
             className={styles.userProfileContainer}
-            onClick={() => navigateToViewCaregiver(user.caregiverId)}
+            onClick={() => handleUserClick(user)}
           >
             <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
             <div>
               <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
-              <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
             </div>
           </div>
         ))}
