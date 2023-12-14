@@ -98,7 +98,7 @@
     flex: 1;
     padding: 20px;
     overflow-y: auto; /* Enable vertical scrolling if needed */
-    background-color: #F5E2D7;
+    /* sir waniy gamit ari nga code kay maguba ang design*/
   }
   .searchBarContainer {
     display: flex;
@@ -234,7 +234,7 @@
     background-color: #333;
   }
   
-  /* */
+
 
   .customButton:hover{
     background-color: #f0f0f0;
