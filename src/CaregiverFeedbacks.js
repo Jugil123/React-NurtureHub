@@ -4,21 +4,59 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import styles from './ViewCaregiver.module.css'; // Import styles for ViewCaregiver
+import styles from './CaregiverFeedbacks.module.css'; // Import styles for ViewCaregiver
 
 const ViewCaregiver = () => {
   const location = useLocation();
   const { userId } = useParams();
   const [caregiver, setCaregiver] = useState(null);
+  const [feedbacks, setFeedbacks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false); // New state variable
   const [searchTerm, setSearchTerm] = useState('');
   const [recipient, setRecipient] = useState(null);
+  const [averageRating, setAverageRating] = useState(0);
   const userType = location.state ? location.state.userType : null;
   const navigate = useNavigate();
   
 
   const userObject = location.state ? location.state.userObject : null;
+
+  useEffect(() => {
+    const fetchFeedbacks = async () => {
+      try {
+        const caregiverId = 1; // Replace with the actual caregiverId
+        const response = await axios.get(`http://localhost:8080/feedback/getFeedBackByCaregiver?caregiverId=${caregiverId}`);
+  
+        // Assuming response.data is an array of feedbacks
+        const feedbacksWithRecipientData = await Promise.all(
+          response.data.map(async (feedback) => {
+            const recipientResponse = await axios.get(`http://localhost:8080/recipient/getRecipientById/${feedback.recipientId}`);
+            return { ...feedback, recipientData: recipientResponse.data };
+          })
+        );
+  
+        // Calculate average rating
+        const averageRating = feedbacksWithRecipientData.reduce((sum, feedback) => sum + feedback.rating, 0) / feedbacksWithRecipientData.length;
+  
+        setFeedbacks(feedbacksWithRecipientData);
+        setAverageRating(averageRating); // Set the average rating state
+        console.log('Feedbacks with Recipient Data:', feedbacksWithRecipientData);
+      } catch (error) {
+        console.error('Error fetching feedbacks:', error);
+      }
+    };
+  
+    fetchFeedbacks();
+  }, []);
+  // ... (previous code remains unchanged)
+
+  const handlegetFeedbacks = () => {
+    // Use the feedbacks state to display feedbacks in your preferred way
+    console.log('Feedbacks:', feedbacks);
+    // You may want to navigate to a new page or display feedbacks in a modal, etc.
+  };
+
 
   useEffect(() => {
     // Fetch recipient details only if userType is 'caregiver'
@@ -83,8 +121,8 @@ const ViewCaregiver = () => {
     console.log('Sending a message to the caregiver');
   };
 
-  const handleShowFeedbacks = () => {
-    navigate(`/getAllfeedbacks/${userId}`, { state: { userObject, userType: 'recipient' } })
+  const handleAddFeedbacks = () => {
+    navigate(`/feedback/${userId}`, { state: { userObject, userType: 'recipient' } })
   };
 
   const handleBookCaregiver = () => {
@@ -200,6 +238,7 @@ const ViewCaregiver = () => {
               <div>
                 <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
                 <p className={styles.userProfileInfo}>{`Address: ${user.address}`}</p>
+                <p className={styles.userProfileInfo}>{`Average: `}</p>
               </div>
             </div>
           ))
@@ -222,19 +261,40 @@ const ViewCaregiver = () => {
           />
         )}
         <h2 className={styles.caregiverName}>{`${caregiver.firstname} ${caregiver.lastname}`}</h2>
+        <p style={{fontSize: '20px', fontWeight: 'bold'}}>{`Average Rating: ${averageRating.toFixed(2)}`}</p> {/* Display the average rating */}
       </div>
       <div className={styles.rightColumn}>
-        <p className={styles.caregiverAddress}>{`Address: ${caregiver.address}`}</p>
         <div className={styles.caregiverInfo}>
-          <p>{`Contact Information: ${caregiver.contact_information}`}</p>
-          <p>{`Birthdate: ${caregiver.birth_date}`}</p>
-          <p>{`Specializations: ${caregiver.specializations}`}</p>
-          <p>{`Hourly Rate: ${caregiver.hourlyRate}`}</p>
+          <p style={{fontSize: '20px', fontWeight: 'bold'}}>Feedbacks</p>
+          <ul className={styles.feedbackList}>
+    {feedbacks.map((feedback, index) => (
+      <li key={index} className={styles.feedbackItem}>
+        <div className={styles.feedbackProfile}>
+          {feedback.recipientData.profilePicture ? (
+            <img
+              src={`data:image/png;base64,${feedback.recipientData.profilePicture}`}
+              alt="Profile"
+              className={styles.feedbackProfilePicture}
+            />
+          ) : (
+            <img
+              src="/DefaultProfilePicture.webp"
+              alt="Profile"
+              className={styles.feedbackProfilePicture}
+            />
+          )}
+        </div>
+        <div className={styles.feedbackContent}>
+        <p className={styles.feedbackAuthor}>
+          {`${feedback.recipientData.firstname} ${feedback.recipientData.lastname}: ${feedback.feedback}`}
+         </p> 
+        </div>
+      </li>
+    ))}
+  </ul>
         </div>
         <div className={styles.userProfileContainerButtons}>
-          <button onClick={handleSendMessage}>Message</button>
-          <button onClick={handleShowFeedbacks}>Show Feedbacks</button>
-          <button onClick={handleBookCaregiver}>Book</button>
+          <button onClick={handleAddFeedbacks}>Insert Feedback</button>
         </div>
       </div>
     </div>

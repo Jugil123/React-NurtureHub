@@ -28,6 +28,7 @@ import FAQ from './FAQ';
 import BookingDetails from './BookingDetails';
 import UpdateRecords from './UpdateRecords'
 import Feedback from "./Feedback";
+import CaregiverFeedbacks from "./CaregiverFeedbacks";
 
 const App = () => {
   return (
@@ -61,7 +62,8 @@ const App = () => {
               <Route path="/records-recipient" element={<RecordsRecipient />} />
               <Route path="/booking-details" element={<BookingDetails />} />
               <Route path="/update-records/:recipient" element={<UpdateRecords />} />
-              <Route path="/feedback" element={<Feedback />} />
+              <Route path="/feedback/:userId" element={<Feedback />} />
+              <Route path="/getAllfeedbacks/:userId" element={<CaregiverFeedbacks />} />
             </Routes>
           </div>
         </ThemeProvider>

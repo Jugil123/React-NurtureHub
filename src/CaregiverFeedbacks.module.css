@@ -1,0 +1,233 @@
+/* ViewCaregiver.module.css */
+
+.viewCaregiverContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .caregiverDetailsColumn {
+    flex: 1;
+  }
+  
+  .caregiverDetails {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+  }
+  
+  .leftColumn {
+    margin-top: 15px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .rightColumn {
+    flex: 1;  
+    padding-left: 40px;
+    margin-top: 45px;
+  }
+  
+  .caregiverName {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .caregiverAddress,
+  .caregiverInfo {
+    margin: 10px 0;
+  }
+  
+  .userProfileContainerButtons {
+    padding-top: 30px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .userProfileContainerButtons button {
+    padding: 10px;
+    background-color: #c3604d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .userProfileContainerButtons button:hover {
+    background-color: #c3604d;
+  }
+  
+  /* HomeRecipient.module.css */
+  
+  .homeContainer {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .navColumn {
+    width: 15%;
+    background-color: white;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    height: 100%;
+  }
+  
+  .logoContainer {
+    margin-bottom: 20px;
+  }
+  
+  .appLogo {
+    max-width: 30%;
+  }
+  
+  .userProfileContainer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .userProfileContainer:hover {
+    background-color: #f5e2d7;
+    cursor: pointer;
+  }
+  
+  .navIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .userProfilePicture {
+    width: 50px;
+    height: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .userProfilePicture2 {
+    max-width: 250px;
+    max-height: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .userProfileInfo {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .navLinksContainer {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navLink {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: grey;
+  }
+  
+  .navLink:hover,
+  .navLink:active {
+    background-color: #f0f0f0;
+  }
+  
+  .activeNavLink {
+    background-color: #f5e2d7;
+    color: #c3604d;
+    font-weight: bold;
+  }
+  
+  .contentColumn {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .searchBarContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .searchButton {
+    background-color: #f5e2d7;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  
+
+  /* ViewCaregiver.module.css */
+
+/* ... (previous styles remain unchanged) */
+
+.feedbackList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feedbackItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: lightgrey;
+  padding: 3px;
+  padding-left: 10px;
+  border-radius: 7px;
+}
+
+.feedbackProfile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.feedbackProfilePicture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feedbackContent {
+  flex: 1;
+}
+
+.feedbackAuthor {
+  font-weight: bold;
+ 
+}
+
+/* ... (rest of the styles remain unchanged) */
