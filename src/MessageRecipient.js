@@ -15,20 +15,96 @@ const MessageRecipient  = () => {
   const { theme } = useTheme();
   const [conversations, setConversations] = useState([]);
   const userObject = location.state ? location.state.userObject : null;
+  const [recentConversations, setRecentConversations] = useState([]);
+  const [uniqueUsernames, setUniqueUsernames] = useState([]);
 
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "NurtureHub | Messages";
+    fetchRecentConversations();
   }, []); 
 
-  const users = [
-    { id: 1, name: 'Admin', messages: [] },
-    { id: 2, name: 'Caregiver 1', messages: [] },
-    { id: 3, name: 'Caregiver 2', messages: [] },
-  ];
+  const fetchRecentConversations = async () => {
+    try {
+
+      const response = await axios.get('http://localhost:8080/message/getMessagebyPartialKey', {
+        params: {
+          messageKey: userObject.username,
+        },
+      });
+
+    const fetchedRecentConversations = response.data;
+
+      // Extract unique sender and receiver usernames
+    const uniqueUsernames = new Set();
+    fetchedRecentConversations.forEach((conversation) => {
+      if (conversation.senderUsername !== userObject.username) {
+        uniqueUsernames.add(conversation.senderUsername);
+      }
+      if (conversation.receiverUsername !== userObject.username) {
+        uniqueUsernames.add(conversation.receiverUsername);
+      }
+    });
+
+    setUniqueUsernames([...uniqueUsernames]);
+    console.log('unique', uniqueUsernames);
+
+
+    // Use Promise.all to wait for all requests to complete
+      const fetchedConversations = await Promise.all(
+      Array.from(uniqueUsernames).map(async (uniqueUsername) => {
+        try {
+          const response = await axios.get(`http://localhost:8080/account/searchAccountUsername?username=${uniqueUsername}`);
+
+          // Assuming the response.data is an array of conversations
+          console.log(`Data for ${uniqueUsername}:`, response.data);
+
+          return response.data;
+        } catch (error) {
+          console.error(`Error fetching data for ${uniqueUsername}:`, error);
+          return null;
+        }
+      })
+      );
+
+      // Log the fetchedConversations before updating the state
+      console.log('Fetched Conversations:', fetchedConversations);
+
+      // Flatten the array of arrays into a single array of conversations
+      const flatConversations = fetchedConversations.flat();
+
+      // Update the state with the fetched conversations
+      setRecentConversations(flatConversations);
+      console.log('final', recentConversations);
+
+      } catch (error) {
+        console.error('Error fetching recent conversations:', error);
+      }
+    };
+
+  // const fetchRecentConversationsForUsers = async () => {
+  //   try {
+  //     const fetchedConversations = [];
+  
+  //     // Loop through uniqueUsernames and fetch recent conversations for each username
+  //     for (const uniqueUsername of uniqueUsernames) {
+  //       console.log('who is :',uniqueUsername);
+  //       const response = await axios.get(`http://localhost:8080/account/searchAccount?searchString=${uniqueUsername}`);
+  //       const user = response.data; // Assuming the API returns an array with a single user, adjust accordingly
+        
+  //       // Combine the conversations for each user into the fetchedConversations array
+  //       fetchedConversations.push(user);
+  //     }
+  
+  //     // Update the state with the fetched conversations
+  //     setRecentConversations(fetchedConversations);
+  //   } catch (error) {
+  //     console.error('Error fetching recent conversations:', error);
+  //   }
+  // };
+ 
 
   const handleUserClick = (user) => {
-    // Assuming that user.name is the property containing the user's name
     const userName = user.username;
   
     setSelectedUser({
@@ -38,6 +114,18 @@ const MessageRecipient  = () => {
 
     const usernames = [userName, userObject.username].sort();
     const messageKey = usernames.join('-');
+    fetchPreviousMessages(messageKey);
+  };
+
+  const handleUserClickOnConversation = (user) => {
+    const messageKey = user.messageKey;
+  
+    setSelectedUser({
+      ...user,
+      name: user.receiver,
+    });
+
+    console.log('....',user.receiver);
     fetchPreviousMessages(messageKey);
   };
 
@@ -62,7 +150,9 @@ const MessageRecipient  = () => {
       const newMessage = {
         messageKey: messageKey, 
         sender: userObject.firstname,
-        receiver: selectedUser.name, 
+        receiver: selectedUser.firstname,
+        senderUsername: userObject.username,
+        receiverUsername: selectedUser.username,
         message: messageInput 
       };
       
@@ -145,9 +235,7 @@ const MessageRecipient  = () => {
 
 
   const Messages = () => {
-    // console.log('Conversations:', conversations);
-    // console.log('Selected User:', selectedUser);
-    // console.log('Selected User Conversations:', conversations[selectedUser?.name]);
+
   
     return (
       <div className={styles.messageContainer}>
@@ -260,14 +348,22 @@ const MessageRecipient  = () => {
           </div>
         ))}
 
-          <h2>Conversations</h2>
-          <ul>
-            {users.map((user) => (
-              <li key={user.id} onClick={() => handleUserClick(user)} className={selectedUser === user ? styles.selectedUser : ''}>
-                {user.name}
-              </li>
-            ))}
-          </ul>
+            <h2>Conversations</h2>
+            <ul>
+              {console.log('Recent Conversations:', recentConversations)}
+              {recentConversations.map((conversation, index) => (
+                // Render li only if the name is not the logged-in user
+                conversation.receiver !== userObject.firstname && (
+                  <li
+                    key={index}
+                    onClick={() => handleUserClick(conversation)} // Pass a mock user object
+                    className={selectedUser?.name === conversation.sender ? styles.selectedUser : ''}
+                  >
+                    {conversation.firstname}
+                  </li>
+                )
+              ))}
+            </ul>
           </div>
         <Messages />
     </div>
