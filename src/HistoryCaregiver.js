@@ -132,12 +132,12 @@ const Home = () => {
         </div>
       </div>
       )}
-      <div className={styles.contentColumn}>
-      <p className={styles.sectionTitle}>History</p>
+      <div className={`${styles.contentColumn} ${theme === 'dark' ? styles.darkContentColumn : ''}`}>
+      <p className={`${styles.sectionTitle} ${theme === 'dark' ? styles.whiteText : ''}`}>History</p>
         {serviceHistory.length > 0 ? (
-          <ul className={styles.historyList}>
+          <ul className={`${styles.historyList} ${theme === 'dark' ? styles.darkHistoryList : ''}`}>
             {serviceHistory.map((historyItem) => (
-              <li key={historyItem.id} className={styles.historyItem}>
+              <li key={historyItem.id} className={`${styles.historyItem} ${theme === 'dark' ? styles.darkHistoryItem : ''}`}>
                 {/* Display relevant information from service history */}
                 <p>{`Recipient: ${historyItem.recipient}`}</p>
                 <p>{`Service Date: ${historyItem.start_date} - ${historyItem.end_date}`}</p>
@@ -148,7 +148,7 @@ const Home = () => {
             ))}
           </ul>
         ) : (
-          <p className={styles.noHistory}>No service history available.</p>
+          <p className={`${styles.noHistory} ${theme === 'dark' ? styles.whiteText : ''}`}>No service history available.</p>
         )}
       </div>
 
