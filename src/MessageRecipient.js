@@ -238,7 +238,7 @@ const MessageRecipient  = () => {
 
   
     return (
-      <div className={styles.messageContainer}>
+     
         <div className={styles.messageArea}>
           <h2>{selectedUser ? `Chat with ${selectedUser.name}` : 'Select a user to start chatting'}</h2>
           <div className={styles.messages}>
@@ -250,19 +250,8 @@ const MessageRecipient  = () => {
               ))
             )}
           </div>
-          {selectedUser && (
-            <div className={styles.inputArea}>
-              <input
-                type="text"
-                placeholder="Type your message..."
-                value={messageInput}
-                onChange={(e) => setMessageInput(e.target.value)}
-              />
-              <button onClick={handleSendMessage}>Send</button>
-            </div>
-          )}
         </div>
-      </div>
+    
     );
   };
   
@@ -365,7 +354,20 @@ const MessageRecipient  = () => {
               ))}
             </ul>
           </div>
+        <div className={styles.messageContainer}>
         <Messages />
+        {selectedUser && (
+            <div className={styles.inputArea}>
+              <input
+                type="text"
+                placeholder="Type your message..."
+                value={messageInput}
+                onChange={(e) => setMessageInput(e.target.value)}
+              />
+              <button onClick={handleSendMessage}>Send</button>
+            </div>
+          )}
+          </div>
     </div>
   );
 };
