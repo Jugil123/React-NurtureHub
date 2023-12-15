@@ -106,6 +106,7 @@ const UpdateRecipient = () => {
 
   return (
     <div className={styles.updaterecipient}>
+      <div className={styles.standingRectangle}></div>
       <div className={styles.updateRecipient}>Update Recipient</div>
       <input
         className={styles.updaterecipientChild}

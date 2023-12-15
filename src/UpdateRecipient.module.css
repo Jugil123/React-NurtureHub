@@ -125,4 +125,14 @@
     z-index: 1;
   
   }
+
+  .standingRectangle {
+    position: absolute;
+    top: 114px;
+    left: calc(50% - 280px);
+    border-radius: 13px;
+    background-color: #f5d1b3;
+    width: 560px;
+    height: 697px;
+  }
   
