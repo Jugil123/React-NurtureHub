@@ -179,48 +179,51 @@ const Home = () => {
         </div>
       </div>
       )}
-              <div className={styles.contentColumn}>
-          <h2 className={styles.sectionTitle}>Medical Records</h2>
+        <div className={`${styles.contentColumn} ${theme === 'dark' ? styles.dark : ''}`}>
+          <h2 className={`${styles.sectionTitle} ${theme === 'dark' ? styles.whiteText : ''}`}>Medical Records</h2>
+
 
           {medicalRecords ? (
-            // Display medical records if available
-            <div key={medicalRecords.recordId} className={styles.medicalRecord}>
-            <h3 className={styles.recordTitle}>Your Medical Record</h3>
-            <ul className={styles.recordList}>
+            <div key={medicalRecords.recordId} className={`${styles.medicalRecord} ${theme === 'dark' ? styles.dark : ''}`}>
+              {/* Display medical records if available */}
+              <h3 className={`${styles.recordTitle} ${theme === 'dark' ? styles.whiteText : ''}`}>Your Medical Record</h3>
+              <ul className={styles.recordList}>
               <li>
                 <strong className={styles.recordLabel}>Allergies:</strong> 
-                <span className={styles.recordInfo}>{medicalRecords.allergies}</span>
+                <span className={`${styles.recordInfo} ${theme === 'dark' ? styles.whiteText : ''}`}>{medicalRecords.allergies}</span>
               </li>
               <li>
                 <strong className={styles.recordLabel}>Medical Conditions:</strong> 
-                <span className={styles.recordInfo}>{medicalRecords.medical_conditions}</span>
+                <span className={`${styles.recordInfo} ${theme === 'dark' ? styles.whiteText : ''}`}>{medicalRecords.medical_conditions}</span>
               </li>
               <li>
                 <strong className={styles.recordLabel}>Medications:</strong> 
-                <span className={styles.recordInfo}>{medicalRecords.medications}</span>
+                <span className={`${styles.recordInfo} ${theme === 'dark' ? styles.whiteText : ''}`}>{medicalRecords.medications}</span>
               </li>
               <li>
                 <strong className={styles.recordLabel}>Past Surgeries:</strong> 
-                <span className={styles.recordInfo}>{medicalRecords.past_surgeries}</span>
+                <span className={`${styles.recordInfo} ${theme === 'dark' ? styles.whiteText : ''}`}>{medicalRecords.past_surgeries}</span>
               </li>
               <li>
                 <strong className={styles.recordLabel}>Family History:</strong> 
-                <span className={styles.recordInfo}>{medicalRecords.family_history}</span>
+                <span className={`${styles.recordInfo} ${theme === 'dark' ? styles.whiteText : ''}`}>{medicalRecords.family_history}</span>
               </li>
             </ul>
-            <button type="button" className={styles.saveButton} onClick={handleUpdateRecords}>update</button>
+            <button type="button" className={`${styles.saveButton} ${theme === 'dark' ? styles.darkButton : ''}`} onClick={handleUpdateRecords}>Update</button>
           </div>
 
           ) : (
             // Display a message if no medical records are available
-            <div className={styles.noRecordContainer}>
+            <div className={`${styles.noRecordContainer} ${theme === 'dark' ? styles.whiteText : ''}`}>
               <p>You haven't added any medical records yet.</p>
-              <button className={styles.addButton} onClick={handleAddRecord}>Add Medical Record</button>
+              <button className={`${styles.addButton} ${theme === 'dark' ? styles.darkButton : ''}`} onClick={handleAddRecord}>
+                Add Medical Record
+              </button>
             </div>
           )}
 
           {addingRecord && (
-            <div className={styles.addRecordContainer}>
+            <div className={`${styles.addRecordContainer} ${theme === 'dark' ? styles.dark : ''}`}>
               <h3 className={styles.recordTitle}>Add Medical Record</h3>
               <form className={styles.addRecordForm}>
               <label>
@@ -273,7 +276,7 @@ const Home = () => {
                   placeholder='Enter family History'
                 />
               </label>
-                <button type="button" className={styles.saveButton} onClick={handleSaveRecord}>Save</button>
+              <button type="button" className={`${styles.saveButton} ${theme === 'dark' ? styles.darkButton : ''}`} onClick={handleSaveRecord}>Save</button>
               </form>
             </div>
           )}

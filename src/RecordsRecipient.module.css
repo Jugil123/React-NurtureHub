@@ -98,6 +98,7 @@
     flex: 1;
     padding: 20px;
     overflow-y: auto; /* Enable vertical scrolling if needed */
+    background-color: #F5E2D7;
     /* sir waniy gamit ari nga code kay maguba ang design*/
   }
   .searchBarContainer {
@@ -234,8 +235,6 @@
     background-color: #333;
   }
   
-
-
   .customButton:hover{
     background-color: #f0f0f0;
   }
@@ -243,6 +242,7 @@
     background-color: #121212; /* Dark background for the container */
     color: #ffffff; /* Light text color for the container */
   }
+  
   
   .dark .navColumn {
     background-color: #1e1e1e; /* Dark background for the nav column */
@@ -280,3 +280,44 @@
   .dark .customButton:hover {
     background-color: #333; /* Darker background for hover state */
   }
+
+  /* Your existing styles */
+
+/* Dark mode styles */
+.dark .contentColumn {
+  background-color: #333333; /* Dark background color for the content column in dark mode */
+  color: #ffffff; /* White text color for content in dark mode */
+}
+
+.dark .sectionTitle {
+  color: #ffffff; /* White text color for section title in dark mode */
+}
+
+/* Add any additional dark mode styles as needed for other elements */
+
+.noRecordContainer {
+  color: #ffffff; /* White text color for the "You haven't added any medical records yet." message in dark mode */
+}
+
+.addButton {
+  background-color: #555555; /* Darker background color for the "Add Medical Record" button in dark mode */
+  color: #ffffff; /* White text color for the "Add Medical Record" button in dark mode */
+}
+
+.dark .darkButton {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+.dark .darkButton:hover {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.dark .whiteText {
+  color: #ffffff; /* White text color for dark mode */
+}
+
+
+
+
