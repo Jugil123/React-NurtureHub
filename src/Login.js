@@ -10,6 +10,7 @@ const Login = () => {
   useEffect(() => {
     document.title = "NurtureHub | Login";
   }, []); 
+  
 
   // Callback function to navigate to registration page
   const onRegisterHereClick = useCallback(() => {
@@ -38,6 +39,12 @@ const Login = () => {
       // Check the user type and navigate accordingly
       const userType = response.data.userType;
       const userObject = response.data.userObject;
+
+      const authToken = response.data.token;
+
+      // Store the authentication token securely (e.g., in cookies or local storage)
+      // Example using localStorage:
+      localStorage.setItem('authToken', authToken);
 
 
       if (userType === 1) {

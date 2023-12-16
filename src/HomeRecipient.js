@@ -29,11 +29,18 @@ const Home = () => {
   const userObject = location.state ? location.state.userObject : null;
 
   useEffect(() => {
-    // Perform any initial setup using userObject if needed
-    if (userObject) {
-      fetchRecipientDetails(userObject.recipientId);
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } else {
+      // If the authentication token exists, perform any initial setup using userObject if needed
+      if (userObject) {
+        fetchRecipientDetails(userObject.recipientId);
+      }
     }
-  }, [userObject]);
+  }, [userObject, navigate]);
 
   const fetchRecipientDetails = async (recipientId) => {
     try {
@@ -63,6 +70,7 @@ const Home = () => {
   };
   const handleLogout = () => {
     // Implement logout functionality, e.g., clear tokens
+    localStorage.removeItem('authToken');
     // Then navigate to the login page
     navigate('/login');
   };
