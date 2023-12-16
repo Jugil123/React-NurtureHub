@@ -140,6 +140,11 @@ const DashboardAdmin = () => {
       console.log(response.data);
       fetchRecipients();
       fetchCaregivers();
+      await axios.delete(`http://localhost:8080/message/deleteMessagebyPartialKey/`,{
+        params: {
+          messageKey: username,
+        },
+      });
     } catch (error) {
       console.error('Error deleting account:', error);
     }
