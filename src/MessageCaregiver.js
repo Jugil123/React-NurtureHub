@@ -299,7 +299,19 @@ const MessageRecipient  = () => {
             className={styles.userProfileContainer}
             onClick={() => handleUserClick(user)}
           >
-            <img src={user.profilePicture} alt="Profile" className={styles.userProfilePicture} />
+            {user.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${user?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )}
             <div>
               <p className={styles.userProfileInfo}>{`${user.firstname} ${user.lastname}`}</p>
             </div>
