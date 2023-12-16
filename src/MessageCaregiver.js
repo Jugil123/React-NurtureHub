@@ -307,21 +307,20 @@ const MessageRecipient  = () => {
         ))}
 
             <h2>Conversations</h2>
-            <ul>
-              {console.log('Recent Conversations:', recentConversations)}
+            <div>
               {recentConversations.map((conversation, index) => (
-                // Render li only if the name is not the logged-in user
+                // Render div only if the name is not the logged-in user
                 conversation.receiver !== userObject.firstname && (
-                  <li
+                  <div
                     key={index}
-                    onClick={() => handleUserClick(conversation)} // Pass a mock user object
-                    className={selectedUser?.name === conversation.sender ? styles.selectedUser : ''}
+                    onClick={() => handleUserClick(conversation)} // Updated the click handler
+                    className={styles.userProfileContainer}
                   >
                     {conversation.firstname}
-                  </li>
+                  </div>
                 )
               ))}
-            </ul>
+            </div>
           </div>
           <div className={styles.messageContainer}>
         <Messages />
