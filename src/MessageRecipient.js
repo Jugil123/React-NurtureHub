@@ -24,6 +24,15 @@ const MessageRecipient  = () => {
     fetchRecentConversations();
   }, []); 
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
   const fetchRecentConversations = async () => {
     try {
 
@@ -256,7 +265,12 @@ const MessageRecipient  = () => {
   };
   
 
-
+  const handleLogout = () => {
+    // Implement logout functionality, e.g., clear tokens
+    localStorage.removeItem('authToken');
+    // Then navigate to the login page
+    navigate('/login');
+  };
 
   return (
     <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
@@ -308,9 +322,9 @@ const MessageRecipient  = () => {
               </div>
             </li>
             <li>
-              <a href="/login" className={styles.navLink}>
-                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-              </a>
+            <div onClick={handleLogout} className={styles.navLink}>
+              <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+            </div>
             </li>
           </ul>
         </div>

@@ -84,6 +84,15 @@ const DashboardAdmin = () => {
     fetchCaregivers();
   }, []);
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
   const getStripedStyle = (index) => {
     return index % 2 === 0 ? styles.stripedRow1 : styles.stripedRow2;
   };
@@ -278,6 +287,13 @@ const DashboardAdmin = () => {
     );
   };
 
+  const handleLogout = () => {
+    // Implement logout functionality, e.g., clear tokens
+    localStorage.removeItem('authToken');
+    // Then navigate to the login page
+    navigate('/login');
+  };
+
   return (
     <div>
     <div className={styles.dashboardadmin}>
@@ -327,11 +343,11 @@ const DashboardAdmin = () => {
       />
       <div className={styles.nurturehub1}>NurtureHub</div>
       <div className={styles.welcomeAdmin}>{`Welcome, Admin  `}</div>
-      <Link to="/" className={styles.vectorIconLink}>
-        <button className={styles.buttonWrapper}>
+      
+        <button onClick={handleLogout} className={styles.buttonWrapper}>
           <div className={styles.button}>Log Out</div>
         </button>
-      </Link>
+  
    
       {showCareGiverTable && renderCareGiverTable()}
       {showRecipientTable && renderRecipientTable()}

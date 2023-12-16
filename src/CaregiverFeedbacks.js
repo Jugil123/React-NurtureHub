@@ -23,6 +23,16 @@ const ViewCaregiver = () => {
   const userObject = location.state ? location.state.userObject : null;
 
   useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
+
+  useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
         const caregiverId = 1; // Replace with the actual caregiverId
@@ -141,6 +151,13 @@ const ViewCaregiver = () => {
     navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
+  const handleLogout = () => {
+    // Implement logout functionality, e.g., clear tokens
+    localStorage.removeItem('authToken');
+    // Then navigate to the login page
+    navigate('/login');
+  };
+
   return (
     <div className={styles.homeContainer}>
        {userType === 'recipient' && recipient && (
@@ -191,9 +208,9 @@ const ViewCaregiver = () => {
               </div>
             </li>
             <li>
-              <a href="/login" className={styles.navLink}>
-                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-              </a>
+            <div onClick={handleLogout} className={styles.navLink}>
+              <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+            </div>
             </li>
           </ul>
         </div>

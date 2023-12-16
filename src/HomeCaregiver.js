@@ -18,6 +18,16 @@ const Home = () => {
     document.title = "NurtureHub | Home-caregiver";
   },[]);
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
+
   // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
   console.log('userObject:', userObject);
@@ -82,6 +92,15 @@ const Home = () => {
   const navigateToHomeCaregiver = () => {
     navigate('/home-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
+
+  const handleLogout = () => {
+    // Implement logout functionality, e.g., clear tokens
+    localStorage.removeItem('authToken');
+    // Then navigate to the login page
+    navigate('/login');
+  };
+
+
 
 
   const handleView = (bookingId) => {
@@ -193,9 +212,9 @@ const Home = () => {
               </div>
             </li>
             <li>
-              <a href="/login" className={styles.navLink}>
-                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-              </a>
+              <div onClick={handleLogout} className={styles.navLink}>
+              <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+            </div>
             </li>
           </ul>
         </div>

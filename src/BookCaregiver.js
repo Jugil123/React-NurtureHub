@@ -80,6 +80,15 @@ const BookCaregiver = () => {
   const userObject = location.state ? location.state.userObject : null;
   const recipient = location.state ? location.state.recipient : null;
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
   const handleSearch = async () => {
     setSearchResults([]);
     console.log('Search Term:', searchTerm);
@@ -202,6 +211,13 @@ const BookCaregiver = () => {
     }));
   };
 
+  const handleLogout = () => {
+    // Implement logout functionality, e.g., clear tokens
+    localStorage.removeItem('authToken');
+    // Then navigate to the login page
+    navigate('/login');
+  };
+
   return (
     <div className={styles.homeContainer}>
       {recipient && (
@@ -252,9 +268,9 @@ const BookCaregiver = () => {
               </div>
             </li>
             <li>
-              <a href="/login" className={styles.navLink}>
-                <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-              </a>
+            <div onClick={handleLogout} className={styles.navLink}>
+              <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+            </div>
             </li>
           </ul>
         </div>
