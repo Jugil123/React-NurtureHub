@@ -25,6 +25,15 @@ const UpdateCaregiver = () => {
   });
 
   useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
+  useEffect(() => {
     const fetchCaregiverDetails = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/caregiver/getCaregiverById/${userId}`);

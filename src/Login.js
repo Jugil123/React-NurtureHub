@@ -11,7 +11,14 @@ const Login = () => {
     document.title = "NurtureHub | Login";
   }, []); 
   
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
 
+    if (authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate(+1);
+    } 
+  }, [navigate]);
   // Callback function to navigate to registration page
   const onRegisterHereClick = useCallback(() => {
     navigate('/register-recipient');

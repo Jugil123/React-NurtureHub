@@ -15,6 +15,9 @@ const MyProfile = () => {
   console.log('MyProfile - userObject:', userObject);
   console.log('MyProfile - userType:', userType);
 
+ 
+  
+
   useEffect(() => {
     // Fetch caregiver details only if userType is 'caregiver'
     if (userType === 'caregiver' && userObject) {
@@ -29,6 +32,15 @@ const MyProfile = () => {
   useEffect(() => {
     document.title = "NurtureHub | Profile";
   }, []); 
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
 
 
   const fetchCaregiverDetails = async (caregiverId) => {

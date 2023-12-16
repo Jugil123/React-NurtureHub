@@ -25,6 +25,15 @@ const RegisterRecipient = () => {
   const [address, setAddress] = useState('');
   const [age, setAge] = useState('');
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
   const checkPasswordRequirements = () => {
     let errors = [];
 

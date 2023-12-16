@@ -24,6 +24,15 @@ const RegisterCaregiver = () => {
     document.title = "NurtureHub | Register-caregiver";
   },[]);
 
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+  }, [navigate]);
+
   function is_valid_password(password) {
     if (password.length < 8) {
       return false;
