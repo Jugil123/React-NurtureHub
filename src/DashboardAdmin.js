@@ -198,7 +198,6 @@ const DashboardAdmin = () => {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Username</th>
-              <th>Password</th>
               <th>Birth Date</th>
               <th>Gender</th>
               <th>Contact Info</th>
@@ -213,7 +212,6 @@ const DashboardAdmin = () => {
                 <td>{caregiver.firstname}</td>
                 <td>{caregiver.lastname}</td>
                 <td>{caregiver.username}</td>
-                <td>{caregiver.password}</td>
                 <td>{caregiver.birth_date}</td>
                 <td>{caregiver.gender}</td>
                 <td>{caregiver.contact_information}</td>
@@ -259,7 +257,6 @@ const DashboardAdmin = () => {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Username</th>
-              <th>Password</th>
               <th>Birth Date</th>
               <th>Gender</th>
               <th>Contact Info</th>
@@ -273,7 +270,6 @@ const DashboardAdmin = () => {
                 <td>{recipient.firstname}</td>
                 <td>{recipient.lastname}</td>
                 <td>{recipient.username}</td>
-                <td>{recipient.password}</td>
                 <td>{recipient.birth_date}</td>
                 <td>{recipient.gender}</td>
                 <td>{recipient.contact_info}</td>
