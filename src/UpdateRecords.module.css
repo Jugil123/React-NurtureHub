@@ -1,128 +1,162 @@
-.updateRecipient {
-    position: absolute;
-    top: 139px;
-    left: calc(50% - 131px);
-  }
-  .updaterecipientChild,
-  .updaterecipientItem {
-    border: 0;
-    background-color: #d9d9d9;
-    position: absolute;
-    top: 208px;
-    left: calc(50% - 152px);
-    border-radius: 11px;
-    width: 303px;
-    height: 39px;
-  }
-  .updaterecipientItem {
-    top: 359px;
-  }
-  .rectangleInput,
-  .updaterecipientChild1,
-  .updaterecipientChild2,
-  .updaterecipientChild3,
-  .updaterecipientChild4,
-  .updaterecipientInner {
-    border: 0;
-    background-color: #d9d9d9;
-    position: absolute;
-    top: 409px;
-    left: calc(50% - 152px);
-    border-radius: 11px;
-    width: 303px;
-    height: 39px;
-  }
-  .rectangleInput,
-  .updaterecipientChild1,
-  .updaterecipientChild2,
-  .updaterecipientChild3,
-  .updaterecipientChild4 {
-    top: 360px;
-  }
-  .updaterecipientChild1,
-  .updaterecipientChild2,
-  .updaterecipientChild3,
-  .updaterecipientChild4 {
-    top: 410px;
-  }
-  .updaterecipientChild2,
-  .updaterecipientChild3,
-  .updaterecipientChild4 {
-    top: 559px;
-  }
-  .updaterecipientChild3,
-  .updaterecipientChild4 {
-    top: 259px;
-  }
-  .updaterecipientChild4 {
-    top: 309px;
-  }
-  .vectorIcon {
-    position: absolute;
-    top: 84px;
-    left: 87px;
-    width: 16px;
-    height: 24px;
-    cursor: pointer;
-  }
-  .button {
-    position: relative;
-    font-size: 18px;
-    letter-spacing: 0.2em;
-    font-weight: 900;
-    font-family: "Maven Pro";
-    color: #fff;
-    text-align: left;
-  }
-  .buttonWrapper {
-    cursor: pointer;
-    border: 0;
-    padding: 10px;
-    background-color: #c3604d;
-    position: absolute;
-    top: 465px;
-    left: calc(50% - 152px);
-    border-radius: 11px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    width: 303px;
-    height: 42px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  .updaterecipient {
-    position: relative;
-    background-color: #fff;
-    width: 100%;
-    height: 1024px;
-    overflow: hidden;
-    text-align: left;
-    font-size: 32px;
-    color: #000;
-    font-family: Inter;
-  }
-
-  .errorText {
-    color: black;
-    font-size: 14px;
-    margin-top: 5px;
-    position: relative;
-    z-index: 1;
-    color: white;
-    padding: 5px;
-   
-  }
-  
-  .errorText2 {
-   border-radius: 7px;
-   margin-left: 62%;
-   margin-right: 12%;
-   margin-top: 20.5%;
-   background-color: #c3604d;
-   position: relative;
-    z-index: 1;
-  
-  }
-  
+.updaterecordChild {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #edccb9;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 142px;
+}
+.nurturehublogo2Icon {
+  position: relative;
+  width: 155px;
+  height: 128px;
+  object-fit: cover;
+}
+.nurturehub {
+  position: relative;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  margin-left: -4px;
+}
+.nurturehublogo2Parent {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 416px;
+  height: 128px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.updaterecordItem {
+  position: absolute;
+  width: calc(100% + 1px);
+  top: 183px;
+  right: -1px;
+  left: 0;
+  background-color: #f90;
+  height: 27px;
+}
+.updaterecordInner {
+  position: absolute;
+  top: 244px;
+  left: calc(50% - 403px);
+  border-radius: 13px;
+  background-color: #f5d1b3;
+  width: 805px;
+  height: 945px;
+}
+.textfield4Child {
+  border: 0;
+  outline: 0;
+  background-color: var(--color-white);
+  position: relative;
+  border-radius: var(--br-2xs);
+  width: 303px;
+  height: 132px;
+}
+.textfield4 {
+  position: absolute;
+  top: 954px;
+  left: calc(50% - 151px);
+  width: 303px;
+  height: 132px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.updateMedicalRecords {
+  position: absolute;
+  top: 284px;
+  left: calc(50% - 161px);
+  font-size: 32px;
+  font-family: var(--font-mukta);
+  color: #000;
+}
+.button {
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  font-family: var(--font-maven-pro);
+  color: var(--color-white);
+  text-align: left;
+}
+.buttonWrapper {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-3xs);
+  background-color: var(--color-indianred);
+  position: absolute;
+  top: 1111px;
+  left: calc(50% - 151px);
+  border-radius: var(--br-2xs);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 303px;
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.x1Icon {
+  position: absolute;
+  top: 48px;
+  right: 31px;
+  width: 55px;
+  height: 48px;
+  object-fit: cover;
+}
+.textfield1Child {
+  border: 0;
+  outline: 0;
+  background-color: var(--color-white);
+  position: relative;
+  border-radius: var(--br-2xs);
+  width: 303px;
+  height: 140px;
+}
+.textfield1,
+.textfield2,
+.textfield3,
+.textfield41 {
+  position: absolute;
+  top: 347px;
+  left: calc(50% - 151px);
+  width: 303px;
+  height: 140px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.textfield2,
+.textfield3,
+.textfield41 {
+  top: 501px;
+  align-items: center;
+}
+.textfield3,
+.textfield41 {
+  top: 654px;
+}
+.textfield41 {
+  top: 808px;
+  height: 132px;
+}
+.updaterecord {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1338px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 36px;
+  color: var(--color-indianred);
+  font-family: var(--font-maven-pro);
+}
