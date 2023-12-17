@@ -14,6 +14,30 @@ const UpdateRecords = () => {
     past_surgeries: '',
     family_history: '',
   });
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    }
+    else {
+      const authTokenString = localStorage.getItem('authToken');
+      const authToken = JSON.parse(authTokenString);
+      const userType = authToken?.userType;
+      console.log('adminside: ',userType)
+      const userObject = authToken.userObject;
+
+      if (userType === 2) {
+        navigate('/home-caregiver', { state: { userObject } });
+      }  else {
+        
+      }
+    }  
+  }, [navigate]);
+
+  
   const onVectorIconClick = useCallback(() => {
     // Please sync "Desktop - 12" to the project
   }, []);

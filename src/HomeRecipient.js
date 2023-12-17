@@ -153,7 +153,7 @@ const Home = () => {
             />
           )}
           <div>
-            {userObject ? (
+            {recipient ? (
               <p className={styles.userProfileInfo}>{`${recipient?.firstname} ${recipient?.lastname}`}</p>
             ) : (
               <p className={styles.userProfileInfo}>Loading...</p>

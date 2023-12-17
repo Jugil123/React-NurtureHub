@@ -90,7 +90,23 @@ const DashboardAdmin = () => {
     if (!authToken) {
       // If the authentication token doesn't exist, navigate to the login page
       navigate('/login');
-    } 
+    }
+    
+    else {
+      const authTokenString = localStorage.getItem('authToken');
+      const authToken = JSON.parse(authTokenString);
+      const userType = authToken?.userType;
+      console.log('adminside: ',userType)
+      const userObject = authToken.userObject;
+
+      if (userType === 1) {
+        navigate('/home-recipient', { state: { userObject } });
+      } else if (userType === 2) {
+        navigate('/home-caregiver', { state: { userObject } });
+      } else {
+        
+      }
+    }
   }, [navigate]);
 
   const getStripedStyle = (index) => {
