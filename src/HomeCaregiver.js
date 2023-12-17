@@ -18,19 +18,55 @@ const Home = () => {
     document.title = "NurtureHub | Home-caregiver";
   },[]);
 
-  useEffect(() => {
-    const authToken = localStorage.getItem('authToken');
-
-    if (!authToken) {
-      // If the authentication token doesn't exist, navigate to the login page
-      navigate('/login');
-    } 
-  }, [navigate]);
-
-
-  // Extract userObject from location state
   const userObject = location.state ? location.state.userObject : null;
   console.log('userObject:', userObject);
+
+  useEffect(() => {
+    // Check if the 'authToken' key exists in localStorage
+    if (!localStorage.hasOwnProperty('authToken')) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+      return; // Exit the useEffect to prevent further execution
+    }
+  
+    // Retrieve the authTokenString from localStorage
+    const authTokenString = localStorage.getItem('authToken');
+    console.log('Auth Token String:', authTokenString);
+  
+    try {
+      // Attempt to parse the authTokenString
+      const authToken = JSON.parse(authTokenString);
+      const userType = authToken?.userType;
+      console.log("User Type2:", userType);
+  
+      if (!authToken) {
+        // If the authentication token is still not available, navigate to the login page
+        navigate('/login');
+      } else {
+        // If the authentication token exists, perform any initial setup using userObject if needed
+        const userType = authToken.userType;
+        const userObject = authToken.userObject;
+      console.log("User Type123:", userObject);
+
+
+      if (userType === 1) {
+        // If the user is a recipient, perform any initial setup using userObject if needed
+        if (userObject) {
+          navigate('/home-recipient', { state: { userObject } });
+        }
+      } else if (userType === 3) {
+        // Handle other user types if needed
+        navigate('/dashboard', { state: { userObject } });
+      }
+      }
+    } catch (error) {
+      console.error('Error parsing authToken:', error);
+      // Handle error if parsing fails, for example, navigate to the login page
+      navigate('/login');
+    }
+  }, [userObject, navigate]);
+  // Extract userObject from location state
+  
 
   useEffect(() => {
     // Fetch booking requests when the component mounts

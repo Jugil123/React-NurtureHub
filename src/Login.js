@@ -13,12 +13,43 @@ const Login = () => {
   
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
-
+  
     if (authToken) {
+      try {
+        // Attempt to parse the authTokenString
+        const authTokenObj = JSON.parse(authToken);
+        const userType = authTokenObj?.userType;
+  
+        if (!authTokenObj) {
+          // If the authentication token is still not available, navigate to the login page
+          navigate('/login');
+        } else {
+          // If the authentication token exists, navigate based on user type and pass userObject as state
+          if (userType === 1) {
+            const userObject = authTokenObj?.userObject;
+            navigate('/home-recipient', { state: { userObject } });
+          } else if (userType === 2) {
+            const userObject = authTokenObj?.userObject;
+            navigate('/home-caregiver', { state: { userObject } });
+          } else if (userType === 3) {
+            const userObject = authTokenObj?.userObject;
+            navigate('/dashboard', { state: { userObject } });
+          } else {
+            // Handle unexpected userType
+            navigate('/login');
+          }
+        }
+      } catch (error) {
+        console.error('Error parsing authToken:', error);
+        // Handle error if parsing fails, for example, navigate to the login page
+        navigate('/login');
+      }
+    } else {
       // If the authentication token doesn't exist, navigate to the login page
-      navigate(+1);
-    } 
+      navigate('/login');
+    }
   }, [navigate]);
+  
   // Callback function to navigate to registration page
   const onRegisterHereClick = useCallback(() => {
     navigate('/register-recipient');
@@ -32,38 +63,44 @@ const Login = () => {
   // Function to handle login
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
       // Make a POST request to the login endpoint
       const response = await axios.post('http://localhost:8080/account/login', {
         username,
         password,
       });
-
-      // Handle successful login
-      console.log(response.data);
-
-      // Check the user type and navigate accordingly
-      const userType = response.data.userType;
-      const userObject = response.data.userObject;
-
-      const authToken = response.data.token;
-
+  
+      // Log the entire response to inspect its structure
+      console.log('Login API Response:', response);
+  
+      // Check if the response contains the necessary properties || !response.data.userObject
+      if (!response.data.userType) {
+        console.error('Invalid response from the server:', response.data);
+        setError('Invalid response from the server');
+        return;
+      }
+  
       // Store the authentication token securely (e.g., in cookies or local storage)
       // Example using localStorage:
-      localStorage.setItem('authToken', authToken);
-
-
+      const authTokenString = JSON.stringify(response.data);
+      localStorage.setItem('authToken', authTokenString);
+  
+      // Extract user type and object from the response
+      const userType = response.data.userType;
+      const userObject = response.data.userObject;
+  
+      // Navigate based on user type
       if (userType === 1) {
         navigate('/home-recipient', { state: { userObject } });
       } else if (userType === 2) {
         navigate('/home-caregiver', { state: { userObject } });
       } else if (userType === 3) {
-        navigate('/dashboard');
+        navigate('/dashboard', { state: { userObject } });
       } else {
         setError('Incorrect Username or Password');
       }
-
+  
     } catch (error) {
       // Handle login failure
       console.error('Login Failed', error.response.data);
