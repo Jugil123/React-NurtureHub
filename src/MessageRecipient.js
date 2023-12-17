@@ -388,6 +388,19 @@ const MessageRecipient  = () => {
                     onClick={() => handleUserClick(conversation)} // Updated the click handler
                     className={styles.userProfileContainer}
                   >
+                      {conversation.profilePicture ? (
+              <img
+                src={`data:image/png;base64,${conversation?.profilePicture}`}
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            ) : (
+              <img
+                src="/DefaultProfilePicture.webp"
+                alt="Profile"
+                className={styles.userProfilePicture}
+              />
+            )} 
                     {conversation.firstname}
                   </div>
                 )

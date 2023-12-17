@@ -84,26 +84,43 @@ const MyProfile = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
   
-    const endpoint =
-      userType === 'recipient'
-        ? `http://localhost:8080/${userType}/${userType}s/${userObject.recipientId}/profile-picture`
-        : `http://localhost:8080/${userType}/${userType}s/${userObject.caregiverId}/profile-picture`;
+    const recipientEndpoint = `http://localhost:8080/recipient/recipients/${userObject.recipientId}/profile-picture`;
+    const caregiverEndpoint = `http://localhost:8080/caregiver/caregivers/${userObject.caregiverId}/profile-picture`;
+    const accountEndpoint = `http://localhost:8080/account/accounts/${userObject.username}/profile-picture`;
   
     try {
-      await axios.post(endpoint, formData, {
+      if (userType === 'recipient') {
+        // Update recipient profile picture
+        await axios.post(recipientEndpoint, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+      } else if (userType === 'caregiver') {
+        // Update caregiver profile picture
+        await axios.post(caregiverEndpoint, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+      }
+  
+      // Update account profile picture
+      await axios.post(accountEndpoint, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
   
-      console.log('Profile picture updated successfully');
+      console.log('Profile pictures updated successfully');
   
       // Optionally, you can reload the user profile after a successful update
       window.location.reload();
     } catch (error) {
-      console.error('Failed to update profile picture', error);
+      console.error('Failed to update profile pictures', error);
     }
   };
+  
 
   const handleUpdateFields1 = async () => {
     navigate(`/update-caregiver/${caregiver.caregiverId}`);
