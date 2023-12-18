@@ -17,6 +17,17 @@ const UpdateRecipient = () => {
     address: '',
     age: 0,
   });
+  const [previousData, setPreviousData] = useState({
+    firstname: '',
+    lastname: '',
+    password: '',
+    birth_date: '',
+    gender: '',
+    contact_info: '',
+    address: '',
+    age: 0,
+  });
+
   const onVectorIconClick = useCallback(() => {
     // Please sync "Desktop - 12" to the project
   }, []);
@@ -48,6 +59,7 @@ const UpdateRecipient = () => {
       try {
         const response = await axios.get(`http://localhost:8080/recipient/getRecipientById/${userId}`);
         setRecipient(response.data);
+        setPreviousData(response.data);
       } catch (error) {
         console.error('Error fetching recipient details', error);
       }
@@ -104,14 +116,32 @@ const UpdateRecipient = () => {
       ) {
         // Step 1: Update the recipient
         await axios.put(`http://localhost:8080/recipient/updateRecipient/?rid=${userId}`, recipient);
+
+        const accountUpdateData = {
+          firstname: '',
+          lastname: ''
+        };
+
+        if (recipient.firstname !== previousData.firstname) {
+          accountUpdateData.firstname = recipient.firstname;
+        }
+  
+        if (recipient.lastname !== previousData.lastname) {
+          accountUpdateData.lastname = recipient.lastname;
+        }
   
         // Step 2: Update the associated account password
         const accountUpdateResponse = await axios.put(`http://localhost:8080/account/updateAccount/?username=${recipient.username}`, {
           password: recipient.password,
+          firstname: accountUpdateData.firstname,
+          lastname: accountUpdateData.lastname
         });
   
         // Check the account update response if needed
         console.log('Account update response:', accountUpdateResponse.data);
+
+        //update for the name in message entity
+        await axios.put(`http://localhost:8080/message/updateSenderOrReceiver?name=${recipient.firstname}&oldname=${previousData.firstname}&messageKey=${recipient.username}`)
   
         // Handle successful update
         navigate(-1); 

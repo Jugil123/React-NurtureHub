@@ -23,6 +23,16 @@ const UpdateCaregiver = () => {
     specializations: '',
     hourlyRate: 0,
   });
+  const [previousData, setPreviousData] = useState({
+    firstname: '',
+    lastname: '',
+    password: '',
+    birth_date: '',
+    gender: '',
+    contact_info: '',
+    address: '',
+    age: 0,
+  });
 
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
@@ -51,6 +61,7 @@ const UpdateCaregiver = () => {
       try {
         const response = await axios.get(`http://localhost:8080/caregiver/getCaregiverById/${userId}`);
         setCaregiver(response.data);
+        setPreviousData(response.data);
       } catch (error) {
         console.error('Error fetching caregiver details', error);
       }
@@ -108,9 +119,28 @@ const UpdateCaregiver = () => {
       ) {
         await axios.put(`http://localhost:8080/caregiver/updateCaregiver/?cid=${userId}`, caregiver);
 
+        const accountUpdateData = {
+          firstname: '',
+          lastname: ''
+        };
+
+        if (caregiver.firstname !== previousData.firstname) {
+          accountUpdateData.firstname = caregiver.firstname;
+        }
+  
+        if (caregiver.lastname !== previousData.lastname) {
+          accountUpdateData.lastname = caregiver.lastname;
+        }
+  
+
         const accountUpdateResponse = await axios.put(`http://localhost:8080/account/updateAccount/?username=${caregiver.username}`, {
           password: caregiver.password,
+          firstname: accountUpdateData.firstname,
+          lastname: accountUpdateData.lastname
         });
+
+        //update for the name in message entity
+        await axios.put(`http://localhost:8080/message/updateSenderOrReceiver?name=${caregiver.firstname}&oldname=${previousData.firstname}&messageKey=${caregiver.username}`)
 
         // Handle successful update
         navigate(-1);
