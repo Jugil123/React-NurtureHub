@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './MyProfile.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTheme } from './ThemeContext';
+
 
 const MyProfile = () => {
   const location = useLocation();
@@ -11,6 +13,7 @@ const MyProfile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [caregiver, setCaregiver] = useState(null);
   const [recipient, setRecipient] = useState(null);
+  const { theme, toggleTheme } = useTheme();
 
   console.log('MyProfile - userObject:', userObject);
   console.log('MyProfile - userType:', userType);
@@ -131,7 +134,7 @@ const MyProfile = () => {
    };
 
    return (
-    <div className={styles.profileContainer}>
+    <div className={`${styles.profileContainer} ${theme === 'dark' ? styles.dark : ''}`}>
       <div className={styles.profileSection}>
         {userType === 'caregiver' && caregiver && (
           <div className={styles.userProfileSection}>

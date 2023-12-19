@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5e2d7;
+   
   }
   
   .profileSection {
@@ -96,5 +96,14 @@
   
   .buttonContainerfields {
     margin-top: 20px;
+  }
+
+ 
+  .dark .profileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   background-color: black;
   }
   

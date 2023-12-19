@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './HomeCaregiver.module.css';
 import axios from 'axios';
+import { useTheme } from './ThemeContext'; // Make sure to import useTheme from the correct location
 
 const BookingDetails = () => {
   const location = useLocation();
@@ -11,6 +12,7 @@ const BookingDetails = () => {
   const [recipientRecords, setRecipientRecords] = useState(null);
   const [showRecords, setShowRecords] = useState(false); 
   const [caregiver, setCaregiver] = useState(null);
+  const { theme, toggleTheme } = useTheme();
   const userType = location.state ? location.state.userType : null;
 
   useEffect(() => {
@@ -249,7 +251,7 @@ const BookingDetails = () => {
 
   // Render the details of the selected booking
   return (
-    <div className={styles.homeContainer}>
+    <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
        {userType === 'caregiver' && caregiver && (
       <div className={styles.navColumn}>
       <div className={styles.logoContainer}>
