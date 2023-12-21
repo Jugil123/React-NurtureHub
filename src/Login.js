@@ -77,7 +77,7 @@ const Login = () => {
       // Check if the response contains the necessary properties || !response.data.userObject
       if (!response.data.userType) {
         console.error('Invalid response from the server:', response.data);
-        setError('Invalid response from the server');
+        setError('Incorrect Username or Password');
         return;
       }
   
