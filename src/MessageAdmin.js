@@ -1,22 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import styles from './MessageCaregiver.module.css';
+import styles from './MessageRecipient.module.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useTheme } from './ThemeContext'; // Make sure to import useTheme from the correct location
+import { useTheme } from './ThemeContext'; // Adjust the import path as necessary
 
-const MessageRecipient  = () => {
+const MessageAdmin  = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageInput, setMessageInput] = useState('');
-  const [caregiver, setCaregiver] = useState(null);
+  const [admin, setAdmin] = useState(null);
   const userType = location.state ? location.state.userType : null;
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const [conversations, setConversations] = useState([]);
   const userObject = location.state ? location.state.userObject : null;
   const [recentConversations, setRecentConversations] = useState([]);
   const [uniqueUsernames, setUniqueUsernames] = useState([]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "NurtureHub | Messages";
+    fetchRecentConversations();
+  }, []); 
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      // If the authentication token doesn't exist, navigate to the login page
+      navigate('/login');
+    } 
+    else {
+      const authTokenString = localStorage.getItem('authToken');
+      const authToken = JSON.parse(authTokenString);
+      const userType = authToken?.userType;
+      console.log('adminside: ',userType)
+      const userObject = authToken.userObject;
+
+      if (userType === 1) {
+        navigate('/home-recipient', { state: { userObject } });
+      } else if (userType === 2) {
+        navigate('/home-caregiver', { state: { userObject } });
+      } else {
+        
+      }
+    } 
+  }, [navigate]);
 
   const fetchRecentConversations = async () => {
     try {
@@ -76,8 +106,29 @@ const MessageRecipient  = () => {
       }
     };
 
+  // const fetchRecentConversationsForUsers = async () => {
+  //   try {
+  //     const fetchedConversations = [];
+  
+  //     // Loop through uniqueUsernames and fetch recent conversations for each username
+  //     for (const uniqueUsername of uniqueUsernames) {
+  //       console.log('who is :',uniqueUsername);
+  //       const response = await axios.get(`http://localhost:8080/account/searchAccount?searchString=${uniqueUsername}`);
+  //       const user = response.data; // Assuming the API returns an array with a single user, adjust accordingly
+        
+  //       // Combine the conversations for each user into the fetchedConversations array
+  //       fetchedConversations.push(user);
+  //     }
+  
+  //     // Update the state with the fetched conversations
+  //     setRecentConversations(fetchedConversations);
+  //   } catch (error) {
+  //     console.error('Error fetching recent conversations:', error);
+  //   }
+  // };
+ 
+
   const handleUserClick = (user) => {
-    // Assuming that user.name is the property containing the user's name
     const userName = user.username;
   
     setSelectedUser({
@@ -90,12 +141,23 @@ const MessageRecipient  = () => {
     fetchPreviousMessages(messageKey);
   };
 
+  const handleUserClickOnConversation = (user) => {
+    const messageKey = user.messageKey;
+  
+    setSelectedUser({
+      ...user,
+      name: user.receiver,
+    });
+
+    console.log('....',user.receiver);
+    fetchPreviousMessages(messageKey);
+  };
+
   const fetchPreviousMessages = async (messageKey) => {
     try {
       const response = await axios.get(`http://localhost:8080/message/getMessage?messageKey=${messageKey}`);
   
       const previousMessages = response.data;
-      console.log(previousMessages);
   
       // Do something with the previousMessages, like updating the state
       setConversations(previousMessages);
@@ -137,60 +199,27 @@ const MessageRecipient  = () => {
     }
   };
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    document.title = "NurtureHub | Messages-caregiver";
-    fetchRecentConversations();
-  },[]);
-
   // Extract userObject from location state
   // const userObject = location.state ? location.state.userObject : null;
 
   useEffect(() => {
-    const authToken = localStorage.getItem('authToken');
-
-    if (!authToken) {
-      // If the authentication token doesn't exist, navigate to the login page
-      navigate('/login');
-    }
-    else {
-      const authTokenString = localStorage.getItem('authToken');
-      const authToken = JSON.parse(authTokenString);
-      const userType = authToken?.userType;
-      console.log('adminside: ',userType)
-      const userObject = authToken.userObject;
-
-      if (userType === 1) {
-        navigate('/home-recipient', { state: { userObject } });
-      } else if (userType === 3) {
-        navigate('/dashboard', { state: { userObject } });
-      } else {
-        
-      }
-    }
-     
-  }, [navigate]);
-
-  
-  useEffect(() => {
-    // Fetch caregiver details only if userType is 'caregiver'
-    if (userType === 'caregiver' && userObject) {
-      fetchCaregiverDetails(userObject.caregiverId);
+    // Fetch recipient details only if userType is 'caregiver'
+    if (userType === 'admin' && userObject) {
+      fetchAdminDetails(userObject.adminId);
     }
   }, [userType, userObject]);
 
-  const fetchCaregiverDetails = async (caregiverId) => {
+  const fetchAdminDetails = async (adminId) => {
     try {
-      const response = await axios.get(`http://localhost:8080/caregiver/getCaregiverById/${caregiverId}`);
-      console.log('Caregiver Details123:', response.data);
-      setCaregiver(response.data);
+      const response = await axios.get(`http://localhost:8080/admin/getAdminById/${adminId}`);
+      console.log('Admin Details123:', response.data);
+      setAdmin(response.data);
     } catch (error) {
       console.error('Error fetching caregiver details:', error);
     }
   };
 
 
-  
 
   const handleSearch = async () => {
     setSearchResults([]);
@@ -209,34 +238,31 @@ const MessageRecipient  = () => {
   };
 
   const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject, userType: 'caregiver' } });
+    navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
   };
 
   const navigateToViewCaregiver = (userId) => {
-    navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'caregiver' } });
+    navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'recipient' } });
   };
 
-  const navigateToMessageCaregiver = () => {
-    navigate('/message-caregiver', { state: { userObject, userType: 'caregiver' } });
+  const navigateToMessageAdmin = () => {
+    navigate('/message-admin', { state: { userObject, userType: 'admin' } });
   };
 
-  const navigateToHistoryCaregiver= () => {
-    navigate('/history-caregiver', { state: { userObject, userType: 'caregiver' } });
+  const navigateToDashboard = () => {
+    navigate('/dashboard', { state: { userObject } });
   };
 
-  const navigateToHomeCaregiver = () => {
-    navigate('/home-caregiver', { state: { userObject, userType: 'caregiver' } });
+  const navigateToHomeRecipient = () => {
+    navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
   };
 
-  const navigateToMyFeedBacks = () => {
-    navigate(`/my-feedbacks/${caregiver.caregiverId}`, { state: { userObject, userType: 'caregiver' } });
-  }
 
   const Messages = () => {
-   
+
   
     return (
-      
+     
         <div className={styles.messageArea}>
           <h2>{selectedUser ? `Chat with ${selectedUser.name}` : 'Select a user to start chatting'}</h2>
           <div className={styles.messages}>
@@ -248,9 +274,8 @@ const MessageRecipient  = () => {
               ))
             )}
           </div>
-          
         </div>
-     
+    
     );
   };
   
@@ -264,56 +289,40 @@ const MessageRecipient  = () => {
 
   return (
     <div className={`${styles.homeContainer} ${theme === 'dark' ? styles.dark : ''}`}>
-       {userType === 'caregiver' && caregiver && (
+      {userType === 'admin' && admin && (
       <div className={styles.navColumn}>
         <div className={styles.logoContainer}>
           <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
         </div>
         <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-        {caregiver.profilePicture ? (
-              <img
-                src={`data:image/png;base64,${caregiver?.profilePicture}`}
-                alt="Profile"
-                className={styles.userProfilePicture}
-              />
-            ) : (
+       
               <img
                 src="/DefaultProfilePicture.webp"
                 alt="Profile"
                 className={styles.userProfilePicture}
               />
-            )}
+        
           <div>
             {userObject ? (
-              <p className={styles.userProfileInfo}>{`${caregiver.firstname} ${caregiver.lastname}`}</p>
+              <p className={styles.userProfileInfo}>{`${admin.firstname} ${admin.lastname}`}</p>
             ) : (
-              <p className={styles.userProfileInfo}>Firstname Lastname</p>
+              <p className={styles.userProfileInfo}>Loading...</p>
             )}
           </div>
         </div>
         <div>
         <ul className={styles.navLinksContainer}>
             <li>
-              <div className={styles.navLink} onClick={navigateToHomeCaregiver}>
-                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+              <div  className={styles.navLink}  onClick={navigateToDashboard  }>
+                <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Back to Dashboard
               </div>
             </li>
             <li>
               <div
                 className={`${styles.navLink} ${styles.activeNavLink}`}
-                onClick={navigateToMessageCaregiver}
+                onClick={navigateToMessageAdmin}
               >
                 <img src="/message-icon2.svg" alt="Messages" className={styles.navIcon} /> Messages
-              </div>
-            </li>
-            <li>
-              <div className={styles.navLink}  onClick={navigateToHistoryCaregiver}>
-                <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
-              </div>
-            </li>
-            <li>
-              <div className={styles.navLink}  onClick={navigateToMyFeedBacks}>
-                <img src="/feedbacks-icon.png" alt="Records" className={styles.navIcon} /> Feedbacks
               </div>
             </li>
             <li>
@@ -324,7 +333,7 @@ const MessageRecipient  = () => {
           </ul>
         </div>
       </div>
-       )}
+      )}
       <div className={styles.contentColumn}>
         <div className={styles.searchBarContainer}>
           <input type="text" placeholder="Search users..." className={styles.searchInput} value={searchTerm} onChange={handleSearchInputChange}/>
@@ -368,7 +377,7 @@ const MessageRecipient  = () => {
                     onClick={() => handleUserClick(conversation)} // Updated the click handler
                     className={styles.userProfileContainer}
                   >
-                    {conversation.profilePicture ? (
+                      {conversation.profilePicture ? (
               <img
                 src={`data:image/png;base64,${conversation?.profilePicture}`}
                 alt="Profile"
@@ -387,7 +396,7 @@ const MessageRecipient  = () => {
               ))}
             </div>
           </div>
-          <div className={styles.messageContainer}>
+        <div className={styles.messageContainer}>
         <Messages />
         {selectedUser && (
             <div className={styles.inputArea}>
@@ -400,9 +409,9 @@ const MessageRecipient  = () => {
               <button onClick={handleSendMessage}>Send</button>
             </div>
           )}
-        </div>
+          </div>
     </div>
   );
 };
 
-export default MessageRecipient ;
+export default MessageAdmin ;

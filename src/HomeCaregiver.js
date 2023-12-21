@@ -129,6 +129,10 @@ const Home = () => {
     navigate('/home-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
+  const navigateToMyFeedBacks = () => {
+    navigate(`/my-feedbacks/${caregiver.caregiverId}`, { state: { userObject, userType: 'caregiver' } });
+  }
+
   const handleLogout = () => {
     // Implement logout functionality, e.g., clear tokens
     localStorage.removeItem('authToken');
@@ -247,6 +251,12 @@ const Home = () => {
                 <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
               </div>
             </li>
+            <li>
+              <div className={styles.navLink}  onClick={navigateToMyFeedBacks}>
+                <img src="/feedbacks-icon.png" alt="Records" className={styles.navIcon} /> Feedbacks
+              </div>
+            </li>
+            
             <li>
               <div onClick={handleLogout} className={styles.navLink}>
               <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout

@@ -3,7 +3,7 @@
 import styles from "./DashboardAdmin.module.css";
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import printableTableStyles from "./PrintableTable.module.css"; // Import the printable table styles
 
@@ -18,6 +18,9 @@ const DashboardAdmin = () => {
   const [currentAction, setCurrentAction] = useState(null);
   const caregiverRef = useRef();
   const recipientRef = useRef();
+  const location = useLocation();
+  const userObject = location.state ? location.state.userObject : null;
+  console.log("Admin: ",userObject);
 
   class PrintableCareGiverTable extends React.Component {
     render() {
@@ -311,6 +314,10 @@ const DashboardAdmin = () => {
     navigate('/login');
   };
 
+  const handleMessage = () => {
+    navigate('/message-admin', { state: { userObject, userType: 'admin' } });
+  };
+
   return (
     <div>
     <div className={styles.dashboardadmin}>
@@ -359,7 +366,11 @@ const DashboardAdmin = () => {
         src="/nurturehublogo-2@2x.png"
       />
       <div className={styles.nurturehub1}>NurtureHub</div>
-      <div className={styles.welcomeAdmin}>{`Welcome, Admin  `}</div>
+      <div style={{marginRight: '7%'}} className={styles.welcomeAdmin}>{`Welcome, Admin  `}</div>
+
+      <button style={{marginRight: '8%'}} onClick={handleMessage} className={styles.buttonWrapper}>
+          <div className={styles.button}>Messages</div>
+        </button>
       
         <button onClick={handleLogout} className={styles.buttonWrapper}>
           <div className={styles.button}>Log Out</div>

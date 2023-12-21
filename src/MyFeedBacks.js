@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './CaregiverFeedbacks.module.css'; // Import styles for ViewCaregiver
 
-const ViewCaregiver = () => {
+const MyFeedBacks = () => {
   const location = useLocation();
   const { userId } = useParams();
   const [caregiver, setCaregiver] = useState(null);
@@ -36,8 +36,8 @@ const ViewCaregiver = () => {
       console.log('adminside: ',userType)
       const userObject = authToken.userObject;
 
-      if (userType === 2) {
-        navigate('/home-caregiver', { state: { userObject } });
+      if (userType === 1) {
+        navigate('/home-recipient', { state: { userObject } });
       } else if (userType === 3) {
         navigate('/dashboard', { state: { userObject } });
       } else {
@@ -134,9 +134,7 @@ const ViewCaregiver = () => {
     return <p>Loading...</p>;
   }
 
-  const navigateToMyProfile = () => {
-    navigate('/my-profile', { state: { userObject, userType: 'recipient' } });
-  };
+  
 
   const navigateToViewCaregiver = (userId) => {
     navigate(`/view-caregiver/${userId}`, { state: { userObject, userType: 'recipient' } });
@@ -146,26 +144,25 @@ const ViewCaregiver = () => {
     console.log('Sending a message to the caregiver');
   };
 
-  const handleAddFeedbacks = () => {
-    navigate(`/feedback/${userId}`, { state: { userObject, userType: 'recipient' } })
+  const navigateToMyProfile = () => {
+    navigate('/my-profile', { state: { userObject, userType: 'caregiver' } });
   };
 
-  const handleBookCaregiver = () => {
-    navigate(`/book-caregiver/${userId}`, { state: { userObject, caregiver, recipient} });
+  const navigateToMessageCaregiver = () => {
+    navigate('/message-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
-  const navigateToMessageRecipient = () => {
-    navigate('/message-recipient', { state: { userObject, userType: 'recipient' } });
+  const navigateToHistoryCaregiver= () => {
+    navigate('/history-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
-  const navigateToRecordsRecipient = () => {
-    navigate('/records-recipient', { state: { userObject, userType: 'recipient' } });
+  const navigateToHomeCaregiver = () => {
+    navigate('/home-caregiver', { state: { userObject, userType: 'caregiver' } });
   };
 
-  const navigateToHomeRecipient = () => {
-    navigate('/home-recipient', { state: { userObject, userType: 'recipient' } });
-  };
-
+  const navigateToMyFeedBacks = () => {
+    navigate(`/my-feedbacks/${caregiver.caregiverId}`, { state: { userObject, userType: 'caregiver' } });
+  }
   const handleLogout = () => {
     // Implement logout functionality, e.g., clear tokens
     localStorage.removeItem('authToken');
@@ -175,75 +172,71 @@ const ViewCaregiver = () => {
 
   return (
     <div className={styles.homeContainer}>
-       {userType === 'recipient' && recipient && (
+       {userType === 'caregiver' && caregiver && (
       <div className={styles.navColumn}>
-        <div className={styles.logoContainer}>
-          <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
-        </div>
-        <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
-        {recipient.profilePicture ? (
-              <img
-                src={`data:image/png;base64,${recipient?.profilePicture}`}
-                alt="Profile"
-                className={styles.userProfilePicture}
-              />
-            ) : (
-              <img
-                src="/DefaultProfilePicture.webp"
-                alt="Profile"
-                className={styles.userProfilePicture}
-              />
-            )}
-          <div>
-            {userObject ? (
-              <p className={styles.userProfileInfo}>{`${recipient.firstname} ${recipient.lastname}`}</p>
-            ) : (
-              <p className={styles.userProfileInfo}>Loading...</p>
-            )}
-          </div>
-        </div>
+      <div className={styles.logoContainer}>
+        <img src="/nurturehublogo-2@2x.png" alt="App Logo" className={styles.appLogo} />
+      </div>
+      <div onClick={navigateToMyProfile} className={styles.userProfileContainer}>
+        {/* Conditional rendering for profile picture */}
+        {caregiver?.profilePicture ? (
+            <img
+              src={`data:image/png;base64,${caregiver?.profilePicture}`}
+              alt="Profile"
+              className={styles.userProfilePicture}
+            />
+          ) : (
+            <img
+              src="/DefaultProfilePicture.webp"
+              alt="Profile"
+              className={styles.userProfilePicture}
+            />
+          )}
         <div>
-        <ul className={styles.navLinksContainer}>
-            <li>
-              <div className={`${styles.navLink} ${styles.activeNavLink}`} onClick={navigateToHomeRecipient}>
-                <img src="/home-icon2.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
-              </div>
-            </li>
-            <li>
-              <div
-                className={styles.navLink}
-                onClick={navigateToMessageRecipient}
-              >
-                <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
-              </div>
-            </li>
-            <li>
-              <div className={styles.navLink}  onClick={navigateToRecordsRecipient}>
-                <img src="/records-icon.svg" alt="Records" className={styles.navIcon} /> Records
-              </div>
-            </li>
-            <li>
-            <div onClick={handleLogout} className={styles.navLink}>
-              <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
-            </div>
-            </li>
-          </ul>
+          {userObject ? (
+           <p className={styles.userProfileInfo}>{`${caregiver?.firstname} ${caregiver?.lastname}`}</p>
+          ) : (
+            <p className={styles.userProfileInfo}>Firstname Lastname</p>
+          )}
         </div>
       </div>
+      <div>
+        <ul className={styles.navLinksContainer}>
+          <li>
+            <div className={styles.navLink} onClick={navigateToHomeCaregiver}>
+              <img src="/home-icon.svg" alt="Home" className={`${styles.navIcon} ${styles.activeNavLinkIcon}`} /> Home
+            </div>
+          </li>
+          <li>
+            <div
+              className={styles.navLink}
+              onClick={navigateToMessageCaregiver}
+            >
+              <img src="/messages-icon.svg" alt="Messages" className={styles.navIcon} /> Messages
+            </div>
+          </li>
+          <li>
+            <div className={styles.navLink}  onClick={navigateToHistoryCaregiver}>
+              <img src="/history-icon.svg" alt="Records" className={styles.navIcon} /> History
+            </div>
+          </li>
+          <li>
+            <div className={`${styles.navLink} ${styles.activeNavLink}`}  onClick={navigateToMyFeedBacks}>
+              <img src="/feedbacks-icon2.png" alt="Records" className={styles.navIcon} /> Feedbacks
+            </div>
+          </li>
+          
+          <li>
+            <div onClick={handleLogout} className={styles.navLink}>
+            <img src="/logout-icon.svg" alt="Logout" className={styles.navIcon} /> Logout
+          </div>
+          </li>
+        </ul>
+      </div>
+    </div>
        )}
       <div className={styles.contentColumn}>
-        <div className={styles.searchBarContainer}>
-          <input
-            type="text"
-            placeholder="Search caregiver"
-            className={styles.searchInput}
-            value={searchTerm}
-            onChange={handleSearchInputChange}
-          />
-          <button className={styles.searchButton} onClick={handleSearch}>
-            <img src="/search-icon.svg" alt="Search" className={styles.searchIcon} />
-          </button>
-        </div>
+       
         {showSearchResults ? (
           searchResults.map((user) => (
             <div
@@ -325,9 +318,7 @@ const ViewCaregiver = () => {
     ))}
   </ul>
         </div>
-        <div className={styles.userProfileContainerButtons}>
-          <button onClick={handleAddFeedbacks}>Insert Feedback</button>
-        </div>
+      
       </div>
     </div>
   </div>
@@ -338,4 +329,4 @@ const ViewCaregiver = () => {
   );
 };
 
-export default ViewCaregiver;
+export default MyFeedBacks;

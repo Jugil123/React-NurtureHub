@@ -29,6 +29,8 @@ import BookingDetails from './BookingDetails';
 import UpdateRecords from './UpdateRecords'
 import Feedback from "./Feedback";
 import CaregiverFeedbacks from "./CaregiverFeedbacks";
+import MessageAdmin from "./MessageAdmin";
+import MyFeedBacks from "./MyFeedBacks";
 
 const App = () => {
   return (
@@ -64,6 +66,8 @@ const App = () => {
               <Route path="/update-records/:recipient" element={<UpdateRecords />} />
               <Route path="/feedback/:userId" element={<Feedback />} />
               <Route path="/getAllfeedbacks/:userId" element={<CaregiverFeedbacks />} />
+              <Route path="/message-admin" element={<MessageAdmin />} />
+              <Route path="/my-feedbacks/:userId" element={<MyFeedBacks />} />
             </Routes>
           </div>
         </ThemeProvider>
