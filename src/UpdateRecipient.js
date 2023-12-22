@@ -118,8 +118,8 @@ const UpdateRecipient = () => {
         await axios.put(`http://localhost:8080/recipient/updateRecipient/?rid=${userId}`, recipient);
 
         const accountUpdateData = {
-          firstname: '',
-          lastname: ''
+          firstname:  recipient.firstname,
+          lastname: recipient.lastname
         };
 
         if (recipient.firstname !== previousData.firstname) {
