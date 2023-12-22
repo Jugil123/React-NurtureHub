@@ -20,7 +20,8 @@ const RegisterCaregiver = () => {
   const [specializations, setSpecializations] = useState('');
   const [hourlyRate, setHourlyRate] = useState('');
   const location = useLocation();
-  const userObject = location.state ? location.state.caregiver : null;
+  const userObject = location.state ? location.state.userObject : null;
+  console.log("AdminRC: ",userObject);
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "NurtureHub | Register-caregiver";

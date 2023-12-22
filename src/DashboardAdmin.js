@@ -20,7 +20,7 @@ const DashboardAdmin = () => {
   const recipientRef = useRef();
   const location = useLocation();
   const userObject = location.state ? location.state.userObject : null;
-  console.log("Admin: ",userObject);
+  console.log("AdminDA: ",userObject);
 
   class PrintableCareGiverTable extends React.Component {
     render() {
