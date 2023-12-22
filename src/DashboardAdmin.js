@@ -188,7 +188,11 @@ const DashboardAdmin = () => {
   };
 
   const handleRegisterCaregiver = () => {
-    navigate('/register-caregiver');
+    navigate('/register-caregiver', { state: { userObject } });
+  };
+
+  const handleRegisterRecipient = () => {
+    navigate('/register-recipient');
   };
 
   const renderCareGiverTable = () => {
@@ -330,10 +334,10 @@ const DashboardAdmin = () => {
         <img className={styles.vectorIcon} alt="" src="/vector2.svg" />
         <div className={styles.update}>Update</div>
       </a>
-      <Link to="/register-recipient" className={styles.addParent}>
+      <a  className={styles.addParent} onClick={() => handleRegisterRecipient()}>
         <div className={styles.add}>Add</div>
         <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
-      </Link>
+      </a>
       <div className={styles.rectangleDiv} />
       <div className={styles.rectangleParent}>
         {/* <div className={styles.groupChild} />
@@ -346,10 +350,10 @@ const DashboardAdmin = () => {
         <img className={styles.vectorIcon} alt="" src="/vector2.svg" />
         <div className={styles.update1}>Update</div>
       </a>
-      <Link to="/register-caregiver" className={styles.addGroup}>
+      <a className={styles.addGroup} onClick={() => handleRegisterCaregiver()}>
         <div className={styles.add}>Add</div>
         <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
-      </Link>
+      </a>
       <a className={styles.vectorContainer} onClick={() => handleRecipientLinkClick('delete')}>
         <img className={styles.vectorIcon4} alt="" src="/vector3.svg" />
         <div className={styles.update}>Delete</div>

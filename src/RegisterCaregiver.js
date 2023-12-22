@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from "./RegisterCaregiver.module.css";
 
 const RegisterCaregiver = () => {
@@ -19,6 +19,8 @@ const RegisterCaregiver = () => {
   const [address, setAddress] = useState('');
   const [specializations, setSpecializations] = useState('');
   const [hourlyRate, setHourlyRate] = useState('');
+  const location = useLocation();
+  const userObject = location.state ? location.state.caregiver : null;
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "NurtureHub | Register-caregiver";
@@ -112,7 +114,7 @@ const RegisterCaregiver = () => {
 
       // Handle successful registration (e.g., show success message, redirect, etc.)
       console.log('Registration Successful', response.data);
-      navigate('/dashboard');
+      navigate('/dashboard', { state: { userObject } });
       
     } catch (error) {
       // Handle registration failure (e.g., show error message)
