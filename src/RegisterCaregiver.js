@@ -5,7 +5,7 @@ import styles from "./RegisterCaregiver.module.css";
 
 const RegisterCaregiver = () => {
   const onVectorIconClick = useCallback(() => {
-    // Please sync "Desktop - 12" to the project
+    navigate('/dashboard', { state: { userObject } });
   }, []);
 
   const [firstname, setFirstname] = useState('');
